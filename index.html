@@ -69,6 +69,64 @@
   }
   </script>
 
+  <!-- FAQPage Schema for Google Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does a website cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every project is different, so I give flat-rate quotes after we talk about what you need. Most small business websites range from about $500 to $2,500 depending on complexity. No hourly billing, no surprise fees — just one clear price upfront."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to build a website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most websites are completed within 1 to 2 weeks. Simpler projects can be done faster, and larger sites may take a bit longer. I'll give you a clear timeline before we start so you know exactly what to expect."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you only work with local businesses?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not at all. I'm based in Fernandina Beach and love working with local businesses in person, but I work with clients anywhere remotely. Web design, Google Business setup, and most services can be done 100% online."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I already have a website but it needs updating?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I can help with that too. Whether it's a full redesign or just some updates and fixes, I'll take a look at what you have and recommend the best path forward."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer ongoing support after launch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. I don't disappear after the project is done. If something breaks, needs updating, or you want to add something new, just reach out."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you help with IT issues too, not just websites?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. I'm CompTIA A+ certified and handle everything from slow computers and printer issues to network setup and software troubleshooting. Available in person locally or remotely."
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -273,6 +331,12 @@
       background: var(--orange);
       flex-shrink: 0;
     }
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
     .hero-cta {
       display: inline-flex;
       align-items: center;
@@ -290,6 +354,36 @@
     .hero-cta:hover { background: var(--orange); gap: 16px; }
     .hero-cta svg { transition: transform 0.2s; }
     .hero-cta:hover svg { transform: translateX(3px); }
+    .hero-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 15px 26px;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border: 1.5px solid var(--ink);
+      transition: background 0.2s, color 0.2s;
+      width: fit-content;
+    }
+    .hero-cta-secondary:hover { background: var(--ink); color: var(--cream); }
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .hero-trust span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-trust svg { color: var(--orange); flex-shrink: 0; }
 
     /* Right column - photo */
     .hero-photo-col {
@@ -559,6 +653,54 @@
     }
     .portfolio-cta-row a:hover { gap: 14px; }
 
+    /* ========== MID CTA BANNER ========== */
+    .cta-banner {
+      background: var(--ink);
+      padding: 56px 40px;
+    }
+    .cta-banner-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .cta-banner-text {
+      flex: 1;
+      min-width: 260px;
+    }
+    .cta-banner h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .cta-banner p {
+      font-size: 0.95rem;
+      color: rgba(247,243,238,0.6);
+      max-width: 520px;
+    }
+    .cta-banner-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--orange);
+      color: var(--cream);
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s, gap 0.2s;
+      white-space: nowrap;
+    }
+    .cta-banner-btn:hover { background: var(--orange2); gap: 16px; }
+
     /* ========== PROCESS ========== */
     #process { background: var(--cream); }
     .process-steps {
@@ -579,9 +721,10 @@
     .process-step::before {
       content: "0" counter(step);
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.4rem;
+      font-size: 2.8rem;
       font-weight: 700;
-      color: var(--cream3);
+      color: var(--orange);
+      opacity: 0.85;
       line-height: 1;
       display: block;
       margin-bottom: 16px;
@@ -890,6 +1033,27 @@
     }
     .footer-links a:hover { color: var(--orange); }
 
+    /* ========== STICKY MOBILE CTA ========== */
+    .mobile-sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      z-index: 150;
+      background: var(--orange);
+      color: var(--cream);
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(212,80,10,0.35);
+      transition: background 0.2s;
+    }
+    .mobile-sticky-cta:hover { background: var(--orange2); }
+
     /* ========== FADE IN ========== */
     .fade-up {
       opacity: 0;
@@ -923,6 +1087,7 @@
       nav { padding: 0 20px; }
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
+      .mobile-sticky-cta { display: block; }
       section { padding: 72px 24px; }
       .services-header { flex-direction: column; align-items: flex-start; }
       .service-item { grid-template-columns: 52px 1fr; gap: 16px; }
@@ -993,12 +1158,31 @@
           <span class="badge">Local &amp; Remote</span>
           <span class="badge">CompTIA A+</span>
         </div>
-        <a href="#contact" class="hero-cta">
-          Let's work together
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+        <div class="hero-cta-row">
+          <a href="#contact" class="hero-cta">
+            Get a free quote
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#portfolio" class="hero-cta-secondary">
+            See my work
+          </a>
+        </div>
+        <div class="hero-trust">
+          <span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Free quotes
+          </span>
+          <span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Flat-rate pricing
+          </span>
+          <span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Usually responds same day
+          </span>
+        </div>
       </div>
 
       <div class="hero-photo-col">
@@ -1173,6 +1357,22 @@
     </div>
   </section>
 
+  <!-- MID CTA BANNER -->
+  <section class="cta-banner">
+    <div class="cta-banner-inner">
+      <div class="cta-banner-text fade-up">
+        <h3>Ready to give your business a better online presence?</h3>
+        <p>Free quote, no pressure. Tell me what you need and I'll tell you what it costs — usually within a few hours.</p>
+      </div>
+      <a href="#contact" class="cta-banner-btn fade-up">
+        Get a free quote
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
   <!-- PROCESS -->
   <section id="process">
     <div class="section-inner">
@@ -1266,7 +1466,7 @@
             <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
           </button>
           <div class="faq-answer">
-            <p>Every project is different, so I give flat-rate quotes after we talk about what you need. Most small business websites fall in a range that's affordable for local businesses. No hourly billing, no surprise fees — just one clear price upfront.</p>
+            <p>Every project is different, so I give flat-rate quotes after we talk about what you need. Most small business websites range from about $500 to $2,500 depending on complexity — simple one-pagers are on the lower end, larger multi-page sites on the higher end. No hourly billing, no surprise fees — just one clear price upfront.</p>
           </div>
         </div>
 
@@ -1425,6 +1625,9 @@
     </div>
   </section>
 
+  <!-- STICKY MOBILE CTA -->
+  <a href="#contact" class="mobile-sticky-cta" id="mobile-sticky-cta">Get a free quote &rarr;</a>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
@@ -1475,6 +1678,20 @@
       });
     }, { threshold: 0.1 });
     fadeEls.forEach(el => observer.observe(el));
+
+    // Sticky mobile CTA - hide when contact section is visible
+    const stickyCta = document.getElementById('mobile-sticky-cta');
+    const contactSection = document.getElementById('contact');
+    if (stickyCta && contactSection) {
+      const stickyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          stickyCta.style.opacity = e.isIntersecting ? '0' : '1';
+          stickyCta.style.pointerEvents = e.isIntersecting ? 'none' : 'auto';
+          stickyCta.style.transition = 'opacity 0.3s';
+        });
+      }, { threshold: 0.1 });
+      stickyObserver.observe(contactSection);
+    }
 
     // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(btn => {
