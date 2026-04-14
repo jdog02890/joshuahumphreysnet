@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me | Joshua Humphreys</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #F7F3EE;
+      --cream2:  #EDE8E1;
+      --cream3:  #E3DDD5;
+      --ink:     #141414;
+      --ink2:    #2C2C2C;
+      --muted:   #7A7570;
+      --orange:  #D4500A;
+      --orange2: #F06020;
+      --border:  #D9D3CB;
+      --dark:    #1A1714;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ========== NAV ========== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--orange); }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 201;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0; bottom: 0;
+      background: var(--cream);
+      z-index: 199;
+      flex-direction: column;
+      padding: 40px 32px;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.02em;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--orange); }
+    .mobile-menu-cta {
+      margin-top: 32px;
+      display: inline-block;
+      background: var(--ink);
+      color: var(--cream) !important;
+      padding: 16px 32px;
+      border-radius: 6px;
+      font-size: 1rem !important;
+      font-weight: 600 !important;
+      text-align: center;
+      border-bottom: none !important;
+    }
+    .mobile-menu-cta:hover { background: var(--orange) !important; }
+
+    /* ========== HERO ========== */
+    .about-hero {
+      padding-top: 64px;
+      background: var(--cream);
+    }
+    .about-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 40px 80px;
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .about-photo-col {}
+    .about-photo-frame {
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--cream3);
+      aspect-ratio: 4/5;
+    }
+    .about-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      display: block;
+    }
+    .about-photo-caption {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .about-text-col {}
+    .about-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .about-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .about-role {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .about-bio {
+      font-size: 1rem;
+      color: var(--ink2);
+      line-height: 1.78;
+      margin-bottom: 16px;
+    }
+
+    .about-contact-rows {
+      display: flex;
+      flex-direction: column;
+      margin-top: 36px;
+      border-top: 1px solid var(--border);
+    }
+    .about-contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--ink);
+      transition: color 0.2s;
+    }
+    .about-contact-row:hover { color: var(--orange); }
+    .about-contact-row:hover .acr-arrow { transform: translate(3px, -3px); }
+    .acr-left { display: flex; flex-direction: column; gap: 1px; }
+    .acr-type {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .acr-val { font-size: 0.95rem; font-weight: 500; }
+    .acr-arrow { font-size: 1rem; transition: transform 0.2s; color: var(--muted); }
+
+    /* ========== CONTENT ========== */
+    .about-content { background: var(--cream); }
+    .about-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      max-width: 1200px;
+      margin: 0 auto 0;
+    }
+
+    .content-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 72px 40px;
+      border-top: 1px solid var(--border);
+    }
+    .content-section:first-child { border-top: none; }
+
+    .content-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .content-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .content-body {
+      font-size: 0.97rem;
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 680px;
+      margin-bottom: 16px;
+    }
+    .content-body:last-child { margin-bottom: 0; }
+
+    /* Credentials */
+    .creds-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 32px;
+    }
+    .cred-card {
+      padding: 24px 22px;
+      background: var(--cream2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .cred-card:hover {
+      border-color: var(--orange);
+      background: var(--cream);
+    }
+    .cred-icon { font-size: 1.4rem; margin-bottom: 12px; display: block; }
+    .cred-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .cred-note { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    /* Values list */
+    .values-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+    .values-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+      color: var(--ink2);
+      line-height: 1.65;
+    }
+    .v-check {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: rgba(212,80,10,0.1);
+      border: 1px solid rgba(212,80,10,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 0.62rem;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    /* CTA */
+    .about-cta-block {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+    .about-cta-inner {
+      background: var(--ink);
+      border-radius: 16px;
+      padding: 56px 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .cta-text h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+    .cta-text p { font-size: 0.95rem; color: rgba(247,243,238,0.55); }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--orange);
+      color: var(--cream);
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background 0.2s, gap 0.2s;
+    }
+    .cta-btn:hover { background: var(--orange2); gap: 16px; }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--dark);
+      padding: 44px 40px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+    }
+    .footer-logo span { color: var(--orange); }
+    .footer-copy { font-size: 0.8rem; color: rgba(247,243,238,0.3); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: 0.8rem;
+      color: rgba(247,243,238,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--orange); }
+
+    /* ========== FADE IN ========== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ========== MOBILE ========== */
+    @media (max-width: 900px) {
+      .about-hero-inner {
+        grid-template-columns: 1fr;
+        padding: 48px 24px 60px;
+        gap: 40px;
+      }
+      .about-photo-col { max-width: 320px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-back { display: none; }
+      .nav-hamburger { display: flex; }
+      .content-section { padding: 56px 24px; }
+      .about-cta-block { padding: 0 24px 60px; }
+      .about-cta-inner { padding: 36px 28px; flex-direction: column; align-items: flex-start; }
+      footer { padding: 36px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .creds-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .creds-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a class="nav-logo" href="index.html">Joshua<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#why">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html" class="nav-back">
+      &#8592; Back to Home
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="index.html#services" onclick="closeMobileMenu()">Services</a>
+    <a href="index.html#why" onclick="closeMobileMenu()">About</a>
+    <a href="index.html#contact" class="mobile-menu-cta" onclick="closeMobileMenu()">Get in Touch</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="about-hero-inner">
+      <div class="about-photo-col fade-up">
+        <div class="about-photo-frame">
+          <img
+            src="joshua-photo2.jpg"
+            alt="Joshua Humphreys"
+            onerror="this.closest('.about-photo-frame').style.background='#DDD8D0'"
+          />
+        </div>
+        <p class="about-photo-caption">Joshua Humphreys</p>
+      </div>
+
+      <div class="about-text-col fade-up">
+        <span class="about-eyebrow">About Me</span>
+        <h1 class="about-name">Joshua<br>Humphreys</h1>
+        <p class="about-role">Web Designer &amp; IT Specialist · Fernandina Beach, FL &amp; Remote</p>
+        <p class="about-bio">
+          I help businesses get online, look professional, and actually show up when people search for them. I'm based in Fernandina Beach for local and in-person work, but I work remotely with clients anywhere. If you need a website, I can build it regardless of where you're located.
+        </p>
+        <p class="about-bio">
+          I hold a CompTIA A+ certification, the industry standard for IT support professionals, and take a hands-on approach to every project.
+        </p>
+
+        <div class="about-contact-rows">
+          <a class="about-contact-row" href="tel:+18058889137">
+            <div class="acr-left">
+              <span class="acr-type">Phone / Text</span>
+              <span class="acr-val">+1 (805) 888-9137</span>
+            </div>
+            <span class="acr-arrow">↗</span>
+          </a>
+          <a class="about-contact-row" href="mailto:2002magpie@gmail.com">
+            <div class="acr-left">
+              <span class="acr-type">Email</span>
+              <span class="acr-val">2002magpie@gmail.com</span>
+            </div>
+            <span class="acr-arrow">↗</span>
+          </a>
+          <div class="about-contact-row" style="cursor:default;">
+            <div class="acr-left">
+              <span class="acr-type">Location</span>
+              <span class="acr-val">Fernandina Beach, FL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACKGROUND -->
+  <div class="about-content">
+    <div class="content-section fade-up">
+      <span class="content-label">Background</span>
+      <h2 class="content-title">Local to Fernandina Beach</h2>
+      <p class="content-body">
+        I moved to Fernandina Beach and pretty quickly noticed that a lot of small businesses here either had no website at all or one that looked like it hadn't been touched in years. That kept bothering me, so I decided to do something about it.
+      </p>
+      <p class="content-body">
+        I'm not an agency and I'm not trying to be one. I just genuinely enjoy building things and solving problems, and I figured if I can help a local business owner get more customers by building them a solid website, that's a win for everyone. Most of my services can be done fully remotely too, so I work with clients both here in Nassau County and anywhere else.
+      </p>
+    </div>
+
+    <div class="content-section fade-up">
+      <span class="content-label">Skills and Certifications</span>
+      <h2 class="content-title">What I Know and Where I'm Headed</h2>
+      <p class="content-body">I work with modern HTML, CSS, and JavaScript to build fast, mobile-friendly websites from scratch. I also handle IT support, Google Business Profile setup, social media content, and resume writing. Everything is done by me personally.</p>
+      <div class="creds-grid">
+        <div class="cred-card">
+          <span class="cred-icon">🎓</span>
+          <div class="cred-title">CompTIA A+</div>
+          <div class="cred-note">Industry standard certification for IT support professionals.</div>
+        </div>
+        <div class="cred-card">
+          <span class="cred-icon">🌐</span>
+          <div class="cred-title">Web Design</div>
+          <div class="cred-note">HTML, CSS, JavaScript. Mobile-first, fast-loading, clean design.</div>
+        </div>
+        <div class="cred-card">
+          <span class="cred-icon">💻</span>
+          <div class="cred-title">IT Support</div>
+          <div class="cred-note">Virus removal, device setup, network troubleshooting, and general tech help.</div>
+        </div>
+        <div class="cred-card">
+          <span class="cred-icon">📍</span>
+          <div class="cred-title">Google Business</div>
+          <div class="cred-note">Setup and optimization so local customers can find you on Google Maps.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section fade-up">
+      <span class="content-label">How I Work</span>
+      <h2 class="content-title">What You Can Expect</h2>
+      <ul class="values-list">
+        <li>
+          <div class="v-check">&#10003;</div>
+          <span>You work directly with me on every project, not a team member or subcontractor.</span>
+        </li>
+        <li>
+          <div class="v-check">&#10003;</div>
+          <span>Pricing is agreed on upfront. No surprise charges when the project is done.</span>
+        </li>
+        <li>
+          <div class="v-check">&#10003;</div>
+          <span>I respond to calls and messages quickly. You will not be waiting days to hear back.</span>
+        </li>
+        <li>
+          <div class="v-check">&#10003;</div>
+          <span>I am available evenings and weekends to fit around your schedule.</span>
+        </li>
+        <li>
+          <div class="v-check">&#10003;</div>
+          <span>Once a project is finished, I am still available if you need updates or support later.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="about-cta-block fade-up">
+    <div class="about-cta-inner">
+      <div class="cta-text">
+        <h3>Ready to Work Together?</h3>
+        <p>Reach out and I'll get back to you the same day.</p>
+      </div>
+      <a href="index.html#contact" class="cta-btn">
+        Get in Touch
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">Joshua<span>.</span></span>
+      <span class="footer-copy">&copy; 2025 Joshua Humphreys. Fernandina Beach, FL.</span>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll shadow
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('nav-hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Fade-up on scroll
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 55);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

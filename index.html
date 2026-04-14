@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Joshua Humphreys | Professional web design and IT services in Fernandina Beach, FL. Custom websites, Google Business Profile setup, IT support, and digital services for local businesses and remote clients." />
+  <meta name="keywords" content="web design Fernandina Beach, IT support Amelia Island, website builder Jacksonville, local web designer Florida, web developer Nassau County, small business websites Florida" />
+  <title>Joshua Humphreys | Web Design & IT Services | Fernandina Beach, FL</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Joshua Humphreys | Web Design & IT Services" />
+  <meta property="og:description" content="Custom websites and IT services for local businesses in Fernandina Beach, Amelia Island, and beyond. Fast delivery, flat-rate pricing, CompTIA A+ certified." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://joshuahumphreys.net" />
+  <meta property="og:image" content="https://joshuahumphreys.net/joshua-photo.jpeg" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Joshua Humphreys | Web Design & IT Services" />
+  <meta name="twitter:description" content="Custom websites and IT services for local businesses in Fernandina Beach, FL." />
+  <meta name="twitter:image" content="https://joshuahumphreys.net/joshua-photo.jpeg" />
+
+  <link rel="canonical" href="https://joshuahumphreys.net/" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <!-- LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Joshua Humphreys Web Design & IT Services",
+    "url": "https://joshuahumphreys.net",
+    "image": "https://joshuahumphreys.net/joshua-photo.jpeg",
+    "description": "Professional web design and IT services for local businesses in Fernandina Beach, Amelia Island, and Northeast Florida.",
+    "telephone": "+1-805-888-9137",
+    "email": "2002magpie@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Fernandina Beach",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Fernandina Beach" },
+      { "@type": "City", "name": "Yulee" },
+      { "@type": "City", "name": "Jacksonville" },
+      { "@type": "Place", "name": "Amelia Island" }
+    ],
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "sameAs": [],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website Design & Build" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Business Profile Setup" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social Media Management" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "IT Support & Tech Help" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Resume & LinkedIn Writing" } }
+      ]
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #F7F3EE;
+      --cream2:  #EDE8E1;
+      --cream3:  #E3DDD5;
+      --ink:     #141414;
+      --ink2:    #2C2C2C;
+      --muted:   #7A7570;
+      --orange:  #D4500A;
+      --orange2: #F06020;
+      --border:  #D9D3CB;
+      --dark:    #1A1714;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ========== NAV ========== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta {
+      background: var(--ink) !important;
+      color: var(--cream) !important;
+      padding: 8px 20px;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+      text-transform: none !important;
+      letter-spacing: 0 !important;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--orange) !important; }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 201;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Mobile menu overlay */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0; bottom: 0;
+      background: var(--cream);
+      z-index: 199;
+      flex-direction: column;
+      padding: 40px 32px;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.02em;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--orange); }
+    .mobile-menu-cta {
+      margin-top: 32px;
+      display: inline-block;
+      background: var(--ink);
+      color: var(--cream) !important;
+      padding: 16px 32px;
+      border-radius: 6px;
+      font-size: 1rem !important;
+      font-weight: 600 !important;
+      text-align: center;
+      border-bottom: none !important;
+    }
+    .mobile-menu-cta:hover { background: var(--orange); color: var(--cream) !important; }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding-top: 64px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-top {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      padding: 72px 40px 80px;
+      gap: 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Left column */
+    .hero-left {}
+    .hero-headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 6.5vw, 5.8rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      margin-bottom: 36px;
+    }
+    .hero-intro {
+      font-size: 1.05rem;
+      color: var(--ink2);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      max-width: 420px;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--cream2);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink2);
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--ink);
+      color: var(--cream);
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: background 0.25s, gap 0.2s;
+      width: fit-content;
+    }
+    .hero-cta:hover { background: var(--orange); gap: 16px; }
+    .hero-cta svg { transition: transform 0.2s; }
+    .hero-cta:hover svg { transform: translateX(3px); }
+
+    /* Right column - photo */
+    .hero-photo-col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .hero-photo-frame {
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--cream3);
+      aspect-ratio: 4/5;
+    }
+    .hero-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .hero-photo-frame:hover img { transform: scale(1.03); }
+    .hero-photo-caption {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ========== TICKER ========== */
+    .ticker-wrap {
+      background: var(--dark);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+    .ticker-track {
+      display: flex;
+      animation: ticker 30s linear infinite;
+      width: max-content;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 36px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(247,243,238,0.5);
+      white-space: nowrap;
+    }
+    .ticker-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ========== SECTION BASE ========== */
+    section { padding: 100px 40px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 480px;
+    }
+
+    /* ========== SERVICES ========== */
+    #services { background: var(--cream); }
+    .services-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .services-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--border);
+    }
+    .service-item {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      align-items: center;
+      gap: 32px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .service-item:hover {
+      background: var(--cream2);
+      padding-left: 16px;
+      padding-right: 16px;
+      margin: 0 -16px;
+    }
+    .service-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--orange);
+      letter-spacing: 0.06em;
+    }
+    .service-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .service-desc {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .service-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    /* ========== PORTFOLIO ========== */
+    #portfolio { background: var(--cream2); }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 52px;
+    }
+    .portfolio-card {
+      background: var(--cream);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .portfolio-preview {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--cream3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .portfolio-preview-dark {
+      background: #000;
+    }
+    .portfolio-logo {
+      max-width: 72%;
+      max-height: 72%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+    .portfolio-preview img:not(.portfolio-logo) {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .portfolio-preview-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+    }
+    .portfolio-preview-placeholder svg { opacity: 0.4; }
+    .portfolio-preview-placeholder span {
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+    .portfolio-info { padding: 24px; }
+    .portfolio-client {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .portfolio-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .portfolio-desc {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .portfolio-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .portfolio-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink2);
+      background: var(--cream2);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+    .portfolio-cta-row {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .portfolio-cta-row a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--orange);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .portfolio-cta-row a:hover { gap: 14px; }
+
+    /* ========== PROCESS ========== */
+    #process { background: var(--cream); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 52px;
+      counter-reset: step;
+    }
+    .process-step {
+      position: relative;
+      padding: 28px;
+      background: var(--cream2);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      counter-increment: step;
+    }
+    .process-step::before {
+      content: "0" counter(step);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--cream3);
+      line-height: 1;
+      display: block;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+    }
+    .process-step h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .process-step p {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .process-step .step-time {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    /* ========== AREA STRIP ========== */
+    .area-strip {
+      background: var(--cream2);
+      padding: 28px 40px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .area-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .area-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .area-places {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .area-tag {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--ink2);
+    }
+
+    /* ========== WHY ME ========== */
+    #why { background: var(--cream2); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 52px;
+    }
+    .why-card {
+      padding: 28px;
+      background: var(--cream);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .why-icon {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--orange);
+      width: 20px;
+      height: 20px;
+    }
+    .why-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .why-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ========== FAQ ========== */
+    #faq { background: var(--cream); }
+    .faq-list {
+      margin-top: 52px;
+      max-width: 720px;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 0;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--orange); }
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--cream2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.3s, background 0.2s;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--orange);
+      color: var(--cream);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-bottom: 22px;
+    }
+    .faq-answer p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    /* ========== CONTACT ========== */
+    #contact { background: var(--ink); }
+    #contact .section-label { color: var(--orange); }
+    #contact .section-title { color: var(--cream); }
+    #contact .section-sub { color: rgba(247,243,238,0.55); }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 56px;
+    }
+    .contact-links { display: flex; flex-direction: column; }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(247,243,238,0.1);
+      text-decoration: none;
+      color: var(--cream);
+      transition: color 0.2s;
+    }
+    .contact-row:first-child { border-top: 1px solid rgba(247,243,238,0.1); }
+    .contact-row:hover { color: var(--orange); }
+    .contact-row:hover .row-arrow { transform: translate(3px, -3px); }
+    .row-left { display: flex; flex-direction: column; gap: 2px; }
+    .row-type {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(247,243,238,0.38);
+    }
+    .row-value { font-size: 1rem; font-weight: 500; }
+    .row-arrow {
+      font-size: 1.1rem;
+      transition: transform 0.2s;
+      color: rgba(247,243,238,0.3);
+    }
+
+    /* Contact form */
+    .form-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(247,243,238,0.4);
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: rgba(247,243,238,0.06);
+      border: 1px solid rgba(247,243,238,0.12);
+      border-radius: 6px;
+      padding: 12px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(247,243,238,0.22); }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--orange); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select option { background: #1f1c1a; color: var(--cream); }
+    .form-submit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--orange);
+      color: var(--cream);
+      border: none;
+      border-radius: 6px;
+      padding: 14px 28px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+      width: 100%;
+    }
+    .form-submit:hover { background: var(--orange2); }
+    .form-success {
+      display: none;
+      background: rgba(212,80,10,0.15);
+      border: 1px solid var(--orange);
+      border-radius: 6px;
+      padding: 14px 18px;
+      color: var(--orange2);
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-top: 12px;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--dark);
+      padding: 44px 40px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+    }
+    .footer-logo span { color: var(--orange); }
+    .footer-copy { font-size: 0.8rem; color: rgba(247,243,238,0.3); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: 0.8rem;
+      color: rgba(247,243,238,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--orange); }
+
+    /* ========== FADE IN ========== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ========== MOBILE ========== */
+    @media (max-width: 900px) {
+      .hero-top {
+        grid-template-columns: 1fr;
+        padding: 48px 24px 40px;
+        gap: 40px;
+      }
+      .hero-photo-col {
+        max-width: 360px;
+      }
+      .why-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .why-photo-col { position: static; max-width: 320px; }
+      .contact-wrap { grid-template-columns: 1fr; gap: 52px; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      section { padding: 72px 24px; }
+      .services-header { flex-direction: column; align-items: flex-start; }
+      .service-item { grid-template-columns: 52px 1fr; gap: 16px; }
+      .service-tag { display: none; }
+      .why-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .area-inner { flex-direction: column; align-items: flex-start; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .area-strip { padding: 24px; }
+      footer { padding: 36px 24px; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-headline { font-size: clamp(2.6rem, 11vw, 3.8rem); }
+      .why-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a class="nav-logo" href="#">Joshua<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Work</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#why">Why Me</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#services" onclick="closeMobileMenu()">Services</a>
+    <a href="#portfolio" onclick="closeMobileMenu()">Work</a>
+    <a href="#process" onclick="closeMobileMenu()">Process</a>
+    <a href="#why" onclick="closeMobileMenu()">Why Me</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="#contact" class="mobile-menu-cta" onclick="closeMobileMenu()">Get in Touch</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-top">
+      <div class="hero-left">
+        <h1 class="hero-headline">
+          Web Design<br>
+          &amp; IT<br>
+          Services<br>
+          for Local &amp;<br>
+          Remote Clients.
+        </h1>
+        <p class="hero-intro">
+          I'm Joshua Humphreys, a web designer and IT specialist based in Fernandina Beach, FL.
+          I work with local businesses in person and remotely with clients anywhere.
+        </p>
+        <div class="hero-badges">
+          <span class="badge"><span class="badge-dot"></span> Available for new projects</span>
+          <span class="badge">Local &amp; Remote</span>
+          <span class="badge">CompTIA A+</span>
+        </div>
+        <a href="#contact" class="hero-cta">
+          Let's work together
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="hero-photo-col">
+        <div class="hero-photo-frame">
+          <img
+            src="joshua-photo.jpeg"
+            alt="Joshua Humphreys — Web Designer and IT Specialist in Fernandina Beach, FL"
+            onerror="this.closest('.hero-photo-frame').style.background='#DDD8D0'"
+          />
+        </div>
+        <p class="hero-photo-caption">Joshua Humphreys</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span class="ticker-item">Website Design <span class="ticker-dot"></span></span>
+      <span class="ticker-item">Google Business Profiles <span class="ticker-dot"></span></span>
+      <span class="ticker-item">IT Support <span class="ticker-dot"></span></span>
+      <span class="ticker-item">Social Media Management <span class="ticker-dot"></span></span>
+      <span class="ticker-item">Resume Writing <span class="ticker-dot"></span></span>
+      <span class="ticker-item">LinkedIn Setup <span class="ticker-dot"></span></span>
+      <span class="ticker-item">Tech Troubleshooting <span class="ticker-dot"></span></span>
+      <span class="ticker-item">Local Business Solutions <span class="ticker-dot"></span></span>
+      <span class="ticker-item">Website Design <span class="ticker-dot"></span></span>
+      <span class="ticker-item">Google Business Profiles <span class="ticker-dot"></span></span>
+      <span class="ticker-item">IT Support <span class="ticker-dot"></span></span>
+      <span class="ticker-item">Social Media Management <span class="ticker-dot"></span></span>
+      <span class="ticker-item">Resume Writing <span class="ticker-dot"></span></span>
+      <span class="ticker-item">LinkedIn Setup <span class="ticker-dot"></span></span>
+      <span class="ticker-item">Tech Troubleshooting <span class="ticker-dot"></span></span>
+      <span class="ticker-item">Local Business Solutions <span class="ticker-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="services-header fade-up">
+        <div>
+          <span class="section-label">What I Do</span>
+          <h2 class="section-title">Services built for<br>local businesses.</h2>
+        </div>
+        <p class="section-sub">
+          Every service is built around what your business actually needs. I'll tell you upfront what it costs and what you'll get.
+        </p>
+      </div>
+
+      <div class="services-list">
+        <div class="service-item fade-up">
+          <span class="service-num">01</span>
+          <div>
+            <div class="service-name">Website Design &amp; Build</div>
+            <div class="service-desc">Custom websites built from scratch. Fast, mobile-friendly, and built to bring in new customers.</div>
+          </div>
+          <span class="service-tag">Most Popular</span>
+        </div>
+        <div class="service-item fade-up">
+          <span class="service-num">02</span>
+          <div>
+            <div class="service-name">Google Business Profile Setup</div>
+            <div class="service-desc">Get your business showing up on Google Maps and local search results so customers can actually find you.</div>
+          </div>
+          <span class="service-tag">High Impact</span>
+        </div>
+        <div class="service-item fade-up">
+          <span class="service-num">03</span>
+          <div>
+            <div class="service-name">Social Media Management</div>
+            <div class="service-desc">Consistent posting, profile setup, and content that keeps your business active and visible online.</div>
+          </div>
+          <span class="service-tag">Ongoing</span>
+        </div>
+        <div class="service-item fade-up">
+          <span class="service-num">04</span>
+          <div>
+            <div class="service-name">IT Support &amp; Tech Help</div>
+            <div class="service-desc">Computer slowdowns, printer setup, network issues, software problems. I handle it all, in-person or remote.</div>
+          </div>
+          <span class="service-tag">On-Site Available</span>
+        </div>
+        <div class="service-item fade-up">
+          <span class="service-num">05</span>
+          <div>
+            <div class="service-name">Resume &amp; LinkedIn Writing</div>
+            <div class="service-desc">Professional resume rewrites and LinkedIn profile updates to help you land your next opportunity.</div>
+          </div>
+          <span class="service-tag">Quick Turnaround</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <div class="area-strip">
+    <div class="area-inner">
+      <span class="area-label">Service Area</span>
+      <div class="area-places">
+        <span class="area-tag">Fernandina Beach</span>
+        <span class="area-tag">Amelia Island</span>
+        <span class="area-tag">Yulee</span>
+        <span class="area-tag">Jacksonville</span>
+        <span class="area-tag">+ Surrounding Areas</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="section-inner">
+      <span class="section-label fade-up">Recent Work</span>
+      <h2 class="section-title fade-up">Projects I've<br>worked on.</h2>
+      <p class="section-sub fade-up">Real results for real businesses. Here's some of the work I've done recently.</p>
+
+      <div class="portfolio-grid">
+        <a class="portfolio-card fade-up" href="https://rebootjacksonville.com" target="_blank" rel="noopener">
+          <div class="portfolio-preview portfolio-preview-dark">
+            <img src="reboot-logo.png" alt="Reboot Computers of Jax logo" class="portfolio-logo"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="portfolio-preview-placeholder" style="display:none;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <path d="M8 21h8M12 17v4"/>
+              </svg>
+              <span>rebootjacksonville.com</span>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-client">Client Project</div>
+            <div class="portfolio-title">Reboot Computers of Jax</div>
+            <div class="portfolio-desc">Full website redesign for a Jacksonville-based computer repair business. Rebuilt from the ground up with modern design, better mobile experience, and clearer calls to action.</div>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Web Design</span>
+              <span class="portfolio-tag">Responsive</span>
+              <span class="portfolio-tag">SEO</span>
+            </div>
+          </div>
+        </a>
+
+        <div class="portfolio-card fade-up">
+          <div class="portfolio-preview">
+            <div class="portfolio-preview-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <path d="M8 21h8M12 17v4"/>
+              </svg>
+              <span>Your project here</span>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-client">Next Project</div>
+            <div class="portfolio-title">Could Be Yours</div>
+            <div class="portfolio-desc">I'm always looking for the next great project. Whether you need a new website, a redesign, or help getting your business online — let's make it happen.</div>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Available Now</span>
+              <span class="portfolio-tag">Flat-Rate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-cta-row fade-up">
+        <a href="#contact">
+          Have a project in mind? Let's talk
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="section-inner">
+      <span class="section-label fade-up">How It Works</span>
+      <h2 class="section-title fade-up">Simple process,<br>no runaround.</h2>
+      <p class="section-sub fade-up">From first message to finished product — here's how working with me goes.</p>
+
+      <div class="process-steps">
+        <div class="process-step fade-up">
+          <h3>Discovery Call</h3>
+          <p>We talk about your business, what you need, and what your goals are. No pressure, no sales pitch.</p>
+          <span class="step-time">Day 1</span>
+        </div>
+        <div class="process-step fade-up">
+          <h3>Quote &amp; Plan</h3>
+          <p>I put together a flat-rate quote and a clear plan so you know exactly what you're getting and what it costs.</p>
+          <span class="step-time">Day 1-2</span>
+        </div>
+        <div class="process-step fade-up">
+          <h3>Build &amp; Review</h3>
+          <p>I get to work building your site or setting up your service. You get updates and can give feedback along the way.</p>
+          <span class="step-time">Week 1-2</span>
+        </div>
+        <div class="process-step fade-up">
+          <h3>Launch &amp; Support</h3>
+          <p>Once you're happy, we go live. I stick around after launch to make sure everything runs smoothly.</p>
+          <span class="step-time">Ongoing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ME -->
+  <section id="why">
+    <div class="section-inner">
+      <span class="section-label fade-up">Why Work With Me</span>
+      <h2 class="section-title fade-up">Local, reliable,<br>and actually here.</h2>
+      <p class="section-sub fade-up">I'm not an agency. I'm a real person in your community who picks up the phone.</p>
+
+      <div class="why-grid">
+            <div class="why-card fade-up">
+              <span class="why-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 2C7.24 2 5 4.24 5 7c0 4 5 11 5 11s5-7 5-11c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 1 1 10 5a1.5 1.5 0 0 1 0 3.5z" fill="currentColor"/>
+                </svg>
+              </span>
+              <h3>Local &amp; Remote</h3>
+              <p>Based in Fernandina Beach for in-person work. Available remotely for websites, Google profiles, and more — anywhere.</p>
+            </div>
+            <div class="why-card fade-up">
+              <span class="why-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 1a9 9 0 1 0 0 18A9 9 0 0 0 10 1zm.75 13.5h-1.5v-1.5h1.5v1.5zm0-3.5h-1.5c0-2.25 2.25-2.06 2.25-3.38C11.5 6.73 10.88 6 10 6c-.88 0-1.5.73-1.5 1.62H7c0-1.69 1.34-3.12 3-3.12s3 1.43 3 3.12c0 1.88-2.25 2.06-2.25 3.38z" fill="currentColor"/>
+                </svg>
+              </span>
+              <h3>Flat-Rate Quotes</h3>
+              <p>We talk through what you need, I give you a price upfront, and that's what you pay. No surprises.</p>
+            </div>
+            <div class="why-card fade-up">
+              <span class="why-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2zm.75 8.75h-4v-1.5h2.5V5.5h1.5v5.25z" fill="currentColor"/>
+                </svg>
+              </span>
+              <h3>Quick to Deliver</h3>
+              <p>Most websites are done in 1 to 2 weeks. Google Business Profile setups are often same-day.</p>
+            </div>
+            <div class="why-card fade-up">
+              <span class="why-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 2L3 7v1h14V7L10 2zM4 9v6h2V9H4zm5 0v6h2V9H9zm5 0v6h2V9h-2zM3 16h14v2H3v-2z" fill="currentColor"/>
+                </svg>
+              </span>
+              <h3>CompTIA A+</h3>
+              <p>Industry standard certification for IT support professionals. I keep up with current tools so you always get modern solutions.</p>
+            </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-inner">
+      <span class="section-label fade-up">Common Questions</span>
+      <h2 class="section-title fade-up">Got questions?<br>I've got answers.</h2>
+
+      <div class="faq-list">
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            How much does a website cost?
+            <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <p>Every project is different, so I give flat-rate quotes after we talk about what you need. Most small business websites fall in a range that's affordable for local businesses. No hourly billing, no surprise fees — just one clear price upfront.</p>
+          </div>
+        </div>
+
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            How long does it take to build a website?
+            <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <p>Most websites are completed within 1 to 2 weeks. Simpler projects can be done faster, and larger sites may take a bit longer. I'll give you a clear timeline before we start so you know exactly what to expect.</p>
+          </div>
+        </div>
+
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            Do you only work with local businesses?
+            <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <p>Not at all. I'm based in Fernandina Beach and love working with local businesses in person, but I work with clients anywhere remotely. Web design, Google Business setup, and most services can be done 100% online.</p>
+          </div>
+        </div>
+
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            What if I already have a website but it needs updating?
+            <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <p>I can help with that too. Whether it's a full redesign or just some updates and fixes, I'll take a look at what you have and recommend the best path forward. Sometimes a refresh is all you need.</p>
+          </div>
+        </div>
+
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            Do you offer ongoing support after launch?
+            <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. I don't disappear after the project is done. If something breaks, needs updating, or you want to add something new, just reach out. I'm always available to help keep things running.</p>
+          </div>
+        </div>
+
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            Can you help with IT issues too, not just websites?
+            <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. I'm CompTIA A+ certified and handle everything from slow computers and printer issues to network setup and software troubleshooting. Available in person locally or remotely.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <span class="section-label fade-up">Get In Touch</span>
+      <h2 class="section-title fade-up">Let's talk.</h2>
+      <p class="section-sub fade-up">Reach out any way that works for you. I usually get back the same day.</p>
+
+      <div class="contact-wrap">
+        <div>
+          <div class="contact-links">
+            <a class="contact-row" href="tel:+18058889137">
+              <div class="row-left">
+                <span class="row-type">Phone / Text</span>
+                <span class="row-value">+1 (805) 888-9137</span>
+              </div>
+              <span class="row-arrow">&nearr;</span>
+            </a>
+            <a class="contact-row" href="mailto:2002magpie@gmail.com">
+              <div class="row-left">
+                <span class="row-type">Email</span>
+                <span class="row-value">2002magpie@gmail.com</span>
+              </div>
+              <span class="row-arrow">&nearr;</span>
+            </a>
+            <a class="contact-row" href="about.html">
+              <div class="row-left">
+                <span class="row-type">Learn More</span>
+                <span class="row-value">About Me</span>
+              </div>
+              <span class="row-arrow">&nearr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="fade-up">
+          <p class="form-title">Or send me a message</p>
+          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="f7f519f4-3047-4232-8340-7ecda260142c" />
+            <input type="hidden" name="subject" value="New message from your website" />
+            <div class="form-row">
+              <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" name="name" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="your@email.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>What do you need?</label>
+                <select name="service">
+                  <option value="">Select a service...</option>
+                  <option>Website Design</option>
+                  <option>Website Redesign</option>
+                  <option>Google Business Profile</option>
+                  <option>Social Media Management</option>
+                  <option>IT Support</option>
+                  <option>Resume / LinkedIn</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Budget Range</label>
+                <select name="budget">
+                  <option value="">Select a range...</option>
+                  <option>Under $500</option>
+                  <option>$500 - $1,000</option>
+                  <option>$1,000 - $2,500</option>
+                  <option>$2,500+</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Timeline</label>
+              <select name="timeline">
+                <option value="">When do you need this?</option>
+                <option>ASAP</option>
+                <option>Within 2 weeks</option>
+                <option>Within a month</option>
+                <option>No rush, just exploring</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea name="message" placeholder="Tell me a bit about your business and what you're looking for..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">
+              Send Message
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="form-success" id="form-success">Message sent! I'll be in touch soon.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">Joshua<span>.</span></span>
+      <span class="footer-copy">&copy; 2025 Joshua Humphreys. Fernandina Beach, FL.</span>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#portfolio">Work</a>
+        <a href="about.html">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll shadow
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('nav-hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-label', 'Open menu');
+      document.body.style.overflow = '';
+    }
+
+    // Fade-up on scroll
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 55);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.faq-item.open').forEach(openItem => {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle current
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Contact form (Web3Forms)
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('form-success');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        const data = await res.json();
+        if (data.success) {
+          form.reset();
+          successMsg.style.display = 'block';
+          btn.textContent = 'Sent!';
+        } else {
+          btn.textContent = 'Try emailing directly';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Try emailing directly';
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
