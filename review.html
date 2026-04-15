@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave a Review | Joshua Humphreys</title>
+  <meta name="robots" content="noindex" />
+
+  <meta http-equiv="refresh" content="2;url=https://g.page/r/CfeUyZJmd2L8EAE/review" id="redirect-meta" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23141414'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Space Grotesk,Arial,sans-serif' font-weight='700' font-size='36' fill='%23F7F3EE'%3EJ%3Ctspan fill='%23D4500A'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --cream: #F7F3EE; --ink: #141414; --muted: #7A7570; --orange: #D4500A; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 24px; text-align: center; }
+    .card { max-width: 440px; }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.2rem; margin-bottom: 32px; }
+    .logo span { color: var(--orange); }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 14px; line-height: 1.2; }
+    p { color: var(--muted); font-size: 1rem; margin-bottom: 24px; }
+    .spinner { width: 36px; height: 36px; border: 3px solid rgba(212,80,10,0.2); border-top-color: var(--orange); border-radius: 50%; animation: spin 0.9s linear infinite; margin: 0 auto 20px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .manual { display: inline-block; margin-top: 12px; font-size: 0.9rem; color: var(--orange); text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">Joshua<span>.</span></div>
+    <div class="spinner"></div>
+    <h1>Taking you to Google...</h1>
+    <p>You'll be redirected to leave a review in just a moment. Thank you for taking the time.</p>
+    <a href="#" class="manual" id="manual-link">Click here if you aren't redirected</a>
+  </div>
+  <script>
+    // Set the manual link to the same destination as the meta refresh
+    document.getElementById('manual-link').href = document.getElementById('redirect-meta').getAttribute('content').split(';url=')[1];
+  </script>
+</body>
+</html>
