@@ -75,19 +75,36 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--orange); }
-    .nav-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--muted);
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
+    .nav-links a:not(.nav-cta) {
+      position: relative;
+      padding-bottom: 4px;
     }
-    .nav-back:hover { color: var(--orange); }
+    .nav-links a:not(.nav-cta)::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2px;
+      height: 2px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.25s ease;
+    }
+    .nav-links a:not(.nav-cta).active::after,
+    .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
+    .nav-links a:not(.nav-cta).active { color: var(--ink); }
+    .nav-cta {
+      background: var(--ink) !important;
+      color: var(--cream) !important;
+      padding: 8px 20px;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+      text-transform: none !important;
+      letter-spacing: 0 !important;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--orange) !important; }
 
     /* Hamburger */
     .nav-hamburger {
@@ -135,6 +152,8 @@
       transition: color 0.2s;
     }
     .mobile-menu a:hover { color: var(--orange); }
+    .mobile-menu a.active,
+    .mobile-menu a[aria-current="page"] { color: var(--orange); }
     .mobile-menu-cta {
       margin-top: 32px;
       display: inline-block;
@@ -470,12 +489,12 @@
     <a class="nav-logo" href="index.html">Joshua<span>.</span></a>
     <ul class="nav-links">
       <li><a href="index.html#services">Services</a></li>
-      <li><a href="index.html#why">About</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="index.html#portfolio">Work</a></li>
+      <li><a href="index.html#process">Process</a></li>
+      <li><a href="index.html#why">Why Me</a></li>
+      <li><a href="about.html" class="active" aria-current="page">About</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get in Touch</a></li>
     </ul>
-    <a href="index.html" class="nav-back">
-      &#8592; Back to Home
-    </a>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
       <span></span>
       <span></span>
@@ -485,9 +504,11 @@
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobile-menu">
-    <a href="index.html" onclick="closeMobileMenu()">Home</a>
     <a href="index.html#services" onclick="closeMobileMenu()">Services</a>
-    <a href="index.html#why" onclick="closeMobileMenu()">About</a>
+    <a href="index.html#portfolio" onclick="closeMobileMenu()">Work</a>
+    <a href="index.html#process" onclick="closeMobileMenu()">Process</a>
+    <a href="index.html#why" onclick="closeMobileMenu()">Why Me</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
     <a href="index.html#contact" class="mobile-menu-cta" onclick="closeMobileMenu()">Get in Touch</a>
   </div>
 

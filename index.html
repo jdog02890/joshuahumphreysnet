@@ -197,6 +197,25 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--orange); }
+    .nav-links a:not(.nav-cta) {
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-links a:not(.nav-cta)::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2px;
+      height: 2px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.25s ease;
+    }
+    .nav-links a:not(.nav-cta).active::after,
+    .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
+    .nav-links a:not(.nav-cta).active { color: var(--ink); }
     .nav-cta {
       background: var(--ink) !important;
       color: var(--cream) !important;
@@ -1678,6 +1697,25 @@
       });
     }, { threshold: 0.1 });
     fadeEls.forEach(el => observer.observe(el));
+
+    // Scroll-spy: active nav link based on visible section
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    const sections = Array.from(navLinks)
+      .map(a => document.querySelector(a.getAttribute('href')))
+      .filter(Boolean);
+
+    function setActiveNav() {
+      const scrollPos = window.scrollY + 120;
+      let current = null;
+      sections.forEach(sec => {
+        if (sec.offsetTop <= scrollPos) current = sec.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', setActiveNav, { passive: true });
+    setActiveNav();
 
     // Sticky mobile CTA - hide when contact section is visible
     const stickyCta = document.getElementById('mobile-sticky-cta');
