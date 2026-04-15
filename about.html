@@ -54,12 +54,19 @@
     .nav-logo {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 1.3rem;
       color: var(--ink);
       text-decoration: none;
       letter-spacing: -0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
     }
+    .nav-logo .logo-mark { width: 32px; height: 32px; background: var(--ink); color: var(--cream); border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.05rem; font-weight: 700; flex-shrink: 0; }
+    .nav-logo .logo-mark i, .nav-logo .wordmark i { color: var(--orange); font-style: normal; }
+    .nav-logo .logo-mark i { margin-left: 1px; }
     .nav-logo span { color: var(--orange); }
+    @media (max-width: 480px) { .nav-logo { font-size: 1.15rem; gap: 8px; } .nav-logo .logo-mark { width: 28px; height: 28px; font-size: 0.95rem; } }
 
     .nav-links {
       display: flex;
@@ -489,7 +496,10 @@
 
   <!-- NAV -->
   <nav id="main-nav">
-    <a class="nav-logo" href="index.html">Joshua<span>.</span></a>
+    <a class="nav-logo" href="index.html" aria-label="Joshua Humphreys home">
+      <span class="logo-mark">J<i>.</i></span>
+      <span class="wordmark">Joshua<i>.</i></span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#portfolio">Work</a></li>
