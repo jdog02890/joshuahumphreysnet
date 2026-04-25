@@ -687,6 +687,17 @@
       padding: 3px 10px;
       border-radius: 100px;
     }
+    .portfolio-view-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--orange);
+      transition: gap 0.2s;
+    }
+    .portfolio-card:hover .portfolio-view-link { gap: 12px; }
     .portfolio-cta-row {
       text-align: center;
       margin-top: 40px;
@@ -1376,6 +1387,10 @@
               <span class="portfolio-tag">SEO</span>
               <span class="portfolio-tag">Before &amp; After</span>
             </div>
+            <span class="portfolio-view-link">
+              View the case study
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
           </div>
         </a>
 
