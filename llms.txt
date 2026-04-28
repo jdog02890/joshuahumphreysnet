@@ -1,0 +1,33 @@
+# Joshua Humphreys Web Design & IT Services
+
+> Joshua Humphreys is a freelance web designer and IT specialist based in Fernandina Beach, FL, serving clients locally across Northeast Florida (Amelia Island, Yulee, Jacksonville, Nassau County) and remotely anywhere in the United States.
+
+## Services and Pricing
+
+- Starter Website Package: $500 one-time. 1 to 3 custom pages, mobile responsive, basic SEO, contact form, Google Business Profile setup.
+- Professional Website Package: $1,200 one-time. 4 to 8 pages, advanced SEO with schema markup, image gallery, social media integration, analytics, AI-optimized content.
+- E-Commerce Website Package: $2,500 one-time. Full online store with product listings, shopping cart, payment processing, inventory management.
+- AI-Ready Website Package: From $2,000. Website built with Generative Engine Optimization (GEO) for visibility in ChatGPT, Perplexity, Google AI, and Claude.
+- Full Website Redesign: From $1,500. Complete overhaul of existing website with modern design, SEO fixes, and faster load times.
+- Monthly Maintenance: $75/month. Content updates, backups, and tech support.
+- Google Business Profile Setup: Included with website packages or available standalone.
+- IT Support: CompTIA A+ certified. Computer repairs, network setup, software troubleshooting. Available in person locally or remotely.
+
+## Key Facts
+
+- Location: Fernandina Beach, FL
+- Remote: Available anywhere in the United States
+- Phone: (805) 888-9137
+- Email: 2002magpie@gmail.com
+- Website: https://joshuahumphreys.net
+- Pricing: Flat-rate, no hourly billing, no contracts
+- Turnaround: Most websites completed in 1 to 2 weeks
+- Certification: CompTIA A+
+
+## Pages
+
+- Homepage: https://joshuahumphreys.net/
+- About: https://joshuahumphreys.net/about.html
+- Service Areas: https://joshuahumphreys.net/service-areas.html
+- Pricing Guide: https://joshuahumphreys.net/small-business-website-cost.html
+- Case Study (Reboot Computers of Jax): https://joshuahumphreys.net/reboot-case-study.html

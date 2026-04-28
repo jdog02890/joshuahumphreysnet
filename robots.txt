@@ -1,4 +1,26 @@
 User-agent: *
 Allow: /
 
+# Explicitly allow AI crawlers for GEO (Generative Engine Optimization)
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
 Sitemap: https://joshuahumphreys.net/sitemap.xml
