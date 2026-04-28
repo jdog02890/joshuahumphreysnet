@@ -119,7 +119,8 @@
         },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Business Profile Setup" } },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "IT Support & Tech Help" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Resume & LinkedIn Writing" } }
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI & Search Optimization (GEO)" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social Media Management" } }
       ]
     },
     "knowsAbout": [
@@ -622,55 +623,84 @@
       flex-wrap: wrap;
       gap: 24px;
     }
-    .services-list {
-      display: flex;
-      flex-direction: column;
-      border-top: 1px solid var(--border);
-    }
-    .service-item {
+    .services-grid {
       display: grid;
-      grid-template-columns: 72px 1fr auto;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .svc-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .svc-card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 4px 20px rgba(212,80,10,0.06);
+    }
+    .svc-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--ink);
+      display: flex;
       align-items: center;
-      gap: 32px;
-      padding: 28px 0;
-      border-bottom: 1px solid var(--border);
-      transition: all 0.2s;
+      justify-content: center;
+      margin-bottom: 20px;
     }
-    .service-item:hover {
-      background: var(--cream2);
-      padding-left: 16px;
-      padding-right: 16px;
-      margin: 0 -16px;
-    }
-    .service-num {
+    .svc-icon svg { color: var(--cream); }
+    .svc-card h3 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--orange);
-      letter-spacing: 0.06em;
-    }
-    .service-name {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: var(--ink);
-      margin-bottom: 4px;
+      margin: 0 0 8px;
     }
-    .service-desc {
-      font-size: 0.87rem;
+    .svc-card p {
+      font-size: 0.88rem;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.65;
+      margin: 0;
     }
-    .service-tag {
-      font-size: 0.7rem;
+    .svc-tag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      padding: 4px 12px;
+      color: var(--orange);
+      background: rgba(212,80,10,0.07);
+      padding: 4px 10px;
       border-radius: 100px;
-      white-space: nowrap;
+    }
+    .platforms-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding: 28px 0 0;
+      border-top: 1px solid var(--border);
+    }
+    .platforms-strip span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .platform-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink);
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 6px;
     }
 
     /* ========== PORTFOLIO ========== */
@@ -1361,6 +1391,7 @@
       }
       .why-photo-col { position: static; max-width: 320px; }
       .contact-wrap { grid-template-columns: 1fr; gap: 52px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
       .portfolio-grid { grid-template-columns: 1fr; }
       .testimonial-grid { grid-template-columns: 1fr; }
       .process-steps { grid-template-columns: repeat(2, 1fr); }
@@ -1373,8 +1404,8 @@
       .mobile-sticky-cta { display: block; }
       section { padding: 72px 24px; }
       .services-header { flex-direction: column; align-items: flex-start; }
-      .service-item { grid-template-columns: 52px 1fr; gap: 16px; }
-      .service-tag { display: none; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .platforms-strip { gap: 16px; }
       .why-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
       .area-inner { flex-direction: column; align-items: flex-start; }
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
@@ -1386,6 +1417,7 @@
 
     @media (max-width: 480px) {
       .hero-headline { font-size: clamp(2.6rem, 11vw, 3.8rem); }
+      .services-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: 1fr; }
       .process-steps { grid-template-columns: 1fr; }
     }
@@ -1490,21 +1522,21 @@
   <div class="ticker-wrap">
     <div class="ticker-track">
       <span class="ticker-item">Website Design <span class="ticker-dot"></span></span>
+      <span class="ticker-item">WordPress <span class="ticker-dot"></span></span>
+      <span class="ticker-item">E-Commerce <span class="ticker-dot"></span></span>
+      <span class="ticker-item">AI Optimization <span class="ticker-dot"></span></span>
       <span class="ticker-item">Google Business Profiles <span class="ticker-dot"></span></span>
       <span class="ticker-item">IT Support <span class="ticker-dot"></span></span>
-      <span class="ticker-item">Social Media Management <span class="ticker-dot"></span></span>
-      <span class="ticker-item">Resume Writing <span class="ticker-dot"></span></span>
-      <span class="ticker-item">LinkedIn Setup <span class="ticker-dot"></span></span>
-      <span class="ticker-item">Tech Troubleshooting <span class="ticker-dot"></span></span>
-      <span class="ticker-item">Local Business Solutions <span class="ticker-dot"></span></span>
+      <span class="ticker-item">Social Media <span class="ticker-dot"></span></span>
+      <span class="ticker-item">SEO <span class="ticker-dot"></span></span>
       <span class="ticker-item">Website Design <span class="ticker-dot"></span></span>
+      <span class="ticker-item">WordPress <span class="ticker-dot"></span></span>
+      <span class="ticker-item">E-Commerce <span class="ticker-dot"></span></span>
+      <span class="ticker-item">AI Optimization <span class="ticker-dot"></span></span>
       <span class="ticker-item">Google Business Profiles <span class="ticker-dot"></span></span>
       <span class="ticker-item">IT Support <span class="ticker-dot"></span></span>
-      <span class="ticker-item">Social Media Management <span class="ticker-dot"></span></span>
-      <span class="ticker-item">Resume Writing <span class="ticker-dot"></span></span>
-      <span class="ticker-item">LinkedIn Setup <span class="ticker-dot"></span></span>
-      <span class="ticker-item">Tech Troubleshooting <span class="ticker-dot"></span></span>
-      <span class="ticker-item">Local Business Solutions <span class="ticker-dot"></span></span>
+      <span class="ticker-item">Social Media <span class="ticker-dot"></span></span>
+      <span class="ticker-item">SEO <span class="ticker-dot"></span></span>
     </div>
   </div>
 
@@ -1514,54 +1546,69 @@
       <div class="services-header fade-up">
         <div>
           <span class="section-label">What I Do</span>
-          <h2 class="section-title">Services built for<br>local businesses.</h2>
+          <h2 class="section-title">Everything your business<br>needs to get online.</h2>
         </div>
         <p class="section-sub">
-          Every service is built around what your business actually needs. I'll tell you upfront what it costs and what you'll get.
+          Whether you're down the street or across the country, every service is built around what your business actually needs. Flat-rate pricing, no surprises.
         </p>
       </div>
 
-      <div class="services-list">
-        <div class="service-item fade-up">
-          <span class="service-num">01</span>
-          <div>
-            <div class="service-name">Website Design &amp; Build</div>
-            <div class="service-desc">Custom websites built from scratch. Fast, mobile-friendly, and built to bring in new customers.</div>
+      <div class="services-grid">
+        <div class="svc-card fade-up">
+          <span class="svc-tag">Most Popular</span>
+          <div class="svc-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 4h18v12H3V4zm3 16h12m-8-4v4m4-4v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <span class="service-tag">Most Popular</span>
+          <h3>Website Design &amp; Build</h3>
+          <p>Custom websites built on WordPress, HTML/CSS, or whatever platform fits your business best. Fast, mobile-friendly, and designed to convert visitors into customers.</p>
         </div>
-        <div class="service-item fade-up">
-          <span class="service-num">02</span>
-          <div>
-            <div class="service-name">Google Business Profile Setup</div>
-            <div class="service-desc">Get your business showing up on Google Maps and local search results so customers can actually find you.</div>
+        <div class="svc-card fade-up">
+          <span class="svc-tag">High Impact</span>
+          <div class="svc-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           </div>
-          <span class="service-tag">High Impact</span>
+          <h3>AI &amp; Search Optimization</h3>
+          <p>Get found on Google, ChatGPT, Perplexity, and other AI search tools. Includes SEO, schema markup, and Generative Engine Optimization (GEO) so your business shows up where people are actually searching.</p>
         </div>
-        <div class="service-item fade-up">
-          <span class="service-num">03</span>
-          <div>
-            <div class="service-name">Social Media Management</div>
-            <div class="service-desc">Consistent posting, profile setup, and content that keeps your business active and visible online.</div>
+        <div class="svc-card fade-up">
+          <div class="svc-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 2l.01 4M6 22V10m0 0a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm12 12V14m0 0a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM18 2v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           </div>
-          <span class="service-tag">Ongoing</span>
+          <h3>E-Commerce &amp; Online Stores</h3>
+          <p>Full online stores with product listings, shopping carts, payment processing, and inventory management. Built on WooCommerce, Shopify, or custom solutions depending on what makes sense for you.</p>
         </div>
-        <div class="service-item fade-up">
-          <span class="service-num">04</span>
-          <div>
-            <div class="service-name">IT Support &amp; Tech Help</div>
-            <div class="service-desc">Computer slowdowns, printer setup, network issues, software problems. I handle it all, in-person or remote.</div>
+        <div class="svc-card fade-up">
+          <div class="svc-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.8"/></svg>
           </div>
-          <span class="service-tag">On-Site Available</span>
+          <h3>Google Business Profile</h3>
+          <p>Get your business on Google Maps and local search results. I'll set up and optimize your profile so customers can find your hours, reviews, and contact info right away.</p>
         </div>
-        <div class="service-item fade-up">
-          <span class="service-num">05</span>
-          <div>
-            <div class="service-name">Resume &amp; LinkedIn Writing</div>
-            <div class="service-desc">Professional resume rewrites and LinkedIn profile updates to help you land your next opportunity.</div>
+        <div class="svc-card fade-up">
+          <div class="svc-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2m8-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm14 10v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <span class="service-tag">Quick Turnaround</span>
+          <h3>Social Media Management</h3>
+          <p>Consistent posting, profile setup, and content that keeps your business active and visible online. I handle the accounts so you can focus on running your business.</p>
         </div>
+        <div class="svc-card fade-up">
+          <span class="svc-tag">On-Site Available</span>
+          <div class="svc-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>IT Support &amp; Tech Help</h3>
+          <p>Computer slowdowns, printer setup, network issues, software problems. CompTIA A+ certified. Available in person across Northeast Florida or remotely anywhere in the U.S.</p>
+        </div>
+      </div>
+
+      <div class="platforms-strip fade-up">
+        <span>I build with:</span>
+        <span class="platform-tag">WordPress</span>
+        <span class="platform-tag">HTML / CSS / JS</span>
+        <span class="platform-tag">Shopify</span>
+        <span class="platform-tag">WooCommerce</span>
+        <span class="platform-tag">Squarespace</span>
+        <span class="platform-tag">Netlify</span>
       </div>
     </div>
   </section>
@@ -2012,8 +2059,9 @@
                   <option>Website Redesign</option>
                   <option>Google Business Profile</option>
                   <option>Social Media Management</option>
+                  <option>E-Commerce / Online Store</option>
+                  <option>AI &amp; Search Optimization</option>
                   <option>IT Support</option>
-                  <option>Resume / LinkedIn</option>
                   <option>Not sure yet</option>
                 </select>
               </div>
