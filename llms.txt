@@ -32,3 +32,4 @@
 - Pricing Guide: https://joshuahumphreys.net/small-business-website-cost.html
 - Case Study (Reboot Computers of Jax): https://joshuahumphreys.net/reboot-case-study.html
 - Blog - How to Choose a Web Designer: https://joshuahumphreys.net/how-to-choose-a-web-designer.html
+- Blog - WordPress vs. Custom-Built Website: https://joshuahumphreys.net/wordpress-vs-custom-website.html
