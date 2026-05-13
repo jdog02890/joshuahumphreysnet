@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse pre-made WordPress websites starting at $250 or build a custom site with Joshua Humphreys. Web design based in Fernandina Beach, FL. Available remotely nationwide." />
+  <meta name="keywords" content="pre-made websites, WordPress websites for sale, buy a website, custom web design, Fernandina Beach web designer" />
+  <title>Browse & Build Your Website | Joshua Humphreys</title>
+  <meta property="og:title" content="Browse & Build Your Website | Joshua Humphreys" />
+  <meta property="og:description" content="Pre-made WordPress websites starting at $250 or configure a custom build. Flat-rate pricing, no contracts." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://joshuahumphreys.net/build" />
+  <meta property="og:image" content="https://joshuahumphreys.net/joshua-photo.jpeg" />
+  <link rel="canonical" href="https://joshuahumphreys.net/build" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23141414'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Space Grotesk,Arial,sans-serif' font-weight='700' font-size='36' fill='%23F7F3EE'%3EJ%3Ctspan fill='%23D4500A'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Browse & Build Your Website",
+    "description": "Pre-made WordPress websites and custom website configurator by Joshua Humphreys.",
+    "url": "https://joshuahumphreys.net/build",
+    "publisher": {
+      "@type": "LocalBusiness",
+      "name": "Joshua Humphreys Web Design & IT Services",
+      "url": "https://joshuahumphreys.net"
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream:   #F7F3EE;
+      --cream2:  #EDE8E1;
+      --cream3:  #E3DDD5;
+      --ink:     #141414;
+      --ink2:    #2C2C2C;
+      --muted:   #7A7570;
+      --orange:  #D4500A;
+      --orange2: #F06020;
+      --border:  #D9D3CB;
+      --dark:    #1A1714;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 64px;
+      background: var(--cream); border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.3rem;
+      color: var(--ink); text-decoration: none; letter-spacing: -0.02em;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .nav-logo .logo-mark {
+      width: 32px; height: 32px; background: var(--ink); color: var(--cream);
+      border-radius: 8px; display: inline-flex; align-items: center; justify-content: center;
+      font-size: 1.05rem; font-weight: 700; flex-shrink: 0;
+    }
+    .nav-logo .logo-mark i { color: var(--orange); font-style: normal; margin-left: 1px; }
+    .nav-logo .wordmark { color: var(--ink); }
+    .nav-logo .wordmark i { color: var(--orange); font-style: normal; }
+    .nav-links {
+      display: flex; gap: 32px; list-style: none; align-items: center;
+    }
+    .nav-links a {
+      font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500;
+      color: var(--muted); text-decoration: none; letter-spacing: 0.04em;
+      text-transform: uppercase; transition: color 0.2s; position: relative; padding-bottom: 4px;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links a:not(.nav-cta)::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px;
+      background: var(--orange); transform: scaleX(0); transform-origin: center; transition: transform 0.25s ease;
+    }
+    .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
+    .nav-cta {
+      background: var(--ink) !important; color: var(--cream) !important;
+      padding: 8px 20px; border-radius: 4px; transition: background 0.2s !important;
+      text-transform: none !important; letter-spacing: 0 !important; font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--orange) !important; }
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px; background: none;
+      border: none; cursor: pointer; padding: 6px; z-index: 201;
+    }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 2px; background: var(--ink);
+      border-radius: 2px; transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu {
+      display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+      background: var(--cream); z-index: 199; flex-direction: column; padding: 40px 32px; overflow-y: auto;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700;
+      color: var(--ink); text-decoration: none; padding: 20px 0;
+      border-bottom: 1px solid var(--border); letter-spacing: -0.02em; transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--orange); }
+    .mobile-menu-cta {
+      margin-top: 32px; display: inline-block; background: var(--ink);
+      color: var(--cream) !important; padding: 16px 32px; border-radius: 6px;
+      font-size: 1rem !important; font-weight: 600 !important; text-align: center; border-bottom: none !important;
+    }
+    .mobile-menu-cta:hover { background: var(--orange); color: var(--cream) !important; }
+
+    /* SECTIONS */
+    section { padding: 100px 40px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; color: var(--ink); margin-bottom: 16px;
+    }
+    .section-sub { font-size: 1rem; color: var(--muted); line-height: 1.7; max-width: 480px; }
+
+    /* HERO */
+    .build-hero { padding-top: 64px; min-height: 50vh; display: flex; align-items: center; }
+    .build-hero-inner { max-width: 1200px; margin: 0 auto; padding: 72px 40px 60px; width: 100%; }
+    .build-hero-headline {
+      font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+      font-weight: 700; line-height: 1.05; letter-spacing: -0.04em; color: var(--ink); margin-bottom: 20px;
+    }
+    .build-hero-sub { font-size: 1.1rem; color: var(--ink2); line-height: 1.7; max-width: 540px; margin-bottom: 32px; }
+    .build-hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px; background: var(--cream2);
+      border: 1px solid var(--border); border-radius: 100px; padding: 5px 14px;
+      font-size: 0.78rem; font-weight: 500; color: var(--ink2);
+    }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+    .build-hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 10px; background: var(--ink);
+      color: var(--cream); text-decoration: none; padding: 15px 30px; border-radius: 6px;
+      font-size: 0.92rem; font-weight: 600; transition: background 0.25s, gap 0.2s;
+    }
+    .btn-cta:hover { background: var(--orange); gap: 16px; }
+    .btn-cta svg { transition: transform 0.2s; }
+    .btn-cta:hover svg { transform: translateX(3px); }
+    .btn-secondary-outline {
+      display: inline-flex; align-items: center; gap: 10px; background: transparent;
+      color: var(--ink); text-decoration: none; padding: 15px 26px; border-radius: 6px;
+      font-size: 0.92rem; font-weight: 600; border: 1.5px solid var(--ink); transition: background 0.2s, color 0.2s;
+    }
+    .btn-secondary-outline:hover { background: var(--ink); color: var(--cream); }
+
+    /* TICKER */
+    .ticker-wrap { background: var(--dark); padding: 14px 0; overflow: hidden; }
+    .ticker-track { display: flex; animation: ticker 30s linear infinite; width: max-content; }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item {
+      display: flex; align-items: center; gap: 20px; padding: 0 36px;
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,243,238,0.5); white-space: nowrap;
+    }
+    .ticker-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* TEMPLATES */
+    #templates { background: var(--cream); }
+    .templates-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 56px; flex-wrap: wrap; gap: 24px;
+    }
+    .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-tab {
+      background: var(--cream2); border: 1px solid var(--border); border-radius: 100px;
+      padding: 7px 18px; font-family: 'Inter', sans-serif; font-size: 0.82rem;
+      font-weight: 500; color: var(--muted); cursor: pointer; transition: all 0.2s;
+    }
+    .filter-tab:hover { border-color: var(--orange); color: var(--ink); }
+    .filter-tab.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    .templates-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .template-card {
+      background: white; border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .template-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+    .template-preview {
+      width: 100%; aspect-ratio: 16/10; background: var(--cream3);
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid var(--border); position: relative; overflow: hidden;
+    }
+    .template-preview-placeholder { display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--muted); }
+    .template-preview-placeholder svg { opacity: 0.35; }
+    .template-preview-placeholder span { font-size: 0.78rem; font-weight: 500; }
+    .template-badge {
+      position: absolute; top: 12px; right: 12px; font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream);
+      background: var(--orange); padding: 4px 10px; border-radius: 100px;
+    }
+    .template-info { padding: 24px; }
+    .template-category {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 6px;
+    }
+    .template-name {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem;
+      font-weight: 600; color: var(--ink); margin-bottom: 6px;
+    }
+    .template-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+    .template-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .template-tag {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--ink2); background: var(--cream2); border: 1px solid var(--border);
+      padding: 3px 10px; border-radius: 100px;
+    }
+    .template-footer { display: flex; align-items: center; justify-content: space-between; }
+    .template-price {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--ink);
+    }
+    .template-price span { font-size: 0.85rem; font-weight: 400; color: var(--muted); }
+    .template-btn {
+      display: inline-flex; align-items: center; gap: 8px; background: var(--ink);
+      color: var(--cream); text-decoration: none; padding: 10px 20px; border-radius: 6px;
+      font-size: 0.82rem; font-weight: 600; border: none; cursor: pointer; transition: background 0.2s;
+    }
+    .template-btn:hover { background: var(--orange); }
+
+    /* CTA BANNER */
+    .cta-banner { background: var(--ink); padding: 56px 40px; }
+    .cta-banner-inner {
+      max-width: 1200px; margin: 0 auto; display: flex; align-items: center;
+      justify-content: space-between; gap: 32px; flex-wrap: wrap;
+    }
+    .cta-banner-text { flex: 1; }
+    .cta-banner-text h3 {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700;
+      letter-spacing: -0.02em; color: var(--cream); margin-bottom: 8px;
+    }
+    .cta-banner-text p { font-size: 0.95rem; color: rgba(247,243,238,0.55); line-height: 1.65; }
+    .cta-banner-btn {
+      display: inline-flex; align-items: center; gap: 10px; background: var(--orange);
+      color: var(--cream); text-decoration: none; padding: 15px 28px; border-radius: 6px;
+      font-size: 0.92rem; font-weight: 600; transition: background 0.2s, gap 0.2s;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .cta-banner-btn:hover { background: var(--orange2); gap: 16px; }
+
+    /* CONFIGURATOR */
+    #configurator { background: var(--cream2); }
+    .configurator-wrap { max-width: 760px; margin: 0 auto; }
+    .progress-wrap { display: flex; gap: 8px; margin-bottom: 36px; }
+    .progress-step { flex: 1; height: 4px; background: var(--cream3); border-radius: 2px; transition: background 0.4s; }
+    .progress-step.active { background: var(--orange); }
+    .progress-step.done { background: var(--orange); opacity: 0.5; }
+    .step-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 10px;
+    }
+    .step-title {
+      font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 24px;
+    }
+    .step { display: none; animation: fadeUp 0.35s ease; }
+    .step.active { display: block; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Option cards */
+    .option-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 32px; }
+    .option-card {
+      background: var(--cream); border: 1px solid var(--border); border-radius: 12px;
+      padding: 24px 20px; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s; position: relative;
+    }
+    .option-card:hover { border-color: var(--orange); box-shadow: 0 4px 20px rgba(212,80,10,0.06); transform: translateY(-2px); }
+    .option-card.selected { border-color: var(--orange); box-shadow: 0 4px 20px rgba(212,80,10,0.1); }
+    .option-card .card-icon { font-size: 1.5rem; display: block; margin-bottom: 10px; }
+    .option-card .card-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; color: var(--ink); margin-bottom: 4px; }
+    .option-card .card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+    .option-card .check-dot {
+      position: absolute; top: 12px; right: 12px; width: 20px; height: 20px;
+      border: 2px solid var(--border); border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; transition: all 0.2s;
+    }
+    .option-card.selected .check-dot { border-color: var(--orange); background: var(--orange); }
+    .option-card.selected .check-dot::after { content: ''; width: 6px; height: 6px; background: white; border-radius: 50%; }
+
+    /* Palette cards */
+    .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; margin-bottom: 32px; }
+    .palette-card {
+      background: var(--cream); border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    }
+    .palette-card:hover { border-color: var(--orange); transform: translateY(-2px); }
+    .palette-card.selected { border-color: var(--orange); box-shadow: 0 4px 20px rgba(212,80,10,0.1); }
+    .palette-swatches { display: flex; height: 44px; }
+    .palette-swatches span { flex: 1; }
+    .palette-info { padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; }
+    .palette-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.88rem; color: var(--ink); }
+    .palette-check {
+      width: 20px; height: 20px; border: 2px solid var(--border); border-radius: 50%;
+      transition: all 0.2s; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .palette-card.selected .palette-check { border-color: var(--orange); background: var(--orange); }
+    .palette-card.selected .palette-check::after { content: ''; width: 6px; height: 6px; background: white; border-radius: 50%; }
+
+    /* Check cards */
+    .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+    .check-card {
+      background: var(--cream); border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px 18px; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s;
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .check-card:hover { border-color: var(--orange); }
+    .check-card.selected { border-color: var(--orange); box-shadow: 0 4px 20px rgba(212,80,10,0.1); }
+    .check-box {
+      width: 22px; height: 22px; border: 2px solid var(--border); border-radius: 6px;
+      flex-shrink: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+    .check-card.selected .check-box { border-color: var(--orange); background: var(--orange); }
+    .check-card.selected .check-box::after {
+      content: ''; width: 10px; height: 6px; border-left: 2.5px solid white;
+      border-bottom: 2.5px solid white; transform: rotate(-45deg); margin-top: -2px;
+    }
+    .check-label { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.95rem; color: var(--ink); }
+    .check-price { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+
+    /* Slider */
+    .slider-wrap { margin-bottom: 32px; }
+    .slider-display { text-align: center; margin-bottom: 16px; }
+    .slider-number { font-family: 'Space Grotesk', sans-serif; font-size: 3.5rem; font-weight: 700; color: var(--ink); line-height: 1; }
+    .slider-unit { font-size: 1rem; color: var(--muted); margin-top: 4px; }
+    input[type="range"] {
+      -webkit-appearance: none; appearance: none; width: 100%; height: 6px;
+      background: var(--cream3); border-radius: 3px; outline: none; cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 28px; height: 28px; background: var(--orange);
+      border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.15); cursor: pointer;
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 28px; height: 28px; background: var(--orange); border-radius: 50%;
+      border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.15); cursor: pointer;
+    }
+    .slider-labels { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--muted); margin-top: 8px; }
+
+    /* Price card */
+    .price-card { background: var(--cream); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin-bottom: 28px; }
+    .price-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--cream3); }
+    .price-total-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .price-total { font-family: 'Space Grotesk', sans-serif; font-size: 2.4rem; font-weight: 700; color: var(--orange); letter-spacing: -0.03em; line-height: 1; }
+    .price-line { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; font-size: 0.88rem; }
+    .price-line-label { color: var(--ink2); }
+    .price-line-amount { font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--ink); }
+    .price-line + .price-line { border-top: 1px solid var(--cream3); }
+    .price-note { margin-top: 16px; font-size: 0.82rem; color: var(--muted); text-align: center; line-height: 1.5; }
+    .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+    .summary-item { background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+    .summary-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .summary-value { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.95rem; color: var(--ink); }
+    .cfg-form-group { margin-bottom: 16px; }
+    .cfg-form-group label { display: block; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.92rem; color: var(--ink); margin-bottom: 6px; }
+    .cfg-input {
+      width: 100%; padding: 13px 16px; border: 1px solid var(--border); border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: 0.9rem; background: var(--cream);
+      color: var(--ink); outline: none; transition: border-color 0.2s;
+    }
+    .cfg-input:focus { border-color: var(--orange); }
+    .cfg-input::placeholder { color: var(--muted); }
+
+    /* Buttons */
+    .btn-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 8px; }
+    .btn-next {
+      display: inline-flex; align-items: center; gap: 10px; background: var(--ink);
+      color: var(--cream); border: none; padding: 14px 28px; border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.2s;
+    }
+    .btn-next:hover { background: var(--orange); }
+    .btn-next:disabled { background: var(--cream3); color: var(--muted); cursor: not-allowed; }
+    .btn-back {
+      background: none; border: none; font-family: 'Inter', sans-serif; font-size: 0.9rem;
+      font-weight: 500; color: var(--muted); cursor: pointer; transition: color 0.2s; padding: 14px 8px;
+    }
+    .btn-back:hover { color: var(--ink); }
+    .btn-submit {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--orange); color: var(--cream); border: none; border-radius: 6px;
+      padding: 15px 28px; font-family: 'Inter', sans-serif; font-size: 0.92rem;
+      font-weight: 600; cursor: pointer; transition: background 0.2s; width: 100%;
+    }
+    .btn-submit:hover { background: var(--orange2); }
+    .success-wrap { text-align: center; padding: 48px 0; }
+    .success-icon {
+      width: 64px; height: 64px; background: var(--orange); border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center; margin-bottom: 20px;
+    }
+    .success-icon svg { width: 28px; height: 28px; stroke: white; stroke-width: 3; fill: none; }
+    .success-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .success-text { color: var(--muted); font-size: 0.95rem; max-width: 400px; margin: 0 auto; }
+
+    /* FOOTER */
+    footer { background: var(--dark); padding: 44px 40px; }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1rem; color: var(--cream); letter-spacing: -0.02em; }
+    .footer-logo span { color: var(--orange); }
+    .footer-copy { font-size: 0.8rem; color: rgba(247,243,238,0.3); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 0.8rem; color: rgba(247,243,238,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--orange); }
+
+    /* FADE */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .templates-grid { grid-template-columns: 1fr 1fr; }
+      .templates-header { flex-direction: column; align-items: flex-start; }
+      .cta-banner-inner { flex-direction: column; text-align: center; }
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      section { padding: 72px 24px; }
+      .build-hero-inner { padding: 48px 24px 40px; }
+      .check-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+      footer { padding: 36px 24px; }
+    }
+    @media (max-width: 480px) {
+      .templates-grid { grid-template-columns: 1fr; }
+      .option-grid { grid-template-columns: 1fr; }
+      .palette-grid { grid-template-columns: 1fr 1fr; }
+      .build-hero-headline { font-size: clamp(2.2rem, 10vw, 3.2rem); }
+      .slider-number { font-size: 2.8rem; }
+      .nav-logo { font-size: 1.15rem; gap: 8px; }
+      .nav-logo .logo-mark { width: 28px; height: 28px; font-size: 0.95rem; }
+    }
+    @media (max-width: 380px) {
+      .palette-grid { grid-template-columns: 1fr; }
+      .btn-row { flex-direction: column-reverse; }
+      .btn-row .btn-next, .btn-row .btn-back { width: 100%; text-align: center; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a class="nav-logo" href="index.html" aria-label="Joshua Humphreys home">
+      <span class="logo-mark">J<i>.</i></span>
+      <span class="wordmark">Joshua<i>.</i></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#packages">Packages</a></li>
+      <li><a href="index.html#portfolio">Work</a></li>
+      <li><a href="build.html" class="active">Build</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html#services" onclick="closeMobileMenu()">Services</a>
+    <a href="index.html#packages" onclick="closeMobileMenu()">Packages</a>
+    <a href="index.html#portfolio" onclick="closeMobileMenu()">Work</a>
+    <a href="build.html" onclick="closeMobileMenu()">Build</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="index.html#contact" class="mobile-menu-cta" onclick="closeMobileMenu()">Get in Touch</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="build-hero">
+    <div class="build-hero-inner">
+      <div class="build-hero-badges">
+        <span class="badge"><span class="badge-dot"></span>Pre-made templates from $250</span>
+        <span class="badge"><span class="badge-dot"></span>Custom builds available</span>
+        <span class="badge"><span class="badge-dot"></span>Live in days, not weeks</span>
+      </div>
+      <h1 class="build-hero-headline">Browse, build,<br/>launch.</h1>
+      <p class="build-hero-sub">Pick a pre-made WordPress template or design your own with the live configurator. Flat-rate pricing. No contracts. No subscriptions.</p>
+      <div class="build-hero-cta-row">
+        <a href="#configurator" class="btn-cta">Start your build
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#templates" class="btn-secondary-outline">Browse templates</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <div class="ticker-item">Mobile responsive<span class="ticker-dot"></span></div>
+      <div class="ticker-item">SEO ready<span class="ticker-dot"></span></div>
+      <div class="ticker-item">Fast load times<span class="ticker-dot"></span></div>
+      <div class="ticker-item">Built on WordPress<span class="ticker-dot"></span></div>
+      <div class="ticker-item">Domain setup included<span class="ticker-dot"></span></div>
+      <div class="ticker-item">No subscriptions<span class="ticker-dot"></span></div>
+      <div class="ticker-item">Free revisions<span class="ticker-dot"></span></div>
+      <div class="ticker-item">Mobile responsive<span class="ticker-dot"></span></div>
+      <div class="ticker-item">SEO ready<span class="ticker-dot"></span></div>
+      <div class="ticker-item">Fast load times<span class="ticker-dot"></span></div>
+      <div class="ticker-item">Built on WordPress<span class="ticker-dot"></span></div>
+      <div class="ticker-item">Domain setup included<span class="ticker-dot"></span></div>
+      <div class="ticker-item">No subscriptions<span class="ticker-dot"></span></div>
+      <div class="ticker-item">Free revisions<span class="ticker-dot"></span></div>
+    </div>
+  </div>
+
+  <!-- TEMPLATES -->
+  <section id="templates">
+    <div class="section-inner">
+      <div class="templates-header fade-up">
+        <div>
+          <span class="section-label">Pre-made templates</span>
+          <h2 class="section-title">WordPress sites, ready in 48 hours.</h2>
+          <p class="section-sub">Pick a template, customize the colors and copy, launch by the weekend. New templates added monthly.</p>
+        </div>
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">All</button>
+          <button class="filter-tab" data-filter="service">Service</button>
+          <button class="filter-tab" data-filter="retail">Retail</button>
+          <button class="filter-tab" data-filter="hospitality">Hospitality</button>
+        </div>
+      </div>
+      <div class="templates-grid">
+        <article class="template-card fade-up" data-cat="hospitality">
+          <div class="template-preview">
+            <span class="template-badge">Coming soon</span>
+            <div class="template-preview-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11h18M5 11V7a3 3 0 013-3h8a3 3 0 013 3v4M7 21V11M17 21V11M5 21h14"/></svg>
+              <span>Preview ready soon</span>
+            </div>
+          </div>
+          <div class="template-info">
+            <div class="template-category">Hospitality</div>
+            <h3 class="template-name">Restaurant & Cafe</h3>
+            <p class="template-desc">Menu, online ordering, reservations, photo gallery, and Google Maps integration.</p>
+            <div class="template-tags">
+              <span class="template-tag">Menu</span>
+              <span class="template-tag">Booking</span>
+              <span class="template-tag">Gallery</span>
+            </div>
+            <div class="template-footer">
+              <div class="template-price">From $350<span> / one-time</span></div>
+              <button class="template-btn" onclick="scrollToConfig()">Configure</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="template-card fade-up" data-cat="service">
+          <div class="template-preview">
+            <span class="template-badge">Coming soon</span>
+            <div class="template-preview-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+              <span>Preview ready soon</span>
+            </div>
+          </div>
+          <div class="template-info">
+            <div class="template-category">Beauty</div>
+            <h3 class="template-name">Salon & Spa</h3>
+            <p class="template-desc">Online booking, service menu, stylist profiles, and gift card sales.</p>
+            <div class="template-tags">
+              <span class="template-tag">Booking</span>
+              <span class="template-tag">Gallery</span>
+              <span class="template-tag">Reviews</span>
+            </div>
+            <div class="template-footer">
+              <div class="template-price">From $400<span> / one-time</span></div>
+              <button class="template-btn" onclick="scrollToConfig()">Configure</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="template-card fade-up" data-cat="service">
+          <div class="template-preview">
+            <span class="template-badge">Coming soon</span>
+            <div class="template-preview-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l9-9 9 9M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+              <span>Preview ready soon</span>
+            </div>
+          </div>
+          <div class="template-info">
+            <div class="template-category">Real Estate</div>
+            <h3 class="template-name">Realtor & Agent</h3>
+            <p class="template-desc">Listings, lead capture, neighborhood guides, and agent bios.</p>
+            <div class="template-tags">
+              <span class="template-tag">Listings</span>
+              <span class="template-tag">Lead form</span>
+              <span class="template-tag">Map</span>
+            </div>
+            <div class="template-footer">
+              <div class="template-price">From $500<span> / one-time</span></div>
+              <button class="template-btn" onclick="scrollToConfig()">Configure</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="template-card fade-up" data-cat="service">
+          <div class="template-preview">
+            <span class="template-badge">Coming soon</span>
+            <div class="template-preview-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              <span>Preview ready soon</span>
+            </div>
+          </div>
+          <div class="template-info">
+            <div class="template-category">Fitness</div>
+            <h3 class="template-name">Gym & Trainer</h3>
+            <p class="template-desc">Class schedule, trainer bios, membership signup, and progress galleries.</p>
+            <div class="template-tags">
+              <span class="template-tag">Booking</span>
+              <span class="template-tag">Schedule</span>
+              <span class="template-tag">Memberships</span>
+            </div>
+            <div class="template-footer">
+              <div class="template-price">From $400<span> / one-time</span></div>
+              <button class="template-btn" onclick="scrollToConfig()">Configure</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="template-card fade-up" data-cat="service">
+          <div class="template-preview">
+            <span class="template-badge">Coming soon</span>
+            <div class="template-preview-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M6 6v14h12V6M9 11h6M9 15h6"/></svg>
+              <span>Preview ready soon</span>
+            </div>
+          </div>
+          <div class="template-info">
+            <div class="template-category">Professional</div>
+            <h3 class="template-name">Lawyer & Consultant</h3>
+            <p class="template-desc">Practice areas, case results, attorney profiles, and consultation booking.</p>
+            <div class="template-tags">
+              <span class="template-tag">Booking</span>
+              <span class="template-tag">Blog</span>
+              <span class="template-tag">Forms</span>
+            </div>
+            <div class="template-footer">
+              <div class="template-price">From $500<span> / one-time</span></div>
+              <button class="template-btn" onclick="scrollToConfig()">Configure</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="template-card fade-up" data-cat="retail">
+          <div class="template-preview">
+            <span class="template-badge">Coming soon</span>
+            <div class="template-preview-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18l-2 13H5L3 6z"/><path d="M9 10v6M15 10v6M9 6V4a3 3 0 016 0v2"/></svg>
+              <span>Preview ready soon</span>
+            </div>
+          </div>
+          <div class="template-info">
+            <div class="template-category">Retail</div>
+            <h3 class="template-name">Local Boutique</h3>
+            <p class="template-desc">Online store, product galleries, in-store pickup, and Instagram feed.</p>
+            <div class="template-tags">
+              <span class="template-tag">Store</span>
+              <span class="template-tag">Gallery</span>
+              <span class="template-tag">Cart</span>
+            </div>
+            <div class="template-footer">
+              <div class="template-price">From $750<span> / one-time</span></div>
+              <button class="template-btn" onclick="scrollToConfig()">Configure</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-banner-inner">
+      <div class="cta-banner-text">
+        <h3>Don't see your industry?</h3>
+        <p>Build something fully custom with the configurator below — answer 5 quick questions and get a same-day price estimate.</p>
+      </div>
+      <a href="#configurator" class="cta-banner-btn">Open the configurator
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- CONFIGURATOR -->
+  <section id="configurator">
+    <div class="section-inner">
+      <div style="text-align:center; margin-bottom: 36px;">
+        <span class="section-label">Build your site</span>
+        <h2 class="section-title" style="margin: 0 auto 12px;">Configure your custom website.</h2>
+        <p class="section-sub" style="margin: 0 auto;">Five short steps. Live price range. Sent straight to my inbox.</p>
+      </div>
+
+      <div class="configurator-wrap">
+        <div class="progress-wrap">
+          <div class="progress-step active" data-step="1"></div>
+          <div class="progress-step" data-step="2"></div>
+          <div class="progress-step" data-step="3"></div>
+          <div class="progress-step" data-step="4"></div>
+          <div class="progress-step" data-step="5"></div>
+          <div class="progress-step" data-step="6"></div>
+        </div>
+
+        <!-- STEP 1: INDUSTRY -->
+        <div class="step active" data-step="1">
+          <div class="step-label">Step 1 of 6</div>
+          <h3 class="step-title">What kind of business?</h3>
+          <div class="option-grid" data-field="industry" data-mode="single">
+            <button type="button" class="option-card" data-value="Restaurant / Cafe">
+              <span class="card-icon">🍽️</span>
+              <div class="card-title">Restaurant</div>
+              <div class="card-desc">Menus, ordering, reservations.</div>
+              <div class="check-dot"></div>
+            </button>
+            <button type="button" class="option-card" data-value="Salon / Spa">
+              <span class="card-icon">💇</span>
+              <div class="card-title">Salon / Spa</div>
+              <div class="card-desc">Booking and service menus.</div>
+              <div class="check-dot"></div>
+            </button>
+            <button type="button" class="option-card" data-value="Real Estate">
+              <span class="card-icon">🏠</span>
+              <div class="card-title">Real Estate</div>
+              <div class="card-desc">Listings and lead capture.</div>
+              <div class="check-dot"></div>
+            </button>
+            <button type="button" class="option-card" data-value="Fitness / Gym">
+              <span class="card-icon">💪</span>
+              <div class="card-title">Fitness</div>
+              <div class="card-desc">Class schedules, memberships.</div>
+              <div class="check-dot"></div>
+            </button>
+            <button type="button" class="option-card" data-value="Professional Services">
+              <span class="card-icon">⚖️</span>
+              <div class="card-title">Pro Services</div>
+              <div class="card-desc">Lawyers, consultants, accountants.</div>
+              <div class="check-dot"></div>
+            </button>
+            <button type="button" class="option-card" data-value="Retail / Boutique">
+              <span class="card-icon">🛍️</span>
+              <div class="card-title">Retail</div>
+              <div class="card-desc">Online stores and lookbooks.</div>
+              <div class="check-dot"></div>
+            </button>
+            <button type="button" class="option-card" data-value="Trades / Home Services">
+              <span class="card-icon">🔧</span>
+              <div class="card-title">Trades</div>
+              <div class="card-desc">Plumbers, electricians, contractors.</div>
+              <div class="check-dot"></div>
+            </button>
+            <button type="button" class="option-card" data-value="Creative / Portfolio">
+              <span class="card-icon">🎨</span>
+              <div class="card-title">Creative</div>
+              <div class="card-desc">Portfolios, photographers, artists.</div>
+              <div class="check-dot"></div>
+            </button>
+            <button type="button" class="option-card" data-value="Other">
+              <span class="card-icon">✨</span>
+              <div class="card-title">Something else</div>
+              <div class="card-desc">Tell me on the last step.</div>
+              <div class="check-dot"></div>
+            </button>
+          </div>
+          <div class="btn-row">
+            <span></span>
+            <button type="button" class="btn-next" data-next disabled>Next →</button>
+          </div>
+        </div>
+
+        <!-- STEP 2: STYLE -->
+        <div class="step" data-step="2">
+          <div class="step-label">Step 2 of 6</div>
+          <h3 class="step-title">Pick a style vibe.</h3>
+          <div class="option-grid" data-field="style" data-mode="single">
+            <button type="button" class="option-card" data-value="Modern">
+              <span class="card-icon">▲</span>
+              <div class="card-title">Modern</div>
+              <div class="card-desc">Clean, spacious, lots of whitespace.</div>
+              <div class="check-dot"></div>
+            </button>
+            <button type="button" class="option-card" data-value="Classic">
+              <span class="card-icon">●</span>
+              <div class="card-title">Classic</div>
+              <div class="card-desc">Timeless, trustworthy, traditional.</div>
+              <div class="check-dot"></div>
+            </button>
+            <button type="button" class="option-card" data-value="Bold">
+              <span class="card-icon">■</span>
+              <div class="card-title">Bold</div>
+              <div class="card-desc">Big type, color, attitude.</div>
+              <div class="check-dot"></div>
+            </button>
+            <button type="button" class="option-card" data-value="Minimal">
+              <span class="card-icon">─</span>
+              <div class="card-title">Minimal</div>
+              <div class="card-desc">Less is more. Quiet design.</div>
+              <div class="check-dot"></div>
+            </button>
+          </div>
+          <div class="btn-row">
+            <button type="button" class="btn-back" data-back>← Back</button>
+            <button type="button" class="btn-next" data-next disabled>Next →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: PALETTE -->
+        <div class="step" data-step="3">
+          <div class="step-label">Step 3 of 6</div>
+          <h3 class="step-title">Choose a color palette.</h3>
+          <div class="palette-grid" data-field="palette" data-mode="single">
+            <button type="button" class="palette-card" data-value="Coastal">
+              <div class="palette-swatches">
+                <span style="background:#0A4D68"></span>
+                <span style="background:#088395"></span>
+                <span style="background:#05BFDB"></span>
+                <span style="background:#F7F3EE"></span>
+              </div>
+              <div class="palette-info"><span class="palette-name">Coastal</span><span class="palette-check"></span></div>
+            </button>
+            <button type="button" class="palette-card" data-value="Sunset">
+              <div class="palette-swatches">
+                <span style="background:#22223B"></span>
+                <span style="background:#D4500A"></span>
+                <span style="background:#F8B400"></span>
+                <span style="background:#F7F3EE"></span>
+              </div>
+              <div class="palette-info"><span class="palette-name">Sunset</span><span class="palette-check"></span></div>
+            </button>
+            <button type="button" class="palette-card" data-value="Forest">
+              <div class="palette-swatches">
+                <span style="background:#1A2E22"></span>
+                <span style="background:#2D6A4F"></span>
+                <span style="background:#95D5B2"></span>
+                <span style="background:#F1F8F4"></span>
+              </div>
+              <div class="palette-info"><span class="palette-name">Forest</span><span class="palette-check"></span></div>
+            </button>
+            <button type="button" class="palette-card" data-value="Mono">
+              <div class="palette-swatches">
+                <span style="background:#0F0F0F"></span>
+                <span style="background:#3A3A3A"></span>
+                <span style="background:#A8A8A8"></span>
+                <span style="background:#F4F4F4"></span>
+              </div>
+              <div class="palette-info"><span class="palette-name">Mono</span><span class="palette-check"></span></div>
+            </button>
+            <button type="button" class="palette-card" data-value="Berry">
+              <div class="palette-swatches">
+                <span style="background:#3D0C2E"></span>
+                <span style="background:#A4133C"></span>
+                <span style="background:#FF8FA3"></span>
+                <span style="background:#FFF0F3"></span>
+              </div>
+              <div class="palette-info"><span class="palette-name">Berry</span><span class="palette-check"></span></div>
+            </button>
+            <button type="button" class="palette-card" data-value="Ocean">
+              <div class="palette-swatches">
+                <span style="background:#03045E"></span>
+                <span style="background:#0077B6"></span>
+                <span style="background:#90E0EF"></span>
+                <span style="background:#CAF0F8"></span>
+              </div>
+              <div class="palette-info"><span class="palette-name">Ocean</span><span class="palette-check"></span></div>
+            </button>
+          </div>
+          <div class="btn-row">
+            <button type="button" class="btn-back" data-back>← Back</button>
+            <button type="button" class="btn-next" data-next disabled>Next →</button>
+          </div>
+        </div>
+
+        <!-- STEP 4: FEATURES -->
+        <div class="step" data-step="4">
+          <div class="step-label">Step 4 of 6</div>
+          <h3 class="step-title">Pick the features you need.</h3>
+          <div class="check-grid" data-field="features" data-mode="multi">
+            <button type="button" class="check-card" data-value="Online booking">
+              <div class="check-box"></div>
+              <div>
+                <div class="check-label">Online booking</div>
+                <div class="check-price">+$100–$200</div>
+              </div>
+            </button>
+            <button type="button" class="check-card" data-value="Online store">
+              <div class="check-box"></div>
+              <div>
+                <div class="check-label">Online store</div>
+                <div class="check-price">+$500–$1,500</div>
+              </div>
+            </button>
+            <button type="button" class="check-card" data-value="Blog">
+              <div class="check-box"></div>
+              <div>
+                <div class="check-label">Blog</div>
+                <div class="check-price">+$50–$150</div>
+              </div>
+            </button>
+            <button type="button" class="check-card" data-value="Image gallery">
+              <div class="check-box"></div>
+              <div>
+                <div class="check-label">Image gallery</div>
+                <div class="check-price">+$50–$100</div>
+              </div>
+            </button>
+            <button type="button" class="check-card selected" data-value="Contact form" data-locked="true">
+              <div class="check-box"></div>
+              <div>
+                <div class="check-label">Contact form</div>
+                <div class="check-price">Included</div>
+              </div>
+            </button>
+          </div>
+          <div class="btn-row">
+            <button type="button" class="btn-back" data-back>← Back</button>
+            <button type="button" class="btn-next" data-next>Next →</button>
+          </div>
+        </div>
+
+        <!-- STEP 5: PAGES -->
+        <div class="step" data-step="5">
+          <div class="step-label">Step 5 of 6</div>
+          <h3 class="step-title">How many pages?</h3>
+          <div class="slider-wrap">
+            <div class="slider-display">
+              <div class="slider-number" id="page-count">3</div>
+              <div class="slider-unit" id="page-unit">pages</div>
+            </div>
+            <input type="range" id="page-slider" min="1" max="15" value="3" />
+            <div class="slider-labels"><span>1</span><span>5</span><span>10</span><span>15</span></div>
+          </div>
+          <p style="text-align:center; font-size:0.85rem; color:var(--muted); margin-bottom: 24px;">Most small businesses do well with 3–5 pages: Home, About, Services, Contact, plus one more.</p>
+          <div class="btn-row">
+            <button type="button" class="btn-back" data-back>← Back</button>
+            <button type="button" class="btn-next" data-next>See estimate →</button>
+          </div>
+        </div>
+
+        <!-- STEP 6: SUMMARY + CONTACT -->
+        <div class="step" data-step="6">
+          <div class="step-label">Step 6 of 6</div>
+          <h3 class="step-title">Your estimate.</h3>
+
+          <div class="price-card">
+            <div class="price-header">
+              <div>
+                <div class="price-total-label">Estimated range</div>
+              </div>
+              <div class="price-total" id="price-total">$250–$500</div>
+            </div>
+            <div class="price-line">
+              <span class="price-line-label">Base site (1–3 pages)</span>
+              <span class="price-line-amount">$250–$500</span>
+            </div>
+            <div class="price-line" id="line-extra-pages" style="display:none;">
+              <span class="price-line-label" id="extra-pages-label">Additional pages</span>
+              <span class="price-line-amount" id="extra-pages-amount">$0</span>
+            </div>
+            <div id="line-features"></div>
+            <p class="price-note">Final price depends on content complexity, integrations, and revisions. I'll confirm exact pricing within 24 hours of receiving your selections.</p>
+          </div>
+
+          <div class="summary-grid" id="summary-grid"></div>
+
+          <form id="config-form" novalidate>
+            <div class="cfg-form-group">
+              <label for="cfg-name">Your name</label>
+              <input type="text" id="cfg-name" class="cfg-input" placeholder="First and last" required />
+            </div>
+            <div class="cfg-form-group">
+              <label for="cfg-email">Email</label>
+              <input type="email" id="cfg-email" class="cfg-input" placeholder="you@example.com" required />
+            </div>
+            <div class="cfg-form-group">
+              <label for="cfg-phone">Phone (optional)</label>
+              <input type="tel" id="cfg-phone" class="cfg-input" placeholder="(904) 555-0100" />
+            </div>
+            <div class="cfg-form-group">
+              <label for="cfg-business">Business name (optional)</label>
+              <input type="text" id="cfg-business" class="cfg-input" placeholder="Your business" />
+            </div>
+            <div class="cfg-form-group">
+              <label for="cfg-notes">Anything else? (optional)</label>
+              <textarea id="cfg-notes" class="cfg-input" rows="3" placeholder="Industry, deadline, must-have features, websites you like..."></textarea>
+            </div>
+            <div class="btn-row" style="margin-top:20px;">
+              <button type="button" class="btn-back" data-back>← Back</button>
+            </div>
+            <button type="submit" class="btn-submit">Send my selections to Joshua →</button>
+          </form>
+        </div>
+
+        <!-- STEP 7: SUCCESS -->
+        <div class="step" data-step="7">
+          <div class="success-wrap">
+            <div class="success-icon">
+              <svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg>
+            </div>
+            <h3 class="success-title">Got it. Talk soon.</h3>
+            <p class="success-text">Your selections are on their way. Expect a personal reply with confirmed pricing and next steps within 24 hours (usually faster).</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">Joshua<span>.</span></span>
+      <span class="footer-copy">&copy; 2026 Joshua Humphreys. Fernandina Beach, FL. Remote Nationwide.</span>
+      <div class="footer-links">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#portfolio">Work</a>
+        <a href="about.html">About</a>
+        <a href="fernandina-beach-web-design.html">Web Design</a>
+        <a href="service-areas.html">Service Areas</a>
+        <a href="small-business-website-cost.html">Pricing Guide</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* =====================================================================
+       FORMSPREE SETUP — DO THIS ONCE
+       ---------------------------------------------------------------------
+       1. Go to https://formspree.io and sign up with 2002magpie@gmail.com
+       2. Click "+ New Form", name it "Configurator"
+       3. Copy the form ID from the endpoint URL (the part after /f/)
+          Example endpoint: https://formspree.io/f/xyzabcde  →  ID is "xyzabcde"
+       4. Paste it between the quotes below.
+       Until then, submissions fall back to opening the user's email client
+       with all selections pre-filled to 2002magpie@gmail.com.
+       ===================================================================== */
+    const FORMSPREE_ID = 'xrejvekd';
+
+    // === NAV SHADOW ON SCROLL ===
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // === HAMBURGER MENU ===
+    const hamburger = document.getElementById('nav-hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-label', 'Open menu');
+      document.body.style.overflow = '';
+    }
+
+    // === FADE UP ON SCROLL ===
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 55);
+          fadeObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => fadeObserver.observe(el));
+
+    // === TEMPLATES FILTER ===
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const templateCards = document.querySelectorAll('.template-card');
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+        templateCards.forEach(card => {
+          card.style.display = (filter === 'all' || card.dataset.cat === filter) ? '' : 'none';
+        });
+      });
+    });
+
+    // === SCROLL-TO-CONFIG (used by template "Configure" buttons) ===
+    function scrollToConfig() {
+      document.getElementById('configurator').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // === CONFIGURATOR STATE ===
+    const state = {
+      industry: null,
+      style: null,
+      palette: null,
+      features: ['Contact form'],
+      pages: 3
+    };
+
+    const featurePrices = {
+      'Online booking': [100, 200],
+      'Online store':   [500, 1500],
+      'Blog':           [50, 150],
+      'Image gallery':  [50, 100],
+      'Contact form':   [0, 0]
+    };
+
+    let currentStep = 1;
+    const totalSteps = 6;
+
+    function showStep(n) {
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+      const target = document.querySelector(`.step[data-step="${n}"]`);
+      if (target) target.classList.add('active');
+
+      document.querySelectorAll('.progress-step').forEach(p => {
+        const idx = parseInt(p.dataset.step, 10);
+        p.classList.remove('active', 'done');
+        if (idx < n) p.classList.add('done');
+        else if (idx === n) p.classList.add('active');
+      });
+      currentStep = n;
+      document.getElementById('configurator').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // SINGLE-SELECT (industry, style, palette)
+    document.querySelectorAll('[data-mode="single"]').forEach(grid => {
+      const field = grid.dataset.field;
+      grid.querySelectorAll('.option-card, .palette-card').forEach(card => {
+        card.addEventListener('click', () => {
+          grid.querySelectorAll('.option-card, .palette-card').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+          state[field] = card.dataset.value;
+          const step = card.closest('.step');
+          const nextBtn = step.querySelector('[data-next]');
+          if (nextBtn) nextBtn.disabled = false;
+        });
+      });
+    });
+
+    // MULTI-SELECT (features)
+    document.querySelectorAll('[data-mode="multi"]').forEach(grid => {
+      const field = grid.dataset.field;
+      grid.querySelectorAll('.check-card').forEach(card => {
+        if (card.dataset.locked === 'true') return;
+        card.addEventListener('click', () => {
+          const v = card.dataset.value;
+          card.classList.toggle('selected');
+          if (card.classList.contains('selected')) {
+            if (!state[field].includes(v)) state[field].push(v);
+          } else {
+            state[field] = state[field].filter(x => x !== v);
+          }
+        });
+      });
+    });
+
+    // PAGE SLIDER
+    const slider = document.getElementById('page-slider');
+    const pageNum = document.getElementById('page-count');
+    const pageUnit = document.getElementById('page-unit');
+    slider.addEventListener('input', () => {
+      const v = parseInt(slider.value, 10);
+      state.pages = v;
+      pageNum.textContent = v;
+      pageUnit.textContent = v === 1 ? 'page' : 'pages';
+    });
+
+    // NEXT / BACK
+    document.querySelectorAll('[data-next]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (currentStep < totalSteps) {
+          if (currentStep + 1 === 6) renderSummary();
+          showStep(currentStep + 1);
+        }
+      });
+    });
+    document.querySelectorAll('[data-back]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (currentStep > 1) showStep(currentStep - 1);
+      });
+    });
+
+    // PRICE CALC
+    const fmt = n => '$' + n.toLocaleString();
+
+    function calcPrice() {
+      // Base 1-3 pages: $250-$500
+      let lo = 250, hi = 500;
+      // Each extra page over 3: $50-$100
+      const extraPages = Math.max(0, state.pages - 3);
+      lo += extraPages * 50;
+      hi += extraPages * 100;
+      // Features
+      state.features.forEach(f => {
+        const p = featurePrices[f];
+        if (p) { lo += p[0]; hi += p[1]; }
+      });
+      return { lo, hi, extraPages };
+    }
+
+    function renderSummary() {
+      const { lo, hi, extraPages } = calcPrice();
+      document.getElementById('price-total').textContent = `${fmt(lo)}–${fmt(hi)}`;
+
+      // Extra pages line
+      const extraLine = document.getElementById('line-extra-pages');
+      if (extraPages > 0) {
+        extraLine.style.display = '';
+        document.getElementById('extra-pages-label').textContent =
+          `+${extraPages} extra ${extraPages === 1 ? 'page' : 'pages'}`;
+        document.getElementById('extra-pages-amount').textContent =
+          `${fmt(extraPages * 50)}–${fmt(extraPages * 100)}`;
+      } else {
+        extraLine.style.display = 'none';
+      }
+
+      // Features lines
+      const featureLines = document.getElementById('line-features');
+      featureLines.innerHTML = '';
+      state.features.forEach(f => {
+        const p = featurePrices[f];
+        if (!p) return;
+        const amt = (p[0] === 0 && p[1] === 0) ? 'Included' : `${fmt(p[0])}–${fmt(p[1])}`;
+        featureLines.insertAdjacentHTML('beforeend',
+          `<div class="price-line"><span class="price-line-label">${f}</span><span class="price-line-amount">${amt}</span></div>`);
+      });
+
+      // Summary grid
+      document.getElementById('summary-grid').innerHTML = `
+        <div class="summary-item"><div class="summary-label">Industry</div><div class="summary-value">${state.industry || '—'}</div></div>
+        <div class="summary-item"><div class="summary-label">Style</div><div class="summary-value">${state.style || '—'}</div></div>
+        <div class="summary-item"><div class="summary-label">Palette</div><div class="summary-value">${state.palette || '—'}</div></div>
+        <div class="summary-item"><div class="summary-label">Pages</div><div class="summary-value">${state.pages}</div></div>
+      `;
+    }
+
+    // FORM SUBMIT
+    document.getElementById('config-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = e.target.querySelector('.btn-submit');
+      const name = document.getElementById('cfg-name').value.trim();
+      const email = document.getElementById('cfg-email').value.trim();
+      const phone = document.getElementById('cfg-phone').value.trim();
+      const business = document.getElementById('cfg-business').value.trim();
+      const notes = document.getElementById('cfg-notes').value.trim();
+
+      if (!name || !email) {
+        alert('Please add your name and email so I can reply.');
+        return;
+      }
+
+      const { lo, hi } = calcPrice();
+      const payload = {
+        name, email, phone, business, notes,
+        industry: state.industry || 'Not selected',
+        style: state.style || 'Not selected',
+        palette: state.palette || 'Not selected',
+        features: state.features.join(', '),
+        pages: state.pages,
+        estimate: `$${lo.toLocaleString()}–$${hi.toLocaleString()}`,
+        source: 'Configurator on /build'
+      };
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      let success = false;
+      if (FORMSPREE_ID) {
+        try {
+          const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          success = res.ok;
+        } catch (_) {
+          success = false;
+        }
+      }
+
+      if (!success) {
+        // Mailto fallback so a lead is never lost
+        const subject = encodeURIComponent(`New configurator request from ${name}`);
+        const bodyLines = Object.entries(payload).map(([k, v]) => `${k}: ${v}`).join('\n');
+        const body = encodeURIComponent(bodyLines);
+        window.location.href = `mailto:2002magpie@gmail.com?subject=${subject}&body=${body}`;
+      }
+
+      showStep(7);
+    });
+  </script>
+</body>
+</html>
