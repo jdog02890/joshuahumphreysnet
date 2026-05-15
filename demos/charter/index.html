@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reel Time Charters | Inshore & Offshore Fishing — Amelia Island</title>
+<meta name="description" content="USCG-licensed charter captain running inshore and offshore fishing trips out of Fernandina Harbor. 12 years on the water. Book direct, no booking fees." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%230b1f33'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Bebas Neue,sans-serif' font-weight='400' font-size='42' fill='%23f5c244'%3ER%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --navy:   #0b1f33;
+    --deep:   #061224;
+    --steel:  #1d3754;
+    --sand:   #f4ead7;
+    --yellow: #f5c244;
+    --rust:   #c64f1d;
+    --white:  #ffffff;
+    --ink:    #0a0e15;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--sand); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+
+  .demo-banner {
+    background: var(--ink); color: var(--sand);
+    text-align: center; padding: 10px 16px; font-size: 13px;
+  }
+  .demo-banner b { color: var(--yellow); }
+  .demo-banner a { color: var(--sand); border-bottom: 1px solid var(--yellow); margin-left: 8px; }
+
+  /* CALL BAR (mobile sticky) */
+  .call-bar {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--yellow); color: var(--navy);
+    padding: 14px 16px;
+    text-align: center; font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 0.08em;
+    z-index: 100;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+  }
+  .call-bar:hover { background: var(--rust); color: var(--white); }
+
+  /* NAV */
+  nav.site {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--navy); color: var(--sand);
+    padding: 16px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 3px solid var(--yellow);
+  }
+  .brand { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.05em; color: var(--sand); }
+  .brand i { color: var(--yellow); font-style: normal; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 0.08em; color: var(--sand); transition: color .15s; }
+  .nav-links a:hover { color: var(--yellow); }
+  .nav-phone {
+    background: var(--yellow); color: var(--navy) !important;
+    padding: 10px 18px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; letter-spacing: 0.08em;
+    border-radius: 4px;
+    transition: background .15s;
+  }
+  .nav-phone:hover { background: var(--rust); color: var(--white) !important; }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .nav-toggle span { width: 26px; height: 2px; background: var(--sand); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 90vh;
+    overflow: hidden;
+    color: var(--sand);
+    display: flex; align-items: center;
+    padding: 60px 32px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(11,31,51,0.55) 0%, rgba(11,31,51,0.85) 100%),
+      url('https://images.pexels.com/photos/1430676/pexels-photo-1430676.jpeg?auto=compress&w=1600') center/cover;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 980px; width: 100%; margin: 0 auto; }
+  .hero-cred {
+    display: inline-flex; gap: 14px; align-items: center;
+    padding: 8px 16px;
+    background: rgba(245, 194, 68, 0.15);
+    border: 1px solid var(--yellow);
+    color: var(--yellow);
+    font-family: 'Bebas Neue', sans-serif; font-size: 15px;
+    letter-spacing: 0.15em;
+    margin-bottom: 32px;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    font-size: clamp(3.5rem, 9vw, 7.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .hero h1 .accent { color: var(--yellow); display: block; }
+  .hero p.lede {
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    max-width: 580px; margin-bottom: 40px;
+    opacity: 0.92;
+  }
+  .btn {
+    display: inline-block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; letter-spacing: 0.12em;
+    padding: 16px 32px;
+    border-radius: 4px; cursor: pointer; border: none;
+    transition: all .15s;
+  }
+  .btn-yellow { background: var(--yellow); color: var(--navy); }
+  .btn-yellow:hover { background: var(--white); color: var(--rust); }
+  .btn-outline { background: transparent; color: var(--sand); border: 2px solid var(--sand); }
+  .btn-outline:hover { background: var(--sand); color: var(--navy); }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-stats {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(244, 234, 215, 0.2);
+  }
+  .stat strong {
+    display: block; font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6rem; color: var(--yellow); line-height: 1;
+  }
+  .stat span {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    opacity: 0.75; margin-top: 6px; display: block;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 100px 32px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow {
+    display: inline-block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px; letter-spacing: 0.25em;
+    color: var(--rust); margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    line-height: 1.0;
+    color: var(--navy);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+  .section-title .accent { color: var(--rust); }
+  .section-lede { font-size: 1.05rem; color: var(--steel); max-width: 600px; margin-bottom: 50px; }
+
+  /* TRIPS */
+  .trips-section { background: var(--sand); }
+  .trips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .trip-card {
+    background: var(--white);
+    border: 2px solid var(--navy);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform .2s ease;
+  }
+  .trip-card:hover { transform: translateY(-6px); }
+  .trip-thumb {
+    aspect-ratio: 16/10;
+    background-size: cover; background-position: center;
+    position: relative;
+  }
+  .trip-thumb::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(11,31,51,0.65) 100%);
+  }
+  .trip-card:nth-child(1) .trip-thumb { background-image: url('https://images.pexels.com/photos/1430676/pexels-photo-1430676.jpeg?auto=compress&w=800'); }
+  .trip-card:nth-child(2) .trip-thumb { background-image: url('https://images.pexels.com/photos/1535162/pexels-photo-1535162.jpeg?auto=compress&w=800'); }
+  .trip-card:nth-child(3) .trip-thumb { background-image: url('https://images.pexels.com/photos/355288/pexels-photo-355288.jpeg?auto=compress&w=800'); }
+  .trip-tag {
+    position: absolute; top: 14px; left: 14px;
+    background: var(--yellow); color: var(--navy);
+    padding: 4px 12px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px; letter-spacing: 0.1em;
+    z-index: 2;
+  }
+  .trip-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+  .trip-body h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem; color: var(--navy);
+    margin-bottom: 12px; letter-spacing: 0.02em;
+  }
+  .trip-meta {
+    display: flex; gap: 16px;
+    font-size: 0.85rem; color: var(--steel);
+    margin-bottom: 14px; flex-wrap: wrap;
+  }
+  .trip-meta span { display: inline-flex; align-items: center; gap: 4px; }
+  .trip-meta b { color: var(--navy); }
+  .trip-card p { font-size: 0.95rem; color: var(--steel); flex: 1; margin-bottom: 18px; }
+  .trip-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem; color: var(--rust);
+    line-height: 1; margin-bottom: 16px;
+  }
+  .trip-price small { font-size: 0.8rem; color: var(--steel); display: block; margin-top: 2px; font-family: 'Inter', sans-serif; }
+  .trip-card .btn { width: 100%; text-align: center; }
+
+  /* CAPTAIN */
+  .captain-section { background: var(--navy); color: var(--sand); }
+  .captain-section .section-title { color: var(--sand); }
+  .captain-section .section-title .accent { color: var(--yellow); }
+  .captain-section .section-eyebrow { color: var(--yellow); }
+  .captain-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+  .captain-img {
+    aspect-ratio: 4/5;
+    background:
+      linear-gradient(135deg, rgba(245,194,68,0.18) 0%, rgba(11,31,51,0.4) 100%),
+      url('https://images.pexels.com/photos/1430676/pexels-photo-1430676.jpeg?auto=compress&w=900') center/cover;
+    border: 3px solid var(--yellow);
+  }
+  .captain-text p { color: rgba(244,234,215,0.85); margin-bottom: 18px; font-size: 1.02rem; }
+  .captain-creds {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    margin-top: 24px;
+  }
+  .cred-pill {
+    background: rgba(245,194,68,0.12);
+    border: 1px solid var(--yellow);
+    color: var(--yellow);
+    padding: 6px 14px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px; letter-spacing: 0.12em;
+  }
+
+  /* BOAT */
+  .boat-section { background: var(--sand); }
+  .boat-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; }
+  .boat-img {
+    aspect-ratio: 4/3;
+    background:
+      url('https://images.pexels.com/photos/1430676/pexels-photo-1430676.jpeg?auto=compress&w=900') center/cover;
+    border: 2px solid var(--navy);
+  }
+  .boat-specs { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+  .boat-specs li {
+    background: var(--white); border: 1px solid var(--navy);
+    padding: 16px;
+  }
+  .boat-specs strong {
+    display: block; font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem; color: var(--navy);
+    letter-spacing: 0.02em;
+  }
+  .boat-specs span {
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--steel);
+  }
+
+  /* REVIEWS */
+  .reviews-section { background: var(--white); }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .review-card {
+    background: var(--sand); padding: 28px;
+    border-left: 4px solid var(--yellow);
+  }
+  .review-stars { color: var(--yellow); font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 12px; }
+  .review-text { font-size: 0.98rem; color: var(--ink); margin-bottom: 16px; line-height: 1.55; }
+  .review-author { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--navy); letter-spacing: 0.05em; }
+  .review-meta { font-size: 0.82rem; color: var(--steel); }
+
+  /* BOOKING */
+  .booking-section { background: var(--navy); color: var(--sand); }
+  .booking-section .section-title { color: var(--sand); }
+  .booking-section .section-title .accent { color: var(--yellow); }
+  .booking-section .section-eyebrow { color: var(--yellow); }
+  .booking-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; }
+  form.book { display: grid; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  label.field { display: block; }
+  label.field span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px; letter-spacing: 0.15em;
+    color: var(--yellow);
+    display: block; margin-bottom: 6px;
+  }
+  input, select, textarea {
+    width: 100%; padding: 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(244,234,215,0.25);
+    color: var(--sand); font-family: 'Inter', sans-serif; font-size: 14px;
+    border-radius: 4px;
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--yellow); background: rgba(245,194,68,0.05); }
+  textarea { resize: vertical; min-height: 90px; }
+  .booking-info p { color: rgba(244,234,215,0.85); margin-bottom: 12px; }
+  .booking-info h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem; color: var(--yellow); margin-bottom: 8px;
+    letter-spacing: 0.02em; margin-top: 24px;
+  }
+  .booking-info .first-h3 { margin-top: 0; }
+
+  /* FOOTER */
+  footer { background: var(--deep); color: var(--sand); padding: 40px 32px; text-align: center; }
+  footer .brand { font-size: 28px; display: inline-block; margin-bottom: 14px; }
+  footer p { opacity: 0.7; font-size: 0.88rem; margin-bottom: 6px; }
+  footer a { color: var(--yellow); }
+
+  @media (max-width: 800px) {
+    nav.site { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-phone { padding: 8px 12px; font-size: 14px; }
+    .call-bar { display: block; }
+    body { padding-bottom: 60px; }
+    section { padding: 70px 24px; }
+    .hero { padding: 60px 24px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .trips-grid, .reviews-grid { grid-template-columns: 1fr; }
+    .captain-grid, .boat-grid, .booking-grid { grid-template-columns: 1fr; gap: 32px; }
+    .boat-specs { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  <b>★ DEMO</b> Charter fishing template · <a href="../../build.html#configurator">Configure your own →</a>
+</div>
+
+<nav class="site">
+  <a class="brand" href="#top">Reel <i>Time</i> Charters</a>
+  <ul class="nav-links">
+    <li><a href="#trips">Trips</a></li>
+    <li><a href="#captain">The Captain</a></li>
+    <li><a href="#boat">The Boat</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#book">Book</a></li>
+  </ul>
+  <a class="nav-phone" href="tel:9045550199">📞 904.555.0199</a>
+  <button class="nav-toggle"><span></span><span></span><span></span></button>
+</nav>
+
+<a class="call-bar" href="tel:9045550199">CALL TO BOOK · 904.555.0199</a>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-cred">⚓ USCG Licensed · Lic #1948726 · Insured</div>
+    <h1>Saltwater fishing<br/><span class="accent">done right.</span></h1>
+    <p class="lede">Inshore reds, offshore snapper, and family-friendly sunset cruises out of Fernandina Harbor. Book direct — keep the booking fees in your pocket.</p>
+    <div class="hero-actions">
+      <a class="btn btn-yellow" href="#book">Book a Trip</a>
+      <a class="btn btn-outline" href="#trips">See All Trips</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>12</strong><span>Years on the water</span></div>
+      <div class="stat"><strong>1,400+</strong><span>Trips run</span></div>
+      <div class="stat"><strong>4.9★</strong><span>TripAdvisor avg</span></div>
+      <div class="stat"><strong>24/26</strong><span>Boat full last month</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="trips-section" id="trips">
+  <div class="container">
+    <span class="section-eyebrow">Our Trips</span>
+    <h2 class="section-title">Pick your <span class="accent">water.</span></h2>
+    <p class="section-lede">Whether you want screaming drag offshore or topwater blow-ups in the marsh, we've got a trip dialed in for you.</p>
+    <div class="trips-grid">
+      <div class="trip-card">
+        <div class="trip-thumb"><span class="trip-tag">Most Popular</span></div>
+        <div class="trip-body">
+          <h3>Inshore — Half Day</h3>
+          <div class="trip-meta">
+            <span><b>4hrs</b></span><span><b>Up to 4</b></span><span><b>Year-round</b></span>
+          </div>
+          <p>Redfish, trout, flounder, and snook in the marshes of Cumberland Sound. Light tackle. Great for kids and first-timers.</p>
+          <div class="trip-price">$550<small>per trip · all gear included</small></div>
+          <a class="btn btn-yellow" href="#book">Book Now</a>
+        </div>
+      </div>
+      <div class="trip-card">
+        <div class="trip-thumb"><span class="trip-tag">Big Game</span></div>
+        <div class="trip-body">
+          <h3>Offshore — Full Day</h3>
+          <div class="trip-meta">
+            <span><b>8hrs</b></span><span><b>Up to 6</b></span><span><b>April–Oct</b></span>
+          </div>
+          <p>Snapper, grouper, kingfish, and mahi 20–40 miles offshore. Heavy tackle, ice for your fish, lunch included.</p>
+          <div class="trip-price">$1,400<small>per trip · everything included</small></div>
+          <a class="btn btn-yellow" href="#book">Book Now</a>
+        </div>
+      </div>
+      <div class="trip-card">
+        <div class="trip-thumb"><span class="trip-tag">Family Friendly</span></div>
+        <div class="trip-body">
+          <h3>Sunset Cruise</h3>
+          <div class="trip-meta">
+            <span><b>2hrs</b></span><span><b>Up to 6</b></span><span><b>Year-round</b></span>
+          </div>
+          <p>No fishing — just dolphins, sunsets, and history. Tour Cumberland Island, Fort Clinch, and the old shipping channel.</p>
+          <div class="trip-price">$350<small>per trip · drinks included</small></div>
+          <a class="btn btn-yellow" href="#book">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="captain-section" id="captain">
+  <div class="container">
+    <div class="captain-grid">
+      <div class="captain-img" aria-hidden="true"></div>
+      <div>
+        <span class="section-eyebrow">The Captain</span>
+        <h2 class="section-title">Capt. Mike <span class="accent">Whitlow.</span></h2>
+        <div class="captain-text">
+          <p>Twelve years of full-time fishing the Northeast Florida coast. I grew up casting off the rocks at Fort Clinch and never really stopped. Before this I worked the docks in Mayport for a decade, so I know where the fish hold and — more importantly — when to leave them alone.</p>
+          <p>I run one boat. I take one charter a day. That means you get my full attention, not the rushed energy of a guy trying to hit a quota. We go when the fish are biting, we come back when you've had enough.</p>
+        </div>
+        <div class="captain-creds">
+          <span class="cred-pill">USCG Master 100T</span>
+          <span class="cred-pill">First Aid / CPR</span>
+          <span class="cred-pill">$1M Liability</span>
+          <span class="cred-pill">Drug Free Workplace</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="boat-section" id="boat">
+  <div class="container">
+    <div class="boat-grid">
+      <div>
+        <span class="section-eyebrow">The Boat</span>
+        <h2 class="section-title">"Reel Time II" — <span class="accent">24' Pathfinder.</span></h2>
+        <p class="section-lede">Twin Yamaha 200s, dry ride, plenty of beam, every safety toy the Coast Guard cares about. Coolers on board with ice. Bring sunscreen and a hat.</p>
+        <ul class="boat-specs">
+          <li><strong>24 ft</strong><span>Length overall</span></li>
+          <li><strong>2 × 200hp</strong><span>Yamaha 4-strokes</span></li>
+          <li><strong>6 guests</strong><span>USCG max capacity</span></li>
+          <li><strong>2024</strong><span>USCG inspection</span></li>
+        </ul>
+      </div>
+      <div class="boat-img" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <span class="section-eyebrow">Reviews</span>
+    <h2 class="section-title">From the <span class="accent">cockpit.</span></h2>
+    <p class="section-lede">100+ five-star reviews across Google and TripAdvisor.</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Mike put my 8-year-old on his first redfish in 20 minutes. Kid hasn't stopped talking about it for a month. Will rebook every year."</p>
+        <div class="review-author">Brian H.</div>
+        <div class="review-meta">TripAdvisor · April 2026</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"We did the offshore full day and limited out on snapper plus a 30lb kingfish. Mike cleaned and bagged everything dockside. Best charter I've done in 20 years of fishing the Southeast."</p>
+        <div class="review-author">Dan K.</div>
+        <div class="review-meta">Google · March 2026</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Booked the sunset cruise for my parents' anniversary. Dolphins, perfect light, history of every inlet. Cried. So did mom. Highly recommend."</p>
+        <div class="review-author">Allison M.</div>
+        <div class="review-meta">Google · February 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="booking-section" id="book">
+  <div class="container">
+    <div class="booking-grid">
+      <div class="booking-info">
+        <span class="section-eyebrow">Book a Trip</span>
+        <h2 class="section-title">Pick a <span class="accent">day.</span></h2>
+        <p>Request a date and I'll text you back within an hour to confirm.</p>
+        <h3 class="first-h3">No Booking Fees</h3>
+        <p>Booking direct saves you the 6–8% that platforms like FareHarbor charge. That's your bait money.</p>
+        <h3>Weather Policy</h3>
+        <p>If the captain calls it off for weather, you get a full refund or reschedule. Always.</p>
+        <h3>Cancellation</h3>
+        <p>Cancel 48 hours out for a full refund. Inside that, 50% refund.</p>
+        <h3>Phone</h3>
+        <p style="font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--yellow);">📞 904 · 555 · 0199</p>
+      </div>
+      <form class="book" action="https://formspree.io/f/your-id-here" method="POST">
+        <label class="field"><span>Trip Type</span>
+          <select name="trip">
+            <option>Inshore Half Day — $550</option>
+            <option>Offshore Full Day — $1,400</option>
+            <option>Sunset Cruise — $350</option>
+            <option>Not sure yet — call me</option>
+          </select>
+        </label>
+        <div class="form-row">
+          <label class="field"><span>Preferred Date</span><input type="date" name="date" required /></label>
+          <label class="field"><span>Backup Date</span><input type="date" name="backup" /></label>
+        </div>
+        <div class="form-row">
+          <label class="field"><span>Party Size</span>
+            <select name="party">
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option>
+            </select>
+          </label>
+          <label class="field"><span>Experience Level</span>
+            <select name="experience">
+              <option>First time</option>
+              <option>Some experience</option>
+              <option>Seasoned angler</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-row">
+          <label class="field"><span>Name</span><input type="text" name="name" required /></label>
+          <label class="field"><span>Phone</span><input type="tel" name="phone" required placeholder="904.555.0123" /></label>
+        </div>
+        <label class="field"><span>Email</span><input type="email" name="email" required /></label>
+        <label class="field"><span>Anything we should know?</span><textarea name="notes" placeholder="Kids, mobility issues, target species, etc."></textarea></label>
+        <button class="btn btn-yellow" type="submit" style="width:100%; margin-top: 8px;">Request Booking</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="brand">Reel <i>Time</i> Charters</span>
+  <p>Fernandina Harbor · Amelia Island, FL</p>
+  <p>904.555.0199 · capt.mike@reeltime.example</p>
+  <p style="margin-top: 24px; font-size: 0.8rem;">USCG Lic #1948726 · &copy; 2026 Reel Time Charters. Demo by <a href="https://joshuahumphreys.net">Joshua Humphreys</a>.</p>
+</footer>
+
+</body>
+</html>

@@ -459,6 +459,255 @@
       .btn-row { flex-direction: column-reverse; }
       .btn-row .btn-next, .btn-row .btn-back { width: 100%; text-align: center; justify-content: center; }
     }
+    /* ===================================================================
+       LIVE PREVIEW PANE (added Session 2.5)
+       =================================================================== */
+    .configurator-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 400px;
+      gap: 48px;
+      max-width: 1240px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .configurator-layout .configurator-wrap { max-width: 100%; }
+
+    .cfg-preview {
+      position: sticky; top: 96px;
+      align-self: start;
+    }
+    .preview-label {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .preview-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 4px rgba(212,80,10,0.18);
+      animation: prev-pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes prev-pulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(212,80,10,0.18); }
+      50% { box-shadow: 0 0 0 8px rgba(212,80,10,0.04); }
+    }
+
+    .preview-frame {
+      background: var(--cream2, #f0eae0);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 14px 32px rgba(20,20,20,0.07);
+      transition: transform 0.25s ease;
+    }
+    .preview-chrome {
+      background: var(--cream2, #f0eae0);
+      padding: 10px 14px;
+      display: flex; align-items: center; gap: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .preview-chrome > span {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #d6cfc1;
+    }
+    .preview-chrome > span:nth-child(1) { background: #ed6a5e; }
+    .preview-chrome > span:nth-child(2) { background: #f4be4f; }
+    .preview-chrome > span:nth-child(3) { background: #62c554; }
+    .preview-url {
+      flex: 1;
+      margin-left: 10px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px; color: var(--muted);
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    /* Site canvas — CSS variables drive theming */
+    .preview-site {
+      --p-bg:      #F7F3EE;
+      --p-primary: #141414;
+      --p-accent:  #D4500A;
+      --p-text:    #141414;
+      --p-muted:   #7A7570;
+      --p-font:    'Inter', sans-serif;
+      --p-display: 'Space Grotesk', sans-serif;
+      --p-radius:  8px;
+      --p-weight:  600;
+
+      background: var(--p-bg);
+      color: var(--p-text);
+      font-family: var(--p-font);
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
+      min-height: 460px;
+    }
+
+    /* Style variants */
+    .preview-site[data-style="Modern"]  { --p-radius: 8px;  --p-weight: 600; --p-display: 'Space Grotesk', sans-serif; --p-font: 'Inter', sans-serif; }
+    .preview-site[data-style="Classic"] { --p-radius: 3px;  --p-weight: 600; --p-display: 'Fraunces', 'Lora', Georgia, serif; --p-font: 'Inter', sans-serif; }
+    .preview-site[data-style="Bold"]    { --p-radius: 12px; --p-weight: 800; --p-display: 'Space Grotesk', sans-serif; --p-font: 'Inter', sans-serif; }
+    .preview-site[data-style="Minimal"] { --p-radius: 2px;  --p-weight: 400; --p-display: 'Inter', sans-serif; --p-font: 'Inter', sans-serif; }
+
+    .preview-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .preview-logo {
+      font-family: var(--p-display);
+      font-weight: var(--p-weight);
+      font-size: 14px;
+      color: var(--p-primary);
+      letter-spacing: -0.02em;
+    }
+    .preview-nav-links {
+      display: flex; gap: 12px;
+      font-size: 10px; font-weight: 500;
+      color: var(--p-muted);
+    }
+    .preview-hero {
+      padding: 28px 22px 24px;
+    }
+    .preview-eyebrow {
+      display: inline-block;
+      font-family: var(--p-display);
+      font-size: 8px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--p-accent);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .preview-headline {
+      font-family: var(--p-display);
+      font-weight: var(--p-weight);
+      font-size: 22px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--p-primary);
+      margin-bottom: 10px;
+    }
+    .preview-sub {
+      font-size: 11px;
+      color: var(--p-muted);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+    .preview-cta-row {
+      display: flex; gap: 8px;
+    }
+    .preview-cta-primary, .preview-cta-secondary {
+      font-family: var(--p-display);
+      font-weight: var(--p-weight);
+      font-size: 10px;
+      padding: 8px 14px;
+      border-radius: var(--p-radius);
+      letter-spacing: 0.02em;
+    }
+    .preview-cta-primary {
+      background: var(--p-accent);
+      color: #fff;
+    }
+    .preview-cta-secondary {
+      background: transparent;
+      color: var(--p-primary);
+      border: 1px solid var(--p-primary);
+    }
+    .preview-hero-art {
+      margin: 0 22px 22px;
+      aspect-ratio: 16/9;
+      background:
+        linear-gradient(135deg, var(--p-primary) 0%, var(--p-accent) 100%);
+      border-radius: var(--p-radius);
+      opacity: 0.85;
+      position: relative;
+      overflow: hidden;
+    }
+    .preview-hero-art::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.25) 0%, transparent 50%);
+    }
+
+    .preview-features {
+      padding: 0 22px 22px;
+      display: grid;
+      gap: 8px;
+    }
+    .preview-feature-block {
+      background: rgba(0,0,0,0.04);
+      border: 1px solid rgba(0,0,0,0.04);
+      border-left: 3px solid var(--p-accent);
+      border-radius: var(--p-radius);
+      padding: 10px 14px;
+      font-size: 11px;
+      color: var(--p-text);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .preview-feature-block .ic {
+      font-size: 14px;
+    }
+    .preview-feature-block b {
+      font-family: var(--p-display);
+      font-weight: var(--p-weight);
+      color: var(--p-primary);
+      font-size: 11px;
+    }
+    .preview-feature-block span {
+      color: var(--p-muted);
+      font-size: 10px;
+      margin-left: auto;
+    }
+
+    .preview-footer {
+      padding: 12px 22px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      font-size: 9px;
+      color: var(--p-muted);
+      display: flex; justify-content: space-between;
+      letter-spacing: 0.05em;
+    }
+
+    .preview-meta {
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: var(--cream2, #f0eae0);
+      border-radius: 8px;
+      display: flex; justify-content: space-between;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px; letter-spacing: 0.06em;
+      color: var(--muted);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .preview-meta b { color: var(--ink); font-weight: 600; }
+
+    .preview-empty-hint {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    /* Collapse on mobile / narrow */
+    @media (max-width: 1024px) {
+      .configurator-layout { grid-template-columns: 1fr; gap: 32px; }
+      .cfg-preview {
+        position: static; top: auto;
+        order: -1;
+        margin-bottom: 8px;
+      }
+      .preview-frame { box-shadow: 0 8px 22px rgba(20,20,20,0.08); }
+      .preview-site { min-height: auto; }
+    }
   </style>
 </head>
 <body>
@@ -716,6 +965,7 @@
         <p class="section-sub" style="margin: 0 auto;">Five short steps. Live price range. Sent straight to my inbox.</p>
       </div>
 
+      <div class="configurator-layout">
       <div class="configurator-wrap">
         <div class="progress-wrap">
           <div class="progress-step active" data-step="1"></div>
@@ -1026,6 +1276,50 @@
         </div>
 
       </div>
+
+      <!-- LIVE PREVIEW (Session 2.5) -->
+      <aside class="cfg-preview" id="cfg-preview" aria-label="Live website preview">
+        <div class="preview-label"><span class="preview-dot"></span> Live Preview</div>
+        <div class="preview-frame">
+          <div class="preview-chrome">
+            <span></span><span></span><span></span>
+            <div class="preview-url" id="preview-url">your-business.com</div>
+          </div>
+          <div class="preview-site" id="preview-site" data-style="Modern">
+            <div class="preview-nav">
+              <div class="preview-logo" id="preview-logo">Your Brand<span style="color: var(--p-accent);">.</span></div>
+              <div class="preview-nav-links" id="preview-nav-links">
+                <span>Home</span><span>About</span><span>Contact</span>
+              </div>
+            </div>
+            <div class="preview-hero">
+              <div class="preview-eyebrow" id="preview-eyebrow">Your Industry</div>
+              <h3 class="preview-headline" id="preview-headline">Pick an industry to begin.</h3>
+              <p class="preview-sub" id="preview-sub">Your tagline and value prop will appear here as you make selections on the left.</p>
+              <div class="preview-cta-row">
+                <span class="preview-cta-primary" id="preview-cta">Get Started</span>
+                <span class="preview-cta-secondary">Learn More</span>
+              </div>
+            </div>
+            <div class="preview-hero-art" id="preview-hero-art" aria-hidden="true"></div>
+            <div class="preview-features" id="preview-features">
+              <div class="preview-feature-block"><span class="ic">✉</span><b>Contact Form</b><span>Included</span></div>
+            </div>
+            <div class="preview-footer">
+              <span id="preview-footer-brand">© Your Brand</span>
+              <span>Built by Joshua.</span>
+            </div>
+          </div>
+        </div>
+        <div class="preview-meta">
+          <span><b id="preview-pages-count">3</b> pages</span>
+          <span id="preview-style-label">Modern</span>
+          <span id="preview-palette-label">Default colors</span>
+        </div>
+        <div class="preview-empty-hint" id="preview-hint">Tip: as you pick choices on the left, this preview updates instantly.</div>
+      </aside>
+
+    </div>
     </div>
   </section>
 
@@ -1314,6 +1608,141 @@
 
       showStep(7);
     });
+
+    /* ===================================================================
+       LIVE PREVIEW LOGIC (Session 2.5)
+       Updates the preview pane in real time as the user picks options.
+       Reads from the existing `state` object — no state duplication.
+       =================================================================== */
+
+    const INDUSTRY_TEMPLATES = {
+      'Restaurant / Cafe':       { brand: 'Bistro Nine',     url: 'bistronine.com',      eyebrow: 'Coastal Bistro', headline: 'Local seafood, slow Sundays, walk-ins welcome.', sub: 'A 30-seat kitchen on Centre Street pulling the freshest catch of the day.', cta: 'Reserve a Table',  navExtra: ['Menu', 'About'] },
+      'Salon / Spa':             { brand: 'Bloom Studio',    url: 'bloomstudio.com',     eyebrow: 'Hair & Skincare', headline: 'A quieter kind of salon.',                       sub: 'Specialty color, balayage, and skincare in a calm, modern studio.',           cta: 'Book Online',      navExtra: ['Services', 'Team'] },
+      'Real Estate':             { brand: 'Coast Realty',    url: 'coastrealty.com',     eyebrow: 'Amelia Island Realtor', headline: 'Your Northeast Florida home expert.',     sub: 'Helping families buy, sell, and relocate to Amelia Island and Jacksonville.', cta: 'Schedule a Call',  navExtra: ['Listings', 'Areas'] },
+      'Fitness / Gym':           { brand: 'Crosswave Fit',   url: 'crosswavefit.com',    eyebrow: 'Strength + Community', headline: 'Train hard. Be part of something.',         sub: 'Group classes, personal training, and a gym that actually knows your name.',  cta: 'Start Free Trial', navExtra: ['Classes', 'Memberships'] },
+      'Professional Services':   { brand: 'Calloway & Co.',  url: 'callowayandco.com',   eyebrow: 'Small Business Counsel', headline: 'Clear legal guidance for growing businesses.', sub: 'Contracts, LLC formation, and quiet advice. Twenty years of experience.', cta: 'Free Consultation',navExtra: ['Practice', 'Team'] },
+      'Retail / Boutique':       { brand: 'Tidal & Co.',     url: 'tidalandco.com',      eyebrow: 'Coastal Goods Co.', headline: 'Coastal goods, made local, built to last.',       sub: 'Beach essentials, gifts, and home pieces curated from independent makers.',   cta: 'Shop Now',         navExtra: ['Shop', 'Lookbook'] },
+      'Trades / Home Services':  { brand: 'Coastline Pros',  url: 'coastlinepros.com',   eyebrow: 'Licensed · Insured · Local', headline: 'On time. On budget. Done right the first time.', sub: 'Pressure washing, painting, and exterior services across Nassau County.', cta: 'Get a Free Quote', navExtra: ['Services', 'Areas'] },
+      'Creative / Portfolio':    { brand: 'Studio Iris',     url: 'studioiris.com',      eyebrow: 'Visual Storytelling', headline: 'Brand photography that feels like you.',         sub: 'Editorial portraits and commercial work for small brands on the East Coast.', cta: 'Start a Project',  navExtra: ['Portfolio', 'About'] },
+      'Other':                   { brand: 'Your Brand',      url: 'your-business.com',   eyebrow: 'Your Industry',        headline: 'Your headline will go here.',                     sub: 'A short subheadline that says what makes you different.',                     cta: 'Get Started',      navExtra: ['Services', 'About'] }
+    };
+
+    const PALETTE_COLORS = {
+      'Coastal': { bg: '#F7F3EE', primary: '#0A4D68', accent: '#088395', text: '#0A4D68', muted: '#5A7B8A' },
+      'Sunset':  { bg: '#F7F3EE', primary: '#22223B', accent: '#D4500A', text: '#22223B', muted: '#6B6B7E' },
+      'Forest':  { bg: '#F1F8F4', primary: '#1A2E22', accent: '#2D6A4F', text: '#1A2E22', muted: '#5B7062' },
+      'Mono':    { bg: '#F4F4F4', primary: '#0F0F0F', accent: '#3A3A3A', text: '#0F0F0F', muted: '#6B6B6B' },
+      'Berry':   { bg: '#FFF0F3', primary: '#3D0C2E', accent: '#A4133C', text: '#3D0C2E', muted: '#7B4F5F' },
+      'Ocean':   { bg: '#CAF0F8', primary: '#03045E', accent: '#0077B6', text: '#03045E', muted: '#4A6B85' }
+    };
+
+    const FEATURE_BLOCKS = {
+      'Online booking': { icon: '📅', label: 'Book Online',   tag: 'Calendar' },
+      'Online store':   { icon: '🛒', label: 'Shop',          tag: 'WooCommerce' },
+      'Blog':           { icon: '📝', label: 'Latest Posts',  tag: 'Blog' },
+      'Image gallery':  { icon: '🖼️', label: 'Gallery',       tag: 'Photos' },
+      'Contact form':   { icon: '✉',  label: 'Contact Form',  tag: 'Included' }
+    };
+
+    function buildNavLinks(industryKey, pages) {
+      const tpl = INDUSTRY_TEMPLATES[industryKey] || INDUSTRY_TEMPLATES['Other'];
+      // Always: Home + Contact. Add About + industry extras up to pages count.
+      const links = ['Home'];
+      if (pages >= 2) links.push('About');
+      tpl.navExtra.forEach(x => { if (links.length < pages - 1) links.push(x); });
+      if (pages >= 2) links.push('Contact');
+      // Truncate to pages count
+      return links.slice(0, Math.min(pages, 5));
+    }
+
+    function updatePreview() {
+      const site = document.getElementById('preview-site');
+      if (!site) return;
+
+      // --- Industry-driven content
+      const ind = state.industry || 'Other';
+      const tpl = INDUSTRY_TEMPLATES[ind] || INDUSTRY_TEMPLATES['Other'];
+      const brandEl = document.getElementById('preview-logo');
+      const urlEl = document.getElementById('preview-url');
+      const eyebrowEl = document.getElementById('preview-eyebrow');
+      const headlineEl = document.getElementById('preview-headline');
+      const subEl = document.getElementById('preview-sub');
+      const ctaEl = document.getElementById('preview-cta');
+      const footerBrand = document.getElementById('preview-footer-brand');
+
+      brandEl.innerHTML = `${tpl.brand}<span style="color: var(--p-accent);">.</span>`;
+      urlEl.textContent = tpl.url;
+      eyebrowEl.textContent = tpl.eyebrow;
+      headlineEl.textContent = tpl.headline;
+      subEl.textContent = tpl.sub;
+      ctaEl.textContent = tpl.cta;
+      footerBrand.textContent = `© ${tpl.brand}`;
+
+      // --- Style-driven layout
+      const sty = state.style || 'Modern';
+      site.setAttribute('data-style', sty);
+      document.getElementById('preview-style-label').textContent = state.style ? sty : 'Default style';
+
+      // --- Palette-driven colors
+      const pal = state.palette;
+      if (pal && PALETTE_COLORS[pal]) {
+        const c = PALETTE_COLORS[pal];
+        site.style.setProperty('--p-bg',      c.bg);
+        site.style.setProperty('--p-primary', c.primary);
+        site.style.setProperty('--p-accent',  c.accent);
+        site.style.setProperty('--p-text',    c.text);
+        site.style.setProperty('--p-muted',   c.muted);
+        document.getElementById('preview-palette-label').textContent = pal;
+      } else {
+        document.getElementById('preview-palette-label').textContent = 'Default colors';
+      }
+
+      // --- Features
+      const featContainer = document.getElementById('preview-features');
+      featContainer.innerHTML = '';
+      // Always show contact form (it's locked-selected by default in state)
+      const featList = state.features.slice();
+      // Sort so Contact form is last (visual stability)
+      featList.sort((a, b) => (a === 'Contact form' ? 1 : 0) - (b === 'Contact form' ? 1 : 0));
+      featList.forEach(f => {
+        const meta = FEATURE_BLOCKS[f];
+        if (!meta) return;
+        const html = `<div class="preview-feature-block"><span class="ic">${meta.icon}</span><b>${meta.label}</b><span>${meta.tag}</span></div>`;
+        featContainer.insertAdjacentHTML('beforeend', html);
+      });
+
+      // --- Pages → nav links + count
+      const pageLinks = buildNavLinks(ind, state.pages);
+      const navEl = document.getElementById('preview-nav-links');
+      navEl.innerHTML = pageLinks.map(l => `<span>${l}</span>`).join('');
+      document.getElementById('preview-pages-count').textContent = state.pages;
+
+      // --- Hide the hint once user has interacted
+      const hint = document.getElementById('preview-hint');
+      if (hint && (state.industry || state.style || state.palette)) {
+        hint.style.display = 'none';
+      }
+    }
+
+    // Hook into the same click events that update state.
+    // Existing handlers update state synchronously, so a microtask after click
+    // ensures we read the updated state.
+    function hookPreviewUpdate() {
+      const refresh = () => requestAnimationFrame(updatePreview);
+      // Industry / style / palette clicks
+      document.querySelectorAll('[data-mode="single"] .option-card, [data-mode="single"] .palette-card').forEach(el => {
+        el.addEventListener('click', refresh);
+      });
+      // Features clicks
+      document.querySelectorAll('[data-mode="multi"] .check-card').forEach(el => {
+        el.addEventListener('click', refresh);
+      });
+      // Page slider
+      const slider = document.getElementById('page-slider');
+      if (slider) slider.addEventListener('input', refresh);
+    }
+    hookPreviewUpdate();
+    updatePreview(); // initial render
   </script>
 </body>
 </html>

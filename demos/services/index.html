@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coastline Pressure Wash | Pressure Washing in Fernandina & Jacksonville</title>
+<meta name="description" content="Licensed and insured pressure washing for homes, driveways, and roofs in Fernandina Beach, Amelia Island, Yulee, and Jacksonville. Free quotes. Same-week service." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23ee6c1e'/%3E%3Ctext x='50%25' y='52%25' dominant-baseline='central' text-anchor='middle' font-family='Inter,sans-serif' font-weight='800' font-size='34' fill='%23ffffff'%3EC%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --orange:    #ee6c1e;
+    --orange-d:  #cc5a17;
+    --navy:      #102a43;
+    --navy-d:    #061a2e;
+    --bg:        #f5f7fa;
+    --line:      #d9dee5;
+    --ink:       #0d1620;
+    --soft:      #5a6a7d;
+    --green:     #10a37f;
+    --white:     #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; font-weight: 500; }
+  a { color: inherit; text-decoration: none; }
+
+  .demo-banner { background: var(--ink); color: var(--white); text-align: center; padding: 10px 16px; font-size: 13px; }
+  .demo-banner b { color: var(--orange); }
+  .demo-banner a { color: var(--white); border-bottom: 1px solid var(--orange); margin-left: 8px; }
+
+  /* TOP STRIP */
+  .top-strip {
+    background: var(--navy);
+    color: var(--white);
+    padding: 10px 32px;
+    font-size: 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    letter-spacing: 0.02em;
+  }
+  .top-strip-left, .top-strip-right { display: flex; gap: 18px; }
+  .top-strip a { color: var(--white); }
+  .top-strip .check { color: var(--orange); margin-right: 6px; font-weight: 700; }
+
+  /* NAV */
+  nav.site {
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 50;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .brand-wrap { display: flex; align-items: center; gap: 12px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 8px;
+    background: var(--orange); color: var(--white);
+    font-weight: 800; font-size: 22px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .brand { font-weight: 800; font-size: 18px; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; }
+  .brand small { display: block; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--soft); font-weight: 600; margin-top: 2px; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 14px; font-weight: 600; color: var(--ink); transition: color .15s; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-phone {
+    background: var(--orange); color: var(--white) !important;
+    padding: 12px 20px;
+    font-weight: 700; font-size: 14px;
+    border-radius: 6px; transition: background .15s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .nav-phone:hover { background: var(--orange-d); }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .nav-toggle span { width: 26px; height: 2px; background: var(--ink); }
+
+  /* MOBILE CALL BAR */
+  .call-bar {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--orange);
+    text-align: center; padding: 16px;
+    z-index: 100;
+    font-weight: 800; font-size: 16px;
+    color: var(--white) !important;
+    box-shadow: 0 -4px 14px rgba(0,0,0,0.18);
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    background: var(--navy);
+    color: var(--white);
+    overflow: hidden;
+    padding: 0;
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 0;
+    max-width: 1300px;
+    margin: 0 auto;
+    min-height: 640px;
+  }
+  .hero-left {
+    padding: 80px 60px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+  }
+  .hero-left::before {
+    content: ""; position: absolute; top: 20%; left: -100px; width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(238,108,30,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-cred {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 999px;
+    font-size: 12px; font-weight: 600;
+    margin-bottom: 24px; align-self: flex-start;
+  }
+  .hero-cred b { color: var(--orange); }
+  .hero h1 {
+    font-weight: 900;
+    font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 22px;
+  }
+  .hero h1 .accent { color: var(--orange); }
+  .hero p.lede {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    color: rgba(255,255,255,0.85);
+    max-width: 480px;
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 16px 30px;
+    font-weight: 700; font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    transition: all .15s;
+    letter-spacing: 0.02em;
+  }
+  .btn-orange { background: var(--orange); color: var(--white); }
+  .btn-orange:hover { background: var(--orange-d); }
+  .btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); }
+  .btn-outline:hover { background: var(--white); color: var(--navy); }
+  .trust-strip {
+    margin-top: 44px; padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    display: flex; gap: 28px; flex-wrap: wrap;
+    font-size: 12px;
+  }
+  .trust-strip span { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.8); }
+  .trust-strip b { color: var(--orange); font-weight: 700; }
+
+  .hero-right {
+    background:
+      linear-gradient(135deg, rgba(16,42,67,0.2), rgba(238,108,30,0.25)),
+      url('https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&w=1000') center/cover;
+    position: relative;
+  }
+  .quote-form-card {
+    position: absolute;
+    bottom: 40px; right: 40px; left: 40px;
+    background: var(--white);
+    padding: 28px;
+    border-radius: 10px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+    color: var(--ink);
+  }
+  .quote-form-card h3 { font-weight: 800; font-size: 1.3rem; margin-bottom: 6px; color: var(--navy); }
+  .quote-form-card p { font-size: 0.9rem; color: var(--soft); margin-bottom: 18px; }
+  .quote-form-card .quick-form { display: grid; gap: 10px; }
+  .quote-form-card input, .quote-form-card select {
+    width: 100%; padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 6px; font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+  }
+  .quote-form-card input:focus, .quote-form-card select:focus { outline: none; border-color: var(--orange); }
+  .quote-form-card button {
+    background: var(--orange); color: var(--white);
+    padding: 14px; border: none; border-radius: 6px;
+    font-weight: 700; font-size: 14px; cursor: pointer;
+    transition: background .15s;
+  }
+  .quote-form-card button:hover { background: var(--orange-d); }
+  .quote-form-card .form-note { font-size: 11px; color: var(--soft); text-align: center; margin-top: 4px; }
+
+  /* SECTIONS */
+  section { padding: 90px 32px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-eyebrow { display: block; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); font-weight: 700; margin-bottom: 14px; }
+  .section-title { font-weight: 900; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; letter-spacing: -0.025em; color: var(--navy); margin-bottom: 24px; }
+  .section-title .accent { color: var(--orange); }
+  .section-lede { font-size: 1.05rem; color: var(--soft); max-width: 620px; margin-bottom: 50px; }
+
+  /* SERVICES */
+  .services-section { background: var(--bg); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .service-card {
+    background: var(--white);
+    padding: 32px 28px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    border-bottom: 4px solid var(--orange);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(16,42,67,0.1); }
+  .service-icon {
+    width: 56px; height: 56px;
+    background: rgba(238,108,30,0.12);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+    font-size: 28px;
+  }
+  .service-card h3 { font-weight: 800; font-size: 1.3rem; color: var(--navy); margin-bottom: 10px; }
+  .service-card p { font-size: 0.95rem; color: var(--soft); margin-bottom: 18px; line-height: 1.55; }
+  .service-card .from { font-weight: 700; color: var(--orange); font-size: 0.92rem; }
+
+  /* BEFORE/AFTER */
+  .ba-section { background: var(--white); }
+  .ba-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .ba-item { border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+  .ba-imgs {
+    display: grid; grid-template-columns: 1fr 1fr;
+    aspect-ratio: 2/1;
+  }
+  .ba-imgs .before, .ba-imgs .after {
+    background-size: cover; background-position: center;
+    position: relative;
+  }
+  .ba-imgs .before::after, .ba-imgs .after::after {
+    content: "BEFORE"; position: absolute; top: 12px; left: 12px;
+    background: var(--ink); color: var(--white);
+    padding: 4px 10px; font-size: 10px; letter-spacing: 0.15em; font-weight: 700;
+    border-radius: 3px;
+  }
+  .ba-imgs .after::after { content: "AFTER"; background: var(--green); }
+  .ba-imgs .before { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&w=600'); filter: contrast(0.7) brightness(0.6); }
+  .ba-imgs .after { background-image: url('https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&w=600'); }
+  .ba-item:nth-child(2) .ba-imgs .before { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/2079249/pexels-photo-2079249.jpeg?auto=compress&w=600'); }
+  .ba-item:nth-child(2) .ba-imgs .after { background-image: url('https://images.pexels.com/photos/2079249/pexels-photo-2079249.jpeg?auto=compress&w=600'); }
+  .ba-item:nth-child(3) .ba-imgs .before { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&w=600'); }
+  .ba-item:nth-child(3) .ba-imgs .after { background-image: url('https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&w=600'); }
+  .ba-body { padding: 20px 24px; }
+  .ba-body h4 { font-weight: 800; font-size: 1.1rem; color: var(--navy); margin-bottom: 4px; }
+  .ba-body p { font-size: 0.88rem; color: var(--soft); }
+
+  /* AREAS */
+  .areas-section { background: var(--navy); color: var(--white); }
+  .areas-section .section-title { color: var(--white); }
+  .areas-section .section-title .accent { color: var(--orange); }
+  .areas-section .section-eyebrow { color: var(--orange); }
+  .areas-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 36px;
+  }
+  .area-pill {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 18px 20px;
+    border-radius: 8px;
+    transition: all .15s;
+  }
+  .area-pill:hover { background: rgba(238,108,30,0.1); border-color: var(--orange); }
+  .area-pill strong { display: block; font-weight: 800; font-size: 1.05rem; margin-bottom: 4px; }
+  .area-pill span { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+
+  /* REVIEWS */
+  .reviews-section { background: var(--bg); }
+  .reviews-summary {
+    display: flex; align-items: center; gap: 36px;
+    background: var(--white);
+    padding: 28px 36px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .reviews-summary .big {
+    font-weight: 900; font-size: 3.2rem; color: var(--navy);
+    line-height: 1;
+  }
+  .reviews-summary .stars { color: #fbbf24; font-size: 1.4rem; letter-spacing: 2px; margin-bottom: 4px; }
+  .reviews-summary .count { font-size: 0.9rem; color: var(--soft); }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .review-card {
+    background: var(--white);
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+  }
+  .review-stars { color: #fbbf24; margin-bottom: 12px; }
+  .review-text { font-size: 0.95rem; color: var(--ink); margin-bottom: 14px; line-height: 1.55; }
+  .review-author { font-weight: 700; color: var(--navy); font-size: 0.9rem; }
+  .review-meta { font-size: 0.78rem; color: var(--soft); }
+
+  /* QUOTE CTA */
+  .quote-section { background: var(--white); }
+  .quote-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; }
+  form.fullquote { display: grid; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  label.field { display: block; }
+  label.field span { display: block; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); font-weight: 700; margin-bottom: 6px; }
+  input, select, textarea {
+    width: 100%; padding: 14px 16px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--ink); font-family: 'Inter', sans-serif; font-size: 15px;
+    border-radius: 6px;
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--orange); background: var(--white); }
+  textarea { resize: vertical; min-height: 90px; }
+
+  /* FOOTER */
+  footer { background: var(--navy-d); color: var(--white); padding: 50px 32px 24px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
+  footer h4 { font-weight: 800; font-size: 0.95rem; color: var(--white); margin-bottom: 14px; }
+  footer p, footer a { font-size: 0.88rem; color: rgba(255,255,255,0.65); }
+  footer a:hover { color: var(--orange); }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 8px; }
+  .footer-bottom { max-width: 1200px; margin: 36px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+
+  @media (max-width: 900px) {
+    nav.site { padding: 12px 18px; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .top-strip { display: none; }
+    .call-bar { display: block; }
+    body { padding-bottom: 64px; }
+    section { padding: 60px 20px; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-left { padding: 60px 22px; }
+    .hero-right { min-height: 480px; }
+    .quote-form-card { position: static; margin: 24px; }
+    .services-grid, .reviews-grid, .ba-grid { grid-template-columns: 1fr; }
+    .areas-grid { grid-template-columns: 1fr 1fr; }
+    .quote-grid { grid-template-columns: 1fr; gap: 36px; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  <b>★ DEMO</b> Home services / contractor template · <a href="../../build.html#configurator">Configure your own →</a>
+</div>
+
+<div class="top-strip">
+  <div class="top-strip-left">
+    <span><span class="check">✓</span>Licensed & Insured</span>
+    <span><span class="check">✓</span>Free Quotes</span>
+    <span><span class="check">✓</span>Same-Week Service</span>
+  </div>
+  <div class="top-strip-right">
+    <span>📞 904.555.0162</span>
+    <span>Mon–Sat 7am–6pm</span>
+  </div>
+</div>
+
+<nav class="site">
+  <div class="brand-wrap">
+    <div class="brand-mark">C</div>
+    <div>
+      <div class="brand">Coastline Pressure Wash</div>
+      <small>Licensed · Insured · Local</small>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Our Work</a></li>
+    <li><a href="#areas">Service Areas</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#quote">Free Quote</a></li>
+  </ul>
+  <a class="nav-phone" href="tel:9045550162">📞 904.555.0162</a>
+  <button class="nav-toggle"><span></span><span></span><span></span></button>
+</nav>
+
+<a class="call-bar" href="tel:9045550162">📞 CALL FOR FREE QUOTE · 904.555.0162</a>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <span class="hero-cred"><b>★ 4.9</b> 220+ Google reviews</span>
+      <h1>Florida grime <span class="accent">doesn't stand a chance.</span></h1>
+      <p class="lede">Soft-wash & pressure washing for homes, driveways, roofs, and concrete in Nassau and Duval counties. Family-owned. Properly insured. Show up when we say we will.</p>
+      <div class="hero-actions">
+        <a class="btn btn-orange" href="#quote">Get a Free Quote</a>
+        <a class="btn btn-outline" href="tel:9045550162">📞 904.555.0162</a>
+      </div>
+      <div class="trust-strip">
+        <span><b>✓</b> Licensed FL #1147821</span>
+        <span><b>✓</b> $2M liability insurance</span>
+        <span><b>✓</b> Same-week service</span>
+        <span><b>✓</b> 100% satisfaction guarantee</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="quote-form-card">
+        <h3>Get a free quote in 60 seconds</h3>
+        <p>Text or email — we respond within 1 hour during business hours.</p>
+        <form class="quick-form" action="https://formspree.io/f/your-id-here" method="POST">
+          <select name="service" required>
+            <option value="">What needs washing?</option>
+            <option>House (siding)</option>
+            <option>Driveway / Walkways</option>
+            <option>Roof (soft wash)</option>
+            <option>Pool deck</option>
+            <option>Whole property bundle</option>
+            <option>Not sure — recommend</option>
+          </select>
+          <input type="text" name="address" placeholder="Property address or zip" required />
+          <input type="tel" name="phone" placeholder="Phone number" required />
+          <button type="submit">Get My Free Quote →</button>
+          <p class="form-note">We never share your info. No spam. Ever.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-section" id="services">
+  <div class="container">
+    <span class="section-eyebrow">What we wash</span>
+    <h2 class="section-title">Services that <span class="accent">make your house new again.</span></h2>
+    <p class="section-lede">From a one-time spring cleanup to a full property package, we handle every exterior surface that gets dirty in Florida — which is to say, all of them.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <h3>House Wash</h3>
+        <p>Soft-wash treatment for siding, stucco, brick. Kills algae and mildew at the source — no high pressure on your home.</p>
+        <div class="from">Starting at $249</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚗</div>
+        <h3>Driveways & Walks</h3>
+        <p>Concrete, pavers, brick. Surface cleaner gets every inch evenly — no streaks, no zebra striping.</p>
+        <div class="from">Starting at $149</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏖</div>
+        <h3>Roof Soft Wash</h3>
+        <p>Black streaks on your shingles? That's algae. Our biocide treatment kills it for years — no damage to the roof.</p>
+        <div class="from">Starting at $399</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏊</div>
+        <h3>Pool Deck</h3>
+        <p>Travertine, paver, concrete pool decks restored. Stain treatment included.</p>
+        <div class="from">Starting at $199</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🍂</div>
+        <h3>Gutters & Soffit</h3>
+        <p>Black streaks under your gutters? We treat the fascia and soffit while we're up there.</p>
+        <div class="from">Starting at $179</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <h3>Full Property Bundle</h3>
+        <p>Home + driveway + walks + gutters in one visit. Best value — save up to 25%.</p>
+        <div class="from">Starting at $649</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ba-section" id="work">
+  <div class="container">
+    <span class="section-eyebrow">Recent Work</span>
+    <h2 class="section-title">Before & after, <span class="accent">no filters.</span></h2>
+    <p class="section-lede">Drag the divider on these jobs to see the difference. Every photo is one of our real customers from the past 30 days.</p>
+    <div class="ba-grid">
+      <div class="ba-item">
+        <div class="ba-imgs"><div class="before"></div><div class="after"></div></div>
+        <div class="ba-body"><h4>Driveway · Fernandina Beach</h4><p>10-year-old concrete · cleaned in 90 minutes</p></div>
+      </div>
+      <div class="ba-item">
+        <div class="ba-imgs"><div class="before"></div><div class="after"></div></div>
+        <div class="ba-body"><h4>House Wash · Amelia Island</h4><p>Hardie siding · 3,200 sqft · same day</p></div>
+      </div>
+      <div class="ba-item">
+        <div class="ba-imgs"><div class="before"></div><div class="after"></div></div>
+        <div class="ba-body"><h4>Roof Soft Wash · Jax Beach</h4><p>Algae stains gone · 5-year cleanness guarantee</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="areas-section" id="areas">
+  <div class="container">
+    <span class="section-eyebrow">Service Areas</span>
+    <h2 class="section-title">Local to <span class="accent">Northeast Florida.</span></h2>
+    <p class="section-lede" style="color: rgba(255,255,255,0.7);">We serve Nassau and Duval counties. If you're nearby and not listed, give us a call — we probably still cover you.</p>
+    <div class="areas-grid">
+      <div class="area-pill"><strong>Fernandina Beach</strong><span>32034 · 32035</span></div>
+      <div class="area-pill"><strong>Amelia Island</strong><span>Coastal homes & condos</span></div>
+      <div class="area-pill"><strong>Yulee</strong><span>32097</span></div>
+      <div class="area-pill"><strong>Jacksonville Beach</strong><span>32250</span></div>
+      <div class="area-pill"><strong>Atlantic Beach</strong><span>32233</span></div>
+      <div class="area-pill"><strong>Neptune Beach</strong><span>32266</span></div>
+      <div class="area-pill"><strong>San Marco</strong><span>Jacksonville</span></div>
+      <div class="area-pill"><strong>Mandarin</strong><span>Jacksonville</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <span class="section-eyebrow">Reviews</span>
+    <h2 class="section-title">220+ five-star <span class="accent">reviews.</span></h2>
+    <div class="reviews-summary">
+      <div class="big">4.9</div>
+      <div>
+        <div class="stars">★★★★★</div>
+        <div class="count">Based on 220+ verified Google reviews · A+ BBB rating</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Looks like a brand new house. My wife is showing photos to everyone. Showed up exactly when they said, polite crew, fair price. We'll be a repeat customer."</p>
+        <div class="review-author">Brandon T.</div>
+        <div class="review-meta">Google · Fernandina Beach · 2 weeks ago</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Got three quotes for the driveway. Coastline was the middle price but the only one who'd come walk the property first. Glad I picked them — driveway looks like it was poured yesterday."</p>
+        <div class="review-author">Karen W.</div>
+        <div class="review-meta">Google · Yulee · 1 month ago</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Booked the full property bundle. They were here 6 hours, didn't miss an inch. House, driveway, sidewalks, fence — all done. Worth every penny."</p>
+        <div class="review-author">Mike R.</div>
+        <div class="review-meta">Google · Amelia Island · 1 month ago</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section" id="quote">
+  <div class="container">
+    <div class="quote-grid">
+      <div>
+        <span class="section-eyebrow">Get a Quote</span>
+        <h2 class="section-title">Free quote in <span class="accent">under 24 hours.</span></h2>
+        <p style="color: var(--soft); margin-bottom: 24px;">Fill out the form and we'll reply with a same-day estimate. No high-pressure sales, no surprise charges, no "we'll have to send a manager."</p>
+        <div style="background: var(--bg); padding: 24px; border-radius: 10px; border-left: 4px solid var(--orange);">
+          <h4 style="font-weight: 800; color: var(--navy); margin-bottom: 10px;">What happens next:</h4>
+          <ol style="padding-left: 20px; color: var(--soft); font-size: 0.95rem; line-height: 1.8;">
+            <li><b style="color: var(--navy);">We text you</b> a quote within 1 hour (business hours).</li>
+            <li><b style="color: var(--navy);">You pick a day</b> that works — usually within 5 days.</li>
+            <li><b style="color: var(--navy);">We show up</b> on time, get it done, get out.</li>
+            <li><b style="color: var(--navy);">You pay</b> when you're 100% happy. Card, check, or Zelle.</li>
+          </ol>
+        </div>
+      </div>
+      <form class="fullquote" action="https://formspree.io/f/your-id-here" method="POST">
+        <label class="field"><span>What needs washing?</span>
+          <select name="service" required>
+            <option>House (siding)</option>
+            <option>Driveway / Walkways</option>
+            <option>Roof (soft wash)</option>
+            <option>Pool deck</option>
+            <option>Gutters & soffit</option>
+            <option>Full property bundle</option>
+            <option>Multiple — describe below</option>
+          </select>
+        </label>
+        <label class="field"><span>Property Type</span>
+          <select name="property">
+            <option>Single family home</option>
+            <option>Condo / townhouse</option>
+            <option>Commercial</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label class="field"><span>Property Address</span><input type="text" name="address" required /></label>
+        <div class="form-row">
+          <label class="field"><span>Your Name</span><input type="text" name="name" required /></label>
+          <label class="field"><span>Phone</span><input type="tel" name="phone" required /></label>
+        </div>
+        <label class="field"><span>Email</span><input type="email" name="email" required /></label>
+        <label class="field"><span>Best time to reach you?</span>
+          <select name="time">
+            <option>Anytime</option>
+            <option>Morning (7am–noon)</option>
+            <option>Afternoon (noon–4pm)</option>
+            <option>Evening (4pm–7pm)</option>
+          </select>
+        </label>
+        <label class="field"><span>Notes / Details</span><textarea name="notes" placeholder="Square footage, special concerns, access info, etc."></textarea></label>
+        <button class="btn btn-orange" type="submit" style="width:100%; padding: 18px;">Get My Free Quote</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px;">
+        <div class="brand-mark">C</div>
+        <div class="brand" style="color: var(--white);">Coastline Pressure Wash</div>
+      </div>
+      <p>The cleanest exteriors in Northeast Florida.<br/>Family-owned since 2019.</p>
+      <p style="margin-top: 12px;">License #FL-1147821 · Insured ($2M)</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">House Wash</a></li>
+        <li><a href="#services">Driveways</a></li>
+        <li><a href="#services">Roof Soft Wash</a></li>
+        <li><a href="#services">Pool Decks</a></li>
+        <li><a href="#services">Full Property</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li>📞 <a href="tel:9045550162">904.555.0162</a></li>
+        <li>✉ <a href="mailto:hello@coastlinepw.example">hello@coastlinepw.example</a></li>
+        <li>Mon–Sat 7am–6pm</li>
+        <li>Closed Sundays</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Coastline Pressure Wash. All rights reserved. · Demo built by <a href="https://joshuahumphreys.net" style="color: var(--orange);">Joshua Humphreys Web Design</a>.
+  </div>
+</footer>
+
+</body>
+</html>

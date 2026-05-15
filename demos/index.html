@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Live Template Demos | Joshua Humphreys Web Design | Fernandina Beach, FL</title>
+<meta name="description" content="Preview live WordPress template demos built for Jacksonville and Fernandina Beach businesses. Restaurants, wedding vendors, charter captains, real estate agents, and home services." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://joshuahumphreys.net/demos/" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Live Template Demos | Joshua Humphreys" />
+<meta property="og:description" content="Preview real WordPress templates built for local Florida businesses." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://joshuahumphreys.net/demos/" />
+
+<!-- Favicon (matches main site J. mark) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23141414'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Space Grotesk,Arial,sans-serif' font-weight='700' font-size='36' fill='%23F7F3EE'%3EJ%3Ctspan fill='%23D4500A'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --cream:   #F7F3EE;
+    --ink:     #141414;
+    --muted:   #7A7570;
+    --orange:  #D4500A;
+    --border:  #D9D3CB;
+    --dark:    #1A1714;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+
+  /* ---------- NAV ---------- */
+  nav#main-nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 32px;
+    background: rgba(247, 243, 238, 0.92);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+  .logo-mark {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 9px;
+    background: var(--ink); color: var(--cream);
+    font-size: 20px;
+  }
+  .logo-mark i { color: var(--orange); font-style: normal; }
+  .wordmark { font-size: 18px; color: var(--ink); }
+  .wordmark i { color: var(--orange); font-style: normal; }
+  .nav-links { display: flex; list-style: none; gap: 28px; align-items: center; }
+  .nav-links a {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500; font-size: 15px;
+    transition: color .15s ease;
+  }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-cta {
+    padding: 10px 18px;
+    background: var(--ink); color: var(--cream) !important;
+    border-radius: 999px;
+    transition: background .15s ease;
+  }
+  .nav-cta:hover { background: var(--orange); }
+  .nav-hamburger {
+    display: none;
+    background: none; border: none; cursor: pointer;
+    flex-direction: column; gap: 5px;
+  }
+  .nav-hamburger span {
+    width: 24px; height: 2px; background: var(--ink); transition: all .2s ease;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 70px; left: 0; right: 0;
+    background: var(--cream);
+    flex-direction: column;
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--border);
+    z-index: 49;
+  }
+  .mobile-menu a {
+    padding: 14px 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu.open { display: flex; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 80px 32px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 999px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow .dot { color: var(--orange); }
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+  .hero h1 .accent { color: var(--orange); }
+  .hero p.lede {
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+    color: var(--muted);
+    max-width: 700px;
+    margin: 0 auto 32px;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .hero-meta b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- TEMPLATE GRID ---------- */
+  .grid-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 32px 80px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(20, 20, 20, 0.08);
+    border-color: var(--ink);
+  }
+  .card-thumb {
+    aspect-ratio: 16 / 10;
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .card-thumb svg { width: 100%; height: 100%; display: block; }
+  .badge {
+    position: absolute; top: 14px; left: 14px;
+    padding: 6px 12px;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 999px;
+  }
+  .badge.live { background: var(--orange); color: #fff; }
+  .price-tag {
+    position: absolute; top: 14px; right: 14px;
+    padding: 8px 14px;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+  .card-body {
+    padding: 26px 26px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+  }
+  .card-niche {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .card-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.55;
+    flex: 1;
+  }
+  .card-features {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 4px;
+  }
+  .feat {
+    padding: 4px 10px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .card-actions {
+    display: flex; gap: 10px;
+    margin-top: 14px;
+  }
+  .btn {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    transition: all .15s ease;
+  }
+  .btn-primary { background: var(--ink); color: var(--cream); }
+  .btn-primary:hover { background: var(--orange); }
+  .btn-secondary { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+  .btn-secondary:hover { background: var(--ink); color: var(--cream); }
+  .btn-disabled {
+    background: var(--cream);
+    color: var(--muted);
+    border: 1.5px solid var(--border);
+    cursor: not-allowed;
+  }
+  .btn-disabled:hover { background: var(--cream); color: var(--muted); }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .how {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 80px 32px;
+  }
+  .how-inner { max-width: 1100px; margin: 0 auto; }
+  .how h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .how h2 .accent { color: var(--orange); }
+  .how p.sub { text-align: center; color: #c9c2b9; max-width: 600px; margin: 0 auto 50px; }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+  }
+  .step {
+    padding: 28px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+  }
+  .step-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: var(--orange);
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+  .step h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+  }
+  .step p { color: #c9c2b9; font-size: 0.95rem; line-height: 1.55; }
+
+  /* ---------- CTA STRIP ---------- */
+  .cta-strip {
+    padding: 70px 32px;
+    text-align: center;
+    background: var(--cream);
+  }
+  .cta-strip h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .cta-strip h2 .accent { color: var(--orange); }
+  .cta-strip p { color: var(--muted); max-width: 580px; margin: 0 auto 28px; }
+  .cta-strip .btn { display: inline-block; padding: 14px 32px; font-size: 15px; flex: 0 0 auto; }
+
+  /* ---------- FAQ ---------- */
+  .faq {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 60px 32px 80px;
+  }
+  .faq h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-bottom: 36px;
+    color: var(--ink);
+  }
+  details {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    padding: 0;
+    transition: border-color .15s ease;
+  }
+  details[open] { border-color: var(--ink); }
+  summary {
+    padding: 20px 24px;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: var(--ink);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+";
+    font-size: 1.4rem;
+    color: var(--orange);
+    transition: transform .2s ease;
+  }
+  details[open] summary::after { content: "−"; }
+  details p {
+    padding: 0 24px 22px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--dark);
+    color: var(--cream);
+    padding: 50px 32px 28px;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  .footer-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .footer-brand i { color: var(--orange); font-style: normal; }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-links a {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    color: #c9c2b9;
+    transition: color .15s ease;
+  }
+  .footer-links a:hover { color: var(--orange); }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 36px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+    color: #948b80;
+    font-size: 13px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .hero { padding: 60px 24px 40px; }
+    .grid-wrap { padding: 30px 20px 60px; }
+    .grid { grid-template-columns: 1fr; gap: 20px; }
+    .how { padding: 60px 24px; }
+    .cta-strip { padding: 60px 24px; }
+    .card-actions { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a class="nav-logo" href="../index.html" aria-label="Joshua Humphreys home">
+    <span class="logo-mark">J<i>.</i></span>
+    <span class="wordmark">Joshua<i>.</i></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#services">Services</a></li>
+    <li><a href="../index.html#packages">Packages</a></li>
+    <li><a href="../index.html#portfolio">Work</a></li>
+    <li><a href="../build.html">Build</a></li>
+    <li><a href="./" style="color: var(--orange);">Demos</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../index.html#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="../index.html#services">Services</a>
+  <a href="../index.html#packages">Packages</a>
+  <a href="../index.html#portfolio">Work</a>
+  <a href="../build.html">Build</a>
+  <a href="./" style="color: var(--orange);">Demos</a>
+  <a href="../about.html">About</a>
+  <a href="../index.html#contact">Get in Touch</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-eyebrow">Live Demos<span class="dot">.</span></span>
+  <h1>Five templates. <br/>Built for <span class="accent">local Florida businesses.</span></h1>
+  <p class="lede">Click through real working demos before you buy. Every template is fully customizable — pick your colors, content, and features in the <a href="../build.html" style="color: var(--ink); border-bottom: 2px solid var(--orange);">configurator</a>.</p>
+  <div class="hero-meta">
+    <span>Built in <b>WordPress</b></span>
+    <span>Mobile-first <b>responsive</b></span>
+    <span>SEO-ready <b>day one</b></span>
+    <span>Live in <b>7–14 days</b></span>
+  </div>
+</section>
+
+<!-- TEMPLATE GRID -->
+<section class="grid-wrap" id="templates">
+  <div class="grid">
+
+    <!-- CARD 1: RESTAURANT -->
+    <article class="card">
+      <div class="card-thumb">
+        <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1f3a3d"/>
+              <stop offset="100%" stop-color="#0a1d1f"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="250" fill="url(#g1)"/>
+          <circle cx="80" cy="80" r="38" fill="#D4500A" opacity="0.18"/>
+          <circle cx="320" cy="180" r="52" fill="#F7F3EE" opacity="0.10"/>
+          <rect x="40" y="160" width="160" height="14" rx="3" fill="#F7F3EE" opacity="0.8"/>
+          <rect x="40" y="184" width="100" height="10" rx="3" fill="#F7F3EE" opacity="0.5"/>
+          <rect x="40" y="204" width="76" height="22" rx="4" fill="#D4500A"/>
+          <text x="40" y="120" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="26" fill="#F7F3EE">The Salty Hook</text>
+        </svg>
+        <span class="badge live">Live Demo</span>
+        <span class="price-tag">From $1,497</span>
+      </div>
+      <div class="card-body">
+        <span class="card-niche">Restaurant & Bar</span>
+        <h3 class="card-title">Coastal Restaurant / Seafood Spot</h3>
+        <p class="card-desc">For owner-operated restaurants and oyster bars. Built around a fast online menu, reservations, photo gallery, and a "find us" map. Centre Street ready.</p>
+        <div class="card-features">
+          <span class="feat">Online Menu</span>
+          <span class="feat">Reservations</span>
+          <span class="feat">Gallery</span>
+          <span class="feat">Google Reviews</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-secondary" href="restaurant/" target="_blank" rel="noopener">View Demo →</a>
+          <a class="btn btn-primary" href="../build.html#configurator">Configure</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 2: WEDDING -->
+    <article class="card">
+      <div class="card-thumb">
+        <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#e8d4c4"/>
+              <stop offset="100%" stop-color="#c9a895"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="250" fill="url(#g2)"/>
+          <circle cx="100" cy="90" r="42" fill="#fff" opacity="0.55"/>
+          <circle cx="300" cy="60" r="22" fill="#fff" opacity="0.4"/>
+          <circle cx="340" cy="170" r="32" fill="#fff" opacity="0.35"/>
+          <rect x="40" y="170" width="180" height="14" rx="3" fill="#141414" opacity="0.75"/>
+          <rect x="40" y="195" width="120" height="10" rx="3" fill="#141414" opacity="0.45"/>
+          <text x="40" y="140" font-family="Space Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="26" fill="#141414">Forever &amp; Always</text>
+        </svg>
+        <span class="badge live">Live Demo</span>
+        <span class="price-tag">From $2,497</span>
+      </div>
+      <div class="card-body">
+        <span class="card-niche">Wedding & Events</span>
+        <h3 class="card-title">Wedding Venue / Photographer</h3>
+        <p class="card-desc">Editorial portfolio template for Amelia Island wedding pros. Massive image galleries, package pricing, multi-step inquiry form, Pinterest-ready blog.</p>
+        <div class="card-features">
+          <span class="feat">Image Gallery</span>
+          <span class="feat">Portfolio</span>
+          <span class="feat">Inquiry Form</span>
+          <span class="feat">Instagram Feed</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-secondary" href="wedding/" target="_blank" rel="noopener">View Demo →</a>
+          <a class="btn btn-primary" href="../build.html#configurator">Configure</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 3: CHARTER -->
+    <article class="card">
+      <div class="card-thumb">
+        <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1e4a6b"/>
+              <stop offset="100%" stop-color="#0c2335"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="250" fill="url(#g3)"/>
+          <path d="M0,180 Q100,160 200,180 T400,180 L400,250 L0,250 Z" fill="#0a1a28" opacity="0.7"/>
+          <path d="M0,200 Q100,185 200,200 T400,200 L400,250 L0,250 Z" fill="#06121e" opacity="0.85"/>
+          <circle cx="330" cy="60" r="26" fill="#f5c244" opacity="0.9"/>
+          <rect x="40" y="160" width="160" height="14" rx="3" fill="#F7F3EE" opacity="0.85"/>
+          <rect x="40" y="184" width="110" height="10" rx="3" fill="#F7F3EE" opacity="0.5"/>
+          <rect x="40" y="204" width="88" height="22" rx="4" fill="#f5c244"/>
+          <text x="40" y="120" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="24" fill="#F7F3EE">Reel Time Charters</text>
+        </svg>
+        <span class="badge live">Live Demo</span>
+        <span class="price-tag">From $1,697</span>
+      </div>
+      <div class="card-body">
+        <span class="card-niche">Tourism & Recreation</span>
+        <h3 class="card-title">Charter Fishing / Boat Tour</h3>
+        <p class="card-desc">For USCG captains and tour operators. Built for booking conversion — trip pages, captain bio, live booking calendar, and tap-to-call mobile sticky bar.</p>
+        <div class="card-features">
+          <span class="feat">Booking Calendar</span>
+          <span class="feat">Trip Pages</span>
+          <span class="feat">Tap-to-Call</span>
+          <span class="feat">TripAdvisor</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-secondary" href="charter/" target="_blank" rel="noopener">View Demo →</a>
+          <a class="btn btn-primary" href="../build.html#configurator">Configure</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 4: REAL ESTATE -->
+    <article class="card">
+      <div class="card-thumb">
+        <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1c2837"/>
+              <stop offset="100%" stop-color="#0a121b"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="250" fill="url(#g4)"/>
+          <polygon points="240,80 280,50 320,80 320,180 240,180" fill="#F7F3EE" opacity="0.13"/>
+          <polygon points="220,80 260,50 300,80 300,180 220,180" fill="#F7F3EE" opacity="0.18"/>
+          <rect x="40" y="60" width="140" height="10" rx="3" fill="#D4500A" opacity="0.9"/>
+          <rect x="40" y="82" width="220" height="20" rx="3" fill="#F7F3EE" opacity="0.95"/>
+          <rect x="40" y="110" width="170" height="14" rx="3" fill="#F7F3EE" opacity="0.55"/>
+          <rect x="40" y="160" width="160" height="34" rx="6" fill="#F7F3EE"/>
+          <rect x="52" y="170" width="80" height="6" rx="2" fill="#141414" opacity="0.6"/>
+          <rect x="52" y="182" width="120" height="6" rx="2" fill="#141414" opacity="0.4"/>
+        </svg>
+        <span class="badge live">Live Demo</span>
+        <span class="price-tag">From $2,997</span>
+      </div>
+      <div class="card-body">
+        <span class="card-niche">Real Estate</span>
+        <h3 class="card-title">Realtor / Agent Team</h3>
+        <p class="card-desc">Lead-gen site for solo agents and small teams. IDX listings, home valuation lead magnet, neighborhood guide pages, and Calendly booking. Built to close.</p>
+        <div class="card-features">
+          <span class="feat">IDX Search</span>
+          <span class="feat">Home Valuation</span>
+          <span class="feat">Neighborhood Pages</span>
+          <span class="feat">Lead Forms</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-secondary" href="realestate/" target="_blank" rel="noopener">View Demo →</a>
+          <a class="btn btn-primary" href="../build.html#configurator">Configure</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 5: HOME SERVICES -->
+    <article class="card">
+      <div class="card-thumb">
+        <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#D4500A"/>
+              <stop offset="100%" stop-color="#8a330a"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="250" fill="url(#g5)"/>
+          <rect x="40" y="40" width="320" height="170" rx="14" fill="#141414" opacity="0.5"/>
+          <rect x="60" y="68" width="60" height="10" rx="3" fill="#F7F3EE" opacity="0.95"/>
+          <rect x="60" y="86" width="240" height="22" rx="3" fill="#F7F3EE"/>
+          <rect x="60" y="118" width="170" height="12" rx="3" fill="#F7F3EE" opacity="0.6"/>
+          <rect x="60" y="160" width="120" height="32" rx="6" fill="#F7F3EE"/>
+          <rect x="72" y="172" width="96" height="8" rx="2" fill="#141414"/>
+          <rect x="200" y="160" width="50" height="32" rx="6" fill="none" stroke="#F7F3EE" stroke-width="2"/>
+        </svg>
+        <span class="badge live">Live Demo</span>
+        <span class="price-tag">From $1,297</span>
+      </div>
+      <div class="card-body">
+        <span class="card-niche">Home Services</span>
+        <h3 class="card-title">Contractor / Home Services</h3>
+        <p class="card-desc">For HVAC, roofing, pool service, pressure washing, and lawn pros. Tuned for local SEO with service-area pages, before/after gallery, and a multi-step quote form.</p>
+        <div class="card-features">
+          <span class="feat">Quote Form</span>
+          <span class="feat">Service Areas</span>
+          <span class="feat">Before/After</span>
+          <span class="feat">Local SEO</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-secondary" href="services/" target="_blank" rel="noopener">View Demo →</a>
+          <a class="btn btn-primary" href="../build.html#configurator">Configure</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="how-inner">
+    <h2>How it <span class="accent">works.</span></h2>
+    <p class="sub">Pick a template, customize it in the configurator, get your site live in under two weeks.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Preview the demo</h3>
+        <p>Click any template above to see a real working WordPress site you'd actually be buying.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Configure your version</h3>
+        <p>Use the build tool to pick colors, pages, and features. You'll see a live price.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>I build it</h3>
+        <p>I customize the template with your content, photos, and brand. You review along the way.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>You're live</h3>
+        <p>Site launches in 7–14 days. You own it. I'm a text away if anything breaks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <h2>Don't see your <span class="accent">niche?</span></h2>
+  <p>Custom builds start at $1,997. Use the configurator to spec your own — or just text me and we'll talk.</p>
+  <a class="btn btn-primary" href="../build.html">Start the configurator</a>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <h2>Frequently asked.</h2>
+
+  <details>
+    <summary>Can I see a real working demo, or are these just mockups?</summary>
+    <p>Real working demos — not Figma mockups, not screenshots. Every "View Demo" button above opens a fully interactive preview built with the same structure, sections, and styling you'd get as a paying client. Click any card, scroll the menus, try the forms — what you see is what you buy.</p>
+  </details>
+
+  <details>
+    <summary>What do I actually get when I buy a template?</summary>
+    <p>You get a WordPress site that lives on your own hosting (I'll help you set that up), your own domain, and full ownership. Not a subscription, not a rented site. The price covers the template, customization with your photos and copy, basic SEO setup, and launch. After launch you own it forever.</p>
+  </details>
+
+  <details>
+    <summary>How is this different from buying a Squarespace or Wix template?</summary>
+    <p>Three things: (1) WordPress is way more flexible and faster long-term — no monthly platform lock-in. (2) Local optimization — these templates are built knowing Jacksonville and Fernandina Beach businesses, with local SEO baked in. (3) A real human in your area builds it. If you're confused, you text me.</p>
+  </details>
+
+  <details>
+    <summary>Do you build sites outside of these 5 niches?</summary>
+    <p>Absolutely. The configurator lets you spec a custom build for any business. The 5 templates here are just the ones I have a pre-built starting point for, so they're cheaper and faster. Custom builds start at $1,997.</p>
+  </details>
+
+  <details>
+    <summary>How long does it take to launch?</summary>
+    <p>7–14 days from when you send me your content, photos, and brand info. Most clients are live in 10 days.</p>
+  </details>
+
+  <details>
+    <summary>What about hosting and the domain?</summary>
+    <p>If you already have hosting, I'll deploy there. If you don't, I'll recommend the cheapest option that won't fall over (usually around $3/month). You buy the hosting and domain in your name — you own everything. I'm not in the middle of your bill.</p>
+  </details>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Joshua<i>.</i> &nbsp;|&nbsp; Web Design in Fernandina Beach, FL</div>
+    <div class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../build.html">Build</a>
+      <a href="./">Demos</a>
+      <a href="../about.html">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; <span id="yr"></span> Joshua Humphreys. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const ham = document.getElementById('nav-hamburger');
+  const menu = document.getElementById('mobile-menu');
+  if (ham && menu) {
+    ham.addEventListener('click', () => menu.classList.toggle('open'));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+  }
+  // Footer year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

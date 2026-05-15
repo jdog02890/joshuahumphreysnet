@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Amelia Coast Realty | Maria Hernandez — Amelia Island Real Estate</title>
+<meta name="description" content="Buying or selling on Amelia Island? Maria Hernandez specializes in coastal homes, vacation properties, and relocations to Northeast Florida." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%231e2a38'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Lora,serif' font-weight='600' font-size='32' fill='%23c8a45a'%3EAC%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --navy:    #1e2a38;
+    --navy-d:  #131c27;
+    --gold:    #c8a45a;
+    --gold-d:  #a88240;
+    --paper:   #f7f4ee;
+    --cream:   #faf7f1;
+    --line:    #e2dccf;
+    --ink:     #1a1f28;
+    --soft:    #6b7280;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+
+  .demo-banner { background: var(--ink); color: var(--cream); text-align: center; padding: 10px 16px; font-size: 13px; }
+  .demo-banner b { color: var(--gold); }
+  .demo-banner a { color: var(--cream); border-bottom: 1px solid var(--gold); margin-left: 8px; }
+
+  /* NAV */
+  nav.site {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250,247,241,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .brand-wrap { display: flex; align-items: center; gap: 12px; }
+  .brand-mark {
+    width: 42px; height: 42px; border-radius: 6px;
+    background: var(--navy); color: var(--gold);
+    font-family: 'Lora', serif; font-weight: 600; font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .brand {
+    font-family: 'Lora', serif; font-weight: 600;
+    font-size: 18px; color: var(--navy);
+    line-height: 1.1;
+  }
+  .brand small { display: block; font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--soft); font-weight: 500; margin-top: 2px; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink); transition: color .15s; }
+  .nav-links a:hover { color: var(--gold-d); }
+  .nav-cta { background: var(--navy); color: var(--cream) !important; padding: 10px 20px; border-radius: 4px; font-weight: 500; font-size: 13px; transition: background .15s; }
+  .nav-cta:hover { background: var(--gold-d); }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .nav-toggle span { width: 24px; height: 2px; background: var(--ink); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 88vh;
+    overflow: hidden;
+    color: #fff;
+    display: flex; align-items: center;
+    padding: 40px 40px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(120deg, rgba(30,42,56,0.85) 0%, rgba(30,42,56,0.55) 60%, rgba(30,42,56,0.4) 100%),
+      url('https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&w=1600') center/cover;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; width: 100%; }
+  .hero-eyebrow {
+    display: inline-block; padding: 6px 16px;
+    background: rgba(200,164,90,0.15);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .hero h1 {
+    font-family: 'Lora', serif; font-weight: 600;
+    font-size: clamp(2.6rem, 6vw, 5rem);
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    max-width: 720px;
+  }
+  .hero h1 .accent { color: var(--gold); font-style: italic; font-weight: 500; }
+  .hero p.lede {
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    max-width: 540px; margin-bottom: 40px;
+    opacity: 0.92;
+  }
+
+  /* SEARCH WIDGET */
+  .search-widget {
+    background: rgba(255,255,255,0.97);
+    border-radius: 8px;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
+    gap: 8px;
+    max-width: 880px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+  }
+  .search-widget input, .search-widget select {
+    border: none;
+    background: var(--paper);
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--ink);
+    border-radius: 5px;
+    width: 100%;
+  }
+  .search-widget input:focus, .search-widget select:focus { outline: 2px solid var(--gold); }
+  .search-widget button {
+    background: var(--navy); color: var(--cream);
+    padding: 14px 28px;
+    border: none; border-radius: 5px;
+    font-weight: 600; font-size: 13px; cursor: pointer;
+    transition: background .15s;
+  }
+  .search-widget button:hover { background: var(--gold-d); }
+
+  /* HERO META */
+  .hero-meta {
+    margin-top: 36px;
+    display: flex; gap: 28px; flex-wrap: wrap;
+    font-size: 13px;
+    opacity: 0.85;
+  }
+  .hero-meta b { color: var(--gold); font-weight: 600; }
+
+  /* SECTIONS */
+  section { padding: 100px 40px; }
+  .container { max-width: 1180px; margin: 0 auto; }
+  .section-eyebrow {
+    display: block;
+    font-size: 11px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold-d);
+    margin-bottom: 14px; font-weight: 600;
+  }
+  .section-title {
+    font-family: 'Lora', serif; font-weight: 600;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    line-height: 1.1; letter-spacing: -0.015em;
+    color: var(--navy); margin-bottom: 24px;
+  }
+  .section-title em { font-style: italic; color: var(--gold-d); font-weight: 500; }
+  .section-lede { font-size: 1.02rem; color: var(--soft); max-width: 600px; margin-bottom: 50px; line-height: 1.7; }
+
+  /* LISTINGS */
+  .listings-section { background: var(--cream); }
+  .listings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .listing-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .listing-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(30,42,56,0.1); }
+  .listing-thumb { aspect-ratio: 4/3; background-size: cover; background-position: center; position: relative; }
+  .listing-card:nth-child(1) .listing-thumb { background-image: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4) 100%), url('https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&w=900'); }
+  .listing-card:nth-child(2) .listing-thumb { background-image: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4) 100%), url('https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&w=900'); }
+  .listing-card:nth-child(3) .listing-thumb { background-image: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4) 100%), url('https://images.pexels.com/photos/1438832/pexels-photo-1438832.jpeg?auto=compress&w=900'); }
+  .listing-status {
+    position: absolute; top: 14px; left: 14px;
+    background: var(--gold); color: var(--navy);
+    padding: 4px 12px;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    border-radius: 3px; font-weight: 700;
+  }
+  .listing-body { padding: 22px 24px 26px; }
+  .listing-price {
+    font-family: 'Lora', serif; font-weight: 700;
+    font-size: 1.7rem; color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .listing-addr { font-size: 0.95rem; color: var(--ink); margin-bottom: 12px; font-weight: 500; }
+  .listing-meta {
+    display: flex; gap: 14px;
+    font-size: 0.85rem; color: var(--soft);
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .listing-meta b { color: var(--navy); font-weight: 600; }
+
+  /* NEIGHBORHOODS */
+  .hoods-section { background: var(--paper); }
+  .hoods-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .hood-card {
+    aspect-ratio: 3/4;
+    background-size: cover; background-position: center;
+    position: relative; overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .hood-card::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(30,42,56,0) 40%, rgba(30,42,56,0.85) 100%);
+  }
+  .hood-card:nth-child(1) { background-image: url('https://images.pexels.com/photos/1438832/pexels-photo-1438832.jpeg?auto=compress&w=600'); }
+  .hood-card:nth-child(2) { background-image: url('https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&w=600'); }
+  .hood-card:nth-child(3) { background-image: url('https://images.pexels.com/photos/2079249/pexels-photo-2079249.jpeg?auto=compress&w=600'); }
+  .hood-card:nth-child(4) { background-image: url('https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&w=600'); }
+  .hood-info {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+    padding: 22px;
+    color: #fff;
+  }
+  .hood-info h3 {
+    font-family: 'Lora', serif; font-weight: 600;
+    font-size: 1.4rem; margin-bottom: 4px;
+  }
+  .hood-info p {
+    font-size: 0.85rem;
+    opacity: 0.9;
+  }
+  .hood-info .price { color: var(--gold); font-weight: 600; }
+
+  /* SELL SECTION */
+  .sell-section { background: var(--navy); color: var(--cream); }
+  .sell-section .section-title { color: var(--cream); }
+  .sell-section .section-title em { color: var(--gold); }
+  .sell-section .section-eyebrow { color: var(--gold); }
+  .sell-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .sell-text p { color: rgba(247,244,238,0.85); margin-bottom: 18px; font-size: 1.02rem; }
+  .sell-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+  .sell-stat {
+    background: rgba(200,164,90,0.08);
+    border: 1px solid rgba(200,164,90,0.3);
+    padding: 22px;
+    border-radius: 6px;
+  }
+  .sell-stat strong {
+    font-family: 'Lora', serif; font-weight: 600;
+    font-size: 2rem; color: var(--gold); display: block; line-height: 1;
+  }
+  .sell-stat span {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(247,244,238,0.7); margin-top: 4px; display: block;
+  }
+  .valuation-form {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(200,164,90,0.3);
+    padding: 36px;
+    border-radius: 10px;
+  }
+  .valuation-form h3 {
+    font-family: 'Lora', serif; font-weight: 600;
+    font-size: 1.5rem; margin-bottom: 8px; color: var(--cream);
+  }
+  .valuation-form p.sub { font-size: 0.9rem; color: rgba(247,244,238,0.7); margin-bottom: 24px; }
+  .valuation-form label { display: block; margin-bottom: 14px; }
+  .valuation-form label span { display: block; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .valuation-form input {
+    width: 100%; padding: 13px 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(247,244,238,0.2);
+    color: var(--cream); border-radius: 5px;
+    font-family: 'Inter', sans-serif; font-size: 14px;
+  }
+  .valuation-form input:focus { outline: none; border-color: var(--gold); }
+  .valuation-form button {
+    width: 100%; background: var(--gold); color: var(--navy);
+    padding: 14px;
+    border: none; border-radius: 5px; font-weight: 700; font-size: 14px;
+    letter-spacing: 0.05em; cursor: pointer; margin-top: 8px;
+    transition: background .15s;
+  }
+  .valuation-form button:hover { background: #d9b56b; }
+
+  /* TESTIMONIALS */
+  .testimonials-section { background: var(--cream); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .test-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 32px;
+  }
+  .test-stars { color: var(--gold); margin-bottom: 16px; }
+  .test-quote { font-family: 'Lora', serif; font-style: italic; color: var(--ink); margin-bottom: 18px; line-height: 1.55; }
+  .test-author { font-weight: 600; color: var(--navy); font-size: 0.95rem; }
+  .test-meta { font-size: 0.82rem; color: var(--soft); }
+
+  /* AGENT BIO */
+  .agent-section { background: var(--paper); }
+  .agent-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: center; }
+  .agent-img {
+    aspect-ratio: 4/5;
+    background:
+      url('https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&w=900') center/cover;
+    border-radius: 10px;
+  }
+  .agent-creds {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 24px;
+  }
+  .agent-creds span {
+    padding: 6px 14px;
+    background: #fff;
+    border: 1px solid var(--gold);
+    color: var(--gold-d);
+    border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* FOOTER */
+  footer { background: var(--navy-d); color: var(--cream); padding: 50px 40px 28px; }
+  .footer-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer .brand { color: var(--cream); }
+  footer .brand-mark { background: var(--gold); color: var(--navy); }
+  footer p, footer a { font-size: 0.85rem; color: rgba(247,244,238,0.65); }
+  footer .footer-links { display: flex; gap: 24px; }
+  footer .footer-links a:hover { color: var(--gold); }
+  footer .footer-bottom { max-width: 1180px; margin: 36px auto 0; padding-top: 24px; border-top: 1px solid rgba(247,244,238,0.1); text-align: center; font-size: 0.78rem; }
+
+  @media (max-width: 900px) {
+    nav.site { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .brand-wrap small { display: none; }
+    section { padding: 70px 22px; }
+    .hero { padding: 60px 22px; min-height: auto; }
+    .search-widget { grid-template-columns: 1fr; }
+    .listings-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .hoods-grid { grid-template-columns: 1fr 1fr; }
+    .sell-grid, .agent-grid { grid-template-columns: 1fr; gap: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  <b>★ DEMO</b> Real estate agent template · <a href="../../build.html#configurator">Configure your own →</a>
+</div>
+
+<nav class="site">
+  <div class="brand-wrap">
+    <div class="brand-mark">AC</div>
+    <div>
+      <div class="brand">Amelia Coast Realty</div>
+      <small>Maria Hernandez · Broker Associate</small>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#listings">Listings</a></li>
+    <li><a href="#hoods">Neighborhoods</a></li>
+    <li><a href="#sell">Sell My Home</a></li>
+    <li><a href="#agent">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Schedule a Call</a>
+  <button class="nav-toggle"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Top 1% Agent · Amelia Island 2024 & 2025</span>
+    <h1>Your Amelia Island <span class="accent">real estate expert.</span></h1>
+    <p class="lede">Helping families buy, sell, and relocate to Florida's best-kept secret since 2014. $187M in lifetime sales. 100% client satisfaction.</p>
+
+    <form class="search-widget">
+      <input type="text" placeholder="City, neighborhood, zip, or MLS #" />
+      <select>
+        <option>Any Price</option><option>$300k–$600k</option>
+        <option>$600k–$1M</option><option>$1M–$2M</option><option>$2M+</option>
+      </select>
+      <select>
+        <option>Beds</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option>
+      </select>
+      <select>
+        <option>Baths</option><option>1+</option><option>2+</option><option>3+</option>
+      </select>
+      <button type="button">Search</button>
+    </form>
+
+    <div class="hero-meta">
+      <span><b>187</b> Homes sold</span>
+      <span><b>$1.2M</b> Avg sale price</span>
+      <span><b>12 days</b> Avg time on market</span>
+      <span><b>4.99★</b> Zillow rating</span>
+    </div>
+  </div>
+</section>
+
+<section class="listings-section" id="listings">
+  <div class="container">
+    <span class="section-eyebrow">Featured Listings</span>
+    <h2 class="section-title">Currently <em>for sale.</em></h2>
+    <p class="section-lede">Hand-picked homes I'm representing right now. New listings every week.</p>
+    <div class="listings-grid">
+      <div class="listing-card">
+        <div class="listing-thumb"><span class="listing-status">New</span></div>
+        <div class="listing-body">
+          <div class="listing-price">$1,495,000</div>
+          <div class="listing-addr">1812 Ocean Crest Dr · Amelia Island</div>
+          <div class="listing-meta">
+            <span><b>4</b> beds</span>
+            <span><b>3</b> baths</span>
+            <span><b>3,240</b> sqft</span>
+            <span><b>0.31</b> acres</span>
+          </div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-thumb"><span class="listing-status">Open House Sat</span></div>
+        <div class="listing-body">
+          <div class="listing-price">$849,000</div>
+          <div class="listing-addr">442 Tarpon Ave · Fernandina Beach</div>
+          <div class="listing-meta">
+            <span><b>3</b> beds</span>
+            <span><b>2.5</b> baths</span>
+            <span><b>2,180</b> sqft</span>
+            <span><b>0.18</b> acres</span>
+          </div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-thumb"><span class="listing-status">Pending</span></div>
+        <div class="listing-body">
+          <div class="listing-price">$2,650,000</div>
+          <div class="listing-addr">9 Compass Point · Amelia Island</div>
+          <div class="listing-meta">
+            <span><b>5</b> beds</span>
+            <span><b>4.5</b> baths</span>
+            <span><b>4,520</b> sqft</span>
+            <span><b>Beachfront</b></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hoods-section" id="hoods">
+  <div class="container">
+    <span class="section-eyebrow">Neighborhoods</span>
+    <h2 class="section-title">Where you'll <em>live next.</em></h2>
+    <p class="section-lede">Each neighborhood has its own personality. Click any below to see a guide, current listings, and market stats.</p>
+    <div class="hoods-grid">
+      <div class="hood-card">
+        <div class="hood-info">
+          <h3>Amelia Island</h3>
+          <p class="price">$650k – $4M</p>
+          <p>Beachfront living, world-class resorts, golf.</p>
+        </div>
+      </div>
+      <div class="hood-card">
+        <div class="hood-info">
+          <h3>Historic Fernandina</h3>
+          <p class="price">$450k – $1.5M</p>
+          <p>Centre Street, victorian homes, walkability.</p>
+        </div>
+      </div>
+      <div class="hood-card">
+        <div class="hood-info">
+          <h3>Yulee</h3>
+          <p class="price">$280k – $800k</p>
+          <p>Newer construction, good schools, fast growth.</p>
+        </div>
+      </div>
+      <div class="hood-card">
+        <div class="hood-info">
+          <h3>Atlantic Beach</h3>
+          <p class="price">$550k – $3M</p>
+          <p>Jax Beach lifestyle, surf shops, restaurants.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sell-section" id="sell">
+  <div class="container">
+    <div class="sell-grid">
+      <div>
+        <span class="section-eyebrow">Sellers</span>
+        <h2 class="section-title">Thinking of <em>selling?</em></h2>
+        <div class="sell-text">
+          <p>Amelia Island has been a seller's market for five years running. I close homes for an average of 3.2% over list — and 12 days faster than the area average — because of professional staging, drone photography, and a marketing system most agents don't even know exists.</p>
+          <p>Get a no-pressure home valuation in under 24 hours. I'll text you a custom report with your home's likely sale range, comparable recent sales, and a 5-minute plan to maximize your price.</p>
+        </div>
+        <div class="sell-stats">
+          <div class="sell-stat"><strong>3.2%</strong><span>Over list (avg)</span></div>
+          <div class="sell-stat"><strong>12 days</strong><span>Avg time on market</span></div>
+          <div class="sell-stat"><strong>98%</strong><span>Asking-to-sale ratio</span></div>
+          <div class="sell-stat"><strong>187</strong><span>Homes closed</span></div>
+        </div>
+      </div>
+      <form class="valuation-form" action="https://formspree.io/f/your-id-here" method="POST">
+        <h3>What's your home worth?</h3>
+        <p class="sub">Free, no obligation. I'll text or email you a custom valuation within 24 hours.</p>
+        <label><span>Property Address</span><input type="text" name="address" required /></label>
+        <label><span>Your Name</span><input type="text" name="name" required /></label>
+        <label><span>Email</span><input type="email" name="email" required /></label>
+        <label><span>Phone</span><input type="tel" name="phone" required /></label>
+        <button type="submit">Get My Free Valuation</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-section" id="reviews">
+  <div class="container">
+    <span class="section-eyebrow">Client Reviews</span>
+    <h2 class="section-title">What clients <em>say.</em></h2>
+    <p class="section-lede">4.99★ on Zillow over 60+ verified reviews.</p>
+    <div class="testimonials-grid">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"Maria sold our place in 8 days for $42k over asking. She had the photographer scheduled before I'd even signed the listing agreement. Worth every penny."</p>
+        <div class="test-author">Tom & Linda S.</div>
+        <div class="test-meta">Sellers · Amelia Island · 2025</div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"We were relocating from Ohio and never even saw the house in person before making an offer. Maria FaceTimed us through three walk-throughs and answered every question. Closed in 30 days."</p>
+        <div class="test-author">The Calloway Family</div>
+        <div class="test-meta">Buyers · Fernandina · 2025</div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"Third time using Maria. She's straightforward, fights for you in negotiation, and isn't afraid to tell you when a property isn't right. That's rare."</p>
+        <div class="test-author">Robert H.</div>
+        <div class="test-meta">Repeat client · 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="agent-section" id="agent">
+  <div class="container">
+    <div class="agent-grid">
+      <div class="agent-img" aria-hidden="true"></div>
+      <div>
+        <span class="section-eyebrow">Your Agent</span>
+        <h2 class="section-title">Hi, I'm <em>Maria.</em></h2>
+        <p class="section-lede">A South Florida transplant who fell hard for Amelia Island in 2012, got my license in 2014, and never looked back. I work with first-time buyers, retirees, and relocating families — but mostly I work with people who hate being sold to. We'll talk, you'll decide, I'll execute.</p>
+        <div class="agent-creds">
+          <span>FL License #BK3187459</span>
+          <span>SRES Certified</span>
+          <span>ABR Certified</span>
+          <span>Luxury Specialist</span>
+          <span>Bilingual (EN/ES)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div style="display: flex; gap: 14px; align-items: center;">
+      <div class="brand-mark">AC</div>
+      <div class="brand" style="color: var(--cream);">Amelia Coast Realty<br/><small style="color: rgba(247,244,238,0.5);">Maria Hernandez · Broker Associate</small></div>
+    </div>
+    <div class="footer-links">
+      <a href="#listings">Listings</a>
+      <a href="#hoods">Neighborhoods</a>
+      <a href="#sell">Sell</a>
+      <a href="#agent">About</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    1894 Sadler Rd · Fernandina Beach, FL 32034 · 904.555.0156 · maria@ameliacoast.example<br/>
+    &copy; 2026 Amelia Coast Realty. Equal Housing Opportunity. Demo by <a href="https://joshuahumphreys.net" style="color: var(--gold);">Joshua Humphreys</a>.
+  </div>
+</footer>
+
+</body>
+</html>
