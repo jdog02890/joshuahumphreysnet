@@ -4,7 +4,7 @@
 
 ## Services and Pricing
 
-- Starter Website Package: $500 one-time. 1 to 3 custom pages, mobile responsive, basic SEO, contact form, Google Business Profile setup.
+- Starter Website Package: $750 one-time. 1 to 3 custom pages, mobile responsive, basic SEO, contact form, Google Business Profile setup.
 - Professional Website Package: $1,200 one-time. 4 to 8 pages, advanced SEO with schema markup, image gallery, social media integration, analytics, AI-optimized content.
 - E-Commerce Website Package: $2,500 one-time. Full online store with product listings, shopping cart, payment processing, inventory management.
 - AI-Ready Website Package: From $2,000. Website built with Generative Engine Optimization (GEO) for visibility in ChatGPT, Perplexity, Google AI, and Claude.
