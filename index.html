@@ -1452,9 +1452,8 @@
       <li><a href="#packages">Packages</a></li>
       <li><a href="#portfolio">Work</a></li>
       <li><a href="build.html">Build</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#why">Why Me</a></li>
       <li><a href="about.html">About</a></li>
+      <li><a href="review.html">Reviews</a></li>
       <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
     </ul>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
@@ -1470,9 +1469,8 @@
     <a href="#packages" onclick="closeMobileMenu()">Packages</a>
     <a href="#portfolio" onclick="closeMobileMenu()">Work</a>
     <a href="build.html" onclick="closeMobileMenu()">Build</a>
-    <a href="#process" onclick="closeMobileMenu()">Process</a>
-    <a href="#why" onclick="closeMobileMenu()">Why Me</a>
     <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="review.html" onclick="closeMobileMenu()">Reviews</a>
     <a href="#contact" class="mobile-menu-cta" onclick="closeMobileMenu()">Get in Touch</a>
   </div>
 
@@ -1716,6 +1714,22 @@
     </div>
   </section>
 
+  <!-- REVIEW CTA (mid-page) -->
+  <div class="fade-up" style="background:var(--cream2);padding:28px 40px;">
+    <div style="max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#D4500A"/>
+        </svg>
+        <span style="font-size:0.92rem;color:var(--ink);">Already a past client? <b>Your review helps more than you'd think.</b></span>
+      </div>
+      <a href="review.html" style="display:inline-flex;align-items:center;gap:8px;color:var(--orange);font-size:0.88rem;font-weight:600;text-decoration:none;white-space:nowrap;">
+        Leave a Google Review
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+
   <!-- PACKAGES -->
   <section id="packages">
     <div class="section-inner">
@@ -1848,155 +1862,115 @@
     </div>
   </section>
 
-  <!-- BUILD YOUR OWN (configurator promo) -->
-  <section id="build-cta" style="background:var(--cream2);padding:80px 40px;">
-    <div class="section-inner build-cta-grid" style="display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;">
-      <div class="fade-up">
-        <span class="section-label">Or build your own</span>
-        <h2 class="section-title" style="margin-bottom:16px;">Not sure which package fits?<br>Build it yourself.</h2>
-        <p style="font-size:1rem;color:var(--ink2);line-height:1.7;margin-bottom:24px;max-width:520px;">
-          Use the live configurator to pick your industry, style, color palette, features, and page count &mdash; and see your price range update instantly. Five short steps. Submissions come straight to my inbox.
-        </p>
-        <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;">
-          <a href="build.html" class="btn-cta">
-            Open the configurator
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="build.html#templates" style="color:var(--ink);text-decoration:none;font-size:0.9rem;font-weight:600;border-bottom:1.5px solid var(--ink);padding-bottom:2px;">Or browse pre-made templates from $750 &rarr;</a>
-        </div>
+  <!-- BUILD YOUR OWN (compact banner) -->
+  <div id="build-cta" style="background:var(--ink);padding:40px;">
+    <div style="max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+      <div style="flex:1;min-width:260px;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;color:var(--cream);margin-bottom:6px;">Not sure which package fits? Build it yourself.</div>
+        <p style="color:rgba(247,243,238,0.6);font-size:0.9rem;margin:0;">Pick your industry, style, colors, and features with the live configurator. Five steps, instant pricing.</p>
       </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="build.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:var(--cream);padding:12px 22px;border-radius:6px;font-size:0.9rem;font-weight:600;text-decoration:none;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#F06020'" onmouseout="this.style.background='#D4500A'">
+          Open the configurator
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="build.html#templates" style="display:inline-flex;align-items:center;gap:8px;color:rgba(247,243,238,0.7);padding:12px 16px;font-size:0.85rem;font-weight:500;text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='#F7F3EE'" onmouseout="this.style.color='rgba(247,243,238,0.7)'">
+          Browse templates from $500 &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
 
-      <div class="fade-up" style="background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:28px;">
-        <div style="display:flex;gap:8px;margin-bottom:24px;">
-          <span style="height:4px;flex:1;background:var(--orange);border-radius:2px;"></span>
-          <span style="height:4px;flex:1;background:var(--orange);opacity:0.5;border-radius:2px;"></span>
-          <span style="height:4px;flex:1;background:var(--cream3);border-radius:2px;"></span>
-          <span style="height:4px;flex:1;background:var(--cream3);border-radius:2px;"></span>
-          <span style="height:4px;flex:1;background:var(--cream3);border-radius:2px;"></span>
-          <span style="height:4px;flex:1;background:var(--cream3);border-radius:2px;"></span>
+  <!-- WHY ME (compact) -->
+  <section id="why" style="padding:48px 40px;">
+    <div class="section-inner">
+      <div class="fade-up" style="text-align:center;margin-bottom:28px;">
+        <span class="section-label">Why Work With Me</span>
+        <h2 class="section-title" style="margin-bottom:8px;">Local, reliable, and actually here.</h2>
+        <p style="color:var(--muted);font-size:0.95rem;">I'm not an agency. I'm a real person who picks up the phone.</p>
+      </div>
+      <div class="fade-up" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:900px;margin:0 auto;">
+        <div style="text-align:center;padding:20px 12px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(212,80,10,0.08);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 2C7.24 2 5 4.24 5 7c0 4 5 11 5 11s5-7 5-11c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 1 1 10 5a1.5 1.5 0 0 1 0 3.5z" fill="#D4500A"/></svg>
+          </div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.9rem;color:var(--ink);margin-bottom:4px;">Local + Remote</div>
+          <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">In-person in NE Florida, remote anywhere in the U.S.</div>
         </div>
-        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Step preview</div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:-0.02em;color:var(--ink);margin-bottom:18px;">Pick a style vibe.</h3>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div style="background:var(--cream2);border:1px solid var(--border);border-radius:10px;padding:14px 12px;">
-            <div style="font-size:1.1rem;margin-bottom:4px;">&#9650;</div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.88rem;color:var(--ink);">Modern</div>
-            <div style="font-size:0.74rem;color:var(--muted);margin-top:2px;">Clean and spacious</div>
+        <div style="text-align:center;padding:20px 12px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(212,80,10,0.08);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 1a9 9 0 1 0 0 18A9 9 0 0 0 10 1zm.75 13.5h-1.5v-1.5h1.5v1.5zm0-3.5h-1.5c0-2.25 2.25-2.06 2.25-3.38C11.5 6.73 10.88 6 10 6c-.88 0-1.5.73-1.5 1.62H7c0-1.69 1.34-3.12 3-3.12s3 1.43 3 3.12c0 1.88-2.25 2.06-2.25 3.38z" fill="#D4500A"/></svg>
           </div>
-          <div style="background:var(--cream2);border:1px solid var(--orange);border-radius:10px;padding:14px 12px;position:relative;box-shadow:0 4px 16px rgba(212,80,10,0.08);">
-            <div style="font-size:1.1rem;margin-bottom:4px;">&#9632;</div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.88rem;color:var(--ink);">Bold</div>
-            <div style="font-size:0.74rem;color:var(--muted);margin-top:2px;">Big type, attitude</div>
-            <div style="position:absolute;top:8px;right:8px;width:16px;height:16px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;">
-              <svg width="8" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 3l2.5 2.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-          </div>
-          <div style="background:var(--cream2);border:1px solid var(--border);border-radius:10px;padding:14px 12px;">
-            <div style="font-size:1.1rem;margin-bottom:4px;">&#9679;</div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.88rem;color:var(--ink);">Classic</div>
-            <div style="font-size:0.74rem;color:var(--muted);margin-top:2px;">Timeless</div>
-          </div>
-          <div style="background:var(--cream2);border:1px solid var(--border);border-radius:10px;padding:14px 12px;">
-            <div style="font-size:1.1rem;margin-bottom:4px;">&mdash;</div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.88rem;color:var(--ink);">Minimal</div>
-            <div style="font-size:0.74rem;color:var(--muted);margin-top:2px;">Less is more</div>
-          </div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.9rem;color:var(--ink);margin-bottom:4px;">Flat-Rate Pricing</div>
+          <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">One clear price upfront. No hourly billing or surprises.</div>
         </div>
-        <div style="margin-top:18px;text-align:center;font-size:0.8rem;color:var(--muted);">
-          Preview only &mdash; <a href="build.html" style="color:var(--orange);font-weight:600;text-decoration:none;">try the full configurator &rarr;</a>
+        <div style="text-align:center;padding:20px 12px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(212,80,10,0.08);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2zm.75 8.75h-4v-1.5h2.5V5.5h1.5v5.25z" fill="#D4500A"/></svg>
+          </div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.9rem;color:var(--ink);margin-bottom:4px;">1-2 Week Delivery</div>
+          <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">Most websites done fast. GBP setups often same-day.</div>
+        </div>
+        <div style="text-align:center;padding:20px 12px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(212,80,10,0.08);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 2L3 7v1h14V7L10 2zM4 9v6h2V9H4zm5 0v6h2V9H9zm5 0v6h2V9h-2zM3 16h14v2H3v-2z" fill="#D4500A"/></svg>
+          </div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.9rem;color:var(--ink);margin-bottom:4px;">CompTIA A+</div>
+          <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">Certified IT professional with current tools and skills.</div>
         </div>
       </div>
     </div>
   </section>
-
   <style>
-    @media (max-width: 900px) {
-      #build-cta .build-cta-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-    }
     @media (max-width: 768px) {
-      #build-cta { padding: 60px 24px !important; }
+      #why .section-inner > .fade-up:last-child { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 480px) {
+      #why .section-inner > .fade-up:last-child { grid-template-columns: 1fr !important; }
+      #why { padding: 36px 20px !important; }
     }
   </style>
 
-  <!-- WHY ME -->
-  <section id="why">
+  <!-- PROCESS (compact) -->
+  <section id="process" style="padding:48px 40px;background:var(--cream2);">
     <div class="section-inner">
-      <span class="section-label fade-up">Why Work With Me</span>
-      <h2 class="section-title fade-up">Local, reliable,<br>and actually here.</h2>
-      <p class="section-sub fade-up">I'm not an agency. I'm a real person in your community who picks up the phone.</p>
-
-      <div class="why-grid">
-            <div class="why-card fade-up">
-              <span class="why-icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 2C7.24 2 5 4.24 5 7c0 4 5 11 5 11s5-7 5-11c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 1 1 10 5a1.5 1.5 0 0 1 0 3.5z" fill="currentColor"/>
-                </svg>
-              </span>
-              <h3>Local &amp; Remote Nationwide</h3>
-              <p>Based in Fernandina Beach for in-person work across Northeast Florida. Available remotely for clients anywhere in the United States. You don't have to be local to work with me.</p>
-            </div>
-            <div class="why-card fade-up">
-              <span class="why-icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 1a9 9 0 1 0 0 18A9 9 0 0 0 10 1zm.75 13.5h-1.5v-1.5h1.5v1.5zm0-3.5h-1.5c0-2.25 2.25-2.06 2.25-3.38C11.5 6.73 10.88 6 10 6c-.88 0-1.5.73-1.5 1.62H7c0-1.69 1.34-3.12 3-3.12s3 1.43 3 3.12c0 1.88-2.25 2.06-2.25 3.38z" fill="currentColor"/>
-                </svg>
-              </span>
-              <h3>Flat-Rate Quotes</h3>
-              <p>We talk through what you need, I give you a price upfront, and that's what you pay. No surprises.</p>
-            </div>
-            <div class="why-card fade-up">
-              <span class="why-icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2zm.75 8.75h-4v-1.5h2.5V5.5h1.5v5.25z" fill="currentColor"/>
-                </svg>
-              </span>
-              <h3>Quick to Deliver</h3>
-              <p>Most websites are done in 1 to 2 weeks. Google Business Profile setups are often same-day.</p>
-            </div>
-            <div class="why-card fade-up">
-              <span class="why-icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 2L3 7v1h14V7L10 2zM4 9v6h2V9H4zm5 0v6h2V9H9zm5 0v6h2V9h-2zM3 16h14v2H3v-2z" fill="currentColor"/>
-                </svg>
-              </span>
-              <h3>CompTIA A+</h3>
-              <p>Industry standard certification for IT support professionals. I keep up with current tools so you always get modern solutions.</p>
-            </div>
+      <div class="fade-up" style="text-align:center;margin-bottom:28px;">
+        <span class="section-label">How It Works</span>
+        <h2 class="section-title" style="margin-bottom:0;">Simple process, no runaround.</h2>
       </div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section id="process">
-    <div class="section-inner">
-      <span class="section-label fade-up">How It Works</span>
-      <h2 class="section-title fade-up">Simple process,<br>no runaround.</h2>
-      <p class="section-sub fade-up">From first message to finished product, here's how working with me goes.</p>
-
-      <div class="process-steps">
-        <div class="process-step fade-up">
-          <h3>Discovery Call</h3>
-          <p>We talk about your business, what you need, and what your goals are. No pressure, no sales pitch.</p>
-          <span class="step-time">Day 1</span>
+      <div class="process-compact fade-up" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:880px;margin:0 auto;">
+        <div style="text-align:center;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:rgba(212,80,10,0.18);margin-bottom:6px;">01</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.92rem;color:var(--ink);margin-bottom:4px;">Discovery Call</div>
+          <div style="font-size:0.82rem;color:var(--muted);line-height:1.5;">We talk goals. No pressure, no sales pitch.</div>
         </div>
-        <div class="process-step fade-up">
-          <h3>Quote &amp; Plan</h3>
-          <p>I put together a flat-rate quote and a clear plan so you know exactly what you're getting and what it costs.</p>
-          <span class="step-time">Day 1-2</span>
+        <div style="text-align:center;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:rgba(212,80,10,0.18);margin-bottom:6px;">02</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.92rem;color:var(--ink);margin-bottom:4px;">Quote + Plan</div>
+          <div style="font-size:0.82rem;color:var(--muted);line-height:1.5;">Clear price, clear plan, before any work starts.</div>
         </div>
-        <div class="process-step fade-up">
-          <h3>Build &amp; Review</h3>
-          <p>I get to work building your site or setting up your service. You get updates and can give feedback along the way.</p>
-          <span class="step-time">Week 1-2</span>
+        <div style="text-align:center;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:rgba(212,80,10,0.18);margin-bottom:6px;">03</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.92rem;color:var(--ink);margin-bottom:4px;">Build + Review</div>
+          <div style="font-size:0.82rem;color:var(--muted);line-height:1.5;">I build. You review and give feedback along the way.</div>
         </div>
-        <div class="process-step fade-up">
-          <h3>Launch &amp; Support</h3>
-          <p>Once you're happy, we go live. I stick around after launch to make sure everything runs smoothly.</p>
-          <span class="step-time">Ongoing</span>
+        <div style="text-align:center;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:rgba(212,80,10,0.18);margin-bottom:6px;">04</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.92rem;color:var(--ink);margin-bottom:4px;">Launch + Support</div>
+          <div style="font-size:0.82rem;color:var(--muted);line-height:1.5;">We go live. I stick around to make sure it runs smooth.</div>
         </div>
       </div>
     </div>
   </section>
+  <style>
+    @media (max-width: 768px) {
+      .process-compact { grid-template-columns: repeat(2, 1fr) !important; }
+      #process { padding: 36px 20px !important; }
+    }
+    @media (max-width: 480px) {
+      .process-compact { grid-template-columns: 1fr !important; gap: 12px !important; }
+    }
+  </style>
 
   <!-- FAQ -->
   <section id="faq">
