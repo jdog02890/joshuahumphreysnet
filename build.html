@@ -13,7 +13,7 @@
   <meta property="og:image" content="https://joshuahumphreys.net/joshua-photo.jpeg" />
   <link rel="canonical" href="https://joshuahumphreys.net/build" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23141414'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Space Grotesk,Arial,sans-serif' font-weight='700' font-size='36' fill='%23F7F3EE'%3EJ%3Ctspan fill='%23D4500A'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -613,11 +613,11 @@
       min-height: 460px;
     }
 
-    /* Style variants */
-    .preview-site[data-style="Modern"]  { --p-radius: 8px;  --p-weight: 600; --p-display: 'Space Grotesk', sans-serif; --p-font: 'Inter', sans-serif; }
-    .preview-site[data-style="Classic"] { --p-radius: 3px;  --p-weight: 600; --p-display: 'Fraunces', 'Lora', Georgia, serif; --p-font: 'Inter', sans-serif; }
-    .preview-site[data-style="Bold"]    { --p-radius: 12px; --p-weight: 800; --p-display: 'Space Grotesk', sans-serif; --p-font: 'Inter', sans-serif; }
-    .preview-site[data-style="Minimal"] { --p-radius: 2px;  --p-weight: 400; --p-display: 'Inter', sans-serif; --p-font: 'Inter', sans-serif; }
+    /* Style variants — each has a distinct font pairing */
+    .preview-site[data-style="Modern"]  { --p-radius: 8px;  --p-weight: 600; --p-display: 'Space Grotesk', sans-serif; --p-font: 'DM Sans', 'Inter', sans-serif; }
+    .preview-site[data-style="Classic"] { --p-radius: 3px;  --p-weight: 600; --p-display: 'Playfair Display', Georgia, serif; --p-font: 'Inter', sans-serif; }
+    .preview-site[data-style="Bold"]    { --p-radius: 12px; --p-weight: 800; --p-display: 'Outfit', sans-serif; --p-font: 'Outfit', sans-serif; }
+    .preview-site[data-style="Minimal"] { --p-radius: 2px;  --p-weight: 400; --p-display: 'DM Sans', sans-serif; --p-font: 'DM Sans', sans-serif; }
 
     .preview-nav {
       display: flex; justify-content: space-between; align-items: center;
@@ -1748,8 +1748,8 @@
         sub: 'A 30-seat kitchen on Centre Street pulling the freshest catch of the day.',
         cta: 'Reserve a Table', navExtra: ['Menu', 'About'],
         gradient: ['#3B2314','#C4651A'], artAngle: '135deg',
-        logoCSS: 'font-style:italic;letter-spacing:0;', brandSuffix: '',
-        ctaRadius: '4px', secondaryCTA: true,
+        logoCSS: 'font-family:Playfair Display,Georgia,serif;font-style:italic;letter-spacing:0;font-weight:600;', brandSuffix: '',
+        ctaRadius: '4px', secondaryCTA: true, defaultStyle: 'Classic',
         defaultColors: { bg:'#FDF8F3', primary:'#3B2314', accent:'#C4651A', text:'#3B2314', muted:'#A09080' }
       },
       'Salon / Spa': {
@@ -1758,8 +1758,8 @@
         sub: 'Specialty color, balayage, and skincare in a calm, modern studio.',
         cta: 'Book Online', navExtra: ['Services', 'Team'],
         gradient: ['#3D2233','#D4829E'], artAngle: '160deg',
-        logoCSS: 'text-transform:lowercase;letter-spacing:0.1em;font-weight:400;font-family:Inter,sans-serif;font-size:13px;', brandSuffix: '',
-        ctaRadius: '20px', secondaryCTA: false,
+        logoCSS: 'text-transform:lowercase;letter-spacing:0.1em;font-weight:400;font-family:DM Sans,sans-serif;font-size:13px;', brandSuffix: '',
+        ctaRadius: '20px', secondaryCTA: false, defaultStyle: 'Minimal',
         defaultColors: { bg:'#FBF5F8', primary:'#3D2233', accent:'#B5547A', text:'#3D2233', muted:'#A08890' }
       },
       'Real Estate': {
@@ -1768,8 +1768,8 @@
         sub: 'Helping families buy, sell, and relocate to Amelia Island and Jacksonville.',
         cta: 'Schedule a Call', navExtra: ['Listings', 'Areas'],
         gradient: ['#1A2B4A','#4A90D9'], artAngle: '180deg',
-        logoCSS: 'text-transform:uppercase;letter-spacing:0.14em;font-size:11px;', brandSuffix: '',
-        ctaRadius: '3px', secondaryCTA: true,
+        logoCSS: 'text-transform:uppercase;letter-spacing:0.14em;font-size:11px;font-family:Space Grotesk,sans-serif;', brandSuffix: '',
+        ctaRadius: '3px', secondaryCTA: true, defaultStyle: 'Modern',
         defaultColors: { bg:'#F4F7FA', primary:'#1A2B4A', accent:'#2E6AB4', text:'#1A2B4A', muted:'#8090A0' }
       },
       'Fitness / Gym': {
@@ -1778,8 +1778,8 @@
         sub: 'Group classes, personal training, and a gym that actually knows your name.',
         cta: 'Start Free Trial', navExtra: ['Classes', 'Memberships'],
         gradient: ['#0D0D0D','#E8553A'], artAngle: '90deg',
-        logoCSS: 'text-transform:uppercase;letter-spacing:0.18em;font-size:12px;font-weight:800;', brandSuffix: '',
-        ctaRadius: '0px', secondaryCTA: false,
+        logoCSS: 'text-transform:uppercase;letter-spacing:0.18em;font-size:12px;font-weight:800;font-family:Outfit,sans-serif;', brandSuffix: '',
+        ctaRadius: '0px', secondaryCTA: false, defaultStyle: 'Bold',
         defaultColors: { bg:'#1A1A1A', primary:'#F0F0F0', accent:'#E8553A', text:'#F0F0F0', muted:'#777' }
       },
       'Professional Services': {
@@ -1788,8 +1788,8 @@
         sub: 'Contracts, LLC formation, and quiet advice. Twenty years of experience.',
         cta: 'Free Consultation', navExtra: ['Practice', 'Team'],
         gradient: ['#1C2331','#8B7A3E'], artAngle: '145deg',
-        logoCSS: 'font-family:Georgia,Fraunces,serif;font-weight:400;letter-spacing:0.02em;', brandSuffix: ' & Co.',
-        ctaRadius: '3px', secondaryCTA: true,
+        logoCSS: 'font-family:Playfair Display,Georgia,serif;font-weight:400;letter-spacing:0.02em;', brandSuffix: ' & Co.',
+        ctaRadius: '3px', secondaryCTA: true, defaultStyle: 'Classic',
         defaultColors: { bg:'#F6F5F0', primary:'#1C2331', accent:'#8B7A3E', text:'#1C2331', muted:'#8A8878' }
       },
       'Retail / Boutique': {
@@ -1798,8 +1798,8 @@
         sub: 'Beach essentials, gifts, and home pieces curated from independent makers.',
         cta: 'Shop Now', navExtra: ['Shop', 'Lookbook'],
         gradient: ['#2C3028','#6B7F5E'], artAngle: '120deg',
-        logoCSS: 'text-transform:lowercase;letter-spacing:0.06em;', brandSuffix: ' & co.',
-        ctaRadius: '20px', secondaryCTA: true,
+        logoCSS: 'text-transform:lowercase;letter-spacing:0.06em;font-family:DM Sans,sans-serif;', brandSuffix: ' & co.',
+        ctaRadius: '20px', secondaryCTA: true, defaultStyle: 'Minimal',
         defaultColors: { bg:'#F8F6F2', primary:'#2C3028', accent:'#6B7F5E', text:'#2C3028', muted:'#8A8A80' }
       },
       'Trades / Home Services': {
@@ -1808,8 +1808,8 @@
         sub: 'Pressure washing, painting, and exterior services across Nassau County.',
         cta: 'Get a Free Quote', navExtra: ['Services', 'Areas'],
         gradient: ['#1B3A2D','#E09F3E'], artAngle: '135deg',
-        logoCSS: 'text-transform:uppercase;letter-spacing:0.12em;font-size:11px;font-weight:700;', brandSuffix: '',
-        ctaRadius: '6px', secondaryCTA: false,
+        logoCSS: 'text-transform:uppercase;letter-spacing:0.12em;font-size:11px;font-weight:700;font-family:Outfit,sans-serif;', brandSuffix: '',
+        ctaRadius: '6px', secondaryCTA: false, defaultStyle: 'Bold',
         defaultColors: { bg:'#F5F2EC', primary:'#1B3A2D', accent:'#E09F3E', text:'#1B3A2D', muted:'#8A8070' }
       },
       'Creative / Portfolio': {
@@ -1818,8 +1818,8 @@
         sub: 'Editorial portraits and commercial work for small brands on the East Coast.',
         cta: 'Start a Project', navExtra: ['Portfolio', 'About'],
         gradient: ['#2A1B3D','#7B4F9D'], artAngle: '170deg',
-        logoCSS: 'font-weight:400;letter-spacing:0.08em;font-size:13px;', brandSuffix: '',
-        ctaRadius: '2px', secondaryCTA: true,
+        logoCSS: 'font-weight:400;letter-spacing:0.08em;font-size:13px;font-family:DM Sans,sans-serif;', brandSuffix: '',
+        ctaRadius: '2px', secondaryCTA: true, defaultStyle: 'Minimal',
         defaultColors: { bg:'#F7F4FA', primary:'#2A1B3D', accent:'#7B4F9D', text:'#2A1B3D', muted:'#8A7F95' }
       },
       'Other': {
@@ -1829,7 +1829,7 @@
         cta: 'Get Started', navExtra: ['Services', 'About'],
         gradient: ['#2C2C2C','#666'], artAngle: '135deg',
         logoCSS: '', brandSuffix: '',
-        ctaRadius: '8px', secondaryCTA: true,
+        ctaRadius: '8px', secondaryCTA: true, defaultStyle: 'Modern',
         defaultColors: { bg:'#F5F5F5', primary:'#2C2C2C', accent:'#555', text:'#2C2C2C', muted:'#888' }
       }
     };
@@ -1893,10 +1893,10 @@
       }
       footerBrand.textContent = `© ${tpl.brand}${suffix}`;
 
-      // --- Style-driven layout
-      const sty = state.style || 'Modern';
+      // --- Style-driven layout (use industry default if user hasn't picked one)
+      const sty = state.style || tpl.defaultStyle || 'Modern';
       site.setAttribute('data-style', sty);
-      document.getElementById('preview-style-label').textContent = state.style ? sty : 'Default style';
+      document.getElementById('preview-style-label').textContent = state.style ? sty : sty + ' (default)';
 
       // --- Palette-driven colors (or industry default)
       const pal = state.palette;
@@ -1922,8 +1922,11 @@
 
       // --- Industry-specific hero gradient
       const heroArt = document.getElementById('preview-hero-art');
-      if (tpl.gradient) {
-        const angle = tpl.artAngle || '135deg';
+      const angle = tpl.artAngle || '135deg';
+      if (pal && PALETTE_COLORS[pal]) {
+        const pc = PALETTE_COLORS[pal];
+        heroArt.style.background = `linear-gradient(${angle}, ${pc.primary} 0%, ${pc.accent} 100%)`;
+      } else if (tpl.gradient) {
         heroArt.style.background = `linear-gradient(${angle}, ${tpl.gradient[0]} 0%, ${tpl.gradient[1]} 100%)`;
       }
 
