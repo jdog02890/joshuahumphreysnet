@@ -888,7 +888,7 @@
             </div>
             <div class="template-footer">
               <div class="template-price">From $500<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig()">Configure</button>
+              <button class="template-btn" onclick="scrollToConfig('Restaurant / Cafe')">Configure</button>
             </div>
           </div>
         </article>
@@ -920,7 +920,7 @@
             </div>
             <div class="template-footer">
               <div class="template-price">From $550<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig()">Configure</button>
+              <button class="template-btn" onclick="scrollToConfig('Salon / Spa')">Configure</button>
             </div>
           </div>
         </article>
@@ -952,7 +952,7 @@
             </div>
             <div class="template-footer">
               <div class="template-price">From $700<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig()">Configure</button>
+              <button class="template-btn" onclick="scrollToConfig('Real Estate')">Configure</button>
             </div>
           </div>
         </article>
@@ -984,7 +984,7 @@
             </div>
             <div class="template-footer">
               <div class="template-price">From $550<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig()">Configure</button>
+              <button class="template-btn" onclick="scrollToConfig('Fitness / Gym')">Configure</button>
             </div>
           </div>
         </article>
@@ -1016,7 +1016,7 @@
             </div>
             <div class="template-footer">
               <div class="template-price">From $800<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig()">Configure</button>
+              <button class="template-btn" onclick="scrollToConfig('Professional Services')">Configure</button>
             </div>
           </div>
         </article>
@@ -1048,7 +1048,7 @@
             </div>
             <div class="template-footer">
               <div class="template-price">From $950<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig()">Configure</button>
+              <button class="template-btn" onclick="scrollToConfig('Retail / Boutique')">Configure</button>
             </div>
           </div>
         </article>
@@ -1516,8 +1516,21 @@
     });
 
     // === SCROLL-TO-CONFIG (used by template "Configure" buttons) ===
-    function scrollToConfig() {
+    function scrollToConfig(industry) {
       document.getElementById('configurator').scrollIntoView({ behavior: 'smooth' });
+      if (industry) {
+        const grid = document.querySelector('[data-field="industry"]');
+        const card = grid.querySelector('[data-value="' + industry + '"]');
+        if (card) {
+          grid.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+          state.industry = industry;
+          const step = card.closest('.step');
+          const nextBtn = step.querySelector('[data-next]');
+          if (nextBtn) nextBtn.disabled = false;
+          updatePreview();
+        }
+      }
     }
 
     // === CONFIGURATOR STATE ===
