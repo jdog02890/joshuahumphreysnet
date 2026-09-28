@@ -1,69 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base target="_self">
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex">
 <title>Studio Iris - Demo Preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#FAFAF8;--primary:#1A1A1A;--accent:#7C5CFC;--text:#1A1A1A;--muted:#999;--display:'Space Grotesk',sans-serif;--body:'DM Sans',sans-serif;--radius:8px;--weight:600}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden}a{color:inherit;text-decoration:none}
-.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid rgba(0,0,0,0.06);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(8px)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden;padding-bottom:36px}a{color:inherit;text-decoration:none}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(250,250,248,0.92);border-bottom:1px solid rgba(0,0,0,0.05);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(12px)}
 .nav-brand{font-family:var(--display);font-weight:var(--weight);font-size:15px;color:var(--primary)}
-.nav-links{display:flex;gap:20px;font-size:12px;color:var(--muted);font-weight:500}.nav-links a{transition:color 0.2s;cursor:pointer}.nav-links a:hover{color:var(--accent)}
-.hero{padding:56px 24px 40px}.hero-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-.hero h1{font-family:var(--display);font-weight:var(--weight);font-size:28px;line-height:1.1;letter-spacing:-0.02em;color:var(--primary);margin-bottom:12px}
-.hero p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:10px 20px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:none;cursor:pointer;transition:opacity 0.2s}.btn-primary:hover{opacity:0.9}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--primary);padding:10px 20px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:1px solid rgba(0,0,0,0.15);cursor:pointer;transition:background 0.2s}.btn-secondary:hover{background:rgba(0,0,0,0.04)}
+.nav-links{display:flex;gap:20px;font-size:12px;color:var(--muted);font-weight:500}.nav-links a{transition:color 0.25s;cursor:pointer;position:relative}.nav-links a:hover{color:var(--accent)}.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.3s}.nav-links a:hover::after{width:100%}
+
+.hero{padding:56px 24px 32px}.hero-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px}.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--accent)}
+.hero h1{font-family:var(--display);font-weight:var(--weight);font-size:30px;line-height:1.08;letter-spacing:-0.03em;color:var(--primary);margin-bottom:12px}
+.hero p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:20px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:11px 22px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 2px 12px rgba(124,92,252,0.25)}.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(124,92,252,0.35)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--primary);padding:11px 22px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:1px solid rgba(0,0,0,0.12);cursor:pointer;transition:border-color 0.25s,background 0.25s}.btn-secondary:hover{background:rgba(0,0,0,0.02);border-color:var(--accent)}
 .hero-cta-row{display:flex;gap:10px;flex-wrap:wrap}
-.portfolio{padding:24px}.portfolio h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:16px}
+
+/* CLIENTS STRIP */
+.clients{padding:20px 24px;border-top:1px solid rgba(0,0,0,0.05);border-bottom:1px solid rgba(0,0,0,0.05)}
+.clients-label{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:10px}
+.clients-logos{display:flex;gap:20px;align-items:center}
+.client-logo{width:48px;height:20px;border-radius:3px;background:rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:8px;color:var(--muted);font-weight:600;letter-spacing:0.04em}
+
+/* PORTFOLIO */
+.portfolio{padding:32px 24px}.portfolio h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:6px}
+.portfolio-sub{font-size:11px;color:var(--muted);margin-bottom:16px}
 .port-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.port-card{border-radius:var(--radius);overflow:hidden;cursor:default;transition:transform 0.2s}
-.port-card:hover{transform:translateY(-2px)}
-.port-img{height:90px;position:relative;overflow:hidden}
+.port-card{border-radius:var(--radius);overflow:hidden;cursor:default;transition:transform 0.3s,box-shadow 0.3s}
+.port-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.08)}
+.port-img{height:100px;position:relative;overflow:hidden}
 .port-img.a{background:linear-gradient(135deg,var(--accent),#FC5C7D)}
 .port-img.b{background:linear-gradient(135deg,#0F2027,var(--accent))}
 .port-img.c{background:linear-gradient(135deg,#F7971E,#FFD200)}
 .port-img.d{background:linear-gradient(135deg,var(--primary),#434343)}
-.port-label{padding:8px 10px;background:rgba(0,0,0,0.03)}
-.port-title{font-weight:600;font-size:10px;color:var(--primary)}
-.port-type{font-size:9px;color:var(--muted)}
-.about{padding:32px 24px;border-top:1px solid rgba(0,0,0,0.06)}
+.port-img::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0);transition:background 0.3s}
+.port-card:hover .port-img::after{background:rgba(0,0,0,0.1)}
+.port-img-overlay{position:absolute;bottom:8px;left:8px;z-index:2;opacity:0;transform:translateY(4px);transition:opacity 0.3s,transform 0.3s}
+.port-card:hover .port-img-overlay{opacity:1;transform:translateY(0)}
+.port-img-tag{font-size:8px;font-weight:700;text-transform:uppercase;background:rgba(255,255,255,0.9);color:var(--primary);padding:2px 6px;border-radius:3px;letter-spacing:0.04em}
+.port-label{padding:10px 12px;background:rgba(0,0,0,0.02)}
+.port-title{font-weight:600;font-size:11px;color:var(--primary)}
+.port-type{font-size:9px;color:var(--muted);margin-top:1px}
+
+/* SERVICES */
+.services{padding:32px 24px;border-top:1px solid rgba(0,0,0,0.05)}
+.services h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:16px}
+.svc-list{display:flex;flex-direction:column;gap:8px}
+.svc-item{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:rgba(0,0,0,0.02);border-radius:var(--radius);transition:background 0.2s,transform 0.2s;cursor:default}
+.svc-item:hover{background:rgba(0,0,0,0.04);transform:translateX(4px)}
+.svc-name{font-weight:600;font-size:12px;color:var(--primary)}
+.svc-desc{font-size:9px;color:var(--muted);margin-top:1px}
+.svc-tag{font-size:10px;color:var(--accent);font-weight:600}
+
+/* ABOUT */
+.about{padding:32px 24px;border-top:1px solid rgba(0,0,0,0.05)}
 .about h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:10px}
-.about p{font-size:12px;color:var(--muted);line-height:1.65}
-.cta-banner{margin:24px;padding:24px;background:var(--primary);border-radius:var(--radius);text-align:center}
-.cta-banner h3{font-family:var(--display);font-weight:var(--weight);font-size:16px;color:#fff;margin-bottom:6px}
-.cta-banner p{font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:14px}
-.cta-banner .btn-primary{background:var(--accent)}
-.footer{padding:20px 24px;border-top:1px solid rgba(0,0,0,0.06);display:flex;justify-content:space-between;font-size:10px;color:var(--muted)}
-.footer-brand{font-family:var(--display);font-weight:var(--weight);color:var(--primary)}
+.about p{font-size:12px;color:var(--muted);line-height:1.7}
+
+/* PROCESS */
+.process{padding:32px 24px;background:rgba(0,0,0,0.02)}
+.process h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:16px}
+.process-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.process-card{text-align:center;padding:16px 8px}
+.process-num{font-family:var(--display);font-weight:var(--weight);font-size:24px;color:var(--accent);margin-bottom:4px}
+.process-title{font-weight:600;font-size:10px;color:var(--primary);margin-bottom:3px}
+.process-desc{font-size:9px;color:var(--muted);line-height:1.4}
+
+/* TOOLS */
+.tools{padding:24px;border-top:1px solid rgba(0,0,0,0.05)}
+.tools-label{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:10px}
+.tools-grid{display:flex;flex-wrap:wrap;gap:6px}
+.tool-tag{padding:4px 10px;border-radius:20px;font-size:9px;font-weight:500;color:var(--primary);background:rgba(0,0,0,0.04)}
+
+/* CTA */
+.cta-banner{margin:24px;padding:28px 24px;background:var(--primary);border-radius:var(--radius);text-align:center;position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:rgba(124,92,252,0.15)}
+.cta-banner::after{content:'';position:absolute;bottom:-20px;left:-20px;width:60px;height:60px;border-radius:50%;background:rgba(124,92,252,0.1)}
+.cta-banner h3{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:#fff;margin-bottom:6px;position:relative;z-index:1}
+.cta-banner p{font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:14px;position:relative;z-index:1}
+.cta-banner .btn-primary{background:var(--accent);position:relative;z-index:1}
+
+.footer{padding:24px;border-top:1px solid rgba(0,0,0,0.05)}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.footer-brand{font-family:var(--display);font-weight:var(--weight);color:var(--primary);font-size:15px}
+.footer-tagline{font-size:10px;color:var(--muted);margin-top:2px}
+.footer-links{display:flex;gap:16px}.footer-links a{font-size:10px;color:var(--muted);transition:color 0.2s}.footer-links a:hover{color:var(--accent)}
+.footer-bottom{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);padding-top:12px;border-top:1px solid rgba(0,0,0,0.04);align-items:center}
+.footer-social{display:flex;gap:10px}.footer-social a{width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,0.04);display:flex;align-items:center;justify-content:center;font-size:11px;transition:background 0.2s,transform 0.2s}.footer-social a:hover{background:var(--accent);color:#fff;transform:translateY(-1px)}
+
 .demo-ribbon{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--primary);color:rgba(255,255,255,0.7);text-align:center;padding:8px;font-size:10px;font-weight:500}.demo-ribbon b{color:#f5c244}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="nav-brand">Studio Iris</div><div class="nav-links"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Hire</a></div></nav>
+<nav class="nav"><div class="nav-brand">Studio Iris</div><div class="nav-links"><a href="#work">Work</a><a href="#services">Services</a><a href="#contact">Hire</a></div></nav>
 <section class="hero">
   <div class="hero-eyebrow">Design + Development</div>
   <h1>Brands that<br>feel alive.</h1>
   <p>Brand identity, web design, and creative direction for startups and growing businesses.</p>
   <div class="hero-cta-row"><button class="btn-primary">View Work</button><button class="btn-secondary">Start a Project</button></div>
 </section>
-<section class="portfolio" id="work">
+
+<div class="clients reveal">
+  <div class="clients-label">Trusted by</div>
+  <div class="clients-logos">
+    <div class="client-logo">ACME</div>
+    <div class="client-logo">NOVA</div>
+    <div class="client-logo">FLUX</div>
+    <div class="client-logo">HIVE</div>
+    <div class="client-logo">DRIFT</div>
+  </div>
+</div>
+
+<section class="portfolio reveal" id="work">
   <h2>Selected Work</h2>
+  <div class="portfolio-sub">Recent projects across brand, web, and product</div>
   <div class="port-grid">
-    <div class="port-card"><div class="port-img a"></div><div class="port-label"><div class="port-title">Neon Bloom</div><div class="port-type">Brand Identity</div></div></div>
-    <div class="port-card"><div class="port-img b"></div><div class="port-label"><div class="port-title">Deepwater Co.</div><div class="port-type">Web Design</div></div></div>
-    <div class="port-card"><div class="port-img c"></div><div class="port-label"><div class="port-title">Solstice App</div><div class="port-type">UI/UX Design</div></div></div>
-    <div class="port-card"><div class="port-img d"></div><div class="port-label"><div class="port-title">Forge Supply</div><div class="port-type">E-commerce</div></div></div>
+    <div class="port-card"><div class="port-img a"><div class="port-img-overlay"><span class="port-img-tag">View Case Study</span></div></div><div class="port-label"><div class="port-title">Neon Bloom</div><div class="port-type">Brand Identity</div></div></div>
+    <div class="port-card"><div class="port-img b"><div class="port-img-overlay"><span class="port-img-tag">View Case Study</span></div></div><div class="port-label"><div class="port-title">Deepwater Co.</div><div class="port-type">Web Design</div></div></div>
+    <div class="port-card"><div class="port-img c"><div class="port-img-overlay"><span class="port-img-tag">View Case Study</span></div></div><div class="port-label"><div class="port-title">Solstice App</div><div class="port-type">UI/UX Design</div></div></div>
+    <div class="port-card"><div class="port-img d"><div class="port-img-overlay"><span class="port-img-tag">View Case Study</span></div></div><div class="port-label"><div class="port-title">Forge Supply</div><div class="port-type">E-commerce</div></div></div>
   </div>
 </section>
-<section class="about" id="about">
-  <h2>About</h2>
-  <p>We're a small studio that partners with founders and creative teams to build brands people remember. Strategy first, then design that earns attention.</p>
+
+<section class="services reveal" id="services">
+  <h2>Services</h2>
+  <div class="svc-list">
+    <div class="svc-item"><div><div class="svc-name">Brand Identity</div><div class="svc-desc">Logo, colors, typography, brand book</div></div><div class="svc-tag">From $3K</div></div>
+    <div class="svc-item"><div><div class="svc-name">Web Design & Dev</div><div class="svc-desc">Custom sites, landing pages, CMS</div></div><div class="svc-tag">From $5K</div></div>
+    <div class="svc-item"><div><div class="svc-name">UI/UX Design</div><div class="svc-desc">App interfaces, prototypes, user research</div></div><div class="svc-tag">From $4K</div></div>
+    <div class="svc-item"><div><div class="svc-name">Creative Direction</div><div class="svc-desc">Campaign strategy, art direction, content</div></div><div class="svc-tag">Retainer</div></div>
+  </div>
 </section>
-<div class="cta-banner" id="contact"><h3>Have a project in mind?</h3><p>We take on a limited number of projects each quarter.</p><button class="btn-primary">Get in Touch</button></div>
-<footer class="footer"><span class="footer-brand">Studio Iris</span><span>Built by Joshua.</span></footer>
+
+<section class="process reveal">
+  <h2>How We Work</h2>
+  <div class="process-grid">
+    <div class="process-card"><div class="process-num">01</div><div class="process-title">Discover</div><div class="process-desc">Deep dive into your brand, audience, and goals</div></div>
+    <div class="process-card"><div class="process-num">02</div><div class="process-title">Design</div><div class="process-desc">Concepts, prototypes, and iterative refinement</div></div>
+    <div class="process-card"><div class="process-num">03</div><div class="process-title">Deliver</div><div class="process-desc">Polished assets, clean code, full handoff</div></div>
+  </div>
+</section>
+
+<section class="about reveal" id="about">
+  <h2>About</h2>
+  <p>We are a small studio that partners with founders and creative teams to build brands people remember. Strategy first, then design that earns attention. Based in Northeast Florida, working with clients everywhere.</p>
+</section>
+
+<div class="tools reveal">
+  <div class="tools-label">Tools we use</div>
+  <div class="tools-grid">
+    <span class="tool-tag">Figma</span>
+    <span class="tool-tag">Webflow</span>
+    <span class="tool-tag">React</span>
+    <span class="tool-tag">After Effects</span>
+    <span class="tool-tag">Illustrator</span>
+    <span class="tool-tag">Framer</span>
+  </div>
+</div>
+
+<div class="cta-banner reveal" id="contact"><h3>Have a project in mind?</h3><p>We take on a limited number of projects each quarter.</p><button class="btn-primary">Get in Touch</button></div>
+<footer class="footer">
+  <div class="footer-top"><div><div class="footer-brand">Studio Iris</div><div class="footer-tagline">Design studio, Fernandina Beach</div></div><div class="footer-links"><a href="#work">Work</a><a href="#services">Services</a><a href="#contact">Contact</a></div></div>
+  <div class="footer-bottom"><span>Built by Joshua.</span><div class="footer-social"><a href="#" title="Dribbble">&#9679;</a><a href="#" title="Instagram">&#9679;</a><a href="#" title="Twitter">&#9679;</a></div></div>
+</footer>
 <div class="demo-ribbon"><b>Demo</b> - Built by joshuahumphreys.net</div>
 <script>
 const params=new URLSearchParams(window.location.search);
@@ -72,6 +177,8 @@ const STYLES={'Modern':{display:"'Space Grotesk',sans-serif",body:"'DM Sans','In
 function apply(p,s){const r=document.documentElement;if(p&&PALETTES[p]){const c=PALETTES[p];r.style.setProperty('--bg',c.bg);r.style.setProperty('--primary',c.primary);r.style.setProperty('--accent',c.accent);r.style.setProperty('--text',c.text);r.style.setProperty('--muted',c.muted)}if(s&&STYLES[s]){const t=STYLES[s];r.style.setProperty('--display',t.display);r.style.setProperty('--body',t.body);r.style.setProperty('--radius',t.radius);r.style.setProperty('--weight',t.weight)}}
 apply(params.get('palette'),params.get('style'));
 window.addEventListener('message',(e)=>{if(e.data&&e.data.type==='theme-update')apply(e.data.palette,e.data.style)});
+const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 </body>
 </html>
