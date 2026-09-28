@@ -1,1 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Bistro Nine - Demo Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FDF8F3;
+  --primary: #3B2314;
+  --accent: #C4651A;
+  --text: #3B2314;
+  --muted: #A09080;
+  --display: 'Playfair Display', Georgia, serif;
+  --body: 'Inter', sans-serif;
+  --radius: 4px;
+  --weight: 600;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
 
+/* NAV */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding: 14px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  backdrop-filter: blur(8px);
+}
+.nav-brand {
+  font-family: var(--display);
+  font-weight: var(--weight);
+  font-size: 18px;
+  color: var(--primary);
+  letter-spacing: -0.01em;
+}
+.nav-links { display: flex; gap: 20px; font-size: 12px; color: var(--muted); font-weight: 500; }
+.nav-links a { transition: color 0.2s; cursor: pointer; }
+.nav-links a:hover { color: var(--accent); }
+
+/* HERO */
+.hero {
+  padding: 48px 24px 40px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.hero-eyebrow {
+  font-family: var(--display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.hero h1 {
+  font-family: var(--display);
+  font-weight: var(--weight);
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+}
+.hero p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 380px;
+}
+.hero-cta-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: #fff;
+  padding: 10px 20px; border-radius: var(--radius);
+  font-family: var(--display); font-weight: var(--weight);
+  font-size: 12px; border: none; cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.9; }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--primary);
+  padding: 10px 20px; border-radius: var(--radius);
+  font-family: var(--display); font-weight: var(--weight);
+  font-size: 12px; border: 1px solid var(--primary);
+  cursor: pointer; transition: background 0.2s;
+}
+.btn-secondary:hover { background: rgba(0,0,0,0.04); }
+
+/* HERO IMAGE */
+.hero-img {
+  margin: 0 24px;
+  height: 160px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.2) 0%, transparent 50%);
+}
+.hero-img-text {
+  position: absolute; bottom: 16px; left: 16px;
+  font-family: var(--display); font-size: 11px;
+  color: rgba(255,255,255,0.7); font-weight: 500;
+}
+
+/* FEATURES */
+.features {
+  padding: 32px 24px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+}
+.feat-card {
+  padding: 16px 12px;
+  background: rgba(0,0,0,0.03);
+  border-radius: var(--radius);
+  text-align: center;
+  transition: transform 0.2s;
+  cursor: default;
+}
+.feat-card:hover { transform: translateY(-2px); }
+.feat-icon { font-size: 20px; margin-bottom: 6px; }
+.feat-label {
+  font-family: var(--display);
+  font-weight: var(--weight);
+  font-size: 11px;
+  color: var(--primary);
+}
+.feat-sub { font-size: 9px; color: var(--muted); margin-top: 2px; }
+
+/* ABOUT SECTION */
+.about {
+  padding: 32px 24px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+.about h2 {
+  font-family: var(--display);
+  font-weight: var(--weight);
+  font-size: 18px;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.about p {
+  font-size: 12px; color: var(--muted); line-height: 1.65;
+}
+
+/* MENU SECTION */
+.menu-section {
+  padding: 32px 24px;
+  background: rgba(0,0,0,0.02);
+}
+.menu-section h2 {
+  font-family: var(--display);
+  font-weight: var(--weight);
+  font-size: 18px;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+.menu-item {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(0,0,0,0.1);
+}
+.menu-name { font-weight: 600; font-size: 12px; color: var(--primary); }
+.menu-desc { font-size: 10px; color: var(--muted); }
+.menu-price {
+  font-family: var(--display); font-weight: 600;
+  font-size: 13px; color: var(--accent);
+  white-space: nowrap;
+}
+
+/* CTA BANNER */
+.cta-banner {
+  margin: 24px;
+  padding: 24px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.cta-banner h3 {
+  font-family: var(--display);
+  font-weight: var(--weight);
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.cta-banner p { font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 14px; }
+.cta-banner .btn-primary { background: var(--accent); }
+
+/* FOOTER */
+.footer {
+  padding: 20px 24px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  display: flex; justify-content: space-between;
+  font-size: 10px; color: var(--muted);
+}
+.footer-brand { font-family: var(--display); font-weight: var(--weight); color: var(--primary); }
+
+/* DEMO RIBBON */
+.demo-ribbon {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  background: var(--primary); color: rgba(255,255,255,0.7);
+  text-align: center; padding: 8px;
+  font-size: 10px; font-weight: 500;
+}
+.demo-ribbon b { color: #f5c244; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">Bistro Nine.</div>
+  <div class="nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#reserve">Reserve</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">Farm to Table</div>
+  <h1>Local flavors,<br>slow Sundays.</h1>
+  <p>Fresh seafood and seasonal plates in a coastal setting. Walk-ins welcome, reservations recommended on weekends.</p>
+  <div class="hero-cta-row">
+    <button class="btn-primary">Reserve a Table</button>
+    <button class="btn-secondary">View Menu</button>
+  </div>
+</section>
+
+<div class="hero-img">
+  <div class="hero-img-text">Fresh catch daily from local waters</div>
+</div>
+
+<div class="features">
+  <div class="feat-card">
+    <div class="feat-icon">🍽</div>
+    <div class="feat-label">Full Menu</div>
+    <div class="feat-sub">Lunch + Dinner</div>
+  </div>
+  <div class="feat-card">
+    <div class="feat-icon">📅</div>
+    <div class="feat-label">Reserve</div>
+    <div class="feat-sub">Online booking</div>
+  </div>
+  <div class="feat-card">
+    <div class="feat-icon">📍</div>
+    <div class="feat-label">Find Us</div>
+    <div class="feat-sub">Centre Street</div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <h2>Our Story</h2>
+  <p>A 30-seat kitchen on Centre Street in historic Fernandina Beach. We pull the freshest catch from local waters, pair it with seasonal produce from nearby farms, and keep things simple. Come hungry, leave happy.</p>
+</section>
+
+<section class="menu-section" id="menu">
+  <h2>Today's Catch</h2>
+  <div class="menu-item">
+    <div>
+      <div class="menu-name">Blackened Mahi Tacos</div>
+      <div class="menu-desc">Slaw, avocado crema, lime</div>
+    </div>
+    <div class="menu-price">$16</div>
+  </div>
+  <div class="menu-item">
+    <div>
+      <div class="menu-name">Pan-Seared Red Snapper</div>
+      <div class="menu-desc">Roasted potatoes, lemon butter</div>
+    </div>
+    <div class="menu-price">$28</div>
+  </div>
+  <div class="menu-item">
+    <div>
+      <div class="menu-name">Peel & Eat Shrimp</div>
+      <div class="menu-desc">Half pound, Old Bay, drawn butter</div>
+    </div>
+    <div class="menu-price">$14</div>
+  </div>
+  <div class="menu-item">
+    <div>
+      <div class="menu-name">Lobster Mac & Cheese</div>
+      <div class="menu-desc">Gruyere, Maine lobster, herb crust</div>
+    </div>
+    <div class="menu-price">$24</div>
+  </div>
+</section>
+
+<div class="cta-banner" id="reserve">
+  <h3>Ready to dine?</h3>
+  <p>Reservations recommended for Friday and Saturday evenings.</p>
+  <button class="btn-primary">Book a Table</button>
+</div>
+
+<footer class="footer">
+  <span class="footer-brand">Bistro Nine.</span>
+  <span>Built by Joshua.</span>
+</footer>
+
+<div class="demo-ribbon"><b>Demo</b> - Built by joshuahumphreys.net</div>
+
+<script>
+// Read URL params for style/palette customization
+const params = new URLSearchParams(window.location.search);
+const style = params.get('style');
+const palette = params.get('palette');
+
+const PALETTES = {
+  'Coastal':  { bg: '#F0F7FA', primary: '#1B4965', accent: '#5FA8D3', text: '#1B4965', muted: '#6A8FA5' },
+  'Sage':     { bg: '#F2F5F0', primary: '#2F3E2E', accent: '#6B8F71', text: '#2F3E2E', muted: '#6A7A6A' },
+  'Warm':     { bg: '#FAF6F0', primary: '#3D2B1F', accent: '#C08552', text: '#3D2B1F', muted: '#8A7A6A' },
+  'Slate':    { bg: '#F0F0F6', primary: '#1E1E2E', accent: '#4A4A6A', text: '#1E1E2E', muted: '#6A6A8A' },
+  'Rose':     { bg: '#FDF5F8', primary: '#4A2040', accent: '#C07090', text: '#4A2040', muted: '#8A6A7A' },
+  'Midnight': { bg: '#E0E8F0', primary: '#0D1B2A', accent: '#1B3A5C', text: '#0D1B2A', muted: '#5A6A7A' }
+};
+
+const STYLES = {
+  'Modern':  { display: "'Space Grotesk', sans-serif", body: "'DM Sans', 'Inter', sans-serif", radius: '8px', weight: '600' },
+  'Classic': { display: "'Playfair Display', Georgia, serif", body: "'Inter', sans-serif", radius: '3px', weight: '600' },
+  'Bold':    { display: "'Outfit', sans-serif", body: "'Outfit', sans-serif", radius: '12px', weight: '800' },
+  'Minimal': { display: "'DM Sans', sans-serif", body: "'DM Sans', sans-serif", radius: '2px', weight: '400' }
+};
+
+function applyTheme() {
+  const root = document.documentElement;
+  if (palette && PALETTES[palette]) {
+    const p = PALETTES[palette];
+    root.style.setProperty('--bg', p.bg);
+    root.style.setProperty('--primary', p.primary);
+    root.style.setProperty('--accent', p.accent);
+    root.style.setProperty('--text', p.text);
+    root.style.setProperty('--muted', p.muted);
+  }
+  if (style && STYLES[style]) {
+    const s = STYLES[style];
+    root.style.setProperty('--display', s.display);
+    root.style.setProperty('--body', s.body);
+    root.style.setProperty('--radius', s.radius);
+    root.style.setProperty('--weight', s.weight);
+  }
+}
+applyTheme();
+
+// Listen for postMessage from parent (configurator)
+window.addEventListener('message', (e) => {
+  if (e.data && e.data.type === 'theme-update') {
+    const root = document.documentElement;
+    if (e.data.palette && PALETTES[e.data.palette]) {
+      const p = PALETTES[e.data.palette];
+      root.style.setProperty('--bg', p.bg);
+      root.style.setProperty('--primary', p.primary);
+      root.style.setProperty('--accent', p.accent);
+      root.style.setProperty('--text', p.text);
+      root.style.setProperty('--muted', p.muted);
+    }
+    if (e.data.style && STYLES[e.data.style]) {
+      const s = STYLES[e.data.style];
+      root.style.setProperty('--display', s.display);
+      root.style.setProperty('--body', s.body);
+      root.style.setProperty('--radius', s.radius);
+      root.style.setProperty('--weight', s.weight);
+    }
+  }
+});
+</script>
+</body>
+</html>
