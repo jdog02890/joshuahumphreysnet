@@ -261,7 +261,7 @@
     #configurator { background: var(--cream2); }
     .configurator-wrap { max-width: 760px; margin: 0 auto; }
     .progress-wrap { display: flex; gap: 8px; margin-bottom: 36px; }
-    .progress-step { flex: 1; height: 4px; background: var(--cream3); border-radius: 2px; transition: background 0.4s; }
+    .progress-step { flex: 1; height: 4px; background: var(--cream3); border-radius: 2px; transition: background 0.5s cubic-bezier(0.22,1,0.36,1); }
     .progress-step.active { background: var(--orange); }
     .progress-step.done { background: var(--orange); opacity: 0.5; }
     .step-label {
@@ -272,9 +272,9 @@
       font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem);
       font-weight: 700; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 24px;
     }
-    .step { display: none; animation: fadeUp 0.35s ease; }
+    .step { display: none; animation: stepIn 0.4s cubic-bezier(0.22,1,0.36,1); }
     .step.active { display: block; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes stepIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
     /* Option cards */
     .option-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 32px; }
@@ -282,8 +282,8 @@
       background: var(--cream); border: 1px solid var(--border); border-radius: 12px;
       padding: 24px 20px; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s; position: relative;
     }
-    .option-card:hover { border-color: var(--orange); box-shadow: 0 4px 20px rgba(212,80,10,0.06); transform: translateY(-2px); }
-    .option-card.selected { border-color: var(--orange); box-shadow: 0 4px 20px rgba(212,80,10,0.1); }
+    .option-card:hover { border-color: var(--orange); box-shadow: 0 4px 20px rgba(212,80,10,0.06); transform: translateY(-3px); }
+    .option-card.selected { border-color: var(--orange); box-shadow: 0 4px 20px rgba(212,80,10,0.1); transform: translateY(-1px); }
     .option-card .card-icon { font-size: 1.5rem; display: block; margin-bottom: 10px; }
     .option-card .card-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; color: var(--ink); margin-bottom: 4px; }
     .style-font-sample { color: var(--orange); margin-bottom: 6px; }
@@ -491,8 +491,29 @@
     .mini-site.boutique .mini-block { background: rgba(107,127,94,0.08); color: #2C3028; }
     .mini-site.boutique .mini-footer { color: #8A8A80; }
 
-    /* FADE */
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .mini-site.trades { background: #F5F4F0; color: #1F2937; }
+    .mini-site.trades .mini-eyebrow { color: #D97706; }
+    .mini-site.trades .mini-btn { background: #D97706; }
+    .mini-site.trades .mini-art { background: linear-gradient(135deg, #1F2937, #D97706); }
+    .mini-site.trades .mini-block { background: rgba(217,119,6,0.08); color: #1F2937; }
+    .mini-site.trades .mini-footer { color: #8A8A80; }
+
+    .mini-site.creative { background: #FAFAF8; color: #1A1A1A; }
+    .mini-site.creative .mini-eyebrow { color: #7C5CFC; }
+    .mini-site.creative .mini-btn { background: #7C5CFC; }
+    .mini-site.creative .mini-art { background: linear-gradient(135deg, #1A1A1A, #7C5CFC); }
+    .mini-site.creative .mini-block { background: rgba(124,92,252,0.08); color: #1A1A1A; }
+    .mini-site.creative .mini-footer { color: #999; }
+
+    .mini-site.other { background: #F4F6FA; color: #1A2B4A; }
+    .mini-site.other .mini-eyebrow { color: #3B6BF5; }
+    .mini-site.other .mini-btn { background: #3B6BF5; }
+    .mini-site.other .mini-art { background: linear-gradient(135deg, #1A2B4A, #3B6BF5); }
+    .mini-site.other .mini-block { background: rgba(59,107,245,0.08); color: #1A2B4A; }
+    .mini-site.other .mini-footer { color: #8090A0; }
+
+    /* SCROLL REVEAL */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1); }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* RESPONSIVE */
@@ -602,10 +623,10 @@
       border: none;
       display: block;
       background: #F7F3EE;
-      transition: opacity 0.3s;
+      transition: opacity 0.35s cubic-bezier(0.22,1,0.36,1);
     }
     .preview-iframe.loading {
-      opacity: 0.4;
+      opacity: 0.3;
     }
 
     .preview-meta {
@@ -1281,6 +1302,102 @@
             </div>
           </div>
         </article>
+
+        <article class="template-card fade-up" data-cat="service">
+          <div class="template-preview">
+            <span class="template-badge">Coming soon</span>
+            <div class="mini-site trades">
+              <div class="mini-nav"><span class="mini-logo" style="text-transform:uppercase;letter-spacing:0.08em;font-size:9px;">Coastline Pros</span><div class="mini-nav-links"><span>Services</span><span>Areas</span><span>Quote</span></div></div>
+              <div class="mini-hero">
+                <div class="mini-eyebrow">Licensed + Insured</div>
+                <div class="mini-headline">On time. On budget.<br>Done right.</div>
+                <div class="mini-sub">Pressure washing, painting, and exterior services across Nassau County.</div>
+                <span class="mini-btn">Get a Free Quote</span>
+              </div>
+              <div class="mini-art"></div>
+              <div class="mini-blocks"><div class="mini-block"><span class="mini-block-icon">⚡</span>Electrical</div><div class="mini-block"><span class="mini-block-icon">🔧</span>Plumbing</div><div class="mini-block"><span class="mini-block-icon">🏠</span>Remodel</div></div>
+              <div class="mini-footer"><span>Coastline Pros</span><span>Built by Joshua.</span></div>
+            </div>
+          </div>
+          <div class="template-info">
+            <div class="template-category">Trades</div>
+            <h3 class="template-name">Contractor & Home Services</h3>
+            <p class="template-desc">Service areas, quote forms, trust badges, license info, and before/after galleries.</p>
+            <div class="template-tags">
+              <span class="template-tag">Quote Form</span>
+              <span class="template-tag">Service Areas</span>
+              <span class="template-tag">Gallery</span>
+            </div>
+            <div class="template-footer">
+              <div class="template-price">From $600<span> / one-time</span></div>
+              <button class="template-btn" onclick="scrollToConfig('Trades / Home Services')">Configure</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="template-card fade-up" data-cat="service">
+          <div class="template-preview">
+            <span class="template-badge">Coming soon</span>
+            <div class="mini-site creative">
+              <div class="mini-nav"><span class="mini-logo" style="letter-spacing:0.06em;font-weight:400;">Studio Iris</span><div class="mini-nav-links"><span>Work</span><span>Services</span><span>Hire</span></div></div>
+              <div class="mini-hero">
+                <div class="mini-eyebrow">Design + Development</div>
+                <div class="mini-headline">Brands that<br>feel alive.</div>
+                <div class="mini-sub">Brand identity, web design, and creative direction for startups.</div>
+                <span class="mini-btn">View Work</span>
+              </div>
+              <div class="mini-art"></div>
+              <div class="mini-blocks"><div class="mini-block"><span class="mini-block-icon">🎨</span>Portfolio</div><div class="mini-block"><span class="mini-block-icon">✏️</span>Services</div><div class="mini-block"><span class="mini-block-icon">📧</span>Contact</div></div>
+              <div class="mini-footer"><span>Studio Iris</span><span>Built by Joshua.</span></div>
+            </div>
+          </div>
+          <div class="template-info">
+            <div class="template-category">Creative</div>
+            <h3 class="template-name">Portfolio & Studio</h3>
+            <p class="template-desc">Project galleries, case studies, client list, process overview, and contact forms.</p>
+            <div class="template-tags">
+              <span class="template-tag">Portfolio</span>
+              <span class="template-tag">Case Studies</span>
+              <span class="template-tag">Contact</span>
+            </div>
+            <div class="template-footer">
+              <div class="template-price">From $650<span> / one-time</span></div>
+              <button class="template-btn" onclick="scrollToConfig('Creative / Portfolio')">Configure</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="template-card fade-up" data-cat="service">
+          <div class="template-preview">
+            <span class="template-badge">Coming soon</span>
+            <div class="mini-site other">
+              <div class="mini-nav"><span class="mini-logo">LaunchKit</span><div class="mini-nav-links"><span>Features</span><span>Pricing</span><span>FAQ</span></div></div>
+              <div class="mini-hero">
+                <div class="mini-eyebrow">SaaS / Startup</div>
+                <div class="mini-headline">Ship your idea<br>in days.</div>
+                <div class="mini-sub">Everything you need to go from concept to launch.</div>
+                <span class="mini-btn">Start Free Trial</span>
+              </div>
+              <div class="mini-art"></div>
+              <div class="mini-blocks"><div class="mini-block"><span class="mini-block-icon">⚡</span>Features</div><div class="mini-block"><span class="mini-block-icon">💰</span>Pricing</div><div class="mini-block"><span class="mini-block-icon">❓</span>FAQ</div></div>
+              <div class="mini-footer"><span>LaunchKit</span><span>Built by Joshua.</span></div>
+            </div>
+          </div>
+          <div class="template-info">
+            <div class="template-category">General</div>
+            <h3 class="template-name">Custom / Other</h3>
+            <p class="template-desc">Flexible template for any business type. Features, pricing, FAQ, newsletter, and more.</p>
+            <div class="template-tags">
+              <span class="template-tag">Flexible</span>
+              <span class="template-tag">FAQ</span>
+              <span class="template-tag">Newsletter</span>
+            </div>
+            <div class="template-footer">
+              <div class="template-price">From $500<span> / one-time</span></div>
+              <button class="template-btn" onclick="scrollToConfig('Other')">Configure</button>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -1341,13 +1458,12 @@
     // === FADE UP ON SCROLL ===
     const fadeEls = document.querySelectorAll('.fade-up');
     const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 55);
-          fadeObserver.unobserve(e.target);
-        }
+      const visible = entries.filter(e => e.isIntersecting);
+      visible.forEach((e, i) => {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        fadeObserver.unobserve(e.target);
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     fadeEls.forEach(el => fadeObserver.observe(el));
 
     // === TEMPLATES FILTER ===
