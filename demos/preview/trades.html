@@ -1,75 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base target="_self">
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex">
 <title>Coastline Pros - Demo Preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#F5F4F0;--primary:#1F2937;--accent:#D97706;--text:#1F2937;--muted:#6B7280;--display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--radius:6px;--weight:600}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden}a{color:inherit;text-decoration:none}
-.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid rgba(0,0,0,0.08);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(8px)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden;padding-bottom:36px}a{color:inherit;text-decoration:none}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(245,244,240,0.92);border-bottom:1px solid rgba(0,0,0,0.06);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(12px)}
 .nav-brand{font-family:var(--display);font-weight:700;font-size:14px;color:var(--primary);text-transform:uppercase;letter-spacing:0.08em}
-.nav-links{display:flex;gap:20px;font-size:12px;color:var(--muted);font-weight:500}.nav-links a{transition:color 0.2s;cursor:pointer}.nav-links a:hover{color:var(--accent)}
-.hero{padding:48px 24px 40px}.hero-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-.hero h1{font-family:var(--display);font-weight:var(--weight);font-size:26px;line-height:1.15;color:var(--primary);margin-bottom:12px}
-.hero p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px}
+.nav-links{display:flex;gap:20px;font-size:12px;color:var(--muted);font-weight:500}.nav-links a{transition:color 0.25s;cursor:pointer}.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#fff;padding:6px 14px;border-radius:var(--radius);font-size:10px;font-weight:600;font-family:var(--display);border:none;cursor:pointer;transition:opacity 0.2s}.nav-cta:hover{opacity:0.9}
+
+.hero{padding:48px 24px 32px}.hero-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px}.hero-eyebrow::before{content:'';width:24px;height:2px;background:var(--accent)}
+.hero h1{font-family:var(--display);font-weight:var(--weight);font-size:28px;line-height:1.12;color:var(--primary);margin-bottom:12px}
+.hero p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:20px}
 .hero-cta-row{display:flex;gap:10px;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:10px 20px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:none;cursor:pointer;transition:opacity 0.2s}.btn-primary:hover{opacity:0.9}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--primary);padding:10px 20px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:1px solid var(--primary);cursor:pointer;transition:background 0.2s}.btn-secondary:hover{background:rgba(0,0,0,0.04)}
-.hero-img{margin:0 24px;height:120px;border-radius:var(--radius);background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);position:relative;overflow:hidden}
-.hero-img::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 75% 40%,rgba(255,255,255,0.2) 0%,transparent 50%)}
-.services{padding:32px 24px}.services h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:16px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:11px 22px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 2px 8px rgba(217,119,6,0.2)}.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(217,119,6,0.3)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--primary);padding:11px 22px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:1px solid rgba(31,41,55,0.2);cursor:pointer;transition:border-color 0.25s,background 0.25s}.btn-secondary:hover{background:rgba(0,0,0,0.03);border-color:var(--accent)}
+
+.hero-img{margin:0 24px;height:160px;border-radius:var(--radius);background:linear-gradient(135deg,var(--primary) 0%,#374151 50%,var(--accent) 100%);position:relative;overflow:hidden}
+.hero-img::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 75% 40%,rgba(217,119,6,0.2) 0%,transparent 50%)}
+.hero-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(31,41,55,0.4),transparent)}
+.hero-img-overlay{position:absolute;bottom:14px;left:16px;z-index:2;display:flex;gap:8px}
+.hero-img-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(217,119,6,0.9);padding:4px 10px;border-radius:var(--radius);font-size:9px;color:#fff;font-weight:600}
+
+/* TRUST BAR */
+.trust-bar{padding:16px 24px;background:#fff;border-bottom:1px solid rgba(0,0,0,0.04);display:flex;justify-content:space-around}
+.trust-item{text-align:center}
+.trust-icon{font-size:18px;margin-bottom:2px}
+.trust-label{font-size:9px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em}
+
+/* SERVICES */
+.services{padding:32px 24px}.services h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:6px}
+.services-sub{font-size:11px;color:var(--muted);margin-bottom:16px}
 .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.svc-card{padding:16px;background:rgba(0,0,0,0.03);border-radius:var(--radius);text-align:center;transition:background 0.2s;cursor:default}
-.svc-card:hover{background:rgba(0,0,0,0.05)}
-.svc-icon{font-size:22px;margin-bottom:6px}
-.svc-name{font-family:var(--display);font-weight:var(--weight);font-size:11px;color:var(--primary)}
+.svc-card{padding:18px 14px;background:#fff;border-radius:var(--radius);text-align:center;transition:transform 0.3s,box-shadow 0.3s;cursor:default;border:1px solid rgba(0,0,0,0.04)}
+.svc-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.06)}
+.svc-icon{font-size:24px;margin-bottom:8px}
+.svc-name{font-family:var(--display);font-weight:var(--weight);font-size:12px;color:var(--primary);margin-bottom:3px}
+.svc-desc{font-size:9px;color:var(--muted);line-height:1.4}
+
+/* STATS */
 .trust{padding:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;border-top:1px solid rgba(0,0,0,0.06)}
-.trust-item{text-align:center;padding:12px 8px}
-.trust-num{font-family:var(--display);font-weight:var(--weight);font-size:20px;color:var(--accent)}
-.trust-label{font-size:9px;color:var(--muted);margin-top:2px}
-.areas{padding:24px;border-top:1px solid rgba(0,0,0,0.06)}
+.trust-stat{text-align:center;padding:12px 8px}
+.trust-num{font-family:var(--display);font-weight:var(--weight);font-size:22px;color:var(--accent)}
+.trust-stat-label{font-size:9px;color:var(--muted);margin-top:2px}
+
+/* PROCESS */
+.process{padding:32px 24px;background:rgba(0,0,0,0.02)}
+.process h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:16px}
+.process-steps{display:flex;flex-direction:column;gap:12px}
+.process-step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:11px;flex-shrink:0}
+.step-content{flex:1}
+.step-title{font-family:var(--display);font-weight:var(--weight);font-size:12px;color:var(--primary);margin-bottom:2px}
+.step-desc{font-size:10px;color:var(--muted);line-height:1.5}
+
+/* AREAS */
+.areas{padding:32px 24px;border-top:1px solid rgba(0,0,0,0.06)}
 .areas h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:10px}
-.areas p{font-size:12px;color:var(--muted);line-height:1.65}
-.cta-banner{margin:24px;padding:24px;background:var(--primary);border-radius:var(--radius);text-align:center}
-.cta-banner h3{font-family:var(--display);font-weight:var(--weight);font-size:16px;color:#fff;margin-bottom:6px}
-.cta-banner p{font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:14px}
-.cta-banner .btn-primary{background:var(--accent)}
-.footer{padding:20px 24px;border-top:1px solid rgba(0,0,0,0.06);display:flex;justify-content:space-between;font-size:10px;color:var(--muted)}
-.footer-brand{font-family:var(--display);font-weight:var(--weight);color:var(--primary)}
+.areas p{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:12px}
+.area-tags{display:flex;flex-wrap:wrap;gap:6px}
+.area-tag{padding:4px 10px;border-radius:20px;font-size:9px;font-weight:600;color:var(--primary);background:rgba(0,0,0,0.04);transition:background 0.2s}
+.area-tag:hover{background:rgba(217,119,6,0.1)}
+
+/* CTA */
+.cta-banner{margin:24px;padding:28px 24px;background:var(--primary);border-radius:var(--radius);text-align:center;position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;top:-30px;right:-30px;width:100px;height:100px;border-radius:50%;background:rgba(217,119,6,0.15)}
+.cta-banner h3{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:#fff;margin-bottom:6px;position:relative;z-index:1}
+.cta-banner p{font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:14px;position:relative;z-index:1}
+.cta-banner .btn-primary{background:var(--accent);position:relative;z-index:1}
+
+.footer{padding:24px;border-top:1px solid rgba(0,0,0,0.06)}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.footer-brand{font-family:var(--display);font-weight:var(--weight);color:var(--primary);font-size:13px;text-transform:uppercase;letter-spacing:0.08em}
+.footer-tagline{font-size:10px;color:var(--muted);margin-top:2px}
+.footer-links{display:flex;gap:16px}.footer-links a{font-size:10px;color:var(--muted);transition:color 0.2s}.footer-links a:hover{color:var(--accent)}
+.footer-bottom{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);padding-top:12px;border-top:1px solid rgba(0,0,0,0.04);align-items:center}
+
 .demo-ribbon{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--primary);color:rgba(255,255,255,0.7);text-align:center;padding:8px;font-size:10px;font-weight:500}.demo-ribbon b{color:#f5c244}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="nav-brand">Coastline Pros</div><div class="nav-links"><a href="#services">Services</a><a href="#quote">Get Quote</a></div></nav>
+<nav class="nav"><div class="nav-brand">Coastline Pros</div><div class="nav-links"><a href="#services">Services</a><a href="#quote">Quote</a></div><button class="nav-cta">Call Now</button></nav>
 <section class="hero">
   <div class="hero-eyebrow">Licensed & Insured</div>
   <h1>Quality work.<br>Fair prices.<br>No surprises.</h1>
   <p>Plumbing, electrical, and general contracting for homes and small businesses in Northeast Florida.</p>
   <div class="hero-cta-row"><button class="btn-primary">Get a Free Quote</button><button class="btn-secondary">Our Work</button></div>
 </section>
-<div class="hero-img"></div>
-<section class="services" id="services">
+<div class="hero-img"><div class="hero-img-overlay"><div class="hero-img-badge">&#9989; Same-day estimates</div><div class="hero-img-badge">&#128736; 15+ years exp.</div></div></div>
+
+<div class="trust-bar reveal">
+  <div class="trust-item"><div class="trust-icon">&#128737;</div><div class="trust-label">Licensed</div></div>
+  <div class="trust-item"><div class="trust-icon">&#128170;</div><div class="trust-label">Insured</div></div>
+  <div class="trust-item"><div class="trust-icon">&#9201;</div><div class="trust-label">On Time</div></div>
+  <div class="trust-item"><div class="trust-icon">&#128176;</div><div class="trust-label">Fair Pricing</div></div>
+</div>
+
+<section class="services reveal" id="services">
   <h2>What We Do</h2>
+  <div class="services-sub">Residential and commercial services across Northeast Florida</div>
   <div class="svc-grid">
-    <div class="svc-card"><div class="svc-icon">&#9889;</div><div class="svc-name">Electrical</div></div>
-    <div class="svc-card"><div class="svc-icon">&#128167;</div><div class="svc-name">Plumbing</div></div>
-    <div class="svc-card"><div class="svc-icon">&#127968;</div><div class="svc-name">Remodeling</div></div>
-    <div class="svc-card"><div class="svc-icon">&#10067;</div><div class="svc-name">Handyman</div></div>
+    <div class="svc-card"><div class="svc-icon">&#9889;</div><div class="svc-name">Electrical</div><div class="svc-desc">Panels, wiring, outlets, ceiling fans</div></div>
+    <div class="svc-card"><div class="svc-icon">&#128167;</div><div class="svc-name">Plumbing</div><div class="svc-desc">Repairs, installs, water heaters</div></div>
+    <div class="svc-card"><div class="svc-icon">&#127968;</div><div class="svc-name">Remodeling</div><div class="svc-desc">Kitchen, bath, full renovations</div></div>
+    <div class="svc-card"><div class="svc-icon">&#128295;</div><div class="svc-name">Handyman</div><div class="svc-desc">Drywall, painting, odd jobs</div></div>
   </div>
 </section>
-<div class="trust">
-  <div class="trust-item"><div class="trust-num">15+</div><div class="trust-label">Years Exp.</div></div>
-  <div class="trust-item"><div class="trust-num">500+</div><div class="trust-label">Jobs Done</div></div>
-  <div class="trust-item"><div class="trust-num">4.8</div><div class="trust-label">Avg. Rating</div></div>
+
+<div class="trust reveal">
+  <div class="trust-stat"><div class="trust-num">15+</div><div class="trust-stat-label">Years Exp.</div></div>
+  <div class="trust-stat"><div class="trust-num">500+</div><div class="trust-stat-label">Jobs Done</div></div>
+  <div class="trust-stat"><div class="trust-num">4.8</div><div class="trust-stat-label">Avg. Rating</div></div>
 </div>
-<section class="areas">
-  <h2>Service Area</h2>
-  <p>Proudly serving Jacksonville, St. Augustine, Fernandina Beach, Ponte Vedra, and the surrounding communities.</p>
+
+<section class="process reveal">
+  <h2>How It Works</h2>
+  <div class="process-steps">
+    <div class="process-step"><div class="step-num">1</div><div class="step-content"><div class="step-title">Request a Quote</div><div class="step-desc">Call or fill out the form. We respond same day.</div></div></div>
+    <div class="process-step"><div class="step-num">2</div><div class="step-content"><div class="step-title">Free On-Site Estimate</div><div class="step-desc">We come to you, assess the job, and give you a clear price.</div></div></div>
+    <div class="process-step"><div class="step-num">3</div><div class="step-content"><div class="step-title">We Get to Work</div><div class="step-desc">Licensed crew, quality materials, done on time.</div></div></div>
+  </div>
 </section>
-<div class="cta-banner" id="quote"><h3>Need a quote?</h3><p>Call or fill out the form. We respond same day.</p><button class="btn-primary">Request Quote</button></div>
-<footer class="footer"><span class="footer-brand">Coastline Pros</span><span>Built by Joshua.</span></footer>
+
+<section class="areas reveal">
+  <h2>Service Area</h2>
+  <p>Proudly serving Northeast Florida communities.</p>
+  <div class="area-tags">
+    <span class="area-tag">Jacksonville</span>
+    <span class="area-tag">St. Augustine</span>
+    <span class="area-tag">Fernandina Beach</span>
+    <span class="area-tag">Ponte Vedra</span>
+    <span class="area-tag">Yulee</span>
+    <span class="area-tag">Orange Park</span>
+    <span class="area-tag">Atlantic Beach</span>
+  </div>
+</section>
+
+<div class="cta-banner reveal" id="quote"><h3>Need a quote?</h3><p>Call or fill out the form. We respond same day, every time.</p><button class="btn-primary">Request Free Quote</button></div>
+<footer class="footer">
+  <div class="footer-top"><div><div class="footer-brand">Coastline Pros</div><div class="footer-tagline">Northeast Florida's trusted contractor</div></div><div class="footer-links"><a href="#services">Services</a><a href="#quote">Quote</a></div></div>
+  <div class="footer-bottom"><span>Built by Joshua.</span><span>License #CGC123456</span></div>
+</footer>
 <div class="demo-ribbon"><b>Demo</b> - Built by joshuahumphreys.net</div>
 <script>
 const params=new URLSearchParams(window.location.search);
@@ -78,6 +156,10 @@ const STYLES={'Modern':{display:"'Space Grotesk',sans-serif",body:"'DM Sans','In
 function apply(p,s){const r=document.documentElement;if(p&&PALETTES[p]){const c=PALETTES[p];r.style.setProperty('--bg',c.bg);r.style.setProperty('--primary',c.primary);r.style.setProperty('--accent',c.accent);r.style.setProperty('--text',c.text);r.style.setProperty('--muted',c.muted)}if(s&&STYLES[s]){const t=STYLES[s];r.style.setProperty('--display',t.display);r.style.setProperty('--body',t.body);r.style.setProperty('--radius',t.radius);r.style.setProperty('--weight',t.weight)}}
 apply(params.get('palette'),params.get('style'));
 window.addEventListener('message',(e)=>{if(e.data&&e.data.type==='theme-update')apply(e.data.palette,e.data.style)});
+const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+// Fix: anchor links scroll inside iframe only, not parent
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});});
 </script>
 </body>
 </html>

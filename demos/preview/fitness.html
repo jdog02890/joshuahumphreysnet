@@ -1,65 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base target="_self">
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex">
 <title>Crosswave Fit - Demo Preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#1A1A1A;--primary:#F0F0F0;--accent:#E8553A;--text:#F0F0F0;--muted:#777;--display:'Outfit',sans-serif;--body:'Outfit',sans-serif;--radius:0px;--weight:800}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden}a{color:inherit;text-decoration:none}
-.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid rgba(255,255,255,0.08);padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden;padding-bottom:36px}a{color:inherit;text-decoration:none}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(26,26,26,0.95);border-bottom:1px solid rgba(255,255,255,0.06);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(12px)}
 .nav-brand{font-family:var(--display);font-weight:var(--weight);font-size:13px;color:var(--primary);text-transform:uppercase;letter-spacing:0.18em}
-.nav-links{display:flex;gap:20px;font-size:12px;color:var(--muted);font-weight:500}.nav-links a{transition:color 0.2s;cursor:pointer}.nav-links a:hover{color:var(--accent)}
-.hero{padding:48px 24px 40px}.hero-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-.hero h1{font-family:var(--display);font-weight:var(--weight);font-size:28px;line-height:1.1;letter-spacing:-0.02em;color:var(--primary);margin-bottom:12px}
+.nav-links{display:flex;gap:20px;font-size:12px;color:var(--muted);font-weight:500}.nav-links a{transition:color 0.25s;cursor:pointer}.nav-links a:hover{color:var(--accent)}
+
+.hero{padding:48px 24px 32px}.hero-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px}.hero-eyebrow::before{content:'';width:24px;height:2px;background:var(--accent)}
+.hero h1{font-family:var(--display);font-weight:var(--weight);font-size:30px;line-height:1.08;letter-spacing:-0.02em;color:var(--primary);margin-bottom:12px}
 .hero p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:12px 24px;border-radius:var(--radius);font-family:var(--display);font-weight:700;font-size:12px;border:none;cursor:pointer;transition:opacity 0.2s;text-transform:uppercase;letter-spacing:0.08em}.btn-primary:hover{opacity:0.9}
-.hero-img{margin:0 24px;height:140px;border-radius:var(--radius);background:linear-gradient(90deg,#0D0D0D 0%,var(--accent) 100%);position:relative;overflow:hidden}
-.hero-img::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(255,255,255,0.12) 0%,transparent 50%)}
-.schedule{padding:32px 24px}.schedule h2{font-family:var(--display);font-weight:var(--weight);font-size:16px;color:var(--primary);margin-bottom:16px;text-transform:uppercase;letter-spacing:0.05em}
+.hero-cta-row{display:flex;gap:10px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:12px 24px;border-radius:var(--radius);font-family:var(--display);font-weight:700;font-size:12px;border:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;text-transform:uppercase;letter-spacing:0.08em;box-shadow:0 2px 12px rgba(232,85,58,0.3)}.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(232,85,58,0.4)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--primary);padding:12px 24px;border-radius:var(--radius);font-family:var(--display);font-weight:700;font-size:12px;border:1px solid rgba(240,240,240,0.2);cursor:pointer;transition:border-color 0.25s;text-transform:uppercase;letter-spacing:0.08em}.btn-secondary:hover{border-color:var(--accent)}
+
+.hero-img{margin:0 24px;height:160px;border-radius:var(--radius);background:linear-gradient(90deg,#0D0D0D 0%,#2A1510 50%,var(--accent) 100%);position:relative;overflow:hidden}
+.hero-img::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(232,85,58,0.2) 0%,transparent 50%)}
+.hero-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(13,13,13,0.5),transparent)}
+.hero-img-overlay{position:absolute;bottom:14px;left:16px;z-index:2}
+.hero-img-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(232,85,58,0.3);backdrop-filter:blur(4px);padding:4px 10px;border-radius:0;font-size:9px;color:rgba(255,255,255,0.9);font-weight:600;text-transform:uppercase;letter-spacing:0.06em}
+
+/* PROGRESS BAR */
+.daily-progress{padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.progress-label{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
+.progress-bar{height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;width:68%;background:var(--accent);border-radius:2px;transition:width 1.5s cubic-bezier(0.22,1,0.36,1)}
+
+/* SCHEDULE */
+.schedule{padding:32px 24px}.schedule h2{font-family:var(--display);font-weight:var(--weight);font-size:16px;color:var(--primary);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em}
+.schedule-sub{font-size:11px;color:var(--muted);margin-bottom:16px}
 .class-list{display:flex;flex-direction:column;gap:8px}
-.class-item{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:rgba(255,255,255,0.04);border-left:3px solid var(--accent);transition:background 0.2s;cursor:default}
-.class-item:hover{background:rgba(255,255,255,0.07)}
+.class-item{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:rgba(255,255,255,0.03);border-left:3px solid var(--accent);transition:background 0.2s,transform 0.2s;cursor:default}
+.class-item:hover{background:rgba(255,255,255,0.06);transform:translateX(4px)}
 .class-name{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.04em}
-.class-time{font-size:10px;color:var(--muted)}
+.class-time{font-size:10px;color:var(--muted);margin-top:1px}
+.class-right{text-align:right}
 .class-spots{font-size:10px;color:var(--accent);font-weight:600}
-.stats{padding:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;border-top:1px solid rgba(255,255,255,0.08)}
-.stat{text-align:center;padding:12px 8px}.stat-num{font-family:var(--display);font-weight:var(--weight);font-size:22px;color:var(--accent)}.stat-label{font-size:9px;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:0.06em}
-.cta-banner{margin:24px;padding:24px;background:var(--accent);border-radius:var(--radius);text-align:center}
-.cta-banner h3{font-family:var(--display);font-weight:var(--weight);font-size:16px;color:#fff;margin-bottom:6px;text-transform:uppercase}
-.cta-banner p{font-size:11px;color:rgba(255,255,255,0.7);margin-bottom:14px}
-.cta-banner .btn-primary{background:var(--bg);color:var(--primary)}
-.footer{padding:20px 24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;font-size:10px;color:var(--muted)}
-.footer-brand{font-family:var(--display);font-weight:var(--weight);color:var(--primary);text-transform:uppercase;letter-spacing:0.1em;font-size:9px}
+.class-coach{font-size:9px;color:var(--muted);margin-top:1px}
+
+/* MEMBERSHIP */
+.membership{padding:32px 24px;border-top:1px solid rgba(255,255,255,0.06)}
+.membership h2{font-family:var(--display);font-weight:var(--weight);font-size:16px;color:var(--primary);margin-bottom:16px;text-transform:uppercase;letter-spacing:0.05em}
+.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.plan-card{padding:20px 14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);text-align:center;transition:border-color 0.2s,transform 0.2s;cursor:default}
+.plan-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.plan-card.featured{border-color:var(--accent);background:rgba(232,85,58,0.08)}
+.plan-name{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.plan-price{font-family:var(--display);font-weight:var(--weight);font-size:22px;color:var(--accent)}
+.plan-period{font-size:9px;color:var(--muted)}
+.plan-features{font-size:9px;color:var(--muted);margin-top:8px;line-height:1.6}
+.plan-badge{display:inline-block;font-size:8px;font-weight:700;text-transform:uppercase;background:var(--accent);color:#fff;padding:2px 6px;margin-bottom:8px;letter-spacing:0.06em}
+
+/* STATS */
+.stats{padding:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;border-top:1px solid rgba(255,255,255,0.06)}
+.stat{text-align:center;padding:12px 8px}.stat-num{font-family:var(--display);font-weight:var(--weight);font-size:24px;color:var(--accent)}.stat-label{font-size:9px;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:0.06em}
+
+/* COACHES */
+.coaches{padding:32px 24px;border-top:1px solid rgba(255,255,255,0.06)}
+.coaches h2{font-family:var(--display);font-weight:var(--weight);font-size:16px;color:var(--primary);margin-bottom:16px;text-transform:uppercase;letter-spacing:0.05em}
+.coach-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.coach-card{text-align:center;padding:14px 8px;cursor:default;transition:transform 0.2s}.coach-card:hover{transform:translateY(-2px)}
+.coach-avatar{width:48px;height:48px;background:linear-gradient(135deg,var(--accent),#0D0D0D);margin:0 auto 8px}
+.coach-name{font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.04em}
+.coach-specialty{font-size:9px;color:var(--muted);margin-top:2px}
+
+/* CTA */
+.cta-banner{margin:24px;padding:28px 24px;background:var(--accent);text-align:center;position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;background:rgba(255,255,255,0.1)}
+.cta-banner h3{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:#fff;margin-bottom:6px;text-transform:uppercase;position:relative;z-index:1}
+.cta-banner p{font-size:11px;color:rgba(255,255,255,0.7);margin-bottom:14px;position:relative;z-index:1}
+.cta-banner .btn-primary{background:var(--bg);color:var(--primary);box-shadow:none;position:relative;z-index:1}
+
+.footer{padding:24px;border-top:1px solid rgba(255,255,255,0.06)}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.footer-brand{font-family:var(--display);font-weight:var(--weight);color:var(--primary);text-transform:uppercase;letter-spacing:0.1em;font-size:10px}
+.footer-tagline{font-size:9px;color:var(--muted);margin-top:2px}
+.footer-links{display:flex;gap:16px}.footer-links a{font-size:10px;color:var(--muted);transition:color 0.2s}.footer-links a:hover{color:var(--accent)}
+.footer-bottom{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);padding-top:12px;border-top:1px solid rgba(255,255,255,0.04);align-items:center}
+
 .demo-ribbon{position:fixed;bottom:0;left:0;right:0;z-index:100;background:#0D0D0D;color:rgba(255,255,255,0.7);text-align:center;padding:8px;font-size:10px;font-weight:500}.demo-ribbon b{color:#f5c244}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="nav-brand">CROSSWAVE</div><div class="nav-links"><a href="#schedule">Classes</a><a href="#join">Join</a><a>About</a></div></nav>
+<nav class="nav"><div class="nav-brand">CROSSWAVE</div><div class="nav-links"><a href="#schedule">Classes</a><a href="#plans">Pricing</a><a href="#join">Join</a></div></nav>
 <section class="hero">
   <div class="hero-eyebrow">Strength + Community</div>
-  <h1>Train hard.<br>Be part of something.</h1>
+  <h1>Train hard.<br>Be part of<br>something.</h1>
   <p>Group classes, personal training, and a gym that actually knows your name.</p>
-  <button class="btn-primary">Start Free Trial</button>
+  <div class="hero-cta-row"><button class="btn-primary">Start Free Trial</button><button class="btn-secondary">View Schedule</button></div>
 </section>
-<div class="hero-img"></div>
-<section class="schedule" id="schedule">
+<div class="hero-img"><div class="hero-img-overlay"><div class="hero-img-badge">&#9889; 3 classes left today</div></div></div>
+
+<div class="daily-progress reveal">
+  <div class="progress-label"><span>Today's Capacity</span><span>68% Full</span></div>
+  <div class="progress-bar"><div class="progress-fill"></div></div>
+</div>
+
+<section class="schedule reveal" id="schedule">
   <h2>Today's Classes</h2>
+  <div class="schedule-sub">Tap to reserve your spot</div>
   <div class="class-list">
-    <div class="class-item"><div><div class="class-name">CrossFit WOD</div><div class="class-time">6:00 AM - Coach Ryan</div></div><div class="class-spots">4 spots</div></div>
-    <div class="class-item"><div><div class="class-name">HIIT Burn</div><div class="class-time">7:30 AM - Coach Jess</div></div><div class="class-spots">6 spots</div></div>
-    <div class="class-item"><div><div class="class-name">Olympic Lifting</div><div class="class-time">12:00 PM - Coach Ryan</div></div><div class="class-spots">3 spots</div></div>
-    <div class="class-item"><div><div class="class-name">Endurance</div><div class="class-time">5:30 PM - Coach Mia</div></div><div class="class-spots">8 spots</div></div>
+    <div class="class-item"><div><div class="class-name">CrossFit WOD</div><div class="class-time">6:00 AM</div></div><div class="class-right"><div class="class-spots">4 spots left</div><div class="class-coach">Coach Ryan</div></div></div>
+    <div class="class-item"><div><div class="class-name">HIIT Burn</div><div class="class-time">7:30 AM</div></div><div class="class-right"><div class="class-spots">6 spots left</div><div class="class-coach">Coach Jess</div></div></div>
+    <div class="class-item"><div><div class="class-name">Olympic Lifting</div><div class="class-time">12:00 PM</div></div><div class="class-right"><div class="class-spots">3 spots left</div><div class="class-coach">Coach Ryan</div></div></div>
+    <div class="class-item"><div><div class="class-name">Endurance</div><div class="class-time">5:30 PM</div></div><div class="class-right"><div class="class-spots">8 spots left</div><div class="class-coach">Coach Mia</div></div></div>
+    <div class="class-item"><div><div class="class-name">Open Gym</div><div class="class-time">7:00 PM</div></div><div class="class-right"><div class="class-spots">12 spots left</div><div class="class-coach">Self-guided</div></div></div>
   </div>
 </section>
-<div class="stats">
+
+<section class="membership reveal" id="plans">
+  <h2>Membership</h2>
+  <div class="plan-grid">
+    <div class="plan-card">
+      <div class="plan-name">Drop-In</div>
+      <div class="plan-price">$25</div>
+      <div class="plan-period">/class</div>
+      <div class="plan-features">Any class, any time<br>No commitment</div>
+    </div>
+    <div class="plan-card featured">
+      <div class="plan-badge">Most Popular</div>
+      <div class="plan-name">Unlimited</div>
+      <div class="plan-price">$149</div>
+      <div class="plan-period">/month</div>
+      <div class="plan-features">All classes + open gym<br>Guest passes included</div>
+    </div>
+  </div>
+</section>
+
+<div class="stats reveal">
   <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Members</div></div>
   <div class="stat"><div class="stat-num">6</div><div class="stat-label">Coaches</div></div>
   <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Classes/Week</div></div>
 </div>
-<div class="cta-banner" id="join"><h3>Your First Week Free</h3><p>No commitment. Show up, work out, see if it fits.</p><button class="btn-primary">Claim Free Trial</button></div>
-<footer class="footer"><span class="footer-brand">CROSSWAVE FIT</span><span>Built by Joshua.</span></footer>
+
+<section class="coaches reveal">
+  <h2>Our Coaches</h2>
+  <div class="coach-grid">
+    <div class="coach-card"><div class="coach-avatar"></div><div class="coach-name">Ryan</div><div class="coach-specialty">CrossFit L3</div></div>
+    <div class="coach-card"><div class="coach-avatar"></div><div class="coach-name">Jess</div><div class="coach-specialty">HIIT, Cardio</div></div>
+    <div class="coach-card"><div class="coach-avatar"></div><div class="coach-name">Mia</div><div class="coach-specialty">Endurance</div></div>
+  </div>
+</section>
+
+<div class="cta-banner reveal" id="join"><h3>Your First Week Free</h3><p>No commitment. Show up, work out, see if it fits.</p><button class="btn-primary">Claim Free Trial</button></div>
+<footer class="footer">
+  <div class="footer-top"><div><div class="footer-brand">CROSSWAVE FIT</div><div class="footer-tagline">Fernandina Beach, FL</div></div><div class="footer-links"><a href="#schedule">Schedule</a><a href="#plans">Pricing</a><a href="#join">Join</a></div></div>
+  <div class="footer-bottom"><span>Built by Joshua.</span><span>Open 5 AM - 9 PM Daily</span></div>
+</footer>
 <div class="demo-ribbon"><b>Demo</b> - Built by joshuahumphreys.net</div>
 <script>
 const params=new URLSearchParams(window.location.search);
@@ -68,6 +164,10 @@ const STYLES={'Modern':{display:"'Space Grotesk',sans-serif",body:"'DM Sans','In
 function apply(p,s){const r=document.documentElement;if(p&&PALETTES[p]){const c=PALETTES[p];r.style.setProperty('--bg',c.bg);r.style.setProperty('--primary',c.primary);r.style.setProperty('--accent',c.accent);r.style.setProperty('--text',c.text);r.style.setProperty('--muted',c.muted)}if(s&&STYLES[s]){const t=STYLES[s];r.style.setProperty('--display',t.display);r.style.setProperty('--body',t.body);r.style.setProperty('--radius',t.radius);r.style.setProperty('--weight',t.weight)}}
 apply(params.get('palette'),params.get('style'));
 window.addEventListener('message',(e)=>{if(e.data&&e.data.type==='theme-update')apply(e.data.palette,e.data.style)});
+const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+// Fix: anchor links scroll inside iframe only, not parent
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});});
 </script>
 </body>
 </html>

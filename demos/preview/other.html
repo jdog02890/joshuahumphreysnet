@@ -224,6 +224,8 @@ const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(e
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 // FAQ toggle
 document.querySelectorAll('.faq-item').forEach(item=>{item.querySelector('.faq-q').addEventListener('click',()=>{item.classList.toggle('open')})});
+// Fix: anchor links scroll inside iframe only, not parent
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});});
 </script>
 </body>
 </html>

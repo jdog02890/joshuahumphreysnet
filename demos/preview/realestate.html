@@ -1,70 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base target="_self">
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex">
 <title>Coast Realty - Demo Preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root { --bg:#F4F7FA;--primary:#1A2B4A;--accent:#2E6AB4;--text:#1A2B4A;--muted:#8090A0;--display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--radius:6px;--weight:600; }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden}a{color:inherit;text-decoration:none}
-.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid rgba(0,0,0,0.08);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(8px)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden;padding-bottom:36px}a{color:inherit;text-decoration:none}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(244,247,250,0.92);border-bottom:1px solid rgba(0,0,0,0.06);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(12px)}
 .nav-brand{font-family:var(--display);font-weight:var(--weight);font-size:13px;color:var(--primary);text-transform:uppercase;letter-spacing:0.14em}
-.nav-links{display:flex;gap:20px;font-size:12px;color:var(--muted);font-weight:500}.nav-links a{transition:color 0.2s;cursor:pointer}.nav-links a:hover{color:var(--accent)}
-.hero{padding:48px 24px 40px}.hero-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.nav-links{display:flex;gap:20px;font-size:12px;color:var(--muted);font-weight:500}.nav-links a{transition:color 0.25s;cursor:pointer;position:relative}.nav-links a:hover{color:var(--accent)}.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.3s}.nav-links a:hover::after{width:100%}
+
+.hero{padding:48px 24px 32px}.hero-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px}.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--accent)}
 .hero h1{font-family:var(--display);font-weight:var(--weight);font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:var(--primary);margin-bottom:12px}
-.hero p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px}
+.hero p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:20px}
 .hero-cta-row{display:flex;gap:10px;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:10px 20px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:none;cursor:pointer;transition:opacity 0.2s}.btn-primary:hover{opacity:0.9}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--primary);padding:10px 20px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:1px solid var(--primary);cursor:pointer;transition:background 0.2s}.btn-secondary:hover{background:rgba(0,0,0,0.04)}
-.hero-img{margin:0 24px;height:140px;border-radius:var(--radius);background:linear-gradient(180deg,var(--primary) 0%,var(--accent) 100%);position:relative;overflow:hidden}
-.hero-img::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 60% 40%,rgba(255,255,255,0.2) 0%,transparent 50%)}
-.listings{padding:32px 24px}.listings h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:16px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:11px 22px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 2px 8px rgba(46,106,180,0.2)}.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(46,106,180,0.3)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--primary);padding:11px 22px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:1px solid rgba(26,43,74,0.2);cursor:pointer;transition:border-color 0.25s,background 0.25s}.btn-secondary:hover{background:rgba(0,0,0,0.03);border-color:var(--accent)}
+
+.hero-img{margin:0 24px;height:160px;border-radius:var(--radius);background:linear-gradient(135deg,#0F1C30 0%,var(--primary) 40%,var(--accent) 100%);position:relative;overflow:hidden}
+.hero-img::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 60% 40%,rgba(255,255,255,0.15) 0%,transparent 50%)}
+.hero-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(15,28,48,0.4),transparent)}
+.hero-img-overlay{position:absolute;bottom:14px;left:16px;z-index:2}
+.hero-img-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);backdrop-filter:blur(4px);padding:4px 10px;border-radius:20px;font-size:9px;color:rgba(255,255,255,0.9);font-weight:500}
+
+/* SEARCH BAR */
+.search-bar{margin:0 24px;padding:14px 16px;background:#fff;border-radius:var(--radius);box-shadow:0 2px 12px rgba(0,0,0,0.06);display:flex;gap:8px;align-items:center;margin-top:-20px;position:relative;z-index:10}
+.search-input{flex:1;border:1px solid rgba(0,0,0,0.08);border-radius:calc(var(--radius) - 2px);padding:8px 12px;font-size:11px;font-family:var(--body);color:var(--primary);background:var(--bg);outline:none;transition:border-color 0.2s}
+.search-input:focus{border-color:var(--accent)}
+.search-input::placeholder{color:var(--muted)}
+.search-btn{background:var(--accent);color:#fff;border:none;border-radius:calc(var(--radius) - 2px);padding:8px 14px;font-size:11px;font-weight:600;cursor:pointer;transition:opacity 0.2s;font-family:var(--display)}.search-btn:hover{opacity:0.9}
+
+/* LISTINGS */
+.listings{padding:32px 24px}.listings h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:6px}
+.listings-sub{font-size:11px;color:var(--muted);margin-bottom:16px}
 .listing-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.listing-card{background:rgba(0,0,0,0.03);border-radius:var(--radius);overflow:hidden;transition:transform 0.2s;cursor:default}
-.listing-card:hover{transform:translateY(-2px)}
-.listing-img{height:64px;background:linear-gradient(135deg,var(--primary),var(--accent));opacity:0.7}
+.listing-card{background:#fff;border-radius:var(--radius);overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:default;border:1px solid rgba(0,0,0,0.04)}
+.listing-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+.listing-img{height:72px;background:linear-gradient(135deg,var(--primary),var(--accent));opacity:0.7;position:relative}
+.listing-img-badge{position:absolute;top:6px;left:6px;font-size:8px;font-weight:700;text-transform:uppercase;background:var(--accent);color:#fff;padding:2px 6px;border-radius:3px;letter-spacing:0.04em}
 .listing-info{padding:10px 12px}
 .listing-price{font-family:var(--display);font-weight:var(--weight);font-size:14px;color:var(--accent)}
 .listing-addr{font-size:10px;color:var(--muted);margin-top:2px}
-.listing-meta{font-size:9px;color:var(--muted);margin-top:4px}
+.listing-meta{font-size:9px;color:var(--muted);margin-top:4px;display:flex;gap:8px}
+.listing-meta span{display:flex;align-items:center;gap:3px}
+
+/* STATS */
 .stats{padding:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;border-top:1px solid rgba(0,0,0,0.06)}
 .stat{text-align:center;padding:12px 8px}
-.stat-num{font-family:var(--display);font-weight:var(--weight);font-size:20px;color:var(--accent)}
-.stat-label{font-size:9px;color:var(--muted);margin-top:2px}
-.cta-banner{margin:24px;padding:24px;background:var(--primary);border-radius:var(--radius);text-align:center}
-.cta-banner h3{font-family:var(--display);font-weight:var(--weight);font-size:16px;color:#fff;margin-bottom:6px}
-.cta-banner p{font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:14px}
-.footer{padding:20px 24px;border-top:1px solid rgba(0,0,0,0.06);display:flex;justify-content:space-between;font-size:10px;color:var(--muted)}
-.footer-brand{font-family:var(--display);font-weight:var(--weight);color:var(--primary)}
+.stat-num{font-family:var(--display);font-weight:var(--weight);font-size:22px;color:var(--accent)}
+.stat-label{font-size:9px;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:0.04em}
+
+/* NEIGHBORHOODS */
+.neighborhoods{padding:32px 24px;border-top:1px solid rgba(0,0,0,0.06)}
+.neighborhoods h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:16px}
+.hood-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hood-card{padding:16px;background:#fff;border-radius:var(--radius);border:1px solid rgba(0,0,0,0.04);transition:border-color 0.2s,transform 0.2s;cursor:default}
+.hood-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.hood-name{font-family:var(--display);font-weight:var(--weight);font-size:12px;color:var(--primary);margin-bottom:2px}
+.hood-range{font-size:10px;color:var(--accent);font-weight:600}
+.hood-desc{font-size:9px;color:var(--muted);margin-top:4px;line-height:1.4}
+
+/* AGENT BIO */
+.agent{padding:32px 24px;background:rgba(0,0,0,0.02)}
+.agent-card{display:flex;gap:16px;align-items:flex-start}
+.agent-photo{width:64px;height:64px;border-radius:var(--radius);background:linear-gradient(135deg,var(--primary),var(--accent));flex-shrink:0;position:relative}
+.agent-photo::after{content:'';position:absolute;inset:2px;border-radius:calc(var(--radius) - 2px);border:2px solid rgba(255,255,255,0.2)}
+.agent-info{flex:1}
+.agent-name{font-family:var(--display);font-weight:var(--weight);font-size:14px;color:var(--primary)}
+.agent-title{font-size:10px;color:var(--muted);margin-top:1px}
+.agent-bio{font-size:11px;color:var(--muted);line-height:1.6;margin-top:8px}
+.agent-contact{display:flex;gap:10px;margin-top:10px}
+.agent-contact a{font-size:10px;color:var(--accent);font-weight:600;transition:opacity 0.2s}
+.agent-contact a:hover{opacity:0.7}
+
+/* CTA */
+.cta-banner{margin:24px;padding:28px 24px;background:var(--primary);border-radius:var(--radius);text-align:center;position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:rgba(46,106,180,0.2)}
+.cta-banner h3{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:#fff;margin-bottom:6px;position:relative;z-index:1}
+.cta-banner p{font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:14px;position:relative;z-index:1}
+.cta-banner .btn-primary{position:relative;z-index:1}
+
+.footer{padding:24px;border-top:1px solid rgba(0,0,0,0.06)}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.footer-brand{font-family:var(--display);font-weight:var(--weight);color:var(--primary);font-size:12px;text-transform:uppercase;letter-spacing:0.12em}
+.footer-tagline{font-size:10px;color:var(--muted);margin-top:2px}
+.footer-links{display:flex;gap:16px}.footer-links a{font-size:10px;color:var(--muted);transition:color 0.2s}.footer-links a:hover{color:var(--accent)}
+.footer-bottom{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);padding-top:12px;border-top:1px solid rgba(0,0,0,0.04);align-items:center}
+
 .demo-ribbon{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--primary);color:rgba(255,255,255,0.7);text-align:center;padding:8px;font-size:10px;font-weight:500}.demo-ribbon b{color:#f5c244}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="nav-brand">COAST REALTY</div><div class="nav-links"><a href="#listings">Listings</a><a href="#about">Areas</a><a href="#contact">Contact</a></div></nav>
+<nav class="nav"><div class="nav-brand">COAST REALTY</div><div class="nav-links"><a href="#listings">Listings</a><a href="#areas">Areas</a><a href="#contact">Contact</a></div></nav>
 <section class="hero">
   <div class="hero-eyebrow">Amelia Island Realtor</div>
   <h1>Your Northeast Florida home expert.</h1>
   <p>Helping families buy, sell, and relocate to Amelia Island and Jacksonville since 2015.</p>
   <div class="hero-cta-row"><button class="btn-primary">Schedule a Call</button><button class="btn-secondary">View Listings</button></div>
 </section>
-<div class="hero-img"></div>
-<section class="listings" id="listings">
+<div class="hero-img"><div class="hero-img-overlay"><div class="hero-img-badge">&#127968; 12 new listings this week</div></div></div>
+
+<div class="search-bar reveal">
+  <input class="search-input" type="text" placeholder="Search by city, zip, or neighborhood...">
+  <button class="search-btn">Search</button>
+</div>
+
+<section class="listings reveal" id="listings">
   <h2>Featured Listings</h2>
+  <div class="listings-sub">Hand-picked properties on the First Coast</div>
   <div class="listing-grid">
-    <div class="listing-card"><div class="listing-img"></div><div class="listing-info"><div class="listing-price">$485,000</div><div class="listing-addr">1247 Ocean Way</div><div class="listing-meta">3 bd / 2 ba / 1,850 sqft</div></div></div>
-    <div class="listing-card"><div class="listing-img"></div><div class="listing-info"><div class="listing-price">$329,000</div><div class="listing-addr">856 Marsh View Dr</div><div class="listing-meta">4 bd / 3 ba / 2,200 sqft</div></div></div>
-    <div class="listing-card"><div class="listing-img"></div><div class="listing-info"><div class="listing-price">$625,000</div><div class="listing-addr">92 Dune Crest Ln</div><div class="listing-meta">4 bd / 3 ba / 2,800 sqft</div></div></div>
-    <div class="listing-card"><div class="listing-img"></div><div class="listing-info"><div class="listing-price">$275,000</div><div class="listing-addr">3401 Yulee Blvd</div><div class="listing-meta">3 bd / 2 ba / 1,600 sqft</div></div></div>
+    <div class="listing-card"><div class="listing-img"><span class="listing-img-badge">New</span></div><div class="listing-info"><div class="listing-price">$485,000</div><div class="listing-addr">1247 Ocean Way</div><div class="listing-meta"><span>3 bd</span><span>2 ba</span><span>1,850 sqft</span></div></div></div>
+    <div class="listing-card"><div class="listing-img"><span class="listing-img-badge">Open House</span></div><div class="listing-info"><div class="listing-price">$329,000</div><div class="listing-addr">856 Marsh View Dr</div><div class="listing-meta"><span>4 bd</span><span>3 ba</span><span>2,200 sqft</span></div></div></div>
+    <div class="listing-card"><div class="listing-img"></div><div class="listing-info"><div class="listing-price">$625,000</div><div class="listing-addr">92 Dune Crest Ln</div><div class="listing-meta"><span>4 bd</span><span>3 ba</span><span>2,800 sqft</span></div></div></div>
+    <div class="listing-card"><div class="listing-img"><span class="listing-img-badge">Reduced</span></div><div class="listing-info"><div class="listing-price">$275,000</div><div class="listing-addr">3401 Yulee Blvd</div><div class="listing-meta"><span>3 bd</span><span>2 ba</span><span>1,600 sqft</span></div></div></div>
   </div>
 </section>
-<div class="stats">
+
+<div class="stats reveal">
   <div class="stat"><div class="stat-num">120+</div><div class="stat-label">Homes Sold</div></div>
   <div class="stat"><div class="stat-num">$42M</div><div class="stat-label">Total Volume</div></div>
   <div class="stat"><div class="stat-num">4.9</div><div class="stat-label">Google Rating</div></div>
 </div>
-<div class="cta-banner" id="contact"><h3>Thinking about buying or selling?</h3><p>Free consultation, no pressure. Let's talk about your goals.</p><button class="btn-primary">Schedule a Call</button></div>
-<footer class="footer"><span class="footer-brand">COAST REALTY</span><span>Built by Joshua.</span></footer>
+
+<section class="neighborhoods reveal" id="areas">
+  <h2>Explore Neighborhoods</h2>
+  <div class="hood-grid">
+    <div class="hood-card"><div class="hood-name">Amelia Island</div><div class="hood-range">$350K - $1.2M</div><div class="hood-desc">Beachfront living, historic charm</div></div>
+    <div class="hood-card"><div class="hood-name">Fernandina Beach</div><div class="hood-range">$280K - $750K</div><div class="hood-desc">Downtown walkability, local shops</div></div>
+    <div class="hood-card"><div class="hood-name">Ponte Vedra</div><div class="hood-range">$400K - $2M+</div><div class="hood-desc">Golf communities, top schools</div></div>
+    <div class="hood-card"><div class="hood-name">Yulee</div><div class="hood-range">$220K - $450K</div><div class="hood-desc">Growing area, great value</div></div>
+  </div>
+</section>
+
+<section class="agent reveal">
+  <div class="agent-card">
+    <div class="agent-photo"></div>
+    <div class="agent-info">
+      <div class="agent-name">Sarah Mitchell</div>
+      <div class="agent-title">Lead Agent, Coast Realty</div>
+      <div class="agent-bio">Born and raised on Amelia Island. 10+ years helping families find their perfect home on the First Coast. Whether you are buying your first home or selling to relocate, I will guide you every step of the way.</div>
+      <div class="agent-contact"><a href="#contact">Email</a><a href="#contact">Call</a><a href="#contact">LinkedIn</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-banner reveal" id="contact"><h3>Thinking about buying or selling?</h3><p>Free consultation, no pressure. Let's talk about your goals.</p><button class="btn-primary">Schedule a Call</button></div>
+<footer class="footer">
+  <div class="footer-top">
+    <div><div class="footer-brand">COAST REALTY</div><div class="footer-tagline">Northeast Florida homes since 2015</div></div>
+    <div class="footer-links"><a href="#listings">Listings</a><a href="#areas">Areas</a><a href="#contact">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><span>Built by Joshua.</span><span>MLS# 12345</span></div>
+</footer>
 <div class="demo-ribbon"><b>Demo</b> - Built by joshuahumphreys.net</div>
 <script>
 const params=new URLSearchParams(window.location.search);
@@ -73,6 +166,10 @@ const STYLES={'Modern':{display:"'Space Grotesk',sans-serif",body:"'DM Sans','In
 function apply(p,s){const r=document.documentElement;if(p&&PALETTES[p]){const c=PALETTES[p];r.style.setProperty('--bg',c.bg);r.style.setProperty('--primary',c.primary);r.style.setProperty('--accent',c.accent);r.style.setProperty('--text',c.text);r.style.setProperty('--muted',c.muted)}if(s&&STYLES[s]){const t=STYLES[s];r.style.setProperty('--display',t.display);r.style.setProperty('--body',t.body);r.style.setProperty('--radius',t.radius);r.style.setProperty('--weight',t.weight)}}
 apply(params.get('palette'),params.get('style'));
 window.addEventListener('message',(e)=>{if(e.data&&e.data.type==='theme-update')apply(e.data.palette,e.data.style)});
+const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+// Fix: anchor links scroll inside iframe only, not parent
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});});
 </script>
 </body>
 </html>
