@@ -286,6 +286,8 @@
     .option-card.selected { border-color: var(--orange); box-shadow: 0 4px 20px rgba(212,80,10,0.1); }
     .option-card .card-icon { font-size: 1.5rem; display: block; margin-bottom: 10px; }
     .option-card .card-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; color: var(--ink); margin-bottom: 4px; }
+    .style-font-sample { color: var(--orange); margin-bottom: 6px; }
+    .style-font-label { font-size: 0.68rem; color: var(--muted); margin-top: 6px; font-family: 'Inter', sans-serif; letter-spacing: 0.04em; }
     .option-card .card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
     .option-card .check-dot {
       position: absolute; top: 12px; right: 12px; width: 20px; height: 20px;
@@ -593,150 +595,17 @@
       letter-spacing: 0.02em;
     }
 
-    /* Site canvas — CSS variables drive theming */
-    .preview-site {
-      --p-bg:      #F7F3EE;
-      --p-primary: #141414;
-      --p-accent:  #D4500A;
-      --p-text:    #141414;
-      --p-muted:   #7A7570;
-      --p-font:    'Inter', sans-serif;
-      --p-display: 'Space Grotesk', sans-serif;
-      --p-radius:  8px;
-      --p-weight:  600;
-
-      background: var(--p-bg);
-      color: var(--p-text);
-      font-family: var(--p-font);
-      padding: 0;
-      transition: background 0.3s, color 0.3s;
+    /* Live preview iframe */
+    .preview-iframe {
+      width: 100%;
       min-height: 460px;
+      border: none;
+      display: block;
+      background: #F7F3EE;
+      transition: opacity 0.3s;
     }
-
-    /* Style variants — each has a distinct font pairing */
-    .preview-site[data-style="Modern"]  { --p-radius: 8px;  --p-weight: 600; --p-display: 'Space Grotesk', sans-serif; --p-font: 'DM Sans', 'Inter', sans-serif; }
-    .preview-site[data-style="Classic"] { --p-radius: 3px;  --p-weight: 600; --p-display: 'Playfair Display', Georgia, serif; --p-font: 'Inter', sans-serif; }
-    .preview-site[data-style="Bold"]    { --p-radius: 12px; --p-weight: 800; --p-display: 'Outfit', sans-serif; --p-font: 'Outfit', sans-serif; }
-    .preview-site[data-style="Minimal"] { --p-radius: 2px;  --p-weight: 400; --p-display: 'DM Sans', sans-serif; --p-font: 'DM Sans', sans-serif; }
-
-    .preview-nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-    }
-    .preview-logo {
-      font-family: var(--p-display);
-      font-weight: var(--p-weight);
-      font-size: 14px;
-      color: var(--p-primary);
-      letter-spacing: -0.02em;
-    }
-    .preview-nav-links {
-      display: flex; gap: 12px;
-      font-size: 10px; font-weight: 500;
-      color: var(--p-muted);
-    }
-    .preview-hero {
-      padding: 28px 22px 24px;
-    }
-    .preview-eyebrow {
-      display: inline-block;
-      font-family: var(--p-display);
-      font-size: 8px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--p-accent);
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-    .preview-headline {
-      font-family: var(--p-display);
-      font-weight: var(--p-weight);
-      font-size: 22px;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--p-primary);
-      margin-bottom: 10px;
-    }
-    .preview-sub {
-      font-size: 11px;
-      color: var(--p-muted);
-      line-height: 1.55;
-      margin-bottom: 16px;
-    }
-    .preview-cta-row {
-      display: flex; gap: 8px;
-    }
-    .preview-cta-primary, .preview-cta-secondary {
-      font-family: var(--p-display);
-      font-weight: var(--p-weight);
-      font-size: 10px;
-      padding: 8px 14px;
-      border-radius: var(--p-radius);
-      letter-spacing: 0.02em;
-    }
-    .preview-cta-primary {
-      background: var(--p-accent);
-      color: #fff;
-    }
-    .preview-cta-secondary {
-      background: transparent;
-      color: var(--p-primary);
-      border: 1px solid var(--p-primary);
-    }
-    .preview-hero-art {
-      margin: 0 22px 22px;
-      aspect-ratio: 16/9;
-      background:
-        linear-gradient(135deg, var(--p-primary) 0%, var(--p-accent) 100%);
-      border-radius: var(--p-radius);
-      opacity: 0.85;
-      position: relative;
-      overflow: hidden;
-    }
-    .preview-hero-art::after {
-      content: "";
-      position: absolute; inset: 0;
-      background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.25) 0%, transparent 50%);
-    }
-
-    .preview-features {
-      padding: 0 22px 22px;
-      display: grid;
-      gap: 8px;
-    }
-    .preview-feature-block {
-      background: rgba(0,0,0,0.04);
-      border: 1px solid rgba(0,0,0,0.04);
-      border-left: 3px solid var(--p-accent);
-      border-radius: var(--p-radius);
-      padding: 10px 14px;
-      font-size: 11px;
-      color: var(--p-text);
-      display: flex; align-items: center; gap: 8px;
-    }
-    .preview-feature-block .ic {
-      font-size: 14px;
-    }
-    .preview-feature-block b {
-      font-family: var(--p-display);
-      font-weight: var(--p-weight);
-      color: var(--p-primary);
-      font-size: 11px;
-    }
-    .preview-feature-block span {
-      color: var(--p-muted);
-      font-size: 10px;
-      margin-left: auto;
-    }
-
-    .preview-footer {
-      padding: 12px 22px;
-      border-top: 1px solid rgba(0,0,0,0.06);
-      font-size: 9px;
-      color: var(--p-muted);
-      display: flex; justify-content: space-between;
-      letter-spacing: 0.05em;
+    .preview-iframe.loading {
+      opacity: 0.4;
     }
 
     .preview-meta {
@@ -771,7 +640,7 @@
         margin-bottom: 8px;
       }
       .preview-frame { box-shadow: 0 8px 22px rgba(20,20,20,0.08); }
-      .preview-site { min-height: auto; }
+      .preview-iframe { min-height: 360px; }
     }
   </style>
 </head>
@@ -936,27 +805,31 @@
           <h3 class="step-title">Pick a style vibe.</h3>
           <div class="option-grid" data-field="style" data-mode="single">
             <button type="button" class="option-card" data-value="Modern">
-              <span class="card-icon">▲</span>
-              <div class="card-title">Modern</div>
-              <div class="card-desc">Clean, spacious, lots of whitespace.</div>
+              <div class="style-font-sample" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.5rem;letter-spacing:-0.03em;line-height:1;">Aa</div>
+              <div class="card-title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;">Modern</div>
+              <div class="card-desc">Space Grotesk + DM Sans. Clean, spacious, tech-forward.</div>
+              <div class="style-font-label">Display: Space Grotesk</div>
               <div class="check-dot"></div>
             </button>
             <button type="button" class="option-card" data-value="Classic">
-              <span class="card-icon">●</span>
-              <div class="card-title">Classic</div>
-              <div class="card-desc">Timeless, trustworthy, traditional.</div>
+              <div class="style-font-sample" style="font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:1.5rem;font-style:italic;line-height:1;">Aa</div>
+              <div class="card-title" style="font-family:'Playfair Display',Georgia,serif;font-weight:600;">Classic</div>
+              <div class="card-desc">Playfair Display + Inter. Timeless, editorial, refined.</div>
+              <div class="style-font-label">Display: Playfair Display</div>
               <div class="check-dot"></div>
             </button>
             <button type="button" class="option-card" data-value="Bold">
-              <span class="card-icon">■</span>
-              <div class="card-title">Bold</div>
-              <div class="card-desc">Big type, color, attitude.</div>
+              <div class="style-font-sample" style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;text-transform:uppercase;letter-spacing:0.06em;line-height:1;">Aa</div>
+              <div class="card-title" style="font-family:'Outfit',sans-serif;font-weight:800;">Bold</div>
+              <div class="card-desc">Outfit (heavy). Big type, color, attitude.</div>
+              <div class="style-font-label">Display: Outfit 800</div>
               <div class="check-dot"></div>
             </button>
             <button type="button" class="option-card" data-value="Minimal">
-              <span class="card-icon">─</span>
-              <div class="card-title">Minimal</div>
-              <div class="card-desc">Less is more. Quiet design.</div>
+              <div class="style-font-sample" style="font-family:'DM Sans',sans-serif;font-weight:400;font-size:1.5rem;letter-spacing:0.02em;line-height:1;">Aa</div>
+              <div class="card-title" style="font-family:'DM Sans',sans-serif;font-weight:400;">Minimal</div>
+              <div class="card-desc">DM Sans (light). Less is more. Quiet design.</div>
+              <div class="style-font-label">Display: DM Sans 400</div>
               <div class="check-dot"></div>
             </button>
           </div>
@@ -1173,31 +1046,7 @@
             <span></span><span></span><span></span>
             <div class="preview-url" id="preview-url">your-business.com</div>
           </div>
-          <div class="preview-site" id="preview-site" data-style="Modern">
-            <div class="preview-nav">
-              <div class="preview-logo" id="preview-logo">Your Brand</div>
-              <div class="preview-nav-links" id="preview-nav-links">
-                <span>Home</span><span>About</span><span>Contact</span>
-              </div>
-            </div>
-            <div class="preview-hero">
-              <div class="preview-eyebrow" id="preview-eyebrow">Your Industry</div>
-              <h3 class="preview-headline" id="preview-headline">Pick an industry to begin.</h3>
-              <p class="preview-sub" id="preview-sub">Your tagline and value prop will appear here as you make selections on the left.</p>
-              <div class="preview-cta-row">
-                <span class="preview-cta-primary" id="preview-cta">Get Started</span>
-                <span class="preview-cta-secondary">Learn More</span>
-              </div>
-            </div>
-            <div class="preview-hero-art" id="preview-hero-art" aria-hidden="true"></div>
-            <div class="preview-features" id="preview-features">
-              <div class="preview-feature-block"><span class="ic">✉</span><b>Contact Form</b><span>Included</span></div>
-            </div>
-            <div class="preview-footer">
-              <span id="preview-footer-brand">© Your Brand</span>
-              <span>Built by Joshua.</span>
-            </div>
-          </div>
+          <iframe class="preview-iframe" id="preview-iframe" src="demos/preview/other.html?style=Modern" title="Live website preview" loading="lazy"></iframe>
         </div>
         <div class="preview-meta">
           <span><b id="preview-pages-count">3</b> pages</span>
@@ -1843,139 +1692,101 @@
       'Midnight': { bg: '#E0E8F0', primary: '#0D1B2A', accent: '#1B3A5C', text: '#0D1B2A', muted: '#5A6A7A' }
     };
 
-    const FEATURE_BLOCKS = {
-      'Online booking': { icon: '📅', label: 'Book Online',   tag: 'Calendar' },
-      'Online store':   { icon: '🛒', label: 'Shop',          tag: 'WooCommerce' },
-      'Blog':           { icon: '📝', label: 'Latest Posts',  tag: 'Blog' },
-      'Image gallery':  { icon: '🖼️', label: 'Gallery',       tag: 'Photos' },
-      'Contact form':   { icon: '✉',  label: 'Contact Form',  tag: 'Included' }
+    /* ---- Live Preview (iframe-based) ---- */
+    const INDUSTRY_PREVIEW_MAP = {
+      'Restaurant / Cafe':    'demos/preview/restaurant.html',
+      'Salon / Spa':          'demos/preview/salon.html',
+      'Real Estate':          'demos/preview/realestate.html',
+      'Fitness / Gym':        'demos/preview/fitness.html',
+      'Professional Services':'demos/preview/professional.html',
+      'Retail / Boutique':    'demos/preview/retail.html',
+      'Trades / Home Services':'demos/preview/trades.html',
+      'Creative / Portfolio': 'demos/preview/creative.html',
+      'Other':                'demos/preview/other.html'
     };
 
-    function buildNavLinks(industryKey, pages) {
-      const tpl = INDUSTRY_TEMPLATES[industryKey] || INDUSTRY_TEMPLATES['Other'];
-      // Always: Home + Contact. Add About + industry extras up to pages count.
-      const links = ['Home'];
-      if (pages >= 2) links.push('About');
-      tpl.navExtra.forEach(x => { if (links.length < pages - 1) links.push(x); });
-      if (pages >= 2) links.push('Contact');
-      // Truncate to pages count
-      return links.slice(0, Math.min(pages, 5));
+    let currentPreviewSrc = '';
+
+    function getPreviewSrc(industry, style, palette) {
+      const ind = industry || 'Other';
+      const file = INDUSTRY_PREVIEW_MAP[ind] || INDUSTRY_PREVIEW_MAP['Other'];
+      const params = [];
+      if (style) params.push('style=' + encodeURIComponent(style));
+      if (palette) params.push('palette=' + encodeURIComponent(palette));
+      return file + (params.length ? '?' + params.join('&') : '');
     }
 
     function updatePreview() {
-      const site = document.getElementById('preview-site');
-      if (!site) return;
+      const iframe = document.getElementById('preview-iframe');
+      if (!iframe) return;
 
-      // --- Industry-driven content
       const ind = state.industry || 'Other';
       const tpl = INDUSTRY_TEMPLATES[ind] || INDUSTRY_TEMPLATES['Other'];
-      const brandEl = document.getElementById('preview-logo');
-      const urlEl = document.getElementById('preview-url');
-      const eyebrowEl = document.getElementById('preview-eyebrow');
-      const headlineEl = document.getElementById('preview-headline');
-      const subEl = document.getElementById('preview-sub');
-      const ctaEl = document.getElementById('preview-cta');
-      const footerBrand = document.getElementById('preview-footer-brand');
-
-      const suffix = tpl.brandSuffix !== undefined ? tpl.brandSuffix : '';
-      brandEl.innerHTML = `<span style="${tpl.logoCSS || ''}">${tpl.brand}${suffix}</span>`;
-      brandEl.style.cssText = '';
-      urlEl.textContent = tpl.url;
-      eyebrowEl.textContent = tpl.eyebrow;
-      headlineEl.textContent = tpl.headline;
-      subEl.textContent = tpl.sub;
-      ctaEl.textContent = tpl.cta;
-      ctaEl.style.borderRadius = tpl.ctaRadius || '8px';
-      const secondaryBtn = document.querySelector('.preview-cta-secondary');
-      if (secondaryBtn) {
-        secondaryBtn.style.borderRadius = tpl.ctaRadius || '8px';
-        secondaryBtn.style.display = tpl.secondaryCTA === false ? 'none' : '';
-      }
-      footerBrand.textContent = `© ${tpl.brand}${suffix}`;
-
-      // --- Style-driven layout (use industry default if user hasn't picked one)
       const sty = state.style || tpl.defaultStyle || 'Modern';
-      site.setAttribute('data-style', sty);
+      const pal = state.palette || '';
+
+      // Update URL bar text
+      const urlEl = document.getElementById('preview-url');
+      urlEl.textContent = tpl.url;
+
+      // Update meta labels
       document.getElementById('preview-style-label').textContent = state.style ? sty : sty + ' (default)';
-
-      // --- Palette-driven colors (or industry default)
-      const pal = state.palette;
-      if (pal && PALETTE_COLORS[pal]) {
-        const c = PALETTE_COLORS[pal];
-        site.style.setProperty('--p-bg',      c.bg);
-        site.style.setProperty('--p-primary', c.primary);
-        site.style.setProperty('--p-accent',  c.accent);
-        site.style.setProperty('--p-text',    c.text);
-        site.style.setProperty('--p-muted',   c.muted);
-        document.getElementById('preview-palette-label').textContent = pal;
-      } else if (tpl.defaultColors) {
-        const c = tpl.defaultColors;
-        site.style.setProperty('--p-bg',      c.bg);
-        site.style.setProperty('--p-primary', c.primary);
-        site.style.setProperty('--p-accent',  c.accent);
-        site.style.setProperty('--p-text',    c.text);
-        site.style.setProperty('--p-muted',   c.muted);
-        document.getElementById('preview-palette-label').textContent = 'Default colors';
-      } else {
-        document.getElementById('preview-palette-label').textContent = 'Default colors';
-      }
-
-      // --- Industry-specific hero gradient
-      const heroArt = document.getElementById('preview-hero-art');
-      const angle = tpl.artAngle || '135deg';
-      if (pal && PALETTE_COLORS[pal]) {
-        const pc = PALETTE_COLORS[pal];
-        heroArt.style.background = `linear-gradient(${angle}, ${pc.primary} 0%, ${pc.accent} 100%)`;
-      } else if (tpl.gradient) {
-        heroArt.style.background = `linear-gradient(${angle}, ${tpl.gradient[0]} 0%, ${tpl.gradient[1]} 100%)`;
-      }
-
-      // --- Features
-      const featContainer = document.getElementById('preview-features');
-      featContainer.innerHTML = '';
-      // Always show contact form (it's locked-selected by default in state)
-      const featList = state.features.slice();
-      // Sort so Contact form is last (visual stability)
-      featList.sort((a, b) => (a === 'Contact form' ? 1 : 0) - (b === 'Contact form' ? 1 : 0));
-      featList.forEach(f => {
-        const meta = FEATURE_BLOCKS[f];
-        if (!meta) return;
-        const html = `<div class="preview-feature-block"><span class="ic">${meta.icon}</span><b>${meta.label}</b><span>${meta.tag}</span></div>`;
-        featContainer.insertAdjacentHTML('beforeend', html);
-      });
-
-      // --- Pages → nav links + count
-      const pageLinks = buildNavLinks(ind, state.pages);
-      const navEl = document.getElementById('preview-nav-links');
-      navEl.innerHTML = pageLinks.map(l => `<span>${l}</span>`).join('');
+      document.getElementById('preview-palette-label').textContent = pal || 'Default colors';
       document.getElementById('preview-pages-count').textContent = state.pages;
 
-      // --- Hide the hint once user has interacted
+      // Decide if we need to reload the iframe (industry changed) or just send a message (style/palette changed)
+      const newSrc = getPreviewSrc(ind, sty, pal);
+      const baseSrc = INDUSTRY_PREVIEW_MAP[ind] || INDUSTRY_PREVIEW_MAP['Other'];
+
+      if (currentPreviewSrc !== baseSrc) {
+        // Industry changed: load the new preview page
+        currentPreviewSrc = baseSrc;
+        iframe.classList.add('loading');
+        iframe.src = newSrc;
+        iframe.onload = function() {
+          iframe.classList.remove('loading');
+          // Send theme update in case URL params weren't enough
+          try {
+            iframe.contentWindow.postMessage({
+              type: 'theme-update',
+              style: sty,
+              palette: pal || null
+            }, '*');
+          } catch(e) {}
+        };
+      } else {
+        // Same industry: just send a theme message
+        try {
+          iframe.contentWindow.postMessage({
+            type: 'theme-update',
+            style: sty,
+            palette: pal || null
+          }, '*');
+        } catch(e) {}
+      }
+
+      // Hide the hint once user has interacted
       const hint = document.getElementById('preview-hint');
       if (hint && (state.industry || state.style || state.palette)) {
         hint.style.display = 'none';
       }
     }
 
-    // Hook into the same click events that update state.
-    // Existing handlers update state synchronously, so a microtask after click
-    // ensures we read the updated state.
     function hookPreviewUpdate() {
       const refresh = () => requestAnimationFrame(updatePreview);
-      // Industry / style / palette clicks
       document.querySelectorAll('[data-mode="single"] .option-card, [data-mode="single"] .palette-card').forEach(el => {
         el.addEventListener('click', refresh);
       });
-      // Features clicks
       document.querySelectorAll('[data-mode="multi"] .check-card').forEach(el => {
         el.addEventListener('click', refresh);
       });
-      // Page slider
       const slider = document.getElementById('page-slider');
       if (slider) slider.addEventListener('input', refresh);
     }
     hookPreviewUpdate();
-    updatePreview(); // initial render
+    // Set initial preview state
+    currentPreviewSrc = INDUSTRY_PREVIEW_MAP['Other'];
+    updatePreview();
   </script>
 </body>
 </html>
