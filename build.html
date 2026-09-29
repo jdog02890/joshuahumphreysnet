@@ -861,6 +861,19 @@
               <div class="check-dot"></div>
             </button>
           </div>
+          <div class="custom-style-wrap" id="custom-style-wrap" style="margin-top:16px;">
+            <button type="button" class="btn-custom-toggle" id="btn-custom-style" style="display:flex;align-items:center;gap:6px;background:none;border:1px dashed rgba(0,0,0,.15);border-radius:6px;padding:12px 16px;width:100%;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.85rem;color:var(--muted);transition:border-color .2s,color .2s;">
+              &#9999;&#65039; Have a specific font in mind? Enter it here
+            </button>
+            <div class="custom-style-fields" id="custom-style-fields" style="display:none;margin-top:12px;padding:16px;background:rgba(0,0,0,.02);border-radius:8px;border:1px solid rgba(0,0,0,.06);">
+              <div style="font-size:0.8rem;color:var(--muted);margin-bottom:12px;">Type a font name or describe the feel you want. I'll match it when building your site.</div>
+              <div class="cfg-form-group" style="margin-bottom:0">
+                <label style="font-size:0.78rem;font-weight:600;color:var(--ink);margin-bottom:4px;display:block">Preferred Font or Style</label>
+                <input type="text" id="custom-font" class="cfg-input" placeholder='e.g. Montserrat, something elegant, Helvetica-like' style="font-size:0.82rem;padding:10px 12px" />
+              </div>
+              <div style="font-size:0.72rem;color:var(--muted);margin-top:8px;">Pick a preset above for the live preview, or leave it and I'll apply your custom font when building.</div>
+            </div>
+          </div>
           <div class="btn-row">
             <button type="button" class="btn-back" data-back>← Back</button>
             <button type="button" class="btn-next" data-next disabled>Next →</button>
@@ -926,6 +939,25 @@
               </div>
               <div class="palette-info"><span class="palette-name">Midnight</span><span class="palette-check"></span></div>
             </button>
+          </div>
+          <div class="custom-palette-wrap" id="custom-palette-wrap" style="margin-top:16px;">
+            <button type="button" class="btn-custom-toggle" id="btn-custom-palette" style="display:flex;align-items:center;gap:6px;background:none;border:1px dashed rgba(0,0,0,.15);border-radius:6px;padding:12px 16px;width:100%;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.85rem;color:var(--muted);transition:border-color .2s,color .2s;">
+              &#127912; Have a specific color in mind? Enter it here
+            </button>
+            <div class="custom-palette-fields" id="custom-palette-fields" style="display:none;margin-top:12px;padding:16px;background:rgba(0,0,0,.02);border-radius:8px;border:1px solid rgba(0,0,0,.06);">
+              <div style="font-size:0.8rem;color:var(--muted);margin-bottom:12px;">Type a color name, hex code, or describe what you want. I'll match it when building your site.</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <div class="cfg-form-group" style="margin-bottom:0">
+                  <label style="font-size:0.78rem;font-weight:600;color:var(--ink);margin-bottom:4px;display:block">Primary Color</label>
+                  <input type="text" id="custom-primary" class="cfg-input" placeholder='e.g. Navy blue, #2E6BD6' style="font-size:0.82rem;padding:10px 12px" />
+                </div>
+                <div class="cfg-form-group" style="margin-bottom:0">
+                  <label style="font-size:0.78rem;font-weight:600;color:var(--ink);margin-bottom:4px;display:block">Accent Color</label>
+                  <input type="text" id="custom-accent" class="cfg-input" placeholder='e.g. Gold, #D4A030' style="font-size:0.82rem;padding:10px 12px" />
+                </div>
+              </div>
+              <div style="font-size:0.72rem;color:var(--muted);margin-top:8px;">These will be noted with your selections. Pick a preset above for the live preview, or leave it and I'll apply your custom colors when building.</div>
+            </div>
           </div>
           <div class="btn-row">
             <button type="button" class="btn-back" data-back>← Back</button>
@@ -1578,6 +1610,22 @@
       });
     });
 
+    // CUSTOM TOGGLE BUTTONS
+    document.getElementById('btn-custom-palette').addEventListener('click', function() {
+      const fields = document.getElementById('custom-palette-fields');
+      const open = fields.style.display !== 'none';
+      fields.style.display = open ? 'none' : 'block';
+      this.style.borderColor = open ? 'rgba(0,0,0,.15)' : 'var(--orange)';
+      this.style.color = open ? 'var(--muted)' : 'var(--orange)';
+    });
+    document.getElementById('btn-custom-style').addEventListener('click', function() {
+      const fields = document.getElementById('custom-style-fields');
+      const open = fields.style.display !== 'none';
+      fields.style.display = open ? 'none' : 'block';
+      this.style.borderColor = open ? 'rgba(0,0,0,.15)' : 'var(--orange)';
+      this.style.color = open ? 'var(--muted)' : 'var(--orange)';
+    });
+
     // PAGE SLIDER
     const slider = document.getElementById('page-slider');
     const pageNum = document.getElementById('page-count');
@@ -1650,10 +1698,17 @@
       });
 
       // Summary grid
+      const cFont = document.getElementById('custom-font').value.trim();
+      const cPrimary = document.getElementById('custom-primary').value.trim();
+      const cAccent = document.getElementById('custom-accent').value.trim();
+      let styleVal = state.style || '-';
+      if (cFont) styleVal += ` (custom: ${cFont})`;
+      let palVal = state.palette || '-';
+      if (cPrimary || cAccent) palVal += ` (custom: ${[cPrimary,cAccent].filter(Boolean).join(', ')})`;
       document.getElementById('summary-grid').innerHTML = `
         <div class="summary-item"><div class="summary-label">Industry</div><div class="summary-value">${state.industry || '-'}</div></div>
-        <div class="summary-item"><div class="summary-label">Style</div><div class="summary-value">${state.style || '-'}</div></div>
-        <div class="summary-item"><div class="summary-label">Palette</div><div class="summary-value">${state.palette || '-'}</div></div>
+        <div class="summary-item"><div class="summary-label">Style</div><div class="summary-value">${styleVal}</div></div>
+        <div class="summary-item"><div class="summary-label">Palette</div><div class="summary-value">${palVal}</div></div>
         <div class="summary-item"><div class="summary-label">Pages</div><div class="summary-value">${state.pages}</div></div>
       `;
     }
@@ -1668,6 +1723,9 @@
       const business = document.getElementById('cfg-business').value.trim();
       const tagline = document.getElementById('cfg-tagline').value.trim();
       const notes = document.getElementById('cfg-notes').value.trim();
+      const customPrimary = document.getElementById('custom-primary').value.trim();
+      const customAccent = document.getElementById('custom-accent').value.trim();
+      const customFont = document.getElementById('custom-font').value.trim();
 
       if (!name || !email) {
         alert('Please add your name and email so I can reply.');
@@ -1677,6 +1735,8 @@
       const { lo, hi } = calcPrice();
       const payload = {
         name, email, phone, business, tagline, notes,
+        customColors: (customPrimary || customAccent) ? `Primary: ${customPrimary || 'none'}, Accent: ${customAccent || 'none'}` : '',
+        customFont: customFont || '',
         industry: state.industry || 'Not selected',
         style: state.style || 'Not selected',
         palette: state.palette || 'Not selected',
