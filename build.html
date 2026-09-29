@@ -401,6 +401,13 @@
       font-weight: 600; cursor: pointer; transition: background 0.2s; width: 100%;
     }
     .btn-submit:hover { background: var(--orange2); }
+    .btn-preview-full {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: transparent; color: var(--orange); border: 2px solid var(--orange); border-radius: 6px;
+      padding: 13px 28px; font-family: 'Inter', sans-serif; font-size: 0.88rem;
+      font-weight: 600; cursor: pointer; transition: background 0.2s, color 0.2s; width: 100%; margin-bottom: 12px;
+    }
+    .btn-preview-full:hover { background: var(--orange); color: var(--cream); }
     .success-wrap { text-align: center; padding: 48px 0; }
     .success-icon {
       width: 64px; height: 64px; background: var(--orange); border-radius: 50%;
@@ -1036,12 +1043,17 @@
               <input type="text" id="cfg-business" class="cfg-input" placeholder="Your business" />
             </div>
             <div class="cfg-form-group">
+              <label for="cfg-tagline">Tagline or slogan (optional)</label>
+              <input type="text" id="cfg-tagline" class="cfg-input" placeholder="e.g. Quality you can trust" />
+            </div>
+            <div class="cfg-form-group">
               <label for="cfg-notes">Anything else? (optional)</label>
               <textarea id="cfg-notes" class="cfg-input" rows="3" placeholder="Industry, deadline, must-have features, websites you like..."></textarea>
             </div>
             <div class="btn-row" style="margin-top:20px;">
               <button type="button" class="btn-back" data-back>← Back</button>
             </div>
+            <button type="button" class="btn-preview-full" id="btn-full-preview" onclick="openFullPreview()">View full preview in new tab ↗</button>
             <button type="submit" class="btn-submit">Send my selections to Joshua →</button>
           </form>
         </div>
@@ -1054,6 +1066,7 @@
             </div>
             <h3 class="success-title">Got it. Talk soon.</h3>
             <p class="success-text">Your selections are on their way. Expect a personal reply with confirmed pricing and next steps within 24 hours (usually faster).</p>
+            <button type="button" class="btn-preview-full" style="margin:20px auto 0" onclick="openFullPreview()">View your site preview ↗</button>
           </div>
         </div>
 
@@ -1421,7 +1434,7 @@
 
   <script>
     /* =====================================================================
-       FORMSPREE SETUP — DO THIS ONCE
+       FORMSPREE SETUP - DO THIS ONCE
        ---------------------------------------------------------------------
        1. Go to https://formspree.io and sign up with 2002magpie@gmail.com
        2. Click "+ New Form", name it "Configurator"
@@ -1653,6 +1666,7 @@
       const email = document.getElementById('cfg-email').value.trim();
       const phone = document.getElementById('cfg-phone').value.trim();
       const business = document.getElementById('cfg-business').value.trim();
+      const tagline = document.getElementById('cfg-tagline').value.trim();
       const notes = document.getElementById('cfg-notes').value.trim();
 
       if (!name || !email) {
@@ -1662,7 +1676,7 @@
 
       const { lo, hi } = calcPrice();
       const payload = {
-        name, email, phone, business, notes,
+        name, email, phone, business, tagline, notes,
         industry: state.industry || 'Not selected',
         style: state.style || 'Not selected',
         palette: state.palette || 'Not selected',
@@ -1703,7 +1717,7 @@
     /* ===================================================================
        LIVE PREVIEW LOGIC (Session 2.5)
        Updates the preview pane in real time as the user picks options.
-       Reads from the existing `state` object — no state duplication.
+       Reads from the existing `state` object - no state duplication.
        =================================================================== */
 
     const INDUSTRY_TEMPLATES = {
@@ -1854,6 +1868,8 @@
       const newSrc = getPreviewSrc(ind, sty, pal);
       const baseSrc = INDUSTRY_PREVIEW_MAP[ind] || INDUSTRY_PREVIEW_MAP['Other'];
 
+      const bizData = getBizData();
+
       if (currentPreviewSrc !== baseSrc) {
         // Industry changed: load the new preview page
         currentPreviewSrc = baseSrc;
@@ -1861,23 +1877,21 @@
         iframe.src = newSrc;
         iframe.onload = function() {
           iframe.classList.remove('loading');
-          // Send theme update in case URL params weren't enough
           try {
-            iframe.contentWindow.postMessage({
+            iframe.contentWindow.postMessage(Object.assign({
               type: 'theme-update',
               style: sty,
               palette: pal || null
-            }, '*');
+            }, bizData), '*');
           } catch(e) {}
         };
       } else {
-        // Same industry: just send a theme message
         try {
-          iframe.contentWindow.postMessage({
+          iframe.contentWindow.postMessage(Object.assign({
             type: 'theme-update',
             style: sty,
             palette: pal || null
-          }, '*');
+          }, bizData), '*');
         } catch(e) {}
       }
 
@@ -1900,6 +1914,45 @@
       if (slider) slider.addEventListener('input', refresh);
     }
     hookPreviewUpdate();
+
+    // Business info helpers
+    function getBizData() {
+      const b = document.getElementById('cfg-business');
+      const p = document.getElementById('cfg-phone');
+      const t = document.getElementById('cfg-tagline');
+      return {
+        businessName: b ? b.value.trim() : '',
+        phone: p ? p.value.trim() : '',
+        tagline: t ? t.value.trim() : ''
+      };
+    }
+
+    // Update preview when business fields change
+    ['cfg-business', 'cfg-phone', 'cfg-tagline'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', () => requestAnimationFrame(updatePreview));
+    });
+
+    // Open full preview in new tab
+    function openFullPreview() {
+      const ind = state.industry || 'Other';
+      const tpl = INDUSTRY_TEMPLATES[ind] || INDUSTRY_TEMPLATES['Other'];
+      const sty = state.style || tpl.defaultStyle || 'Modern';
+      const pal = state.palette || '';
+      const biz = getBizData();
+
+      const file = INDUSTRY_PREVIEW_MAP[ind] || INDUSTRY_PREVIEW_MAP['Other'];
+      const p = new URLSearchParams();
+      if (sty) p.set('style', sty);
+      if (pal) p.set('palette', pal);
+      if (biz.businessName) p.set('businessName', biz.businessName);
+      if (biz.phone) p.set('phone', biz.phone);
+      if (biz.tagline) p.set('tagline', biz.tagline);
+
+      const url = file + (p.toString() ? '?' + p.toString() : '');
+      window.open(url, '_blank');
+    }
+
     // Set initial preview state
     currentPreviewSrc = INDUSTRY_PREVIEW_MAP['Other'];
     updatePreview();
