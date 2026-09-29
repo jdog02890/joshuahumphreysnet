@@ -1,186 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<base target="_self">
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex">
-<title>Studio Iris - Demo Preview</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Creative Demo Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#FAFAF8;--primary:#1A1A1A;--accent:#7C5CFC;--text:#1A1A1A;--muted:#999;--display:'Space Grotesk',sans-serif;--body:'DM Sans',sans-serif;--radius:8px;--weight:600}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden;padding-bottom:36px}a{color:inherit;text-decoration:none}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+:root {
+  --bg: #FAFAF8;
+  --primary: #1A1A1A;
+  --accent: #7C5CFC;
+  --text: #1A1A1A;
+  --muted: #999;
+  --display: 'Space Grotesk', sans-serif;
+  --body: 'DM Sans', sans-serif;
+  --radius: 8px;
+  --weight: 600;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden;padding-bottom:36px}
+a{color:inherit;text-decoration:none}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:none}
 
-.nav{position:sticky;top:0;z-index:50;background:rgba(250,250,248,0.92);border-bottom:1px solid rgba(0,0,0,0.05);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(12px)}
+/* === MINIMAL NAV === */
+.nav{position:sticky;top:0;z-index:50;background:rgba(250,250,248,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:0 24px}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;height:48px;border-bottom:1px solid rgba(0,0,0,.04)}
 .nav-brand{font-family:var(--display);font-weight:var(--weight);font-size:15px;color:var(--primary)}
-.nav-links{display:flex;gap:20px;font-size:12px;color:var(--muted);font-weight:500}.nav-links a{transition:color 0.25s;cursor:pointer;position:relative}.nav-links a:hover{color:var(--accent)}.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.3s}.nav-links a:hover::after{width:100%}
+.nav-status{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.nav-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
-.hero{padding:56px 24px 32px}.hero-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px}.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--accent)}
-.hero h1{font-family:var(--display);font-weight:var(--weight);font-size:30px;line-height:1.08;letter-spacing:-0.03em;color:var(--primary);margin-bottom:12px}
-.hero p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:20px}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:11px 22px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 2px 12px rgba(124,92,252,0.25)}.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(124,92,252,0.35)}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--primary);padding:11px 22px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:1px solid rgba(0,0,0,0.12);cursor:pointer;transition:border-color 0.25s,background 0.25s}.btn-secondary:hover{background:rgba(0,0,0,0.02);border-color:var(--accent)}
-.hero-cta-row{display:flex;gap:10px;flex-wrap:wrap}
+/* === OVERSIZED HERO === */
+.hero{padding:64px 24px 40px}
+.hero h1{font-family:var(--display);font-weight:var(--weight);font-size:42px;line-height:.95;letter-spacing:-.04em;color:var(--primary)}
+.hero h1 .line2{color:var(--accent)}
+.hero-meta{display:flex;gap:24px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(0,0,0,.06)}
+.hero-meta-item{font-size:10px;color:var(--muted);line-height:1.4}
+.hero-meta-item b{display:block;color:var(--primary);font-size:11px;margin-bottom:2px}
 
-/* CLIENTS STRIP */
-.clients{padding:20px 24px;border-top:1px solid rgba(0,0,0,0.05);border-bottom:1px solid rgba(0,0,0,0.05)}
-.clients-label{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:10px}
-.clients-logos{display:flex;gap:20px;align-items:center}
-.client-logo{width:48px;height:20px;border-radius:3px;background:rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:8px;color:var(--muted);font-weight:600;letter-spacing:0.04em}
+/* === PORTFOLIO MASONRY === */
+.portfolio{padding:0 24px 40px}
+.portfolio-label{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.masonry{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.project{border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer;transition:transform .3s}
+.project:hover{transform:scale(.98)}
+.project-img{height:140px;position:relative}
+.project.tall .project-img{height:200px}
+.p1{background:linear-gradient(135deg,#7C5CFC,#B8A0FF)}
+.p2{background:linear-gradient(135deg,#1A1A1A,#333)}
+.p3{background:linear-gradient(135deg,#FF6B6B,#FFA07A)}
+.p4{background:linear-gradient(135deg,#2D3436,#636E72)}
+.project-img::before{content:'';position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);width:28px;height:22px;z-index:1;opacity:.3;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 32'%3E%3Crect x='2' y='6' width='36' height='24' rx='3' fill='none' stroke='%23fff' stroke-width='2'/%3E%3Ccircle cx='20' cy='18' r='6' fill='none' stroke='%23fff' stroke-width='2'/%3E%3Cpath d='M15 6L17 2h6l2 4' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat}
+.project-overlay{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,.7));display:flex;flex-direction:column;justify-content:flex-end;padding:14px;opacity:.85}
+.project-title{font-family:var(--display);font-weight:var(--weight);font-size:13px;color:#fff}
+.project-type{font-size:9px;color:rgba(255,255,255,.7);margin-top:2px}
+.project-tag{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.4);backdrop-filter:blur(4px);color:#fff;font-size:8px;font-weight:600;padding:3px 8px;border-radius:var(--radius);opacity:.7}
 
-/* PORTFOLIO */
-.portfolio{padding:32px 24px}.portfolio h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:6px}
-.portfolio-sub{font-size:11px;color:var(--muted);margin-bottom:16px}
-.port-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.port-card{border-radius:var(--radius);overflow:hidden;cursor:default;transition:transform 0.3s,box-shadow 0.3s}
-.port-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.08)}
-.port-img{height:100px;position:relative;overflow:hidden}
-.port-img.a{background:linear-gradient(135deg,var(--accent),#FC5C7D)}
-.port-img.b{background:linear-gradient(135deg,#0F2027,var(--accent))}
-.port-img.c{background:linear-gradient(135deg,#F7971E,#FFD200)}
-.port-img.d{background:linear-gradient(135deg,var(--primary),#434343)}
-.port-img::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0);transition:background 0.3s}
-.port-card:hover .port-img::after{background:rgba(0,0,0,0.1)}
-.port-img-overlay{position:absolute;bottom:8px;left:8px;z-index:2;opacity:0;transform:translateY(4px);transition:opacity 0.3s,transform 0.3s}
-.port-card:hover .port-img-overlay{opacity:1;transform:translateY(0)}
-.port-img-tag{font-size:8px;font-weight:700;text-transform:uppercase;background:rgba(255,255,255,0.9);color:var(--primary);padding:2px 6px;border-radius:3px;letter-spacing:0.04em}
-.port-label{padding:10px 12px;background:rgba(0,0,0,0.02)}
-.port-title{font-weight:600;font-size:11px;color:var(--primary)}
-.port-type{font-size:9px;color:var(--muted);margin-top:1px}
+/* === SERVICES (horizontal scroll) === */
+.services{padding:40px 0}
+.services-header{padding:0 24px;margin-bottom:16px}
+.services-header h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary)}
+.svc-scroll{display:flex;gap:12px;overflow-x:auto;padding:0 24px 12px;scrollbar-width:none}
+.svc-scroll::-webkit-scrollbar{display:none}
+.svc-pill{flex:0 0 auto;padding:14px 20px;background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.06);border-radius:var(--radius);cursor:default;transition:all .2s;white-space:nowrap}
+.svc-pill:hover{border-color:var(--accent);background:rgba(124,92,252,.04)}
+.svc-pill-name{font-weight:600;font-size:12px;color:var(--primary);margin-bottom:2px}
+.svc-pill-price{font-size:10px;color:var(--accent);font-weight:500}
 
-/* SERVICES */
-.services{padding:32px 24px;border-top:1px solid rgba(0,0,0,0.05)}
-.services h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:16px}
-.svc-list{display:flex;flex-direction:column;gap:8px}
-.svc-item{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:rgba(0,0,0,0.02);border-radius:var(--radius);transition:background 0.2s,transform 0.2s;cursor:default}
-.svc-item:hover{background:rgba(0,0,0,0.04);transform:translateX(4px)}
-.svc-name{font-weight:600;font-size:12px;color:var(--primary)}
-.svc-desc{font-size:9px;color:var(--muted);margin-top:1px}
-.svc-tag{font-size:10px;color:var(--accent);font-weight:600}
+/* === PROCESS === */
+.process{padding:0 24px 40px}
+.process h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:20px}
+.process-steps{display:flex;flex-direction:column;gap:0}
+.process-step{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.04)}
+.step-num{width:32px;height:32px;border-radius:50%;background:rgba(124,92,252,.08);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:var(--weight);font-size:13px;color:var(--accent);flex-shrink:0}
+.step-text h4{font-weight:600;font-size:12px;color:var(--primary);margin-bottom:2px}
+.step-text p{font-size:10px;color:var(--muted);line-height:1.5}
 
-/* ABOUT */
-.about{padding:32px 24px;border-top:1px solid rgba(0,0,0,0.05)}
-.about h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:10px}
-.about p{font-size:12px;color:var(--muted);line-height:1.7}
+/* === CLIENT LOGOS === */
+.clients{padding:24px;text-align:center;border-top:1px solid rgba(0,0,0,.04)}
+.clients-label{font-size:9px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.logo-row{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+.logo-item{font-family:var(--display);font-weight:700;font-size:14px;color:rgba(0,0,0,.12);letter-spacing:.04em;text-transform:uppercase}
 
-/* PROCESS */
-.process{padding:32px 24px;background:rgba(0,0,0,0.02)}
-.process h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:16px}
-.process-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-.process-card{text-align:center;padding:16px 8px}
-.process-num{font-family:var(--display);font-weight:var(--weight);font-size:24px;color:var(--accent);margin-bottom:4px}
-.process-title{font-weight:600;font-size:10px;color:var(--primary);margin-bottom:3px}
-.process-desc{font-size:9px;color:var(--muted);line-height:1.4}
+/* === ABOUT === */
+.about{padding:40px 24px;background:var(--primary);color:#fff}
+.about h2{font-family:var(--display);font-weight:var(--weight);font-size:20px;margin-bottom:10px}
+.about p{font-size:12px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:16px}
+.about-tools{display:flex;gap:8px;flex-wrap:wrap}
+.about-tool{font-size:9px;font-weight:500;color:rgba(255,255,255,.4);background:rgba(255,255,255,.06);padding:4px 10px;border-radius:20px}
 
-/* TOOLS */
-.tools{padding:24px;border-top:1px solid rgba(0,0,0,0.05)}
-.tools-label{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:10px}
-.tools-grid{display:flex;flex-wrap:wrap;gap:6px}
-.tool-tag{padding:4px 10px;border-radius:20px;font-size:9px;font-weight:500;color:var(--primary);background:rgba(0,0,0,0.04)}
+/* === CTA === */
+.cta{padding:48px 24px;text-align:center}
+.cta h3{font-family:var(--display);font-weight:var(--weight);font-size:24px;color:var(--primary);margin-bottom:8px;letter-spacing:-.02em}
+.cta p{font-size:11px;color:var(--muted);margin-bottom:20px}
+.cta-btn{background:var(--accent);color:#fff;border:none;padding:14px 32px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 16px rgba(124,92,252,.2)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(124,92,252,.3)}
 
-/* CTA */
-.cta-banner{margin:24px;padding:28px 24px;background:var(--primary);border-radius:var(--radius);text-align:center;position:relative;overflow:hidden}
-.cta-banner::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:rgba(124,92,252,0.15)}
-.cta-banner::after{content:'';position:absolute;bottom:-20px;left:-20px;width:60px;height:60px;border-radius:50%;background:rgba(124,92,252,0.1)}
-.cta-banner h3{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:#fff;margin-bottom:6px;position:relative;z-index:1}
-.cta-banner p{font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:14px;position:relative;z-index:1}
-.cta-banner .btn-primary{background:var(--accent);position:relative;z-index:1}
+/* === FOOTER === */
+.footer{padding:20px 24px;border-top:1px solid rgba(0,0,0,.04)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center}
+.footer-brand{font-family:var(--display);font-weight:var(--weight);font-size:13px;color:var(--primary)}
+.footer-links{display:flex;gap:14px;font-size:10px;color:var(--muted)}
+.footer-links a{transition:color .2s}
+.footer-links a:hover{color:var(--accent)}
+.footer-copy{font-size:9px;color:var(--muted);text-align:center;margin-top:10px}
 
-.footer{padding:24px;border-top:1px solid rgba(0,0,0,0.05)}
-.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
-.footer-brand{font-family:var(--display);font-weight:var(--weight);color:var(--primary);font-size:15px}
-.footer-tagline{font-size:10px;color:var(--muted);margin-top:2px}
-.footer-links{display:flex;gap:16px}.footer-links a{font-size:10px;color:var(--muted);transition:color 0.2s}.footer-links a:hover{color:var(--accent)}
-.footer-bottom{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);padding-top:12px;border-top:1px solid rgba(0,0,0,0.04);align-items:center}
-.footer-social{display:flex;gap:10px}.footer-social a{width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,0.04);display:flex;align-items:center;justify-content:center;font-size:11px;transition:background 0.2s,transform 0.2s}.footer-social a:hover{background:var(--accent);color:#fff;transform:translateY(-1px)}
-
-.demo-ribbon{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--primary);color:rgba(255,255,255,0.7);text-align:center;padding:8px;font-size:10px;font-weight:500}.demo-ribbon b{color:#f5c244}
+.demo-ribbon{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--primary);color:rgba(255,255,255,.7);text-align:center;padding:8px;font-size:10px;font-weight:500}
+.demo-ribbon b{color:var(--accent)}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="nav-brand">Studio Iris</div><div class="nav-links"><a href="#work">Work</a><a href="#services">Services</a><a href="#contact">Hire</a></div></nav>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand" data-business>Studio Iris</div>
+    <div class="nav-status"><span class="nav-dot"></span>Available for projects</div>
+  </div>
+</nav>
+
 <section class="hero">
-  <div class="hero-eyebrow">Design + Development</div>
-  <h1>Brands that<br>feel alive.</h1>
-  <p>Brand identity, web design, and creative direction for startups and growing businesses.</p>
-  <div class="hero-cta-row"><button class="btn-primary">View Work</button><button class="btn-secondary">Start a Project</button></div>
+  <h1>Design that<br><span class="line2">moves people.</span></h1>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><b>Studio</b>Branding, Web, Identity</div>
+    <div class="hero-meta-item"><b>Based in</b>Fernandina Beach, FL</div>
+    <div class="hero-meta-item"><b>Since</b>2019</div>
+  </div>
 </section>
 
-<div class="clients reveal">
-  <div class="clients-label">Trusted by</div>
-  <div class="clients-logos">
-    <div class="client-logo">ACME</div>
-    <div class="client-logo">NOVA</div>
-    <div class="client-logo">FLUX</div>
-    <div class="client-logo">HIVE</div>
-    <div class="client-logo">DRIFT</div>
-  </div>
-</div>
-
 <section class="portfolio reveal" id="work">
-  <h2>Selected Work</h2>
-  <div class="portfolio-sub">Recent projects across brand, web, and product</div>
-  <div class="port-grid">
-    <div class="port-card"><div class="port-img a"><div class="port-img-overlay"><span class="port-img-tag">View Case Study</span></div></div><div class="port-label"><div class="port-title">Neon Bloom</div><div class="port-type">Brand Identity</div></div></div>
-    <div class="port-card"><div class="port-img b"><div class="port-img-overlay"><span class="port-img-tag">View Case Study</span></div></div><div class="port-label"><div class="port-title">Deepwater Co.</div><div class="port-type">Web Design</div></div></div>
-    <div class="port-card"><div class="port-img c"><div class="port-img-overlay"><span class="port-img-tag">View Case Study</span></div></div><div class="port-label"><div class="port-title">Solstice App</div><div class="port-type">UI/UX Design</div></div></div>
-    <div class="port-card"><div class="port-img d"><div class="port-img-overlay"><span class="port-img-tag">View Case Study</span></div></div><div class="port-label"><div class="port-title">Forge Supply</div><div class="port-type">E-commerce</div></div></div>
+  <div class="portfolio-label">Selected Work</div>
+  <div class="masonry">
+    <div class="project tall">
+      <div class="project-img p1">
+        <div class="project-overlay">
+          <div class="project-title">Nova Wellness</div>
+          <div class="project-type">Brand Identity + Web</div>
+        </div>
+        <span class="project-tag">Case Study</span>
+      </div>
+    </div>
+    <div class="project">
+      <div class="project-img p2">
+        <div class="project-overlay">
+          <div class="project-title">Drift Coffee</div>
+          <div class="project-type">Packaging + Brand</div>
+        </div>
+        <span class="project-tag">Case Study</span>
+      </div>
+    </div>
+    <div class="project">
+      <div class="project-img p3">
+        <div class="project-overlay">
+          <div class="project-title">Flux Fitness App</div>
+          <div class="project-type">UI/UX Design</div>
+        </div>
+        <span class="project-tag">Case Study</span>
+      </div>
+    </div>
+    <div class="project tall">
+      <div class="project-img p4">
+        <div class="project-overlay">
+          <div class="project-title">Hive Coworking</div>
+          <div class="project-type">Interior + Signage</div>
+        </div>
+        <span class="project-tag">Case Study</span>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="services reveal" id="services">
-  <h2>Services</h2>
-  <div class="svc-list">
-    <div class="svc-item"><div><div class="svc-name">Brand Identity</div><div class="svc-desc">Logo, colors, typography, brand book</div></div><div class="svc-tag">From $3K</div></div>
-    <div class="svc-item"><div><div class="svc-name">Web Design & Dev</div><div class="svc-desc">Custom sites, landing pages, CMS</div></div><div class="svc-tag">From $5K</div></div>
-    <div class="svc-item"><div><div class="svc-name">UI/UX Design</div><div class="svc-desc">App interfaces, prototypes, user research</div></div><div class="svc-tag">From $4K</div></div>
-    <div class="svc-item"><div><div class="svc-name">Creative Direction</div><div class="svc-desc">Campaign strategy, art direction, content</div></div><div class="svc-tag">Retainer</div></div>
+  <div class="services-header"><h2>What I Do</h2></div>
+  <div class="svc-scroll">
+    <div class="svc-pill"><div class="svc-pill-name">Brand Identity</div><div class="svc-pill-price">From $3,000</div></div>
+    <div class="svc-pill"><div class="svc-pill-name">Web Design</div><div class="svc-pill-price">From $2,500</div></div>
+    <div class="svc-pill"><div class="svc-pill-name">Packaging</div><div class="svc-pill-price">From $1,500</div></div>
+    <div class="svc-pill"><div class="svc-pill-name">UI/UX</div><div class="svc-pill-price">From $4,000</div></div>
+    <div class="svc-pill"><div class="svc-pill-name">Art Direction</div><div class="svc-pill-price">Project-based</div></div>
   </div>
 </section>
 
 <section class="process reveal">
-  <h2>How We Work</h2>
-  <div class="process-grid">
-    <div class="process-card"><div class="process-num">01</div><div class="process-title">Discover</div><div class="process-desc">Deep dive into your brand, audience, and goals</div></div>
-    <div class="process-card"><div class="process-num">02</div><div class="process-title">Design</div><div class="process-desc">Concepts, prototypes, and iterative refinement</div></div>
-    <div class="process-card"><div class="process-num">03</div><div class="process-title">Deliver</div><div class="process-desc">Polished assets, clean code, full handoff</div></div>
+  <h2>How I Work</h2>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <div class="step-text"><h4>Discovery</h4><p>We talk about your goals, audience, and taste. I learn your business before touching a pixel.</p></div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <div class="step-text"><h4>Direction</h4><p>Moodboards, concepts, and strategy. You pick the direction before any final design begins.</p></div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <div class="step-text"><h4>Delivery</h4><p>Final files, brand guidelines, and launch support. Everything you need to go live with confidence.</p></div>
+    </div>
   </div>
 </section>
 
-<section class="about reveal" id="about">
-  <h2>About</h2>
-  <p>We are a small studio that partners with founders and creative teams to build brands people remember. Strategy first, then design that earns attention. Based in Northeast Florida, working with clients everywhere.</p>
-</section>
-
-<div class="tools reveal">
-  <div class="tools-label">Tools we use</div>
-  <div class="tools-grid">
-    <span class="tool-tag">Figma</span>
-    <span class="tool-tag">Webflow</span>
-    <span class="tool-tag">React</span>
-    <span class="tool-tag">After Effects</span>
-    <span class="tool-tag">Illustrator</span>
-    <span class="tool-tag">Framer</span>
+<div class="clients reveal">
+  <div class="clients-label">Trusted By</div>
+  <div class="logo-row">
+    <span class="logo-item">ACME</span>
+    <span class="logo-item">NOVA</span>
+    <span class="logo-item">FLUX</span>
+    <span class="logo-item">HIVE</span>
+    <span class="logo-item">DRIFT</span>
   </div>
 </div>
 
-<div class="cta-banner reveal" id="contact"><h3>Have a project in mind?</h3><p>We take on a limited number of projects each quarter.</p><button class="btn-primary">Get in Touch</button></div>
+<section class="about reveal">
+  <h2>The person behind the pixels.</h2>
+  <p>Independent designer with 6 years building brands that last. I work with founders, startups, and growing companies who need design that communicates, not just decorates.</p>
+  <div class="about-tools">
+    <span class="about-tool">Figma</span>
+    <span class="about-tool">Webflow</span>
+    <span class="about-tool">After Effects</span>
+    <span class="about-tool">Illustrator</span>
+    <span class="about-tool">Framer</span>
+  </div>
+</section>
+
+<section class="cta reveal" id="contact">
+  <h3>Have a project in mind?</h3>
+  <p>I take on 2-3 projects per quarter. Let's talk while there's room.</p>
+  <button class="cta-btn">Start a Conversation &rarr;</button>
+</section>
+
 <footer class="footer">
-  <div class="footer-top"><div><div class="footer-brand">Studio Iris</div><div class="footer-tagline">Design studio, Fernandina Beach</div></div><div class="footer-links"><a href="#work">Work</a><a href="#services">Services</a><a href="#contact">Contact</a></div></div>
-  <div class="footer-bottom"><span>Built by Joshua.</span><div class="footer-social"><a href="#" title="Dribbble">&#9679;</a><a href="#" title="Instagram">&#9679;</a><a href="#" title="Twitter">&#9679;</a></div></div>
+  <div class="footer-inner">
+    <div class="footer-brand" data-business>Studio Iris</div>
+    <div class="footer-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-copy">Built by Joshua. &copy; 2026</div>
 </footer>
+
 <div class="demo-ribbon"><b>Demo</b> - Built by joshuahumphreys.net</div>
+
 <script>
 const params=new URLSearchParams(window.location.search);
 const PALETTES={'Coastal':{bg:'#F0F7FA',primary:'#1B4965',accent:'#5FA8D3',text:'#1B4965',muted:'#6A8FA5'},'Sage':{bg:'#F2F5F0',primary:'#2F3E2E',accent:'#6B8F71',text:'#2F3E2E',muted:'#6A7A6A'},'Warm':{bg:'#FAF6F0',primary:'#3D2B1F',accent:'#C08552',text:'#3D2B1F',muted:'#8A7A6A'},'Slate':{bg:'#F0F0F6',primary:'#1E1E2E',accent:'#4A4A6A',text:'#1E1E2E',muted:'#6A6A8A'},'Rose':{bg:'#FDF5F8',primary:'#4A2040',accent:'#C07090',text:'#4A2040',muted:'#8A6A7A'},'Midnight':{bg:'#E0E8F0',primary:'#0D1B2A',accent:'#1B3A5C',text:'#0D1B2A',muted:'#5A6A7A'}};
 const STYLES={'Modern':{display:"'Space Grotesk',sans-serif",body:"'DM Sans','Inter',sans-serif",radius:'8px',weight:'600'},'Classic':{display:"'Playfair Display',Georgia,serif",body:"'Inter',sans-serif",radius:'3px',weight:'600'},'Bold':{display:"'Outfit',sans-serif",body:"'Outfit',sans-serif",radius:'12px',weight:'800'},'Minimal':{display:"'DM Sans',sans-serif",body:"'DM Sans',sans-serif",radius:'2px',weight:'400'}};
 function apply(p,s){const r=document.documentElement;if(p&&PALETTES[p]){const c=PALETTES[p];r.style.setProperty('--bg',c.bg);r.style.setProperty('--primary',c.primary);r.style.setProperty('--accent',c.accent);r.style.setProperty('--text',c.text);r.style.setProperty('--muted',c.muted)}if(s&&STYLES[s]){const t=STYLES[s];r.style.setProperty('--display',t.display);r.style.setProperty('--body',t.body);r.style.setProperty('--radius',t.radius);r.style.setProperty('--weight',t.weight)}}
 apply(params.get('palette'),params.get('style'));
-window.addEventListener('message',(e)=>{if(e.data&&e.data.type==='theme-update')apply(e.data.palette,e.data.style)});
+window.addEventListener('message',(e)=>{if(e.data&&e.data.type==='theme-update'){apply(e.data.palette,e.data.style);if(e.data.businessName)applyBiz(e.data)}});
+function applyBiz(d){
+  const name=d.businessName||params.get('businessName');
+  const phone=d.phone||params.get('phone');
+  const tagline=d.tagline||params.get('tagline');
+  if(name)document.querySelectorAll('[data-business]').forEach(el=>el.textContent=name);
+  if(phone)document.querySelectorAll('[data-phone]').forEach(el=>el.textContent=phone);
+  if(tagline)document.querySelectorAll('[data-tagline]').forEach(el=>el.textContent=tagline);
+}
+applyBiz({});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-// Fix: anchor links scroll inside iframe only, not parent
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
 </script>
 </body>
 </html>
