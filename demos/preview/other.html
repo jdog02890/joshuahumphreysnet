@@ -1,231 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<base target="_self">
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex">
-<title>Startup Launch - Demo Preview</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>SaaS Demo Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F4F6FA;--primary:#1A2B4A;--accent:#3B6BF5;--text:#1A2B4A;--muted:#6A7A94;--display:'Space Grotesk',sans-serif;--body:'DM Sans',sans-serif;--radius:8px;--weight:600}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden;padding-bottom:36px}a{color:inherit;text-decoration:none}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+:root {
+  --bg: #F4F6FA;
+  --primary: #0F172A;
+  --accent: #3B6BF5;
+  --text: #0F172A;
+  --muted: #64748B;
+  --display: 'Space Grotesk', sans-serif;
+  --body: 'Inter', sans-serif;
+  --radius: 10px;
+  --weight: 600;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden;padding-bottom:36px}
+a{color:inherit;text-decoration:none}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:none}
 
-.nav{position:sticky;top:0;z-index:50;background:rgba(244,246,250,0.92);border-bottom:1px solid rgba(0,0,0,0.05);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(12px)}
-.nav-brand{font-family:var(--display);font-weight:var(--weight);font-size:15px;color:var(--primary)}
-.nav-links{display:flex;gap:16px;align-items:center;font-size:12px;color:var(--muted);font-weight:500}.nav-links a{transition:color 0.25s;cursor:pointer}.nav-links a:hover{color:var(--accent)}
-.nav-cta{background:var(--accent);color:#fff;padding:6px 14px;border-radius:var(--radius);font-size:10px;font-weight:600;border:none;cursor:pointer}
+/* === SAAS NAV === */
+.nav{position:sticky;top:0;z-index:50;background:rgba(244,246,250,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:0 24px;border-bottom:1px solid rgba(0,0,0,.05)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;height:50px}
+.nav-brand{font-family:var(--display);font-weight:700;font-size:16px;color:var(--primary);display:flex;align-items:center;gap:6px}
+.nav-logo{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--accent),#818CF8);display:flex;align-items:center;justify-content:center}
+.nav-logo svg{width:12px;height:12px;fill:#fff}
+.nav-links{display:flex;gap:18px;font-size:11px;color:var(--muted);font-weight:500}
+.nav-links a{transition:color .2s;cursor:pointer}
+.nav-links a:hover{color:var(--primary)}
+.nav-cta{background:var(--accent);color:#fff;padding:7px 16px;border-radius:calc(var(--radius)/2);font-size:11px;font-weight:600;border:none;cursor:pointer;transition:transform .2s}
+.nav-cta:hover{transform:translateY(-1px)}
 
-.hero{padding:48px 24px 28px;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(59,107,245,0.08);color:var(--accent);padding:4px 12px;border-radius:20px;font-size:9px;font-weight:600;margin-bottom:14px}
-.hero-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.hero h1{font-family:var(--display);font-weight:var(--weight);font-size:28px;line-height:1.12;letter-spacing:-0.03em;color:var(--primary);margin-bottom:10px}
-.hero p{font-size:12px;color:var(--muted);max-width:400px;margin:0 auto 18px;line-height:1.65}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:11px 22px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 2px 12px rgba(59,107,245,0.2)}.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(59,107,245,0.3)}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--primary);padding:11px 22px;border-radius:var(--radius);font-family:var(--display);font-weight:var(--weight);font-size:12px;border:1px solid rgba(0,0,0,0.1);cursor:pointer;transition:border-color 0.2s,background 0.2s}.btn-secondary:hover{border-color:var(--accent);background:rgba(59,107,245,0.04)}
-.hero-cta-row{display:flex;gap:10px;justify-content:center}
+/* === GRADIENT HERO === */
+.hero{padding:48px 24px 36px;text-align:center;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(59,107,245,.08);border:1px solid rgba(59,107,245,.15);padding:5px 14px;border-radius:20px;font-size:10px;font-weight:600;color:var(--accent);margin-bottom:16px}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.1;letter-spacing:-.03em;color:var(--primary);margin-bottom:12px}
+.hero h1 .gradient{background:linear-gradient(135deg,var(--accent),#818CF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:13px;color:var(--muted);line-height:1.6;max-width:380px;margin:0 auto 20px}
+.hero-ctas{display:flex;gap:10px;justify-content:center}
+.btn-start{background:var(--accent);color:#fff;padding:12px 28px;border-radius:calc(var(--radius)/2);font-weight:600;font-size:12px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 16px rgba(59,107,245,.2)}
+.btn-start:hover{transform:translateY(-1px);box-shadow:0 4px 24px rgba(59,107,245,.3)}
+.btn-demo{background:#fff;color:var(--primary);padding:12px 28px;border-radius:calc(var(--radius)/2);font-weight:600;font-size:12px;border:1px solid rgba(0,0,0,.1);cursor:pointer;transition:border-color .2s}
+.btn-demo:hover{border-color:var(--accent)}
 
-/* SOCIAL PROOF */
-.social-proof{padding:16px 24px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
-.proof-item{font-size:9px;color:var(--muted);display:flex;align-items:center;gap:4px;font-weight:500}
-.proof-num{font-family:var(--display);font-weight:var(--weight);font-size:14px;color:var(--primary)}
+/* === SOCIAL PROOF === */
+.proof{padding:12px 24px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-size:10px;color:var(--muted);border-bottom:1px solid rgba(0,0,0,.04)}
+.proof-item{display:flex;align-items:center;gap:4px}
+.proof-item b{color:var(--primary);font-weight:600}
 
-/* HERO IMAGE */
-.hero-img-wrap{margin:0 24px;border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,var(--accent),var(--primary));height:140px;position:relative}
-.hero-img-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(4,1fr);gap:1px;opacity:0.08}
-.hero-img-grid span{background:#fff;border-radius:1px}
-.hero-img-label{position:absolute;bottom:14px;left:14px;background:rgba(0,0,0,0.5);color:#fff;padding:4px 10px;border-radius:4px;font-size:9px;font-weight:600;backdrop-filter:blur(6px)}
+/* === PRODUCT MOCKUP === */
+.mockup{margin:0 24px;border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,var(--primary) 0%,#1E293B 50%,var(--accent) 150%);height:160px;position:relative}
+.mockup::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:24px 24px}
+.mockup::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60%;height:60%;background:rgba(59,107,245,.1);border:1px solid rgba(59,107,245,.2);border-radius:calc(var(--radius)/2)}
 
-/* FEATURES */
-.features{padding:32px 24px}.features h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);text-align:center;margin-bottom:6px}.features-sub{text-align:center;font-size:11px;color:var(--muted);margin-bottom:20px}
-.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.feat-card{padding:16px;background:#fff;border-radius:var(--radius);border:1px solid rgba(0,0,0,0.04);transition:transform 0.2s,box-shadow 0.2s;cursor:default}
-.feat-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.06)}
-.feat-icon{width:28px;height:28px;border-radius:6px;background:rgba(59,107,245,0.08);display:flex;align-items:center;justify-content:center;font-size:14px;margin-bottom:8px}
-.feat-title{font-weight:600;font-size:11px;color:var(--primary);margin-bottom:2px}
-.feat-desc{font-size:9px;color:var(--muted);line-height:1.4}
+/* === BENTO FEATURE GRID === */
+.features{padding:36px 24px}
+.features h2{font-family:var(--display);font-weight:700;font-size:18px;color:var(--primary);text-align:center;margin-bottom:6px}
+.features-sub{font-size:11px;color:var(--muted);text-align:center;margin-bottom:20px}
+.bento{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bento-card{background:#fff;border-radius:var(--radius);padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.04);transition:transform .2s,box-shadow .2s;cursor:default;border:1px solid rgba(0,0,0,.04)}
+.bento-card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.06);border-color:rgba(59,107,245,.1)}
+.bento-card.wide{grid-column:1/3}
+.bento-emoji{font-size:22px;margin-bottom:8px}
+.bento-title{font-weight:600;font-size:12px;color:var(--primary);margin-bottom:3px}
+.bento-desc{font-size:10px;color:var(--muted);line-height:1.5}
 
-/* STATS BAR */
-.stats{padding:20px 24px;background:#fff;margin:0 24px;border-radius:var(--radius);display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center;border:1px solid rgba(0,0,0,0.04)}
-.stat-num{font-family:var(--display);font-weight:var(--weight);font-size:22px;color:var(--accent)}
-.stat-label{font-size:9px;color:var(--muted);font-weight:500}
+/* === STATS === */
+.stats{padding:20px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,0,0,.04);border-radius:var(--radius);margin:0 24px;overflow:hidden}
+.stat{background:var(--bg);padding:16px;text-align:center}
+.stat-num{font-family:var(--display);font-weight:700;font-size:22px;color:var(--accent)}
+.stat-label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
 
-/* HOW IT WORKS */
-.how{padding:32px 24px}
-.how h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:16px;text-align:center}
-.how-steps{display:flex;flex-direction:column;gap:12px}
-.how-step{display:flex;gap:12px;align-items:flex-start;padding:14px;background:#fff;border-radius:var(--radius);border:1px solid rgba(0,0,0,0.04)}
-.how-num{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:var(--weight);font-size:12px;flex-shrink:0}
-.how-title{font-weight:600;font-size:11px;color:var(--primary);margin-bottom:2px}
-.how-desc{font-size:10px;color:var(--muted);line-height:1.5}
+/* === PRICING === */
+.pricing{padding:36px 24px}
+.pricing h2{font-family:var(--display);font-weight:700;font-size:18px;color:var(--primary);text-align:center;margin-bottom:16px}
+.price-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.price-card{background:#fff;border-radius:var(--radius);padding:20px;border:1px solid rgba(0,0,0,.06);text-align:center;transition:border-color .2s;cursor:default;position:relative}
+.price-card:hover{border-color:var(--accent)}
+.price-card.popular{border-color:var(--accent);box-shadow:0 4px 16px rgba(59,107,245,.08)}
+.popular-badge{position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 10px;border-radius:10px}
+.price-name{font-weight:600;font-size:12px;color:var(--primary);margin-bottom:4px;margin-top:4px}
+.price-amount{font-family:var(--display);font-weight:700;font-size:28px;color:var(--primary);margin-bottom:2px}
+.price-period{font-size:10px;color:var(--muted);margin-bottom:10px}
+.price-features{font-size:10px;color:var(--muted);line-height:1.8;text-align:left;margin-bottom:14px}
+.price-btn{width:100%;padding:10px;border-radius:calc(var(--radius)/2);font-weight:600;font-size:11px;cursor:pointer;transition:transform .2s;border:none}
+.price-card.popular .price-btn{background:var(--accent);color:#fff}
+.price-card:not(.popular) .price-btn{background:transparent;border:1px solid rgba(0,0,0,.1);color:var(--primary)}
 
-/* PRICING */
-.pricing{padding:32px 24px}
-.pricing h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:16px;text-align:center}
-.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.plan-card{padding:16px;background:#fff;border-radius:var(--radius);border:1px solid rgba(0,0,0,0.06);text-align:center;transition:transform 0.2s}
-.plan-card:hover{transform:translateY(-2px)}
-.plan-card.featured{border-color:var(--accent);position:relative}
-.plan-card.featured::before{content:'Popular';position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:2px 10px;border-radius:10px;font-size:8px;font-weight:600}
-.plan-name{font-weight:600;font-size:11px;color:var(--primary);margin-bottom:4px}
-.plan-price{font-family:var(--display);font-weight:var(--weight);font-size:22px;color:var(--primary);margin-bottom:2px}
-.plan-period{font-size:9px;color:var(--muted);margin-bottom:10px}
-.plan-features{list-style:none;text-align:left;margin-bottom:12px;font-size:9px;color:var(--muted);line-height:1.8}
-.plan-features li::before{content:'+ ';color:var(--accent);font-weight:600}
-.plan-btn{width:100%;padding:8px;border-radius:var(--radius);font-size:10px;font-weight:600;cursor:pointer;border:none;transition:background 0.2s}
-.plan-btn-main{background:var(--accent);color:#fff}
-.plan-btn-alt{background:rgba(0,0,0,0.04);color:var(--primary)}
-
-/* FAQ */
-.faq{padding:32px 24px}
-.faq h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:16px;text-align:center}
+/* === FAQ === */
+.faq{padding:0 24px 36px}
+.faq h2{font-family:var(--display);font-weight:700;font-size:16px;color:var(--primary);margin-bottom:14px;text-align:center}
 .faq-list{display:flex;flex-direction:column;gap:6px}
-.faq-item{background:#fff;border-radius:var(--radius);border:1px solid rgba(0,0,0,0.04);overflow:hidden}
-.faq-q{padding:12px 14px;font-weight:600;font-size:11px;color:var(--primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.2s}
-.faq-q:hover{background:rgba(0,0,0,0.01)}
-.faq-q::after{content:'+';font-size:14px;color:var(--muted);transition:transform 0.3s}
-.faq-item.open .faq-q::after{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s cubic-bezier(0.22,1,0.36,1),padding 0.3s}
-.faq-item.open .faq-a{max-height:120px;padding:0 14px 12px}
-.faq-a p{font-size:10px;color:var(--muted);line-height:1.6}
+.faq-item{background:#fff;border-radius:calc(var(--radius)/2);border:1px solid rgba(0,0,0,.04);overflow:hidden}
+.faq-q{padding:14px 16px;font-weight:600;font-size:12px;color:var(--primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
+.faq-q:hover{background:rgba(59,107,245,.02)}
+.faq-q::after{content:'+';font-size:16px;color:var(--muted);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg);color:var(--accent)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s;padding:0 16px}
+.faq-item.open .faq-a{max-height:200px;padding:0 16px 14px}
+.faq-a p{font-size:11px;color:var(--muted);line-height:1.6}
 
-/* NEWSLETTER */
-.newsletter{margin:24px;padding:24px;background:#fff;border-radius:var(--radius);text-align:center;border:1px solid rgba(0,0,0,0.04)}
-.newsletter h3{font-family:var(--display);font-weight:var(--weight);font-size:14px;color:var(--primary);margin-bottom:4px}
-.newsletter p{font-size:10px;color:var(--muted);margin-bottom:12px}
-.newsletter-form{display:flex;gap:6px}
-.newsletter-input{flex:1;padding:8px 12px;border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius);font-size:11px;font-family:var(--body);outline:none;background:var(--bg);transition:border-color 0.2s}
-.newsletter-input:focus{border-color:var(--accent)}
-.newsletter-btn{padding:8px 16px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);font-size:10px;font-weight:600;cursor:pointer;white-space:nowrap}
+/* === NEWSLETTER === */
+.newsletter{margin:0 24px 24px;padding:24px;background:var(--primary);border-radius:var(--radius);text-align:center;color:#fff;position:relative;overflow:hidden}
+.newsletter::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:rgba(59,107,245,.15)}
+.newsletter h3{font-family:var(--display);font-weight:700;font-size:16px;margin-bottom:6px;position:relative;z-index:1}
+.newsletter p{font-size:10px;color:rgba(255,255,255,.6);margin-bottom:12px;position:relative;z-index:1}
+.nl-row{display:flex;gap:6px;position:relative;z-index:1}
+.nl-input{flex:1;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:calc(var(--radius)/2);padding:10px 14px;font-size:11px;color:#fff}
+.nl-input::placeholder{color:rgba(255,255,255,.4)}
+.nl-btn{background:var(--accent);color:#fff;border:none;padding:10px 18px;border-radius:calc(var(--radius)/2);font-weight:600;font-size:11px;cursor:pointer;transition:transform .2s;white-space:nowrap}
+.nl-btn:hover{transform:translateY(-1px)}
 
-/* CTA */
-.cta-banner{margin:24px;padding:28px 24px;background:var(--primary);border-radius:var(--radius);text-align:center;position:relative;overflow:hidden}
-.cta-banner::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:rgba(59,107,245,0.15)}
-.cta-banner::after{content:'';position:absolute;bottom:-30px;left:-30px;width:80px;height:80px;border-radius:50%;background:rgba(59,107,245,0.1)}
-.cta-banner h3{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:#fff;margin-bottom:6px;position:relative;z-index:1}
-.cta-banner p{font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:14px;position:relative;z-index:1}
-.cta-banner .btn-primary{position:relative;z-index:1}
+/* === FOOTER === */
+.footer{padding:24px;border-top:1px solid rgba(0,0,0,.05)}
+.footer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.footer-brand{font-family:var(--display);font-weight:700;font-size:14px;color:var(--primary);display:flex;align-items:center;gap:6px}
+.footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
+.footer-col-title{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--primary);margin-bottom:6px}
+.footer-col a{display:block;font-size:10px;color:var(--muted);padding:2px 0;transition:color .2s}
+.footer-col a:hover{color:var(--accent)}
+.footer-copy{font-size:9px;color:var(--muted);text-align:center;padding-top:12px;border-top:1px solid rgba(0,0,0,.04)}
 
-.footer{padding:24px;border-top:1px solid rgba(0,0,0,0.05)}
-.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
-.footer-brand{font-family:var(--display);font-weight:var(--weight);color:var(--primary);font-size:15px}
-.footer-tagline{font-size:10px;color:var(--muted);margin-top:2px}
-.footer-cols{display:flex;gap:20px}
-.footer-col-title{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--primary);margin-bottom:6px}
-.footer-col a{display:block;font-size:10px;color:var(--muted);line-height:1.8;transition:color 0.2s}.footer-col a:hover{color:var(--accent)}
-.footer-bottom{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);padding-top:12px;border-top:1px solid rgba(0,0,0,0.04);align-items:center}
-.footer-social{display:flex;gap:10px}.footer-social a{width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,0.04);display:flex;align-items:center;justify-content:center;font-size:11px;transition:background 0.2s,transform 0.2s}.footer-social a:hover{background:var(--accent);color:#fff;transform:translateY(-1px)}
-
-.demo-ribbon{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--primary);color:rgba(255,255,255,0.7);text-align:center;padding:8px;font-size:10px;font-weight:500}.demo-ribbon b{color:#f5c244}
+.demo-ribbon{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--primary);color:rgba(255,255,255,.7);text-align:center;padding:8px;font-size:10px;font-weight:500}
+.demo-ribbon b{color:var(--accent)}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="nav-brand">LaunchKit</div><div class="nav-links"><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><button class="nav-cta">Get Started</button></div></nav>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="nav-logo"><svg viewBox="0 0 16 16"><path d="M4 2l8 6-8 6z"/></svg></div>
+      <span data-business>LaunchKit</span>
+    </div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</nav>
 
 <section class="hero">
-  <div class="hero-badge"><span class="hero-badge-dot"></span> Now in public beta</div>
-  <h1>Ship your idea<br>in days, not months.</h1>
-  <p>Everything you need to go from concept to launch. Built for founders, freelancers, and small teams.</p>
-  <div class="hero-cta-row"><button class="btn-primary">Start Free Trial</button><button class="btn-secondary">See How It Works</button></div>
+  <div class="hero-badge"><span class="hero-badge-dot"></span>Now in public beta</div>
+  <h1 data-headline>Ship your idea<br>in <span class="gradient">days, not months.</span></h1>
+  <p data-tagline>The all-in-one platform for launching, managing, and scaling your product. Built for founders who move fast.</p>
+  <div class="hero-ctas">
+    <button class="btn-start">Start Free &rarr;</button>
+    <button class="btn-demo">Watch Demo</button>
+  </div>
 </section>
 
-<div class="social-proof reveal">
-  <div class="proof-item"><span class="proof-num">2,400+</span> users</div>
-  <div class="proof-item"><span class="proof-num">99.9%</span> uptime</div>
-  <div class="proof-item"><span class="proof-num">4.8</span> avg rating</div>
+<div class="proof reveal">
+  <span class="proof-item"><b>2,400+</b> users</span>
+  <span class="proof-item"><b>99.9%</b> uptime</span>
+  <span class="proof-item"><b>4.8</b> &#9733; rating</span>
 </div>
 
-<div class="hero-img-wrap reveal">
-  <div class="hero-img-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-  <div class="hero-img-label">Dashboard Preview</div>
-</div>
+<div class="mockup reveal"></div>
 
 <section class="features reveal" id="features">
-  <h2>Built to move fast</h2>
-  <div class="features-sub">Tools that keep up with your pace</div>
-  <div class="feat-grid">
-    <div class="feat-card"><div class="feat-icon">&#x26A1;</div><div class="feat-title">One-Click Deploy</div><div class="feat-desc">Push to production instantly with zero config</div></div>
-    <div class="feat-card"><div class="feat-icon">&#x1F512;</div><div class="feat-title">Built-in Auth</div><div class="feat-desc">User login, roles, and permissions out of the box</div></div>
-    <div class="feat-card"><div class="feat-icon">&#x1F4CA;</div><div class="feat-title">Analytics</div><div class="feat-desc">Track users, conversions, and engagement live</div></div>
-    <div class="feat-card"><div class="feat-icon">&#x1F310;</div><div class="feat-title">Custom Domains</div><div class="feat-desc">Connect your domain and SSL in minutes</div></div>
-    <div class="feat-card"><div class="feat-icon">&#x1F4E6;</div><div class="feat-title">API Ready</div><div class="feat-desc">RESTful endpoints generated from your schema</div></div>
-    <div class="feat-card"><div class="feat-icon">&#x1F916;</div><div class="feat-title">AI Assist</div><div class="feat-desc">Smart suggestions and auto-generated content</div></div>
+  <h2>Everything you need to launch</h2>
+  <div class="features-sub">From prototype to production in one platform</div>
+  <div class="bento">
+    <div class="bento-card wide"><div class="bento-emoji">&#9889;</div><div class="bento-title">Lightning Fast Deploys</div><div class="bento-desc">Push to production in under 30 seconds. Zero-downtime deployments with automatic rollback.</div></div>
+    <div class="bento-card"><div class="bento-emoji">&#128274;</div><div class="bento-title">Auth Built In</div><div class="bento-desc">User auth, SSO, and team management out of the box.</div></div>
+    <div class="bento-card"><div class="bento-emoji">&#128200;</div><div class="bento-title">Analytics</div><div class="bento-desc">Real-time dashboards, funnel tracking, and custom events.</div></div>
+    <div class="bento-card"><div class="bento-emoji">&#127760;</div><div class="bento-title">Global CDN</div><div class="bento-desc">Edge-cached in 12 data centers worldwide.</div></div>
+    <div class="bento-card"><div class="bento-emoji">&#128279;</div><div class="bento-title">Integrations</div><div class="bento-desc">Connect 140+ tools via API or one-click installs.</div></div>
   </div>
 </section>
 
 <div class="stats reveal">
-  <div><div class="stat-num">50ms</div><div class="stat-label">Avg response</div></div>
-  <div><div class="stat-num">140+</div><div class="stat-label">Integrations</div></div>
-  <div><div class="stat-num">12</div><div class="stat-label">Data centers</div></div>
+  <div class="stat"><div class="stat-num">50ms</div><div class="stat-label">Response Time</div></div>
+  <div class="stat"><div class="stat-num">140+</div><div class="stat-label">Integrations</div></div>
+  <div class="stat"><div class="stat-num">12</div><div class="stat-label">Data Centers</div></div>
 </div>
 
-<section class="how reveal">
-  <h2>How It Works</h2>
-  <div class="how-steps">
-    <div class="how-step"><div class="how-num">1</div><div><div class="how-title">Describe your idea</div><div class="how-desc">Tell us what you're building. Our setup wizard handles the rest.</div></div></div>
-    <div class="how-step"><div class="how-num">2</div><div><div class="how-title">Customize and build</div><div class="how-desc">Drag, drop, and configure. Add features with a single click.</div></div></div>
-    <div class="how-step"><div class="how-num">3</div><div><div class="how-title">Launch and grow</div><div class="how-desc">Deploy instantly. Scale as your audience grows.</div></div></div>
-  </div>
-</section>
-
 <section class="pricing reveal" id="pricing">
-  <h2>Simple pricing</h2>
-  <div class="plan-grid">
-    <div class="plan-card">
-      <div class="plan-name">Starter</div>
-      <div class="plan-price">$0</div>
-      <div class="plan-period">Free forever</div>
-      <ul class="plan-features"><li>1 project</li><li>1K monthly visitors</li><li>Community support</li><li>Basic analytics</li></ul>
-      <button class="plan-btn plan-btn-alt">Get Started</button>
+  <h2>Simple, transparent pricing</h2>
+  <div class="price-cards">
+    <div class="price-card">
+      <div class="price-name">Starter</div>
+      <div class="price-amount">$0</div>
+      <div class="price-period">Free forever</div>
+      <div class="price-features">&#10003; 1 project<br>&#10003; 1,000 MAU<br>&#10003; Community support<br>&#10003; Basic analytics</div>
+      <button class="price-btn">Get Started</button>
     </div>
-    <div class="plan-card featured">
-      <div class="plan-name">Pro</div>
-      <div class="plan-price">$29</div>
-      <div class="plan-period">per month</div>
-      <ul class="plan-features"><li>Unlimited projects</li><li>100K monthly visitors</li><li>Priority support</li><li>Custom domain + SSL</li></ul>
-      <button class="plan-btn plan-btn-main">Start Trial</button>
+    <div class="price-card popular">
+      <div class="popular-badge">Popular</div>
+      <div class="price-name">Pro</div>
+      <div class="price-amount">$29</div>
+      <div class="price-period">per month</div>
+      <div class="price-features">&#10003; Unlimited projects<br>&#10003; 50,000 MAU<br>&#10003; Priority support<br>&#10003; Advanced analytics</div>
+      <button class="price-btn">Start Free Trial</button>
     </div>
   </div>
 </section>
 
 <section class="faq reveal" id="faq">
-  <h2>Questions</h2>
+  <h2>Common Questions</h2>
   <div class="faq-list">
-    <div class="faq-item"><div class="faq-q">Do I need to know how to code?</div><div class="faq-a"><p>Not at all. Our visual builder lets you create full applications without writing a single line of code. Power users can add custom code when needed.</p></div></div>
-    <div class="faq-item"><div class="faq-q">Can I use my own domain?</div><div class="faq-a"><p>Yes. Connect any domain you own. SSL certificates are provisioned automatically. It takes about 2 minutes to set up.</p></div></div>
-    <div class="faq-item"><div class="faq-q">What happens after the free trial?</div><div class="faq-a"><p>Your project stays live on the Starter plan. No credit card required. Upgrade to Pro when you are ready for more features and scale.</p></div></div>
+    <div class="faq-item">
+      <div class="faq-q">Can I migrate from my current platform?</div>
+      <div class="faq-a"><p>Yes. We provide free migration assistance for all Pro plans, including data import tools and a dedicated onboarding call.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is there a free trial?</div>
+      <div class="faq-a"><p>Pro comes with a 14-day free trial. No credit card required. Starter is free forever with generous limits for personal projects.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What kind of support do you offer?</div>
+      <div class="faq-a"><p>Starter gets community support. Pro includes email and chat support with a 4-hour response SLA during business hours.</p></div>
+    </div>
   </div>
 </section>
 
-<div class="newsletter reveal"><h3>Stay in the loop</h3><p>Product updates and tips, straight to your inbox.</p><div class="newsletter-form"><input class="newsletter-input" type="email" placeholder="you@company.com"><button class="newsletter-btn">Subscribe</button></div></div>
-
-<div class="cta-banner reveal"><h3>Ready to launch?</h3><p>Join thousands of founders building with LaunchKit.</p><button class="btn-primary">Start Free Trial</button></div>
+<div class="newsletter reveal">
+  <h3>Stay in the loop</h3>
+  <p>Product updates, tips, and early access to new features.</p>
+  <div class="nl-row">
+    <input class="nl-input" placeholder="you@company.com" readonly>
+    <button class="nl-btn">Subscribe</button>
+  </div>
+</div>
 
 <footer class="footer">
   <div class="footer-top">
-    <div><div class="footer-brand">LaunchKit</div><div class="footer-tagline">Ship faster. Grow smarter.</div></div>
-    <div class="footer-cols">
-      <div><div class="footer-col-title">Product</div><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#">Docs</a></div>
-      <div><div class="footer-col-title">Company</div><a href="#">About</a><a href="#">Blog</a><a href="#">Careers</a></div>
+    <div class="footer-brand">
+      <div class="nav-logo" style="width:18px;height:18px;border-radius:4px"><svg viewBox="0 0 16 16" style="width:10px;height:10px;fill:#fff"><path d="M4 2l8 6-8 6z"/></svg></div>
+      <span data-business>LaunchKit</span>
     </div>
   </div>
-  <div class="footer-bottom"><span>Built by Joshua.</span><div class="footer-social"><a href="#" title="GitHub">&#9679;</a><a href="#" title="Twitter">&#9679;</a><a href="#" title="LinkedIn">&#9679;</a></div></div>
+  <div class="footer-cols">
+    <div><div class="footer-col-title">Product</div><a href="#features">Features</a><a href="#pricing">Pricing</a><a>Changelog</a></div>
+    <div><div class="footer-col-title">Company</div><a>About</a><a>Blog</a><a>Careers</a></div>
+    <div><div class="footer-col-title">Support</div><a href="#faq">FAQ</a><a>Docs</a><a>Status</a></div>
+  </div>
+  <div class="footer-copy">Built by Joshua. &copy; 2026</div>
 </footer>
+
 <div class="demo-ribbon"><b>Demo</b> - Built by joshuahumphreys.net</div>
+
 <script>
 const params=new URLSearchParams(window.location.search);
 const PALETTES={'Coastal':{bg:'#F0F7FA',primary:'#1B4965',accent:'#5FA8D3',text:'#1B4965',muted:'#6A8FA5'},'Sage':{bg:'#F2F5F0',primary:'#2F3E2E',accent:'#6B8F71',text:'#2F3E2E',muted:'#6A7A6A'},'Warm':{bg:'#FAF6F0',primary:'#3D2B1F',accent:'#C08552',text:'#3D2B1F',muted:'#8A7A6A'},'Slate':{bg:'#F0F0F6',primary:'#1E1E2E',accent:'#4A4A6A',text:'#1E1E2E',muted:'#6A6A8A'},'Rose':{bg:'#FDF5F8',primary:'#4A2040',accent:'#C07090',text:'#4A2040',muted:'#8A6A7A'},'Midnight':{bg:'#E0E8F0',primary:'#0D1B2A',accent:'#1B3A5C',text:'#0D1B2A',muted:'#5A6A7A'}};
 const STYLES={'Modern':{display:"'Space Grotesk',sans-serif",body:"'DM Sans','Inter',sans-serif",radius:'8px',weight:'600'},'Classic':{display:"'Playfair Display',Georgia,serif",body:"'Inter',sans-serif",radius:'3px',weight:'600'},'Bold':{display:"'Outfit',sans-serif",body:"'Outfit',sans-serif",radius:'12px',weight:'800'},'Minimal':{display:"'DM Sans',sans-serif",body:"'DM Sans',sans-serif",radius:'2px',weight:'400'}};
 function apply(p,s){const r=document.documentElement;if(p&&PALETTES[p]){const c=PALETTES[p];r.style.setProperty('--bg',c.bg);r.style.setProperty('--primary',c.primary);r.style.setProperty('--accent',c.accent);r.style.setProperty('--text',c.text);r.style.setProperty('--muted',c.muted)}if(s&&STYLES[s]){const t=STYLES[s];r.style.setProperty('--display',t.display);r.style.setProperty('--body',t.body);r.style.setProperty('--radius',t.radius);r.style.setProperty('--weight',t.weight)}}
 apply(params.get('palette'),params.get('style'));
-window.addEventListener('message',(e)=>{if(e.data&&e.data.type==='theme-update')apply(e.data.palette,e.data.style)});
+window.addEventListener('message',(e)=>{if(e.data&&e.data.type==='theme-update'){apply(e.data.palette,e.data.style);if(e.data.businessName)applyBiz(e.data)}});
+function applyBiz(d){
+  const name=d.businessName||params.get('businessName');
+  const phone=d.phone||params.get('phone');
+  const tagline=d.tagline||params.get('tagline');
+  if(name)document.querySelectorAll('[data-business]').forEach(el=>el.textContent=name);
+  if(phone)document.querySelectorAll('[data-phone]').forEach(el=>el.textContent=phone);
+  if(tagline)document.querySelectorAll('[data-tagline]').forEach(el=>el.textContent=tagline);
+}
+applyBiz({});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
 // FAQ toggle
 document.querySelectorAll('.faq-item').forEach(item=>{item.querySelector('.faq-q').addEventListener('click',()=>{item.classList.toggle('open')})});
-// Fix: anchor links scroll inside iframe only, not parent
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});});
 </script>
 </body>
 </html>
