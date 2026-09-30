@@ -1,296 +1,373 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-industry="salon">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex">
-<title>Salon Demo Preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Solace Studio | Demo preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="preview-base.css">
+<script src="themes.js"></script>
+<script src="preview.js"></script>
 <style>
-:root {
-  --bg: #FBF5F8;
-  --primary: #3D2233;
-  --accent: #B5547A;
-  --text: #3D2233;
-  --muted: #A08890;
-  --display: 'DM Sans', sans-serif;
-  --body: 'DM Sans', sans-serif;
-  --radius: 20px;
-  --weight: 400;
+body { font-weight: 400; }
+.announce { background: var(--brand); color: var(--on-brand); text-align: center; font-size: 13px; letter-spacing: .08em; padding: 10px 16px; }
+.announce a { text-decoration: underline; text-underline-offset: 3px; margin-left: 6px; }
+
+/* NAV: centered logo, split links */
+.nav { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 88%, transparent); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 88px; position: relative; }
+.nav-links { display: flex; gap: 32px; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+.logo { text-align: center; }
+.logo .d { font-size: calc(var(--ds) * 32px); font-style: italic; color: var(--ink); line-height: 1; }
+.logo small { display: block; font-size: 10px; letter-spacing: .38em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.nav-right { display: flex; justify-content: flex-end; align-items: center; gap: 22px; }
+.nav-right .ig { font-size: 14px; color: var(--muted); letter-spacing: .06em; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 30px; border-radius: 999px; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; font-weight: 500; transition: transform .35s var(--ease), background .3s, color .3s, box-shadow .3s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-brand { background: var(--brand); color: var(--on-brand); }
+.btn-brand:hover { box-shadow: 0 14px 30px color-mix(in srgb, var(--brand) 30%, transparent); }
+.btn-line { border: 1px solid var(--line-2); color: var(--ink); }
+.btn-line:hover { border-color: var(--ink); }
+.btn-sm { padding: 11px 20px; font-size: 12px; }
+
+/* HERO: text + arched image */
+.hero { padding: 72px 0 110px; }
+.hero .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.hero .kicker { font-size: 12px; letter-spacing: .34em; text-transform: uppercase; color: var(--accent); margin-bottom: 26px; display: flex; align-items: center; gap: 14px; }
+.hero .kicker::after { content: ''; width: 60px; height: 1px; background: var(--accent); }
+.hero h1 { font-size: calc(var(--ds) * clamp(54px, 6.6vw, 104px)); color: var(--ink); line-height: .98; margin-bottom: 28px; }
+.hero h1 em { font-style: italic; color: var(--brand); display: block; }
+html.theme-dark .hero h1 em { color: var(--accent); }
+.hero p { font-size: 18px; color: var(--muted); max-width: 460px; margin-bottom: 38px; font-weight: 300; line-height: 1.75; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-meta { display: flex; gap: 36px; margin-top: 52px; padding-top: 28px; border-top: 1px solid var(--line); }
+.hero-meta div { font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+.hero-meta b { display: block; font-family: var(--f-display); font-weight: var(--dw); font-size: calc(var(--ds) * 30px); color: var(--ink); letter-spacing: var(--dls); }
+.arch-wrap { position: relative; justify-self: center; width: 100%; max-width: 500px; }
+.arch { aspect-ratio: 4 / 5.2; border-radius: 999px 999px 24px 24px; overflow: hidden; }
+.arch img, .round img { width: 100%; height: 100%; object-fit: cover; }
+.round { position: absolute; left: -64px; bottom: 60px; width: 42%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 10px solid var(--bg); }
+.next-card { position: absolute; right: -30px; top: 16%; background: var(--bg); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; box-shadow: 0 20px 50px rgba(0,0,0,.1); min-width: 220px; }
+.next-card small { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.next-card b { display: block; font-family: var(--f-display); font-weight: var(--dw); font-size: calc(var(--ds) * 24px); margin: 4px 0 10px; color: var(--ink); }
+.next-card a { font-size: 13px; color: var(--brand); text-decoration: underline; text-underline-offset: 4px; }
+html.theme-dark .next-card a { color: var(--accent); }
+.spin { position: absolute; right: 8%; bottom: -46px; width: 120px; height: 120px; animation: spin 18s linear infinite; }
+.spin text { font-size: 10.5px; letter-spacing: .32em; text-transform: uppercase; fill: var(--muted); }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* RIBBON of services */
+.flow { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; padding: 24px 0; }
+.flow-track { display: flex; gap: 48px; width: max-content; animation: flow 38s linear infinite; }
+.flow span { font-family: var(--f-display); font-weight: var(--dw); text-transform: var(--dt); font-size: calc(var(--ds) * 34px); font-style: italic; color: var(--ink); white-space: nowrap; display: flex; align-items: center; gap: 48px; }
+.flow span::after { content: '\2726'; font-style: normal; font-size: 16px; color: var(--accent); }
+@keyframes flow { to { transform: translateX(-50%); } }
+
+section.pad { padding: 120px 0; }
+.sec-head { text-align: center; max-width: 640px; margin: 0 auto 64px; }
+.sec-head .k { font-size: 12px; letter-spacing: .34em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+.sec-head h2 { font-size: calc(var(--ds) * clamp(40px, 4.4vw, 64px)); color: var(--ink); }
+.sec-head h2 em { font-style: italic; }
+.sec-head p { color: var(--muted); margin-top: 16px; font-weight: 300; font-size: 17px; }
+
+/* SERVICE MENU */
+.menu { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+.menu-col { background: var(--surface); border-radius: 28px; padding: 40px 34px; transition: transform .5s var(--ease); }
+.menu-col:hover { transform: translateY(-6px); }
+.menu-col .img { aspect-ratio: 16 / 10; border-radius: 18px; overflow: hidden; margin-bottom: 28px; }
+.menu-col .img img { width: 100%; height: 100%; object-fit: cover; }
+.menu-col h3 { font-size: calc(var(--ds) * 32px); color: var(--ink); margin-bottom: 18px; font-style: italic; }
+.svc { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.svc small { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+.svc b { font-weight: 500; white-space: nowrap; color: var(--ink); }
+
+/* EXPERIENCE */
+.exp { background: var(--dark); color: var(--on-dark); }
+.exp .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: center; }
+.exp-img { border-radius: 300px 300px 28px 28px; overflow: hidden; aspect-ratio: 4 / 5; }
+.exp-img img { width: 100%; height: 100%; object-fit: cover; }
+.exp .k { font-size: 12px; letter-spacing: .34em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+.exp h2 { font-size: calc(var(--ds) * clamp(40px, 4.2vw, 60px)); margin-bottom: 40px; }
+.step { display: grid; grid-template-columns: 64px 1fr; gap: 18px; padding: 24px 0; border-top: 1px solid rgba(255,255,255,.14); }
+.step .n { font-family: var(--f-display); font-style: italic; font-size: calc(var(--ds) * 34px); color: var(--accent); line-height: 1; }
+.step h4 { font-size: 17px; font-weight: 500; margin-bottom: 4px; }
+.step p { opacity: .7; font-size: 15px; font-weight: 300; }
+
+/* TEAM */
+.team { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.member { text-align: center; }
+.member .ph { aspect-ratio: 3 / 4; border-radius: 999px 999px 20px 20px; overflow: hidden; margin-bottom: 20px; }
+.member .ph img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.85); transition: transform 1s var(--ease), filter .6s; }
+.member:hover .ph img { transform: scale(1.05); filter: saturate(1); }
+.member h4 { font-family: var(--f-display); font-weight: var(--dw); font-size: calc(var(--ds) * 26px); color: var(--ink); }
+.member p { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 4px 0 10px; }
+.member a { font-size: 14px; color: var(--brand); border-bottom: 1px solid currentColor; }
+html.theme-dark .member a { color: var(--accent); }
+
+/* GALLERY */
+.gallery { display: grid; grid-template-columns: 1.1fr .9fr .9fr 1.1fr; gap: 18px; align-items: end; }
+.g { overflow: hidden; border-radius: 22px; position: relative; }
+.g:nth-child(1) { aspect-ratio: 3 / 4; }
+.g:nth-child(2) { aspect-ratio: 1; border-radius: 50%; }
+.g:nth-child(3) { aspect-ratio: 3 / 5; }
+.g:nth-child(4) { aspect-ratio: 4 / 5; border-radius: 200px 200px 22px 22px; }
+.g img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.g:hover img { transform: scale(1.06); }
+.gal-foot { text-align: center; margin-top: 44px; }
+
+/* PRODUCTS */
+.products { background: var(--surface); }
+.prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.prod { background: var(--bg); border-radius: 24px; overflow: hidden; }
+.prod .img { aspect-ratio: 1; overflow: hidden; }
+.prod .img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
+.prod:hover .img img { transform: scale(1.05); }
+.prod .info { padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.prod h4 { font-size: 16px; font-weight: 500; color: var(--ink); }
+.prod small { color: var(--muted); font-size: 13px; }
+.prod .add { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line-2); display: grid; place-items: center; font-size: 20px; color: var(--ink); transition: background .3s, color .3s; flex-shrink: 0; }
+.prod .add:hover { background: var(--brand); color: var(--on-brand); border-color: var(--brand); }
+
+/* BOOKING */
+.book { display: grid; grid-template-columns: 1fr 1.1fr; gap: 0; border-radius: 32px; overflow: hidden; border: 1px solid var(--line); }
+.book .img { min-height: 520px; }
+.book .img img { width: 100%; height: 100%; object-fit: cover; }
+.book form { padding: 60px 56px; background: var(--bg); }
+.book h2 { font-size: calc(var(--ds) * clamp(38px, 3.8vw, 54px)); color: var(--ink); margin-bottom: 12px; }
+.book p { color: var(--muted); margin-bottom: 30px; font-weight: 300; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 26px; }
+.field label { display: block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.field select, .field input { width: 100%; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--line-2); background: var(--bg); outline: none; font-size: 15px; }
+.field select:focus, .field input:focus { border-color: var(--brand); }
+.book .note { font-size: 13px; margin-top: 16px; margin-bottom: 0; }
+
+/* FOOTER */
+footer { padding: 90px 0 40px; border-top: 1px solid var(--line); }
+.foot { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 40px; }
+.foot .d { font-size: calc(var(--ds) * 36px); font-style: italic; color: var(--ink); margin-bottom: 12px; }
+.foot h5 { font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; font-weight: 500; }
+.foot p, .foot a { color: var(--muted); font-size: 15px; font-weight: 300; }
+.foot a:hover { color: var(--ink); }
+.foot .col { display: flex; flex-direction: column; gap: 8px; }
+.foot-bot { display: flex; justify-content: space-between; margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); flex-wrap: wrap; gap: 12px; }
+
+@media (max-width: 1080px) {
+  .round { left: -20px; }
+  .next-card { right: 0; }
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden;padding-bottom:36px}
-a{color:inherit;text-decoration:none}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
-.reveal.visible{opacity:1;transform:none}
-
-/* === PILL NAV === */
-.nav{position:sticky;top:0;z-index:50;padding:12px 24px;background:rgba(251,245,248,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-.nav-inner{display:flex;justify-content:space-between;align-items:center}
-.nav-brand{font-family:var(--display);font-size:15px;color:var(--primary);letter-spacing:.08em;text-transform:lowercase}
-.nav-pills{display:flex;gap:4px;background:rgba(0,0,0,.03);padding:3px;border-radius:24px}
-.nav-pill{font-size:10px;font-weight:500;color:var(--muted);padding:6px 14px;border-radius:20px;cursor:pointer;transition:all .25s}
-.nav-pill:hover,.nav-pill.active{background:var(--accent);color:#fff}
-
-/* === FULL-WIDTH HERO WITH OVERLAY TEXT === */
-.hero{position:relative;height:300px;background:linear-gradient(160deg,var(--primary) 0%,var(--accent) 60%,#E8A0B8 100%);overflow:hidden;display:flex;align-items:flex-end;padding:32px 24px}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.12),transparent 50%)}
-.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(61,34,51,.6))}
-.hero-content{position:relative;z-index:2;color:#fff;max-width:340px}
-.hero-content h1{font-family:var(--display);font-weight:var(--weight);font-size:32px;line-height:1.1;letter-spacing:-.01em;margin-bottom:10px}
-.hero-content p{font-size:12px;color:rgba(255,255,255,.75);line-height:1.6;margin-bottom:16px}
-.hero-btns{display:flex;gap:10px}
-.btn-book{background:#fff;color:var(--primary);padding:11px 22px;border-radius:var(--radius);font-weight:600;font-size:12px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 12px rgba(0,0,0,.15)}
-.btn-book:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.2)}
-.btn-ghost{background:transparent;color:#fff;padding:11px 22px;border-radius:var(--radius);font-weight:500;font-size:12px;border:1px solid rgba(255,255,255,.3);cursor:pointer;transition:border-color .25s}
-.btn-ghost:hover{border-color:#fff}
-.hero-float{position:absolute;top:24px;right:24px;z-index:2;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);padding:12px 16px;border-radius:var(--radius)}
-.hero-float-num{font-family:var(--display);font-size:20px;color:#fff;font-weight:600}
-.hero-float-label{font-size:9px;color:rgba(255,255,255,.7);margin-top:2px}
-
-/* === TRUST BAR === */
-.trust{padding:16px 24px;display:flex;justify-content:space-around;border-bottom:1px solid rgba(0,0,0,.04)}
-.trust-item{text-align:center}
-.trust-num{font-family:var(--display);font-weight:600;font-size:18px;color:var(--accent)}
-.trust-label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
-
-/* === SERVICE CARDS (staggered/asymmetric) === */
-.services{padding:36px 24px}
-.services-header{margin-bottom:20px}
-.services-header h2{font-family:var(--display);font-weight:var(--weight);font-size:20px;color:var(--primary)}
-.services-header p{font-size:11px;color:var(--muted);margin-top:4px}
-.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.svc-card{padding:20px 16px;border-radius:var(--radius);background:rgba(0,0,0,.02);border:1px solid rgba(0,0,0,.04);transition:all .3s;cursor:default;position:relative;overflow:hidden}
-.svc-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(181,84,122,.08)}
-.svc-card:nth-child(even){margin-top:20px}
-.svc-emoji{font-size:24px;margin-bottom:10px;display:block}
-.svc-name{font-family:var(--display);font-weight:600;font-size:13px;color:var(--primary);margin-bottom:4px}
-.svc-desc{font-size:10px;color:var(--muted);line-height:1.5;margin-bottom:10px}
-.svc-footer{display:flex;justify-content:space-between;align-items:center}
-.svc-price{font-family:var(--display);font-weight:600;font-size:14px;color:var(--accent)}
-.svc-time{font-size:9px;color:var(--muted)}
-.svc-popular{position:absolute;top:10px;right:10px;font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;background:var(--accent);color:#fff;padding:2px 6px;border-radius:10px}
-
-/* === BOOKING WIDGET === */
-.booking{margin:0 24px;padding:28px 24px;background:linear-gradient(135deg,var(--primary),#5A3050);border-radius:var(--radius);color:#fff;position:relative;overflow:hidden}
-.booking::before{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;background:rgba(181,84,122,.2)}
-.booking h3{font-family:var(--display);font-weight:600;font-size:16px;margin-bottom:6px;position:relative;z-index:1}
-.booking p{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:16px;position:relative;z-index:1}
-.booking-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;position:relative;z-index:1}
-.booking-field{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.12);border-radius:calc(var(--radius)/2);padding:10px 12px}
-.booking-field-label{font-size:8px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
-.booking-field-value{font-size:12px;color:#fff;font-weight:500}
-.booking-btn{width:100%;background:#fff;color:var(--primary);border:none;padding:12px;border-radius:calc(var(--radius)/2);font-weight:600;font-size:12px;cursor:pointer;transition:transform .2s;position:relative;z-index:1}
-.booking-btn:hover{transform:translateY(-1px)}
-
-/* === TEAM === */
-.team{padding:36px 24px}
-.team h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:16px}
-.team-scroll{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
-.team-scroll::-webkit-scrollbar{display:none}
-.team-member{flex:0 0 120px;text-align:center}
-.team-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 10px;overflow:hidden;position:relative}
-.team-avatar::before{content:'';position:absolute;inset:0;border-radius:50%}
-.team-avatar::after{content:'';position:absolute;inset:15%;border-radius:50%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='28' r='13' fill='rgba(255,255,255,0.3)'/%3E%3Cellipse cx='40' cy='62' rx='20' ry='16' fill='rgba(255,255,255,0.25)'/%3E%3C/svg%3E");background-size:cover;background-position:center}
-.ta1::before{background:linear-gradient(135deg,var(--accent),#E8A0B8)}
-.ta2::before{background:linear-gradient(135deg,#C07090,var(--primary))}
-.ta3::before{background:linear-gradient(135deg,var(--primary),var(--accent))}
-.ta4::before{background:linear-gradient(135deg,#E8A0B8,#C07090)}
-.team-name{font-weight:600;font-size:11px;color:var(--primary)}
-.team-role{font-size:9px;color:var(--muted);margin-top:2px}
-
-/* === GALLERY (organic shapes) === */
-.gallery{padding:0 24px 36px}
-.gallery h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:16px}
-.gallery-organic{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:90px 90px;gap:8px}
-.go{border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:transform .3s;position:relative}
-.go:hover{transform:scale(1.03)}
-.go:nth-child(1){border-radius:var(--radius) var(--radius) 60px var(--radius);background:linear-gradient(135deg,var(--accent),#E8A0B8)}
-.go:nth-child(2){grid-column:2/4;background:linear-gradient(160deg,var(--primary),var(--accent));border-radius:var(--radius) 60px var(--radius) var(--radius)}
-.go:nth-child(3){grid-column:1/3;background:linear-gradient(135deg,#E8A0B8,#C07090);border-radius:60px var(--radius) var(--radius) var(--radius)}
-.go:nth-child(4){background:linear-gradient(135deg,var(--primary),#5A3050);border-radius:var(--radius) var(--radius) var(--radius) 60px}
-.go::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:28px;height:22px;z-index:1;opacity:.35;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 32'%3E%3Crect x='2' y='6' width='36' height='24' rx='3' fill='none' stroke='%23fff' stroke-width='2'/%3E%3Ccircle cx='20' cy='18' r='6' fill='none' stroke='%23fff' stroke-width='2'/%3E%3Cpath d='M15 6L17 2h6l2 4' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat}
-.go-label{position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:linear-gradient(transparent,rgba(0,0,0,.45));color:#fff;font-size:9px;font-weight:500;opacity:.9}
-
-/* === ABOUT === */
-.about{padding:36px 24px;border-top:1px solid rgba(0,0,0,.04)}
-.about-inner{display:flex;gap:20px;align-items:center}
-.about-img{flex:0 0 100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--primary));position:relative;overflow:hidden}
-.about-img::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 40% 40%,rgba(255,255,255,.15),transparent 60%)}
-.about-img::after{content:'';position:absolute;inset:15%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='28' r='13' fill='rgba(255,255,255,0.3)'/%3E%3Cellipse cx='40' cy='62' rx='20' ry='16' fill='rgba(255,255,255,0.25)'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat;background-position:center}
-.about-text h2{font-family:var(--display);font-weight:var(--weight);font-size:16px;color:var(--primary);margin-bottom:6px}
-.about-text p{font-size:11px;color:var(--muted);line-height:1.6}
-
-/* === FOOTER === */
-.footer{padding:24px;text-align:center;border-top:1px solid rgba(0,0,0,.04)}
-.footer-brand{font-family:var(--display);font-size:14px;color:var(--primary);letter-spacing:.08em;text-transform:lowercase;margin-bottom:8px}
-.footer-links{display:flex;justify-content:center;gap:16px;margin-bottom:10px}
-.footer-links a{font-size:10px;color:var(--muted);transition:color .2s}
-.footer-links a:hover{color:var(--accent)}
-.footer-copy{font-size:9px;color:var(--muted)}
-
-.demo-ribbon{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--primary);color:rgba(255,255,255,.7);text-align:center;padding:8px;font-size:10px;font-weight:500}
-.demo-ribbon b{color:#E8A0B8}
+@media (max-width: 980px) {
+  .hero .wrap, .exp .wrap, .book { grid-template-columns: 1fr; gap: 56px; }
+  .menu, .prod-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+  .team { grid-template-columns: repeat(2, 1fr); }
+  .gallery { grid-template-columns: 1fr 1fr; }
+  .foot { grid-template-columns: 1fr 1fr; }
+  .book .img { min-height: 320px; }
+}
+@media (max-width: 860px) {
+  .nav .wrap { grid-template-columns: auto 1fr auto; height: 74px; }
+  .logo { text-align: left; }
+  .nav-left { grid-column: 1; grid-row: 1; }
+  .nav .logo { grid-column: 1; grid-row: 1; }
+  .nav-right { grid-column: 3; }
+  .nav-right .ig { display: none; }
+}
+@media (max-width: 640px) {
+  section.pad { padding: 80px 0; }
+  .hero { padding: 40px 0 80px; }
+  .round { width: 38%; left: -8px; bottom: 30px; border-width: 6px; }
+  .next-card { display: none; }
+  .spin { display: none; }
+  .hero-meta { gap: 22px; }
+  .fields { grid-template-columns: 1fr; }
+  .book form { padding: 40px 26px; }
+  .team { gap: 18px; }
+  .foot { grid-template-columns: 1fr; }
+  .nav-right .btn { display: none; }
+}
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <div class="nav-brand" data-business>bloom studio</div>
-    <div class="nav-pills">
-      <span class="nav-pill active">Services</span>
-      <span class="nav-pill">Book</span>
-      <span class="nav-pill">About</span>
+<div class="announce">Now booking holiday color appointments <a href="#book">Reserve your spot</a></div>
+
+<header class="nav">
+  <div class="wrap">
+    <nav class="nav-links m-menu nav-left">
+      <a href="#services">Services</a>
+      <a href="#team">Stylists</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#shop">Shop</a>
+    </nav>
+    <a href="#top" class="logo"><span class="d" data-business>Solace Studio</span><small>Hair &middot; Skin &middot; Calm</small></a>
+    <div class="nav-right">
+      <span class="ig">@solacestudio</span>
+      <a href="#book" class="btn btn-brand btn-sm">Book now</a>
+      <button class="m-toggle" aria-label="Menu"><span></span><span></span></button>
     </div>
   </div>
-</nav>
+</header>
 
-<section class="hero">
-  <div class="hero-float">
-    <div class="hero-float-num">4.9 &#9733;</div>
-    <div class="hero-float-label">280+ reviews</div>
-  </div>
-  <div class="hero-content">
-    <h1 data-headline>Your best hair starts here.</h1>
-    <p data-tagline>Color, cuts, and styling in a calm, light-filled space. Downtown Fernandina Beach.</p>
-    <div class="hero-btns">
-      <button class="btn-book">Book Now</button>
-      <button class="btn-ghost">View Services</button>
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="kicker rv">Amelia Island Hair Studio</div>
+      <h1 class="d rv">Where calm <em>meets color.</em></h1>
+      <p class="rv" data-tagline>Lived-in color, precision cuts and restorative facials in a quiet, light-filled studio. Slow down. You are in good hands.</p>
+      <div class="hero-actions rv">
+        <a href="#book" class="btn btn-brand">Book an appointment</a>
+        <a href="#services" class="btn btn-line">Explore services</a>
+      </div>
+      <div class="hero-meta rv">
+        <div><b>9 yrs</b>in the studio</div>
+        <div><b>6</b>senior stylists</div>
+        <div><b>Tue to Sat</b>by appointment</div>
+      </div>
+    </div>
+    <div class="arch-wrap rv d2">
+      <div class="arch"><img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=1000&q=70" alt="Salon chairs and round mirrors"></div>
+      <div class="round"><img src="https://images.unsplash.com/photo-1605980766335-d3a41c7332a1?auto=format&fit=crop&w=500&q=70" alt="Soft blonde hair color"></div>
+      <div class="next-card"><small>Next available</small><b>Thursday, 2:30 PM</b><a href="#book">Grab this time</a></div>
+      <svg class="spin" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="c" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#c">Book online &middot; Book online &middot; Book online &middot;</textPath></text></svg>
     </div>
   </div>
 </section>
 
-<div class="trust reveal">
-  <div class="trust-item"><div class="trust-num">8+</div><div class="trust-label">Years</div></div>
-  <div class="trust-item"><div class="trust-num">4.9</div><div class="trust-label">Rating</div></div>
-  <div class="trust-item"><div class="trust-num">5k+</div><div class="trust-label">Clients</div></div>
+<div class="flow" aria-hidden="true">
+  <div class="flow-track">
+    <span>Balayage</span><span>Lived-in color</span><span>Precision cuts</span><span>Glossing</span><span>Facials</span><span>Brow design</span><span>Bridal styling</span>
+    <span>Balayage</span><span>Lived-in color</span><span>Precision cuts</span><span>Glossing</span><span>Facials</span><span>Brow design</span><span>Bridal styling</span>
+  </div>
 </div>
 
-<section class="services reveal" id="services">
-  <div class="services-header">
-    <h2>Our Services</h2>
-    <p>Expert care for every hair type and texture</p>
-  </div>
-  <div class="svc-grid">
-    <div class="svc-card">
-      <span class="svc-popular">Popular</span>
-      <span class="svc-emoji">&#9986;</span>
-      <div class="svc-name">Cut & Style</div>
-      <div class="svc-desc">Precision cut, wash, blow-dry, and styling</div>
-      <div class="svc-footer"><span class="svc-price">$65+</span><span class="svc-time">60 min</span></div>
+<section class="pad" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="k rv">The Menu</div>
+      <h2 class="d rv">Services, <em>thoughtfully done.</em></h2>
+      <p class="rv">Every visit starts with a consultation and ends with a style you can recreate at home.</p>
     </div>
-    <div class="svc-card">
-      <span class="svc-emoji">&#127912;</span>
-      <div class="svc-name">Color</div>
-      <div class="svc-desc">Full color, highlights, balayage, or gloss</div>
-      <div class="svc-footer"><span class="svc-price">$120+</span><span class="svc-time">90 min</span></div>
-    </div>
-    <div class="svc-card">
-      <span class="svc-emoji">&#128171;</span>
-      <div class="svc-name">Blowout</div>
-      <div class="svc-desc">Wash and professional blow-dry styling</div>
-      <div class="svc-footer"><span class="svc-price">$45</span><span class="svc-time">45 min</span></div>
-    </div>
-    <div class="svc-card">
-      <span class="svc-emoji">&#10024;</span>
-      <div class="svc-name">Treatment</div>
-      <div class="svc-desc">Deep conditioning, keratin, or scalp therapy</div>
-      <div class="svc-footer"><span class="svc-price">$85+</span><span class="svc-time">60 min</span></div>
-    </div>
-  </div>
-</section>
-
-<div class="booking reveal" id="book">
-  <h3>Book your appointment</h3>
-  <p>Select a service and time that works for you</p>
-  <div class="booking-fields">
-    <div class="booking-field">
-      <div class="booking-field-label">Service</div>
-      <div class="booking-field-value">Cut & Style</div>
-    </div>
-    <div class="booking-field">
-      <div class="booking-field-label">Stylist</div>
-      <div class="booking-field-value">Any available</div>
-    </div>
-    <div class="booking-field">
-      <div class="booking-field-label">Date</div>
-      <div class="booking-field-value">Tomorrow</div>
-    </div>
-    <div class="booking-field">
-      <div class="booking-field-label">Time</div>
-      <div class="booking-field-value">2:00 PM</div>
-    </div>
-  </div>
-  <button class="booking-btn">Confirm Booking &rarr;</button>
-</div>
-
-<section class="team reveal">
-  <h2>Meet the Team</h2>
-  <div class="team-scroll">
-    <div class="team-member"><div class="team-avatar ta1"></div><div class="team-name">Sarah M.</div><div class="team-role">Senior Stylist</div></div>
-    <div class="team-member"><div class="team-avatar ta2"></div><div class="team-name">Kira L.</div><div class="team-role">Color Specialist</div></div>
-    <div class="team-member"><div class="team-avatar ta3"></div><div class="team-name">Dani R.</div><div class="team-role">Stylist</div></div>
-    <div class="team-member"><div class="team-avatar ta4"></div><div class="team-name">Jade T.</div><div class="team-role">Junior Stylist</div></div>
-  </div>
-</section>
-
-<section class="gallery reveal" id="gallery">
-  <h2>Our Work</h2>
-  <div class="gallery-organic">
-    <div class="go"><span class="go-label">Balayage</span></div>
-    <div class="go"><span class="go-label">Blowout Bar</span></div>
-    <div class="go"><span class="go-label">The Studio</span></div>
-    <div class="go"><span class="go-label">Color Work</span></div>
-  </div>
-</section>
-
-<section class="about reveal" id="about">
-  <div class="about-inner">
-    <div class="about-img"></div>
-    <div class="about-text">
-      <h2>Founded on the belief that great hair changes everything.</h2>
-      <p>Bloom Studio opened in 2018 on Centre Street with two chairs and a vision. Today we have a team of four and a waitlist. We specialize in lived-in color and low-maintenance cuts that look great on day 30, not just day one.</p>
+    <div class="menu">
+      <div class="menu-col rv">
+        <div class="img"><img src="https://images.unsplash.com/photo-1707979577466-2d6109c68a45?auto=format&fit=crop&w=800&q=70" alt="Stylist working on a client"></div>
+        <h3 class="d">Hair</h3>
+        <div class="svc"><div>Signature cut and style<small>60 min</small></div><b>$85</b></div>
+        <div class="svc"><div>Blowout<small>45 min</small></div><b>$55</b></div>
+        <div class="svc"><div>Men's cut<small>30 min</small></div><b>$45</b></div>
+        <div class="svc"><div>Bridal and event styling<small>by consult</small></div><b>from $150</b></div>
+      </div>
+      <div class="menu-col rv d1">
+        <div class="img"><img src="https://images.unsplash.com/photo-1554519515-242161756769?auto=format&fit=crop&w=800&q=70" alt="Colorful hair"></div>
+        <h3 class="d">Color</h3>
+        <div class="svc"><div>Balayage and tone<small>2.5 hrs</small></div><b>from $220</b></div>
+        <div class="svc"><div>Full highlight<small>2 hrs</small></div><b>from $180</b></div>
+        <div class="svc"><div>Root touch-up<small>75 min</small></div><b>$95</b></div>
+        <div class="svc"><div>Gloss treatment<small>30 min</small></div><b>$55</b></div>
+      </div>
+      <div class="menu-col rv d2">
+        <div class="img"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=70" alt="Facial treatment"></div>
+        <h3 class="d">Skin</h3>
+        <div class="svc"><div>Signature facial<small>60 min</small></div><b>$110</b></div>
+        <div class="svc"><div>Express glow facial<small>30 min</small></div><b>$65</b></div>
+        <div class="svc"><div>Brow shaping and tint<small>30 min</small></div><b>$40</b></div>
+        <div class="svc"><div>Lash lift<small>45 min</small></div><b>$75</b></div>
+      </div>
     </div>
   </div>
 </section>
 
-<footer class="footer">
-  <div class="footer-brand" data-business>bloom studio</div>
-  <div class="footer-links">
-    <a href="#services">Services</a>
-    <a href="#book">Book</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#about">About</a>
+<section class="pad exp">
+  <div class="wrap">
+    <div class="exp-img rv"><img src="https://images.unsplash.com/photo-1695527081827-fdbc4e77be9b?auto=format&fit=crop&w=900&q=70" alt="Calm salon room with a plant"></div>
+    <div>
+      <div class="k rv">The Experience</div>
+      <h2 class="d rv">An hour that feels like a <em>long exhale.</em></h2>
+      <div class="step rv"><div class="n">01</div><div><h4>A real consultation</h4><p>We talk through your routine, your hair history and the look you are after before anything starts.</p></div></div>
+      <div class="step rv"><div class="n">02</div><div><h4>Clean, gentle products</h4><p>Bond-building color and low-tox skincare that is kind to your hair and skin.</p></div></div>
+      <div class="step rv"><div class="n">03</div><div><h4>Leave with a plan</h4><p>Styling tips and a care routine so your color and cut look great for weeks.</p></div></div>
+    </div>
   </div>
-  <div class="footer-copy">Built by Joshua. &copy; 2026</div>
+</section>
+
+<section class="pad" id="team">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="k rv">Our Stylists</div>
+      <h2 class="d rv">Meet the <em>team.</em></h2>
+    </div>
+    <div class="team">
+      <div class="member rv"><div class="ph"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=70" alt="Stylist portrait"></div><h4>Mia Chen</h4><p>Color specialist</p><a href="#book">Book with Mia</a></div>
+      <div class="member rv d1"><div class="ph"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=70" alt="Stylist portrait"></div><h4>Lena Park</h4><p>Cuts and styling</p><a href="#book">Book with Lena</a></div>
+      <div class="member rv d2"><div class="ph"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=70" alt="Stylist portrait"></div><h4>Andre Ruiz</h4><p>Men's grooming</p><a href="#book">Book with Andre</a></div>
+      <div class="member rv d3"><div class="ph"><img src="https://images.unsplash.com/photo-1614204424926-196a80bf0be8?auto=format&fit=crop&w=600&q=70" alt="Esthetician portrait"></div><h4>Sofia Grant</h4><p>Esthetician</p><a href="#book">Book with Sofia</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="gallery" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="k rv">Recent Work</div>
+      <h2 class="d rv">Straight from <em>the chair.</em></h2>
+    </div>
+    <div class="gallery">
+      <div class="g rv"><img src="https://images.unsplash.com/photo-1629397685944-7073f5589754?auto=format&fit=crop&w=700&q=70" alt="Hair being curled"></div>
+      <div class="g rv d1"><img src="https://images.unsplash.com/photo-1605980625600-88b46abafa8d?auto=format&fit=crop&w=600&q=70" alt="Silver hair color"></div>
+      <div class="g rv d2"><img src="https://images.unsplash.com/photo-1554519934-e32b1629d9ee?auto=format&fit=crop&w=600&q=70" alt="Styled hair"></div>
+      <div class="g rv d3"><img src="https://images.unsplash.com/photo-1695527081848-1e46c06e6458?auto=format&fit=crop&w=700&q=70" alt="Client in the salon chair"></div>
+    </div>
+    <div class="gal-foot rv"><a href="#" class="btn btn-line" data-demo="Demo link. This opens your Instagram feed.">Follow @solacestudio</a></div>
+  </div>
+</section>
+
+<section class="pad products" id="shop">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="k rv">Take It Home</div>
+      <h2 class="d rv">The products <em>we swear by.</em></h2>
+    </div>
+    <div class="prod-grid">
+      <div class="prod rv"><div class="img"><img src="https://images.unsplash.com/photo-1601049676869-702ea24cfd58?auto=format&fit=crop&w=700&q=70" alt="Hair care bottles"></div><div class="info"><div><h4>Repair Shampoo &amp; Mask</h4><small>$48 set</small></div><button class="add" data-demo="Demo button. Adds this item to the cart on your live store.">+</button></div></div>
+      <div class="prod rv d1"><div class="img"><img src="https://images.unsplash.com/photo-1629380108599-ea06489d66f5?auto=format&fit=crop&w=700&q=70" alt="Skincare bottles in a basket"></div><div class="info"><div><h4>Daily Glow Serum</h4><small>$36</small></div><button class="add" data-demo="Demo button. Adds this item to the cart on your live store.">+</button></div></div>
+      <div class="prod rv d2"><div class="img"><img src="https://images.unsplash.com/photo-1695527081782-33e110235ade?auto=format&fit=crop&w=700&q=70" alt="Shelf of hair products"></div><div class="info"><div><h4>Gift Cards</h4><small>From $25</small></div><button class="add" data-demo="Demo button. Opens gift card checkout.">+</button></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="book">
+  <div class="wrap">
+    <div class="book rv">
+      <div class="img"><img src="https://images.unsplash.com/photo-1643684391140-c5056cfd3436?auto=format&fit=crop&w=900&q=70" alt="Relaxing facial massage"></div>
+      <form>
+        <h2 class="d">Book your visit</h2>
+        <p>Choose a service and a time that works. We will confirm by text within the hour.</p>
+        <div class="fields">
+          <div class="field"><label>Service</label><select><option>Balayage and tone</option><option>Signature cut</option><option>Signature facial</option><option>Blowout</option></select></div>
+          <div class="field"><label>Stylist</label><select><option>No preference</option><option>Mia</option><option>Lena</option><option>Andre</option><option>Sofia</option></select></div>
+          <div class="field"><label>Date</label><select><option>Thursday, Oct 8</option><option>Friday, Oct 9</option><option>Saturday, Oct 10</option></select></div>
+          <div class="field"><label>Time</label><select><option>2:30 PM</option><option>10:00 AM</option><option>4:00 PM</option></select></div>
+        </div>
+        <button type="submit" class="btn btn-brand">Request appointment</button>
+        <p class="note">Prefer to call? <span data-phone>(904) 555-0177</span></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><div class="d" data-business>Solace Studio</div><p>A calm, modern salon on Amelia Island.</p></div>
+      <div class="col"><h5>Visit</h5><p>1402 Sadler Road<br>Fernandina Beach, FL</p></div>
+      <div class="col"><h5>Hours</h5><p>Tue to Fri, 10 to 7<br>Saturday, 9 to 5<br>Sun and Mon, closed</p></div>
+      <div class="col"><h5>Say hello</h5><a href="#" data-phone>(904) 555-0177</a><a href="#">hello@solacestudio.com</a><a href="#" data-demo="Demo link. This goes to your Instagram.">Instagram</a></div>
+    </div>
+    <div class="foot-bot"><span>&copy; 2026 <span data-business>Solace Studio</span></span><span>Website by Joshua Humphreys</span></div>
+  </div>
 </footer>
 
-<div class="demo-ribbon"><b>Demo</b> - Built by joshuahumphreys.net</div>
-
-<script>
-const params=new URLSearchParams(window.location.search);
-const PALETTES={'Coastal':{bg:'#F0F7FA',primary:'#1B4965',accent:'#5FA8D3',text:'#1B4965',muted:'#6A8FA5'},'Sage':{bg:'#F2F5F0',primary:'#2F3E2E',accent:'#6B8F71',text:'#2F3E2E',muted:'#6A7A6A'},'Warm':{bg:'#FAF6F0',primary:'#3D2B1F',accent:'#C08552',text:'#3D2B1F',muted:'#8A7A6A'},'Slate':{bg:'#F0F0F6',primary:'#1E1E2E',accent:'#4A4A6A',text:'#1E1E2E',muted:'#6A6A8A'},'Rose':{bg:'#FDF5F8',primary:'#4A2040',accent:'#C07090',text:'#4A2040',muted:'#8A6A7A'},'Midnight':{bg:'#E0E8F0',primary:'#0D1B2A',accent:'#1B3A5C',text:'#0D1B2A',muted:'#5A6A7A'}};
-const STYLES={'Modern':{display:"'Space Grotesk',sans-serif",body:"'DM Sans','Inter',sans-serif",radius:'8px',weight:'600'},'Classic':{display:"'Playfair Display',Georgia,serif",body:"'Inter',sans-serif",radius:'3px',weight:'600'},'Bold':{display:"'Outfit',sans-serif",body:"'Outfit',sans-serif",radius:'12px',weight:'800'},'Minimal':{display:"'DM Sans',sans-serif",body:"'DM Sans',sans-serif",radius:'2px',weight:'400'}};
-function apply(p,s){const r=document.documentElement;if(p&&PALETTES[p]){const c=PALETTES[p];r.style.setProperty('--bg',c.bg);r.style.setProperty('--primary',c.primary);r.style.setProperty('--accent',c.accent);r.style.setProperty('--text',c.text);r.style.setProperty('--muted',c.muted)}if(s&&STYLES[s]){const t=STYLES[s];r.style.setProperty('--display',t.display);r.style.setProperty('--body',t.body);r.style.setProperty('--radius',t.radius);r.style.setProperty('--weight',t.weight)}}
-apply(params.get('palette'),params.get('style'));
-window.addEventListener('message',(e)=>{if(e.data&&e.data.type==='theme-update'){apply(e.data.palette,e.data.style);if(e.data.businessName)applyBiz(e.data)}});
-function applyBiz(d){
-  const name=d.businessName||params.get('businessName');
-  const phone=d.phone||params.get('phone');
-  const tagline=d.tagline||params.get('tagline');
-  if(name)document.querySelectorAll('[data-business]').forEach(el=>el.textContent=name);
-  if(phone)document.querySelectorAll('[data-phone]').forEach(el=>el.textContent=phone);
-  if(tagline)document.querySelectorAll('[data-tagline]').forEach(el=>el.textContent=tagline);
-}
-applyBiz({});
-const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
-document.querySelectorAll('.nav-pill').forEach(p=>{p.addEventListener('click',function(){document.querySelectorAll('.nav-pill').forEach(x=>x.classList.remove('active'));this.classList.add('active')})});
-</script>
 </body>
 </html>

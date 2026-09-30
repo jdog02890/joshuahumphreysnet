@@ -1,305 +1,323 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-industry="realestate">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex">
-<title>Real Estate Demo Preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Harborline Realty | Demo preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="preview-base.css">
+<script src="themes.js"></script>
+<script src="preview.js"></script>
 <style>
-:root {
-  --bg: #F4F6FA;
-  --primary: #1A2B4A;
-  --accent: #2E6BD6;
-  --text: #1A2B4A;
-  --muted: #7A8BA5;
-  --display: 'Space Grotesk', sans-serif;
-  --body: 'Inter', sans-serif;
-  --radius: 10px;
-  --weight: 600;
+body { font-size: 16px; }
+/* NAV */
+.nav { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 92%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; gap: 40px; height: 78px; position: relative; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.mark { width: 40px; height: 40px; border-radius: 12px; background: var(--brand); color: var(--on-brand); display: grid; place-items: center; }
+.brand .d { font-size: calc(var(--ds) * 21px); color: var(--ink); line-height: 1.1; }
+.brand small { display: block; font-size: 11px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+.nav-links { display: flex; gap: 28px; font-size: 15px; font-weight: 500; color: var(--muted); margin-left: 12px; }
+.nav-links a:hover { color: var(--ink); }
+.nav-right { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+.nav-phone { font-weight: 600; font-size: 15px; color: var(--ink); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 12px; font-weight: 700; font-size: 15px; transition: transform .3s var(--ease), box-shadow .3s, background .3s, color .3s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-brand { background: var(--brand); color: var(--on-brand); }
+.btn-brand:hover { box-shadow: 0 12px 28px color-mix(in srgb, var(--brand) 30%, transparent); }
+.btn-accent { background: var(--accent); color: var(--on-accent); }
+.btn-soft { background: var(--surface); color: var(--ink); }
+.btn-sm { padding: 11px 18px; font-size: 14px; }
+
+/* HERO */
+.hero { padding: 16px 16px 0; }
+.hero-box { position: relative; border-radius: 28px; overflow: hidden; min-height: 680px; height: min(86vh, 780px); display: flex; align-items: center; color: #fff; }
+.hero-box > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-box::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,15,28,.72) 0%, rgba(5,15,28,.35) 55%, rgba(5,15,28,.1) 100%); }
+.hero-box .wrap { position: relative; z-index: 2; }
+.badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
+.badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.hero h1 { font-size: calc(var(--ds) * clamp(46px, 5.8vw, 86px)); max-width: 760px; margin-bottom: 20px; }
+.hero h1 span { color: var(--accent); }
+.hero p { font-size: 19px; opacity: .88; max-width: 540px; margin-bottom: 36px; }
+.search { display: grid; grid-template-columns: 1.4fr 1fr 1fr auto; background: var(--bg); color: var(--ink); border-radius: 18px; padding: 8px; max-width: 900px; box-shadow: 0 30px 60px rgba(0,0,0,.25); }
+.search .f { padding: 10px 18px; border-right: 1px solid var(--line); }
+.search .f:nth-child(3) { border-right: 0; }
+.search label { display: block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.search input, .search select { width: 100%; border: 0; outline: none; background: transparent; font-size: 16px; font-weight: 600; padding-top: 2px; appearance: none; -webkit-appearance: none; }
+.search .btn { border-radius: 12px; padding: 0 28px; }
+.chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.chips a { font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22); transition: background .3s; }
+.chips a:hover { background: rgba(255,255,255,.26); }
+
+/* STATS */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 64px 0; border-bottom: 1px solid var(--line); }
+.stat .n { font-family: var(--f-display); font-weight: var(--dw); letter-spacing: var(--dls); font-size: calc(var(--ds) * 46px); color: var(--ink); line-height: 1; }
+.stat .n span { color: var(--accent); }
+.stat .l { color: var(--muted); font-size: 15px; margin-top: 8px; }
+
+section.pad { padding: 110px 0; }
+.head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 40px; flex-wrap: wrap; }
+.k { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.h2 { font-size: calc(var(--ds) * clamp(34px, 3.8vw, 54px)); color: var(--ink); }
+.tabs { display: inline-flex; background: var(--surface); padding: 5px; border-radius: 14px; gap: 4px; }
+.tabs button { padding: 10px 18px; border-radius: 10px; font-weight: 700; font-size: 14px; color: var(--muted); transition: background .3s, color .3s; }
+.tabs button.active { background: var(--bg); color: var(--ink); box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+
+/* LISTINGS */
+.listings { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.card { border-radius: 22px; overflow: hidden; background: var(--bg); border: 1px solid var(--line); transition: transform .45s var(--ease), box-shadow .45s var(--ease); }
+.card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,.1); }
+.card .ph { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+.card .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
+.card:hover .ph img { transform: scale(1.06); }
+.tag { position: absolute; top: 14px; left: 14px; background: var(--bg); color: var(--ink); font-size: 12px; font-weight: 700; padding: 6px 11px; border-radius: 8px; }
+.tag.alt { background: var(--accent); color: var(--on-accent); }
+.heart { position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.9); display: grid; place-items: center; color: #222; transition: transform .2s; }
+.heart:hover { transform: scale(1.1); }
+.heart.on { color: #E0435A; }
+.heart.on svg { fill: currentColor; }
+.card .body { padding: 22px 22px 24px; }
+.price { font-family: var(--f-display); font-weight: var(--dw); letter-spacing: var(--dls); font-size: calc(var(--ds) * 28px); color: var(--ink); }
+.addr { color: var(--muted); font-size: 15px; margin: 4px 0 16px; }
+.specs { display: flex; gap: 18px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink); font-weight: 600; }
+.specs span { display: flex; align-items: center; gap: 6px; }
+.specs svg { color: var(--muted); }
+
+/* NEIGHBORHOODS */
+.hoods { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-template-rows: 260px 260px; gap: 20px; }
+.hood { position: relative; border-radius: 22px; overflow: hidden; color: #fff; }
+.hood:first-child { grid-row: 1 / 3; }
+.hood img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
+.hood:hover img { transform: scale(1.06); }
+.hood::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,.7)); }
+.hood .t { position: absolute; left: 22px; bottom: 20px; right: 22px; z-index: 2; display: flex; justify-content: space-between; align-items: end; }
+.hood h3 { font-family: var(--f-display); font-weight: var(--dw); text-transform: var(--dt); font-size: calc(var(--ds) * 26px); letter-spacing: var(--dls); }
+.hood small { font-size: 14px; opacity: .85; }
+.hood .go { width: 40px; height: 40px; border-radius: 50%; background: #fff; color: #111; display: grid; place-items: center; transition: transform .3s; }
+.hood:hover .go { transform: rotate(-45deg); }
+
+/* AGENT */
+.agent { background: var(--surface); }
+.agent .wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; align-items: center; }
+.agent-ph { position: relative; }
+.agent-ph .img { border-radius: 26px; overflow: hidden; aspect-ratio: 4 / 5; }
+.agent-ph img { width: 100%; height: 100%; object-fit: cover; }
+.agent-ph .float { position: absolute; right: -28px; bottom: 36px; background: var(--bg); border-radius: 18px; padding: 18px 22px; box-shadow: 0 20px 44px rgba(0,0,0,.12); }
+.agent-ph .float b { display: block; font-family: var(--f-display); font-weight: var(--dw); font-size: calc(var(--ds) * 30px); color: var(--ink); line-height: 1; }
+.agent-ph .float small { color: var(--muted); font-size: 13px; }
+.agent p.lead { color: var(--muted); font-size: 18px; margin: 20px 0 30px; max-width: 560px; }
+.checks { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 36px; }
+.checks li { display: flex; gap: 10px; align-items: center; font-weight: 600; font-size: 15px; }
+.checks li::before { content: ''; width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center / 14px no-repeat; }
+.agent-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* VALUE BAND */
+.value { background: var(--dark); color: var(--on-dark); border-radius: 28px; padding: 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; position: relative; overflow: hidden; }
+.value::before { content: ''; position: absolute; width: 480px; height: 480px; border-radius: 50%; right: -120px; top: -200px; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 45%, transparent), transparent 70%); }
+.value h2 { font-size: calc(var(--ds) * clamp(34px, 3.6vw, 52px)); position: relative; }
+.value p { opacity: .75; margin-top: 14px; position: relative; }
+.value form { display: flex; background: #fff; border-radius: 16px; padding: 8px; position: relative; }
+.value input { flex: 1; border: 0; outline: none; padding: 0 16px; font-size: 16px; color: #111; min-width: 0; background: transparent; }
+.value small { display: block; margin-top: 12px; opacity: .6; position: relative; }
+
+/* INSIGHTS */
+.posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.post .ph { aspect-ratio: 16 / 10; border-radius: 18px; overflow: hidden; margin-bottom: 18px; }
+.post .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
+.post:hover .ph img { transform: scale(1.05); }
+.post small { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .06em; text-transform: uppercase; }
+.post h3 { font-size: 20px; font-weight: 700; color: var(--ink); margin-top: 8px; line-height: 1.35; }
+
+/* FOOTER */
+footer { background: var(--surface); padding: 80px 0 36px; margin-top: 110px; }
+.foot { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
+.foot h5 { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 16px; }
+.foot a, .foot p { color: var(--muted); font-size: 15px; }
+.foot a:hover { color: var(--ink); }
+.foot .col { display: flex; flex-direction: column; gap: 10px; }
+.foot-bot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+
+@media (max-width: 1080px) {
+  .nav-phone { display: none; }
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden;padding-bottom:36px}
-a{color:inherit;text-decoration:none}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
-.reveal.visible{opacity:1;transform:none}
-
-/* === CLEAN BAR NAV === */
-.nav{position:sticky;top:0;z-index:50;background:rgba(244,246,250,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:0 24px;border-bottom:1px solid rgba(0,0,0,.06)}
-.nav-inner{display:flex;justify-content:space-between;align-items:center;height:52px}
-.nav-brand{display:flex;align-items:center;gap:8px}
-.nav-logo{width:28px;height:28px;border-radius:6px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--display);font-weight:700;font-size:13px}
-.nav-name{font-family:var(--display);font-weight:var(--weight);font-size:14px;color:var(--primary)}
-.nav-links{display:flex;gap:18px;font-size:11px;color:var(--muted);font-weight:500}
-.nav-links a{transition:color .2s;cursor:pointer}
-.nav-links a:hover{color:var(--accent)}
-.nav-cta{background:var(--accent);color:#fff;padding:7px 16px;border-radius:calc(var(--radius)/2);font-size:11px;font-weight:600;border:none;cursor:pointer;transition:transform .2s}
-.nav-cta:hover{transform:translateY(-1px)}
-
-/* === HERO WITH SEARCH BAR === */
-.hero{padding:40px 24px 20px}
-.hero-label{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
-.hero h1{font-family:var(--display);font-weight:var(--weight);font-size:26px;line-height:1.15;color:var(--primary);margin-bottom:8px}
-.hero p{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:20px}
-.search-bar{display:flex;gap:8px;background:#fff;padding:6px;border-radius:var(--radius);box-shadow:0 2px 16px rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.06)}
-.search-input{flex:1;border:none;padding:10px 14px;font-size:12px;font-family:var(--body);color:var(--primary);background:transparent;outline:none}
-.search-input::placeholder{color:var(--muted)}
-.search-btn{background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:calc(var(--radius) - 3px);font-weight:600;font-size:12px;cursor:pointer;transition:transform .2s;white-space:nowrap}
-.search-btn:hover{transform:translateY(-1px)}
-.search-tags{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
-.search-tag{font-size:10px;color:var(--muted);background:rgba(0,0,0,.04);padding:4px 10px;border-radius:20px;cursor:pointer;transition:all .2s}
-.search-tag:hover{background:var(--accent);color:#fff}
-
-/* === STATS BAR === */
-.stats{padding:20px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.stat-card{background:#fff;border-radius:calc(var(--radius)/2);padding:14px 12px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-.stat-num{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--accent)}
-.stat-label{font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
-
-/* === FEATURED LISTINGS === */
-.listings{padding:20px 24px 36px}
-.listings-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.listings-header h2{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary)}
-.listings-link{font-size:11px;color:var(--accent);font-weight:500;cursor:pointer}
-.listing-grid{display:flex;flex-direction:column;gap:12px}
-.listing-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,.04);transition:transform .3s,box-shadow .3s;cursor:default}
-.listing-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.listing-img{height:130px;position:relative;overflow:hidden}
-.li1{background:linear-gradient(135deg,#1A2B4A,#2E6BD6)}
-.li2{background:linear-gradient(135deg,#2E6BD6,#5FA8D3)}
-.li3{background:linear-gradient(135deg,#1B4965,#1A2B4A)}
-.listing-img::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:28px;z-index:1;opacity:.25;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 32'%3E%3Cpath d='M20 4L4 16h4v14h10v-8h4v8h10V16h4L20 4z' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linejoin='round'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat}
-.listing-img::after{content:'Property Photo';position:absolute;bottom:40px;left:0;right:0;text-align:center;font-size:8px;color:rgba(255,255,255,.35);letter-spacing:.06em}
-.listing-badge{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);color:#fff;font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:20px}
-.listing-price-tag{position:absolute;bottom:10px;right:10px;background:#fff;color:var(--primary);font-family:var(--display);font-weight:var(--weight);font-size:16px;padding:6px 12px;border-radius:calc(var(--radius)/2);box-shadow:0 2px 8px rgba(0,0,0,.12)}
-.listing-body{padding:16px}
-.listing-address{font-weight:600;font-size:13px;color:var(--primary);margin-bottom:4px}
-.listing-sub{font-size:11px;color:var(--muted);margin-bottom:10px}
-.listing-specs{display:flex;gap:12px}
-.listing-spec{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:4px}
-.listing-spec b{color:var(--primary);font-weight:600}
-
-/* === AGENT CARD === */
-.agent{margin:0 24px;padding:24px;background:var(--primary);border-radius:var(--radius);display:flex;gap:16px;align-items:center;color:#fff;position:relative;overflow:hidden}
-.agent::before{content:'';position:absolute;top:-30px;right:-30px;width:100px;height:100px;border-radius:50%;background:rgba(46,107,214,.2)}
-.agent-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#5FA8D3);flex-shrink:0;position:relative}
-.agent-avatar::before{content:'';position:absolute;inset:15%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='28' r='13' fill='rgba(255,255,255,0.3)'/%3E%3Cellipse cx='40' cy='62' rx='20' ry='16' fill='rgba(255,255,255,0.25)'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat;background-position:center}
-.agent-avatar::after{content:'&#10003;';position:absolute;bottom:0;right:0;width:18px;height:18px;background:var(--accent);border-radius:50%;border:2px solid var(--primary);display:flex;align-items:center;justify-content:center;font-size:9px}
-.agent-info{flex:1;z-index:1}
-.agent-name{font-family:var(--display);font-weight:var(--weight);font-size:16px;margin-bottom:2px}
-.agent-title{font-size:10px;color:rgba(255,255,255,.6);margin-bottom:8px}
-.agent-stats{display:flex;gap:16px}
-.agent-stat{text-align:center}
-.agent-stat-num{font-family:var(--display);font-weight:var(--weight);font-size:14px;color:var(--accent)}
-.agent-stat-label{font-size:8px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.04em}
-
-/* === MARKET SNAPSHOT === */
-.market{padding:36px 24px}
-.market h2{font-family:var(--display);font-weight:var(--weight);font-size:16px;color:var(--primary);margin-bottom:16px}
-.market-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.market-card{background:#fff;border-radius:calc(var(--radius)/2);padding:16px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-.market-card-label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
-.market-card-value{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary)}
-.market-card-change{font-size:10px;margin-top:4px;font-weight:600}
-.market-card-change.up{color:#22a867}
-.market-card-change.down{color:#e54040}
-
-/* === CTA === */
-.cta{margin:0 24px 24px;background:#fff;border-radius:var(--radius);padding:28px 24px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,.06)}
-.cta h3{font-family:var(--display);font-weight:var(--weight);font-size:18px;color:var(--primary);margin-bottom:6px}
-.cta p{font-size:11px;color:var(--muted);margin-bottom:16px}
-.cta-btn{background:var(--accent);color:#fff;border:none;padding:12px 28px;border-radius:calc(var(--radius)/2);font-family:var(--display);font-weight:var(--weight);font-size:12px;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 12px rgba(46,107,214,.2)}
-.cta-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(46,107,214,.3)}
-
-/* === FOOTER === */
-.footer{padding:24px;border-top:1px solid rgba(0,0,0,.06)}
-.footer-inner{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.footer-brand{display:flex;align-items:center;gap:8px}
-.footer-logo{width:24px;height:24px;border-radius:5px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--display);font-weight:700;font-size:11px}
-.footer-name{font-family:var(--display);font-weight:var(--weight);font-size:13px;color:var(--primary)}
-.footer-links{display:flex;gap:14px}
-.footer-links a{font-size:10px;color:var(--muted);transition:color .2s}
-.footer-links a:hover{color:var(--accent)}
-.footer-copy{font-size:9px;color:var(--muted);text-align:center}
-
-.demo-ribbon{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--primary);color:rgba(255,255,255,.7);text-align:center;padding:8px;font-size:10px;font-weight:500}
-.demo-ribbon b{color:#5FA8D3}
+@media (max-width: 980px) {
+  .listings, .posts { grid-template-columns: 1fr 1fr; }
+  .agent .wrap, .value { grid-template-columns: 1fr; gap: 48px; }
+  .agent-ph { max-width: 480px; }
+  .agent-ph .float { right: 12px; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .hoods { grid-template-columns: 1fr 1fr; grid-template-rows: 300px 220px 220px; }
+  .hood:first-child { grid-column: 1 / -1; grid-row: auto; }
+  .foot { grid-template-columns: 1fr 1fr; }
+  .value { padding: 52px 40px; }
+}
+@media (max-width: 860px) {
+  .nav .wrap { gap: 16px; }
+  .nav-right .btn { display: none; }
+}
+@media (max-width: 640px) {
+  section.pad { padding: 80px 0; }
+  .hero-box { min-height: 760px; align-items: flex-end; padding-bottom: 36px; }
+  .search { grid-template-columns: 1fr; }
+  .search .f { border-right: 0; border-bottom: 1px solid var(--line); }
+  .search .btn { padding: 16px; margin-top: 6px; }
+  .listings, .posts, .checks, .foot { grid-template-columns: 1fr; }
+  .hoods { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: 220px; }
+  .value { padding: 40px 24px; }
+  .value form { flex-direction: column; gap: 8px; }
+  .value input { padding: 12px; }
+}
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <div class="nav-brand">
-      <div class="nav-logo">AC</div>
-      <div class="nav-name" data-business>Amelia Coast Realty</div>
-    </div>
-    <div class="nav-links">
-      <a href="#listings">Listings</a>
-      <a href="#market">Market</a>
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span>
+      <span><span class="d" data-business>Harborline Realty</span><small>Northeast Florida</small></span>
+    </a>
+    <nav class="nav-links m-menu">
+      <a href="#listings">Buy</a>
+      <a href="#value">Sell</a>
+      <a href="#areas">Neighborhoods</a>
+      <a href="#agent">About</a>
+    </nav>
+    <div class="nav-right">
+      <span class="nav-phone" data-phone>(904) 555-0118</span>
+      <a href="#agent" class="btn btn-brand btn-sm">Schedule a showing</a>
+      <button class="m-toggle" aria-label="Menu"><span></span><span></span></button>
     </div>
   </div>
-</nav>
+</header>
 
-<section class="hero">
-  <div class="hero-label">Amelia Island Real Estate</div>
-  <h1 data-headline>Find your place on the coast.</h1>
-  <p data-tagline>Residential sales, relocation, and investment properties across Amelia Island and Nassau County.</p>
-  <div class="search-bar">
-    <input class="search-input" type="text" placeholder="Search by neighborhood, ZIP, or MLS#" readonly>
-    <button class="search-btn">Search</button>
-  </div>
-  <div class="search-tags">
-    <span class="search-tag">Oceanfront</span>
-    <span class="search-tag">Under $500K</span>
-    <span class="search-tag">New Construction</span>
-    <span class="search-tag">Condos</span>
-  </div>
-</section>
-
-<div class="stats reveal">
-  <div class="stat-card"><div class="stat-num">$485K</div><div class="stat-label">Median Price</div></div>
-  <div class="stat-card"><div class="stat-num">18</div><div class="stat-label">Days on Market</div></div>
-  <div class="stat-card"><div class="stat-num">142</div><div class="stat-label">Active Listings</div></div>
-  <div class="stat-card"><div class="stat-num">97%</div><div class="stat-label">Sale-to-List</div></div>
-</div>
-
-<section class="listings reveal" id="listings">
-  <div class="listings-header">
-    <h2>Featured Properties</h2>
-    <span class="listings-link">View all &rarr;</span>
-  </div>
-  <div class="listing-grid">
-    <div class="listing-card">
-      <div class="listing-img li1">
-        <span class="listing-badge">Just Listed</span>
-        <span class="listing-price-tag">$649,000</span>
-      </div>
-      <div class="listing-body">
-        <div class="listing-address">1847 S Fletcher Ave</div>
-        <div class="listing-sub">Fernandina Beach, FL 32034</div>
-        <div class="listing-specs">
-          <span class="listing-spec"><b>4</b> Beds</span>
-          <span class="listing-spec"><b>3</b> Baths</span>
-          <span class="listing-spec"><b>2,840</b> sqft</span>
-        </div>
-      </div>
-    </div>
-    <div class="listing-card">
-      <div class="listing-img li2">
-        <span class="listing-badge">Open House Sat</span>
-        <span class="listing-price-tag">$425,000</span>
-      </div>
-      <div class="listing-body">
-        <div class="listing-address">305 Marsh Hen Ct</div>
-        <div class="listing-sub">Amelia Island, FL 32034</div>
-        <div class="listing-specs">
-          <span class="listing-spec"><b>3</b> Beds</span>
-          <span class="listing-spec"><b>2</b> Baths</span>
-          <span class="listing-spec"><b>1,920</b> sqft</span>
-        </div>
-      </div>
-    </div>
-    <div class="listing-card">
-      <div class="listing-img li3">
-        <span class="listing-price-tag">$389,000</span>
-      </div>
-      <div class="listing-body">
-        <div class="listing-address">2200 Ocean Dr, Unit 4B</div>
-        <div class="listing-sub">Fernandina Beach, FL 32034</div>
-        <div class="listing-specs">
-          <span class="listing-spec"><b>2</b> Beds</span>
-          <span class="listing-spec"><b>2</b> Baths</span>
-          <span class="listing-spec"><b>1,340</b> sqft</span>
-        </div>
-      </div>
+<section class="hero" id="top">
+  <div class="hero-box">
+    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=70" alt="Modern white home under a blue sky">
+    <div class="wrap">
+      <div class="badge rv"><i></i> 124 homes for sale on the coast</div>
+      <h1 class="d rv">Find your place <span>on the coast.</span></h1>
+      <p class="rv" data-tagline>Local experts helping families buy, sell and relocate across Amelia Island, Fernandina Beach and Jacksonville.</p>
+      <form class="search rv">
+        <div class="f"><label>Location</label><input type="text" placeholder="City, neighborhood or ZIP" value="Amelia Island, FL"></div>
+        <div class="f"><label>Property type</label><select><option>Single family</option><option>Condo</option><option>Townhome</option><option>Land</option></select></div>
+        <div class="f"><label>Price</label><select><option>Any price</option><option>Under $500K</option><option>$500K to $1M</option><option>$1M plus</option></select></div>
+        <button type="submit" class="btn btn-accent">Search homes</button>
+      </form>
+      <div class="chips rv"><a href="#listings">Waterfront</a><a href="#listings">New construction</a><a href="#listings">Golf community</a><a href="#listings">Under $500K</a></div>
     </div>
   </div>
 </section>
 
-<div class="agent reveal">
-  <div class="agent-avatar"></div>
-  <div class="agent-info">
-    <div class="agent-name">Maria Hernandez</div>
-    <div class="agent-title">Licensed Realtor, Amelia Island Specialist</div>
-    <div class="agent-stats">
-      <div class="agent-stat"><div class="agent-stat-num">200+</div><div class="agent-stat-label">Homes Sold</div></div>
-      <div class="agent-stat"><div class="agent-stat-num">12</div><div class="agent-stat-label">Years</div></div>
-      <div class="agent-stat"><div class="agent-stat-num">4.9</div><div class="agent-stat-label">Rating</div></div>
-    </div>
+<div class="wrap">
+  <div class="stats">
+    <div class="stat rv"><div class="n">$240<span>M</span></div><div class="l">in homes sold</div></div>
+    <div class="stat rv d1"><div class="n">18<span>+</span></div><div class="l">years in Northeast Florida</div></div>
+    <div class="stat rv d2"><div class="n">21</div><div class="l">average days on market</div></div>
+    <div class="stat rv d3"><div class="n">99<span>%</span></div><div class="l">sale to list price</div></div>
   </div>
 </div>
 
-<section class="market reveal" id="market">
-  <h2>Market Snapshot</h2>
-  <div class="market-grid">
-    <div class="market-card">
-      <div class="market-card-label">Median Sale Price</div>
-      <div class="market-card-value">$485K</div>
-      <div class="market-card-change up">&#9650; 8.2% YoY</div>
+<section class="pad" id="listings">
+  <div class="wrap" data-tabs>
+    <div class="head">
+      <div><div class="k rv">Featured Listings</div><h2 class="h2 d rv">Homes we love right now</h2></div>
+      <div class="tabs rv"><button class="active" data-tab="sale">For sale</button><button data-tab="new">New builds</button><button data-tab="sold">Recently sold</button></div>
     </div>
-    <div class="market-card">
-      <div class="market-card-label">Avg Days on Market</div>
-      <div class="market-card-value">18</div>
-      <div class="market-card-change down">&#9660; 12 days</div>
+    <div class="listings" data-panel="sale">
+      <article class="card rv">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1633354747567-e0682586f082?auto=format&fit=crop&w=900&q=70" alt="Modern home with pergola"><span class="tag">Open house Sat</span><button class="heart" data-toggle aria-label="Save"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></button></div>
+        <div class="body"><div class="price">$1,285,000</div><div class="addr">48 Ocean Oaks Lane, Amelia Island</div>
+          <div class="specs"><span>4 bd</span><span>3.5 ba</span><span>3,120 sqft</span></div></div>
+      </article>
+      <article class="card rv d1">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1719887805632-de5be825f72b?auto=format&fit=crop&w=900&q=70" alt="Home with palm trees"><span class="tag alt">Just listed</span><button class="heart" data-toggle aria-label="Save"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></button></div>
+        <div class="body"><div class="price">$749,900</div><div class="addr">2210 Marsh Hen Court, Fernandina Beach</div>
+          <div class="specs"><span>3 bd</span><span>2 ba</span><span>2,180 sqft</span></div></div>
+      </article>
+      <article class="card rv d2">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1605146768851-eda79da39897?auto=format&fit=crop&w=900&q=70" alt="Two story home"><span class="tag">Waterfront</span><button class="heart" data-toggle aria-label="Save"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></button></div>
+        <div class="body"><div class="price">$1,940,000</div><div class="addr">7 Harbor View Drive, Yulee</div>
+          <div class="specs"><span>5 bd</span><span>4 ba</span><span>4,050 sqft</span></div></div>
+      </article>
     </div>
-    <div class="market-card">
-      <div class="market-card-label">New Listings (30d)</div>
-      <div class="market-card-value">47</div>
-      <div class="market-card-change up">&#9650; 15%</div>
+    <div class="listings" data-panel="new" hidden>
+      <article class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1721815693498-cc28507c0ba2?auto=format&fit=crop&w=900&q=70" alt="New two story home"><span class="tag alt">Move-in ready</span></div><div class="body"><div class="price">$629,000</div><div class="addr">Wildlight, Yulee</div><div class="specs"><span>4 bd</span><span>3 ba</span><span>2,460 sqft</span></div></div></article>
+      <article class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1785088476622-8e4c52ee8b53?auto=format&fit=crop&w=900&q=70" alt="White house with long driveway"><span class="tag">Pre-construction</span></div><div class="body"><div class="price">$815,000</div><div class="addr">Amelia National, Fernandina Beach</div><div class="specs"><span>4 bd</span><span>3.5 ba</span><span>2,900 sqft</span></div></div></article>
+      <article class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1738193830098-2d92352a1856?auto=format&fit=crop&w=900&q=70" alt="Home with landscaped yard"><span class="tag">Model home</span></div><div class="body"><div class="price">$559,000</div><div class="addr">Nassau Crossing, Yulee</div><div class="specs"><span>3 bd</span><span>2.5 ba</span><span>2,040 sqft</span></div></div></article>
     </div>
-    <div class="market-card">
-      <div class="market-card-label">Sold Above Asking</div>
-      <div class="market-card-value">62%</div>
-      <div class="market-card-change up">&#9650; 4%</div>
+    <div class="listings" data-panel="sold" hidden>
+      <article class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=900&q=70" alt="Luxury home"><span class="tag alt">Sold over asking</span></div><div class="body"><div class="price">$2,100,000</div><div class="addr">South Fletcher Avenue</div><div class="specs"><span>5 bd</span><span>5 ba</span><span>4,600 sqft</span></div></div></article>
+      <article class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?auto=format&fit=crop&w=900&q=70" alt="Bright living room"><span class="tag">Sold in 6 days</span></div><div class="body"><div class="price">$489,000</div><div class="addr">Centre Street Lofts</div><div class="specs"><span>2 bd</span><span>2 ba</span><span>1,380 sqft</span></div></div></article>
+      <article class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1649083048428-3d8ed23a3ce0?auto=format&fit=crop&w=900&q=70" alt="Kitchen with island"><span class="tag">Sold</span></div><div class="body"><div class="price">$675,000</div><div class="addr">Egans Creek</div><div class="specs"><span>3 bd</span><span>2 ba</span><span>2,010 sqft</span></div></div></article>
     </div>
   </div>
 </section>
 
-<div class="cta reveal">
-  <h3>Ready to make a move?</h3>
-  <p>Get a free home valuation or browse available properties.</p>
-  <button class="cta-btn">Schedule a Consultation &rarr;</button>
-</div>
-
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="footer-logo">AC</div>
-      <div class="footer-name" data-business>Amelia Coast Realty</div>
-    </div>
-    <div class="footer-links">
-      <a href="#listings">Listings</a>
-      <a href="#market">Market</a>
+<section class="pad" id="areas" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><div><div class="k rv">Neighborhoods</div><h2 class="h2 d rv">Explore the area</h2></div><a href="#" class="btn btn-soft rv" data-demo="Demo button. Opens your neighborhood guide pages.">All neighborhood guides</a></div>
+    <div class="hoods">
+      <a href="#listings" class="hood rv"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=70" alt=""><div class="t"><div><h3>Amelia Island</h3><small>52 homes for sale</small></div><span class="go">&rarr;</span></div></a>
+      <a href="#listings" class="hood rv d1"><img src="https://images.unsplash.com/photo-1613545325268-9265e1609167?auto=format&fit=crop&w=800&q=70" alt=""><div class="t"><div><h3>Fernandina Beach</h3><small>38 homes</small></div><span class="go">&rarr;</span></div></a>
+      <a href="#listings" class="hood rv d2"><img src="https://images.unsplash.com/photo-1738193830098-2d92352a1856?auto=format&fit=crop&w=800&q=70" alt=""><div class="t"><div><h3>Yulee</h3><small>61 homes</small></div><span class="go">&rarr;</span></div></a>
+      <a href="#listings" class="hood rv d1"><img src="https://images.unsplash.com/photo-1649083048428-3d8ed23a3ce0?auto=format&fit=crop&w=800&q=70" alt=""><div class="t"><div><h3>Jacksonville Beach</h3><small>44 homes</small></div><span class="go">&rarr;</span></div></a>
+      <a href="#listings" class="hood rv d2"><img src="https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?auto=format&fit=crop&w=800&q=70" alt=""><div class="t"><div><h3>Ponte Vedra</h3><small>29 homes</small></div><span class="go">&rarr;</span></div></a>
     </div>
   </div>
-  <div class="footer-copy">Built by Joshua. &copy; 2026</div>
+</section>
+
+<section class="pad agent" id="agent">
+  <div class="wrap">
+    <div class="agent-ph rv">
+      <div class="img"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=70" alt="Real estate agent portrait"></div>
+      <div class="float"><b>400+</b><small>families helped home</small></div>
+    </div>
+    <div>
+      <div class="k rv">Your Local Agent</div>
+      <h2 class="h2 d rv">Hi, I'm Dana. I know these streets by heart.</h2>
+      <p class="lead rv">Born and raised on Amelia Island, I help buyers find the right home and help sellers get top dollar with honest advice, sharp pricing and marketing that actually gets seen.</p>
+      <ul class="checks rv"><li>Free home valuation</li><li>Professional photography</li><li>Relocation guidance</li><li>Local lender network</li></ul>
+      <div class="agent-actions rv"><a href="#" class="btn btn-brand" data-demo="Demo button. Opens your scheduling calendar.">Book a call</a><a href="#" class="btn btn-soft" data-phone>(904) 555-0118</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="value">
+  <div class="wrap">
+    <div class="value rv">
+      <div><div class="k">Thinking of selling?</div><h2 class="d">What is your home worth today?</h2><p>Get a free, no-pressure market analysis within 24 hours.</p></div>
+      <div><form><input type="text" placeholder="Enter your home address"><button type="submit" class="btn btn-accent">Get my estimate</button></form><small>No obligation. Your info stays private.</small></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0">
+  <div class="wrap">
+    <div class="head"><div><div class="k rv">Market Insights</div><h2 class="h2 d rv">From the blog</h2></div></div>
+    <div class="posts">
+      <a href="#" class="post rv" data-demo="Demo link. Opens this blog post."><div class="ph"><img src="https://images.unsplash.com/photo-1649083048428-3d8ed23a3ce0?auto=format&fit=crop&w=800&q=70" alt=""></div><small>Buying</small><h3>Five things first-time buyers overlook on the coast</h3></a>
+      <a href="#" class="post rv d1" data-demo="Demo link. Opens this blog post."><div class="ph"><img src="https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?auto=format&fit=crop&w=800&q=70" alt=""></div><small>Selling</small><h3>Staging tips that helped homes sell 12 days faster</h3></a>
+      <a href="#" class="post rv d2" data-demo="Demo link. Opens this blog post."><div class="ph"><img src="https://images.unsplash.com/photo-1633354747567-e0682586f082?auto=format&fit=crop&w=800&q=70" alt=""></div><small>Market report</small><h3>Nassau County home prices: fall 2026 update</h3></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="col"><a href="#top" class="brand"><span class="mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><span><span class="d" data-business>Harborline Realty</span></span></a><p style="margin-top:12px">Helping Northeast Florida move home since 2008.</p></div>
+      <div class="col"><h5>Buy</h5><a href="#listings">Featured homes</a><a href="#areas">Neighborhoods</a><a href="#">Mortgage calculator</a></div>
+      <div class="col"><h5>Sell</h5><a href="#value">Home valuation</a><a href="#">Seller guide</a><a href="#">Recently sold</a></div>
+      <div class="col"><h5>Contact</h5><p data-phone>(904) 555-0118</p><p>hello@harborlinerealty.com</p><p>Fernandina Beach, FL</p></div>
+    </div>
+    <div class="foot-bot"><span>&copy; 2026 <span data-business>Harborline Realty</span>. Equal Housing Opportunity.</span><span>Website by Joshua Humphreys</span></div>
+  </div>
 </footer>
 
-<div class="demo-ribbon"><b>Demo</b> - Built by joshuahumphreys.net</div>
-
-<script>
-const params=new URLSearchParams(window.location.search);
-const PALETTES={'Coastal':{bg:'#F0F7FA',primary:'#1B4965',accent:'#5FA8D3',text:'#1B4965',muted:'#6A8FA5'},'Sage':{bg:'#F2F5F0',primary:'#2F3E2E',accent:'#6B8F71',text:'#2F3E2E',muted:'#6A7A6A'},'Warm':{bg:'#FAF6F0',primary:'#3D2B1F',accent:'#C08552',text:'#3D2B1F',muted:'#8A7A6A'},'Slate':{bg:'#F0F0F6',primary:'#1E1E2E',accent:'#4A4A6A',text:'#1E1E2E',muted:'#6A6A8A'},'Rose':{bg:'#FDF5F8',primary:'#4A2040',accent:'#C07090',text:'#4A2040',muted:'#8A6A7A'},'Midnight':{bg:'#E0E8F0',primary:'#0D1B2A',accent:'#1B3A5C',text:'#0D1B2A',muted:'#5A6A7A'}};
-const STYLES={'Modern':{display:"'Space Grotesk',sans-serif",body:"'DM Sans','Inter',sans-serif",radius:'8px',weight:'600'},'Classic':{display:"'Playfair Display',Georgia,serif",body:"'Inter',sans-serif",radius:'3px',weight:'600'},'Bold':{display:"'Outfit',sans-serif",body:"'Outfit',sans-serif",radius:'12px',weight:'800'},'Minimal':{display:"'DM Sans',sans-serif",body:"'DM Sans',sans-serif",radius:'2px',weight:'400'}};
-function apply(p,s){const r=document.documentElement;if(p&&PALETTES[p]){const c=PALETTES[p];r.style.setProperty('--bg',c.bg);r.style.setProperty('--primary',c.primary);r.style.setProperty('--accent',c.accent);r.style.setProperty('--text',c.text);r.style.setProperty('--muted',c.muted)}if(s&&STYLES[s]){const t=STYLES[s];r.style.setProperty('--display',t.display);r.style.setProperty('--body',t.body);r.style.setProperty('--radius',t.radius);r.style.setProperty('--weight',t.weight)}}
-apply(params.get('palette'),params.get('style'));
-window.addEventListener('message',(e)=>{if(e.data&&e.data.type==='theme-update'){apply(e.data.palette,e.data.style);if(e.data.businessName)applyBiz(e.data)}});
-function applyBiz(d){
-  const name=d.businessName||params.get('businessName');
-  const phone=d.phone||params.get('phone');
-  const tagline=d.tagline||params.get('tagline');
-  if(name)document.querySelectorAll('[data-business]').forEach(el=>el.textContent=name);
-  if(phone)document.querySelectorAll('[data-phone]').forEach(el=>el.textContent=phone);
-  if(tagline)document.querySelectorAll('[data-tagline]').forEach(el=>el.textContent=tagline);
-}
-applyBiz({});
-const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
-</script>
 </body>
 </html>

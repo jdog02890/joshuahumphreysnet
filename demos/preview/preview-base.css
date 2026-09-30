@@ -1,0 +1,110 @@
+/* Shared base styles for the configurator demo sites. */
+:root {
+  --bg: #fff; --surface: #f4f4f4; --ink: #111; --muted: #666; --brand: #222; --accent: #555; --dark: #111;
+  --on-brand: #fff; --on-accent: #fff; --on-dark: #fff;
+  --f-display: Georgia, serif; --f-body: system-ui, sans-serif;
+  --dw: 700; --dt: none; --dls: -0.02em; --ds: 1;
+  --line: color-mix(in srgb, var(--ink) 12%, transparent);
+  --line-2: color-mix(in srgb, var(--ink) 22%, transparent);
+  --brand-soft: color-mix(in srgb, var(--brand) 10%, var(--bg));
+  --accent-soft: color-mix(in srgb, var(--accent) 18%, var(--bg));
+  --wrap: 1200px;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--f-body); background: var(--bg); color: var(--ink);
+  font-size: 16px; line-height: 1.6; overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; transition: background-color .4s var(--ease), color .4s var(--ease);
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; }
+::selection { background: var(--accent); color: var(--on-accent); }
+section[id], div[id] { scroll-margin-top: 90px; }
+
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 32px; }
+.d {
+  font-family: var(--f-display); font-weight: var(--dw); text-transform: var(--dt);
+  letter-spacing: var(--dls); line-height: 1.05;
+}
+.img-cover { width: 100%; height: 100%; object-fit: cover; }
+
+/* Scroll reveal */
+.rv { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.rv.in { opacity: 1; transform: none; }
+.rv.d1 { transition-delay: .08s; } .rv.d2 { transition-delay: .16s; } .rv.d3 { transition-delay: .24s; } .rv.d4 { transition-delay: .32s; }
+
+/* Hide scrollbars when shown inside the configurator frame */
+html.in-frame { scrollbar-width: none; }
+html.in-frame::-webkit-scrollbar { display: none; }
+
+/* Mobile menu shared behavior */
+.m-toggle { display: none; width: 42px; height: 42px; border-radius: 50%; align-items: center; justify-content: center; flex-direction: column; gap: 5px; }
+.m-toggle span { display: block; width: 20px; height: 2px; background: currentColor; border-radius: 2px; transition: transform .3s var(--ease), opacity .3s; }
+html.menu-open .m-toggle span:first-child { transform: translateY(3.5px) rotate(45deg); }
+html.menu-open .m-toggle span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+@media (max-width: 860px) {
+  .m-toggle { display: inline-flex; }
+  .m-menu { display: none !important; }
+  html.menu-open .m-menu {
+    display: flex !important; position: absolute; left: 12px; right: 12px; top: calc(100% + 8px);
+    flex-direction: column; align-items: stretch; gap: 0; padding: 8px; z-index: 80;
+    background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.18);
+  }
+  html.menu-open .m-menu > * { padding: 12px 14px; border-radius: 8px; }
+  .wrap { padding: 0 20px; }
+}
+
+/* Demo ribbon */
+html.has-ribbon body { padding-bottom: 52px; }
+.jh-ribbon {
+  position: fixed; left: 50%; bottom: 12px; transform: translateX(-50%); z-index: 9999;
+  display: flex; align-items: center; gap: 12px; max-width: calc(100% - 24px);
+  padding: 7px 8px 7px 8px; border-radius: 999px;
+  background: rgba(17, 17, 17, .86); color: rgba(255, 255, 255, .86);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  font: 500 12.5px/1.3 system-ui, -apple-system, 'Segoe UI', sans-serif; letter-spacing: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+}
+.jh-ribbon .jh-pill { background: #fff; color: #111; font-weight: 700; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
+.jh-ribbon > span:not(.jh-pill) { padding-right: 10px; }
+.jh-ribbon .jh-rib-text { padding-right: 4px; }
+.jh-ribbon a { white-space: nowrap; padding: 6px 12px; border-radius: 999px; font-weight: 600; }
+.jh-ribbon .jh-rib-link { color: #fff; border: 1px solid rgba(255, 255, 255, .25); }
+.jh-ribbon .jh-rib-link:hover { background: rgba(255, 255, 255, .1); }
+.jh-ribbon .jh-rib-cta { background: #fff; color: #111; }
+@media (max-width: 760px) {
+  .jh-ribbon .jh-rib-text { display: none; }
+  .jh-ribbon { font-size: 12px; gap: 8px; }
+}
+@media (max-width: 520px) {
+  .jh-ribbon .jh-rib-cta { display: none; }
+  html.in-frame .jh-ribbon > span:not(.jh-pill) { display: none; }
+}
+html.in-frame .jh-ribbon { bottom: 10px; font-size: 12px; }
+
+/* Toast for demo buttons and forms */
+.jh-toast {
+  position: fixed; left: 50%; bottom: 70px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  z-index: 10000; background: #111; color: #fff; padding: 12px 18px; border-radius: 12px;
+  font: 500 14px/1.4 system-ui, -apple-system, 'Segoe UI', sans-serif; box-shadow: 0 12px 30px rgba(0, 0, 0, .3);
+  transition: opacity .3s var(--ease), transform .3s var(--ease); max-width: calc(100% - 32px); text-align: center;
+}
+.jh-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* Small "sample" label for placeholder content */
+.sample-tag {
+  display: inline-block; font: 600 10px/1 system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase;
+  padding: 5px 8px; border-radius: 999px; background: rgba(0, 0, 0, .55); color: #fff;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+
+/* Thumbnail mode (template cards): no motion */
+html.is-thumb * { transition: none !important; animation: none !important; }
+
+/* Homepage showcase mode: smooth color and font swaps */
+html.is-showcase *, html.is-showcase *::before, html.is-showcase *::after { transition: background-color .7s ease, color .7s ease, border-color .7s ease, fill .7s ease !important; }

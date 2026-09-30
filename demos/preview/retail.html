@@ -1,280 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-industry="retail">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex">
-<title>Retail Demo Preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Salt &amp; Stone | Demo preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="preview-base.css">
+<script src="themes.js"></script>
+<script src="preview.js"></script>
 <style>
-:root {
-  --bg: #F6F5F0;
-  --primary: #2A2A25;
-  --accent: #6B8F71;
-  --text: #2A2A25;
-  --muted: #8A8A7A;
-  --display: 'DM Sans', sans-serif;
-  --body: 'DM Sans', sans-serif;
-  --radius: 6px;
-  --weight: 600;
+body { font-size: 15px; }
+.announce { background: var(--brand); color: var(--on-brand); font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; overflow: hidden; }
+.announce .track { display: flex; gap: 80px; width: max-content; padding: 11px 0; animation: ann 30s linear infinite; }
+@keyframes ann { to { transform: translateX(-50%); } }
+
+.nav { position: sticky; top: 0; z-index: 40; background: var(--bg); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 80px; position: relative; max-width: 1360px; }
+.nav-links { display: flex; gap: 28px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+.nav-links a { position: relative; }
+.nav-links a::after { content: ''; position: absolute; left: 0; right: 100%; bottom: -6px; height: 1px; background: currentColor; transition: right .35s var(--ease); }
+.nav-links a:hover::after { right: 0; }
+.nav-links .sale { color: var(--accent); }
+.logo { text-align: center; }
+.logo .d { font-size: calc(var(--ds) * 30px); color: var(--ink); line-height: 1; }
+.logo small { display: block; font-size: 10px; letter-spacing: .4em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.icons { display: flex; justify-content: flex-end; align-items: center; gap: 20px; }
+.icons button { position: relative; display: grid; place-items: center; width: 34px; height: 34px; }
+.icons .count { position: absolute; top: -2px; right: -4px; width: 18px; height: 18px; border-radius: 50%; background: var(--brand); color: var(--on-brand); font-size: 10px; font-weight: 700; display: grid; place-items: center; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 30px; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; transition: background .3s, color .3s, transform .3s var(--ease); }
+.btn:hover { transform: translateY(-2px); }
+.btn-dark { background: var(--ink); color: var(--bg); }
+.btn-brand { background: var(--brand); color: var(--on-brand); }
+.btn-white { background: #fff; color: #111; }
+.btn-line { border: 1px solid var(--ink); color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+
+/* HERO COLLAGE */
+.hero { padding: 20px 0 0; }
+.hero .wrap { max-width: 1360px; display: grid; grid-template-columns: 1.55fr 1fr; gap: 16px; }
+.hero-main { position: relative; min-height: 640px; overflow: hidden; color: #fff; display: flex; align-items: flex-end; }
+.hero-main > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.6s var(--ease); }
+.hero-main:hover > img { transform: scale(1.03); }
+.hero-main::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,.55)); }
+.hero-main .txt { position: relative; z-index: 2; padding: 52px; }
+.hero-main small { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; }
+.hero-main h1 { font-size: calc(var(--ds) * clamp(52px, 6vw, 96px)); margin: 14px 0 16px; }
+.hero-main p { max-width: 420px; opacity: .9; margin-bottom: 28px; font-size: 16px; }
+.hero-side { display: grid; grid-template-rows: 1fr 1fr; gap: 16px; }
+.tile { position: relative; overflow: hidden; background: var(--surface); display: flex; align-items: flex-end; }
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.tile:hover img { transform: scale(1.05); }
+.tile .lbl { position: relative; z-index: 2; margin: 22px; background: var(--bg); padding: 14px 18px; display: flex; gap: 24px; align-items: center; justify-content: space-between; min-width: 240px; }
+.tile .lbl b { font-family: var(--f-display); font-weight: 600; text-transform: var(--dt); letter-spacing: var(--dls); font-size: calc(var(--ds) * 20px); color: var(--ink); }
+.tile .lbl span { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+
+/* CATEGORIES */
+section.pad { padding: 100px 0; }
+.sec-title { text-align: center; margin-bottom: 52px; }
+.sec-title small { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+.sec-title h2 { font-size: calc(var(--ds) * clamp(36px, 4vw, 56px)); color: var(--ink); margin-top: 12px; }
+.cats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+.cat { text-align: center; }
+.cat .c { aspect-ratio: 1; border-radius: 50%; overflow: hidden; margin-bottom: 16px; background: var(--surface); border: 1px solid var(--line); transition: transform .5s var(--ease); }
+.cat:hover .c { transform: translateY(-6px); }
+.cat img { width: 100%; height: 100%; object-fit: cover; }
+.cat span { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; }
+
+/* PRODUCTS */
+.shop-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 36px; gap: 20px; flex-wrap: wrap; }
+.shop-head h2 { font-size: calc(var(--ds) * clamp(34px, 3.6vw, 50px)); color: var(--ink); }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.filters button { padding: 10px 16px; border: 1px solid var(--line-2); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; transition: background .3s, color .3s; }
+.filters button.active, .filters button:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 20px; }
+.prod .ph { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--surface); margin-bottom: 16px; }
+.prod .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.prod:hover .ph img { transform: scale(1.06); }
+.prod .flag { position: absolute; top: 12px; left: 12px; background: var(--bg); color: var(--ink); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; padding: 6px 10px; }
+.prod .flag.sale { background: var(--accent); color: var(--on-accent); }
+.prod .wish { position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.92); color: #111; display: grid; place-items: center; }
+.prod .wish.on { color: #D6405A; }
+.prod .wish.on svg { fill: currentColor; }
+.prod .quick { position: absolute; left: 12px; right: 12px; bottom: 12px; transform: translateY(calc(100% + 16px)); transition: transform .45s var(--ease); background: var(--ink); color: var(--bg); text-align: center; padding: 14px; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; }
+.prod:hover .quick { transform: none; }
+.prod h3 { font-size: 15px; font-weight: 600; color: var(--ink); }
+.prod .p { font-size: 15px; color: var(--muted); margin-top: 4px; }
+.prod .p s { margin-left: 8px; opacity: .6; }
+.swatches { display: flex; gap: 6px; margin-top: 10px; }
+.swatches i { width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--line-2); }
+
+/* STORY */
+.story { position: relative; min-height: 620px; display: flex; align-items: center; overflow: hidden; }
+.story > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.story .card { position: relative; z-index: 2; background: var(--bg); padding: 60px 56px; max-width: 520px; margin-left: 8%; }
+.story small { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+.story h2 { font-size: calc(var(--ds) * clamp(34px, 3.8vw, 52px)); color: var(--ink); margin: 16px 0 18px; }
+.story p { color: var(--muted); margin-bottom: 30px; font-size: 16px; }
+
+/* PERKS */
+.perks { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.perk { padding: 36px 28px; text-align: center; border-right: 1px solid var(--line); }
+.perk:last-child { border-right: 0; }
+.perk svg { color: var(--brand); margin-bottom: 14px; }
+html.theme-dark .perk svg { color: var(--accent); }
+.perk b { display: block; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
+.perk span { color: var(--muted); font-size: 14px; }
+
+/* INSTAGRAM */
+.insta { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+.insta a { aspect-ratio: 1; overflow: hidden; position: relative; display: block; }
+.insta img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease), opacity .4s; }
+.insta a:hover img { transform: scale(1.08); opacity: .85; }
+
+/* NEWSLETTER */
+.news { background: var(--surface); text-align: center; }
+.news h2 { font-size: calc(var(--ds) * clamp(34px, 3.6vw, 50px)); color: var(--ink); }
+.news p { color: var(--muted); margin: 14px 0 30px; }
+.news form { display: flex; max-width: 520px; margin: 0 auto; border: 1px solid var(--ink); background: var(--bg); }
+.news input { flex: 1; border: 0; outline: none; padding: 0 20px; background: transparent; font-size: 15px; min-width: 0; }
+
+footer { padding: 80px 0 36px; }
+footer .wrap { max-width: 1360px; }
+.foot { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 40px; }
+.foot .d { font-size: calc(var(--ds) * 28px); color: var(--ink); margin-bottom: 14px; }
+.foot h5 { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 16px; color: var(--ink); }
+.foot a, .foot p { color: var(--muted); font-size: 14px; }
+.foot a:hover { color: var(--ink); }
+.foot .col { display: flex; flex-direction: column; gap: 10px; }
+.foot-bot { display: flex; justify-content: space-between; margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12.5px; gap: 16px; flex-wrap: wrap; }
+.pay { display: flex; gap: 8px; }
+.pay span { border: 1px solid var(--line-2); padding: 4px 8px; font-size: 11px; font-weight: 700; letter-spacing: .06em; }
+
+@media (max-width: 1080px) {
+  .products { grid-template-columns: repeat(3, 1fr); }
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden;padding-bottom:36px}
-a{color:inherit;text-decoration:none}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
-.reveal.visible{opacity:1;transform:none}
-
-/* === MINIMAL SHOP NAV === */
-.nav{position:sticky;top:0;z-index:50;background:rgba(246,245,240,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:0 24px;border-bottom:1px solid rgba(0,0,0,.05)}
-.nav-inner{display:flex;justify-content:space-between;align-items:center;height:50px}
-.nav-left{display:flex;gap:18px;font-size:11px;color:var(--muted);font-weight:500}
-.nav-left a{transition:color .2s;cursor:pointer}
-.nav-left a:hover{color:var(--primary)}
-.nav-brand{font-family:var(--display);font-weight:var(--weight);font-size:16px;color:var(--primary);letter-spacing:.06em;text-transform:uppercase}
-.nav-icons{display:flex;gap:14px;font-size:16px;color:var(--muted)}
-.nav-icons span{cursor:pointer;transition:color .2s;position:relative}
-.nav-icons span:hover{color:var(--primary)}
-.cart-badge{position:absolute;top:-4px;right:-6px;width:14px;height:14px;border-radius:50%;background:var(--accent);color:#fff;font-size:8px;font-weight:700;display:flex;align-items:center;justify-content:center}
-
-/* === ANNOUNCEMENT BAR === */
-.announce{background:var(--primary);color:#fff;text-align:center;padding:8px;font-size:10px;font-weight:500;letter-spacing:.06em}
-.announce b{color:var(--accent)}
-
-/* === HERO COLLECTION BANNER === */
-.hero-banner{position:relative;height:260px;background:linear-gradient(135deg,var(--primary) 0%,#4A4A3A 50%,var(--accent) 100%);overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
-.hero-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.06),transparent 60%)}
-.hero-content{position:relative;z-index:2;color:#fff;padding:24px}
-.hero-content h1{font-family:var(--display);font-weight:var(--weight);font-size:32px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px}
-.hero-content p{font-size:12px;color:rgba(255,255,255,.7);margin-bottom:20px}
-.hero-btn{background:#fff;color:var(--primary);padding:12px 28px;border-radius:var(--radius);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.06em;border:none;cursor:pointer;transition:transform .2s}
-.hero-btn:hover{transform:translateY(-1px)}
-
-/* === CATEGORY TABS === */
-.categories{padding:16px 24px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid rgba(0,0,0,.04)}
-.categories::-webkit-scrollbar{display:none}
-.cat-tab{font-size:10px;font-weight:500;color:var(--muted);padding:6px 14px;border-radius:20px;cursor:pointer;transition:all .2s;white-space:nowrap;border:1px solid rgba(0,0,0,.06)}
-.cat-tab:hover,.cat-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-
-/* === PRODUCT GRID === */
-.products{padding:24px}
-.products-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.products-header h2{font-family:var(--display);font-weight:var(--weight);font-size:16px;color:var(--primary)}
-.products-count{font-size:10px;color:var(--muted)}
-.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.product-card{cursor:default;transition:transform .3s}
-.product-card:hover{transform:translateY(-3px)}
-.product-img{height:160px;border-radius:var(--radius);overflow:hidden;position:relative;margin-bottom:10px}
-.pi1{background:linear-gradient(135deg,#D4C5B0,#E8DDD0)}
-.pi2{background:linear-gradient(135deg,#B5C4B1,#D0DBC8)}
-.pi3{background:linear-gradient(135deg,#C5B8A5,#DDD5C8)}
-.pi4{background:linear-gradient(135deg,#A5B5A5,#C0D0C0)}
-.product-img::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;opacity:.2;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='8' y='4' width='24' height='32' rx='2' fill='none' stroke='%23333' stroke-width='1.5'/%3E%3Cpath d='M14 4v-0a6 6 0 0112 0v0' fill='none' stroke='%23333' stroke-width='1.5'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat}
-.product-img::after{content:'Product Photo';position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:8px;color:rgba(0,0,0,.2);letter-spacing:.05em}
-.product-tag{position:absolute;top:8px;left:8px;background:var(--accent);color:#fff;font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:calc(var(--radius)/2)}
-.product-wishlist{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.8);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;transition:transform .2s}
-.product-wishlist:hover{transform:scale(1.1)}
-.product-name{font-weight:600;font-size:12px;color:var(--primary)}
-.product-sub{font-size:10px;color:var(--muted);margin:2px 0 6px}
-.product-price{display:flex;align-items:center;gap:6px}
-.product-current{font-family:var(--display);font-weight:var(--weight);font-size:14px;color:var(--primary)}
-.product-old{font-size:11px;color:var(--muted);text-decoration:line-through}
-
-/* === FEATURED COLLECTION === */
-.collection{margin:0 24px;border-radius:var(--radius);overflow:hidden;position:relative;height:140px;background:linear-gradient(135deg,var(--accent),#4A6A50);display:flex;align-items:center;padding:24px}
-.collection::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(255,255,255,.1),transparent 50%)}
-.collection-text{position:relative;z-index:2;color:#fff}
-.collection-label{font-size:9px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px;color:rgba(255,255,255,.7)}
-.collection h3{font-family:var(--display);font-weight:var(--weight);font-size:18px;margin-bottom:4px}
-.collection p{font-size:11px;color:rgba(255,255,255,.7)}
-
-/* === INSTAGRAM FEED === */
-.insta{padding:24px}
-.insta-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.insta-header h3{font-family:var(--display);font-weight:var(--weight);font-size:14px;color:var(--primary)}
-.insta-handle{font-size:10px;color:var(--accent);font-weight:500}
-.insta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
-.insta-item{aspect-ratio:1;border-radius:calc(var(--radius)/2);cursor:pointer;transition:transform .3s,opacity .3s;position:relative;overflow:hidden}
-.insta-item:hover{transform:scale(1.04);opacity:.9}
-.ig1{background:linear-gradient(135deg,#D4C5B0,#B5C4B1)}
-.ig2{background:linear-gradient(135deg,#C0D0C0,#A5B5A5)}
-.ig3{background:linear-gradient(135deg,#E8DDD0,#C5B8A5)}
-.ig4{background:linear-gradient(135deg,#B5C4B1,#D4C5B0)}
-.insta-item::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:22px;height:22px;opacity:.25;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='4' y='4' width='32' height='32' rx='8' fill='none' stroke='%23333' stroke-width='2'/%3E%3Ccircle cx='20' cy='20' r='8' fill='none' stroke='%23333' stroke-width='2'/%3E%3Ccircle cx='30' cy='10' r='2' fill='%23333'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat}
-
-/* === INFO BAR === */
-.info-bar{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid rgba(0,0,0,.05);border-bottom:1px solid rgba(0,0,0,.05)}
-.info-item{padding:16px;text-align:center}
-.info-item:not(:last-child){border-right:1px solid rgba(0,0,0,.05)}
-.info-icon{font-size:18px;margin-bottom:4px}
-.info-label{font-size:10px;font-weight:600;color:var(--primary)}
-.info-sub{font-size:9px;color:var(--muted);margin-top:2px}
-
-/* === FOOTER === */
-.footer{padding:24px;text-align:center}
-.footer-brand{font-family:var(--display);font-weight:var(--weight);font-size:14px;color:var(--primary);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
-.footer-links{display:flex;justify-content:center;gap:16px;margin-bottom:10px}
-.footer-links a{font-size:10px;color:var(--muted);transition:color .2s}
-.footer-links a:hover{color:var(--accent)}
-.footer-copy{font-size:9px;color:var(--muted)}
-
-.demo-ribbon{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--primary);color:rgba(255,255,255,.7);text-align:center;padding:8px;font-size:10px;font-weight:500}
-.demo-ribbon b{color:var(--accent)}
+@media (max-width: 980px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero-side { grid-template-columns: 1fr 1fr; grid-template-rows: 280px; }
+  .cats { grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .perks { grid-template-columns: 1fr 1fr; }
+  .perk:nth-child(2) { border-right: 0; }
+  .perk { border-bottom: 1px solid var(--line); }
+  .insta { grid-template-columns: repeat(3, 1fr); }
+  .foot { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 860px) {
+  .nav .wrap { grid-template-columns: auto 1fr auto; }
+  .nav .logo { grid-column: 2; }
+  .icons .hide-m { display: none; }
+}
+@media (max-width: 640px) {
+  section.pad { padding: 72px 0; }
+  .hero-main { min-height: 520px; }
+  .hero-main .txt { padding: 28px; }
+  .hero-side { grid-template-columns: 1fr; grid-template-rows: 240px 240px; }
+  .cats { grid-template-columns: repeat(3, 1fr); }
+  .products { grid-template-columns: 1fr 1fr; gap: 24px 12px; }
+  .prod .quick { display: none; }
+  .story .card { margin: 0 16px; padding: 36px 26px; }
+  .foot { grid-template-columns: 1fr; }
+  .news form { flex-direction: column; }
+  .news input { padding: 16px; }
+}
 </style>
 </head>
 <body>
 
-<div class="announce"><b>Fall Collection</b> now available. Free shipping on orders over $75.</div>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <div class="nav-left">
-      <a href="#products">Shop</a>
-      <a href="#about">About</a>
-    </div>
-    <div class="nav-brand" data-business>Tidal & Co</div>
-    <div class="nav-icons">
-      <span>&#128269;</span>
-      <span>&#128100;</span>
-      <span>&#128722;<span class="cart-badge">2</span></span>
-    </div>
+<div class="announce" aria-hidden="true">
+  <div class="track">
+    <span>Free shipping on orders over $75</span><span>Local pickup in Fernandina Beach</span><span>New arrivals every Friday</span><span>Gift wrapping always free</span>
+    <span>Free shipping on orders over $75</span><span>Local pickup in Fernandina Beach</span><span>New arrivals every Friday</span><span>Gift wrapping always free</span>
   </div>
-</nav>
-
-<section class="hero-banner">
-  <div class="hero-content">
-    <h1 data-headline>Fall '26</h1>
-    <p data-tagline>Coastal-inspired apparel and home goods. Made thoughtfully, meant to last.</p>
-    <button class="hero-btn">Shop the Collection</button>
-  </div>
-</section>
-
-<div class="categories">
-  <span class="cat-tab active">All</span>
-  <span class="cat-tab">Apparel</span>
-  <span class="cat-tab">Accessories</span>
-  <span class="cat-tab">Home</span>
-  <span class="cat-tab">Gifts</span>
-  <span class="cat-tab">Sale</span>
 </div>
 
-<section class="products reveal" id="products">
-  <div class="products-header">
-    <h2>New Arrivals</h2>
-    <span class="products-count">24 items</span>
+<header class="nav">
+  <div class="wrap">
+    <nav class="nav-links m-menu">
+      <a href="#new">New In</a>
+      <a href="#shop">Shop</a>
+      <a href="#story">Our Story</a>
+      <a href="#shop" class="sale">Sale</a>
+    </nav>
+    <a href="#top" class="logo"><span class="d" data-business>Salt &amp; Stone</span><small>Coastal Goods</small></a>
+    <div class="icons">
+      <button class="hide-m" aria-label="Search" data-demo="Demo button. Opens product search."><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+      <button class="hide-m" aria-label="Account" data-demo="Demo button. Opens customer accounts."><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></button>
+      <button aria-label="Cart" data-demo="Demo button. Opens the shopping cart."><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="count">2</span></button>
+      <button class="m-toggle" aria-label="Menu"><span></span><span></span></button>
+    </div>
   </div>
-  <div class="product-grid">
-    <div class="product-card">
-      <div class="product-img pi1">
-        <span class="product-tag">New</span>
-        <span class="product-wishlist">&#9825;</span>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-main rv">
+      <img src="https://images.unsplash.com/photo-1758532758701-49b79820ba3e?auto=format&fit=crop&w=1400&q=70" alt="Woman in a white dress carrying a straw bag">
+      <div class="txt">
+        <small>New season</small>
+        <h1 class="d">The Summer Edit</h1>
+        <p data-tagline>Breezy linens, handmade ceramics and beach-day essentials from independent makers.</p>
+        <a href="#shop" class="btn btn-white">Shop the edit</a>
       </div>
-      <div class="product-name">Driftwood Linen Shirt</div>
-      <div class="product-sub">Oatmeal / S-XL</div>
-      <div class="product-price"><span class="product-current">$68</span></div>
     </div>
-    <div class="product-card">
-      <div class="product-img pi2">
-        <span class="product-wishlist">&#9825;</span>
-      </div>
-      <div class="product-name">Sea Glass Candle</div>
-      <div class="product-sub">8 oz soy wax</div>
-      <div class="product-price"><span class="product-current">$32</span></div>
-    </div>
-    <div class="product-card">
-      <div class="product-img pi3">
-        <span class="product-tag">Sale</span>
-        <span class="product-wishlist">&#9825;</span>
-      </div>
-      <div class="product-name">Tide Pool Tote</div>
-      <div class="product-sub">Waxed canvas</div>
-      <div class="product-price"><span class="product-current">$45</span><span class="product-old">$58</span></div>
-    </div>
-    <div class="product-card">
-      <div class="product-img pi4">
-        <span class="product-wishlist">&#9825;</span>
-      </div>
-      <div class="product-name">Marsh Grass Throw</div>
-      <div class="product-sub">Cotton blend, 50x60</div>
-      <div class="product-price"><span class="product-current">$78</span></div>
+    <div class="hero-side">
+      <a href="#shop" class="tile rv d1"><img src="https://images.unsplash.com/photo-1603400521630-9f2de124b33b?auto=format&fit=crop&w=900&q=70" alt="Clothing rack with neutral garments"><div class="lbl"><b>Linen Shop</b><span>Shop &rarr;</span></div></a>
+      <a href="#shop" class="tile rv d2"><img src="https://images.unsplash.com/photo-1643122966676-29e8597257f7?auto=format&fit=crop&w=900&q=70" alt="Candles in glass jars"><div class="lbl"><b>Home &amp; Table</b><span>Shop &rarr;</span></div></a>
     </div>
   </div>
 </section>
 
-<div class="collection reveal">
-  <div class="collection-text">
-    <div class="collection-label">Featured Collection</div>
-    <h3>Coastal Home</h3>
-    <p>Candles, throws, and ceramics inspired by the island.</p>
-  </div>
-</div>
-
-<section class="insta reveal">
-  <div class="insta-header">
-    <h3>Follow Along</h3>
-    <span class="insta-handle">@tidalandco</span>
-  </div>
-  <div class="insta-grid">
-    <div class="insta-item ig1"></div>
-    <div class="insta-item ig2"></div>
-    <div class="insta-item ig3"></div>
-    <div class="insta-item ig4"></div>
+<section class="pad" id="new">
+  <div class="wrap">
+    <div class="sec-title"><small class="rv">Browse</small><h2 class="d rv">Shop by category</h2></div>
+    <div class="cats">
+      <a href="#shop" class="cat rv"><div class="c"><img src="https://images.unsplash.com/photo-1769107805465-bfd41863f1a0?auto=format&fit=crop&w=400&q=70" alt=""></div><span>Apparel</span></a>
+      <a href="#shop" class="cat rv d1"><div class="c"><img src="https://images.unsplash.com/photo-1495100497150-fe209c585f50?auto=format&fit=crop&w=400&q=70" alt=""></div><span>Home</span></a>
+      <a href="#shop" class="cat rv d2"><div class="c"><img src="https://images.unsplash.com/photo-1611107683227-e9060eccd846?auto=format&fit=crop&w=400&q=70" alt=""></div><span>Jewelry</span></a>
+      <a href="#shop" class="cat rv d3"><div class="c"><img src="https://images.unsplash.com/photo-1567473810954-507d59716c25?auto=format&fit=crop&w=400&q=70" alt=""></div><span>Accessories</span></a>
+      <a href="#shop" class="cat rv d4"><div class="c"><img src="https://images.unsplash.com/photo-1572726729207-a78d6feb18d7?auto=format&fit=crop&w=400&q=70" alt=""></div><span>Gifts</span></a>
+    </div>
   </div>
 </section>
 
-<div class="info-bar reveal" id="about">
-  <div class="info-item">
-    <div class="info-icon">&#128230;</div>
-    <div class="info-label">Free Shipping</div>
-    <div class="info-sub">Orders over $75</div>
+<section class="pad" id="shop" style="padding-top:0">
+  <div class="wrap" style="max-width:1360px">
+    <div class="shop-head">
+      <h2 class="d rv">New arrivals</h2>
+      <div class="filters rv"><button class="active">All</button><button>Apparel</button><button>Home</button><button>Jewelry</button></div>
+    </div>
+    <div class="products">
+      <div class="prod rv"><div class="ph"><img src="https://images.unsplash.com/photo-1713881587420-113c1c43e28a?auto=format&fit=crop&w=700&q=70" alt="White linen shirt"><span class="flag">New</span><button class="wish" data-toggle aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></button><a href="#" class="quick" data-demo="Demo button. Adds to cart on your live store.">Quick add</a></div><h3>Everyday Linen Shirt</h3><div class="p">$68</div><div class="swatches"><i style="background:#F4F1EA"></i><i style="background:#9DB4C0"></i><i style="background:#C9B79C"></i></div></div>
+      <div class="prod rv d1"><div class="ph"><img src="https://images.unsplash.com/photo-1783070185188-ee2a182c883d?auto=format&fit=crop&w=700&q=70" alt="Round woven straw bag"><span class="flag">Bestseller</span><button class="wish" data-toggle aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></button><a href="#" class="quick" data-demo="Demo button. Adds to cart on your live store.">Quick add</a></div><h3>Round Straw Tote</h3><div class="p">$54</div><div class="swatches"><i style="background:#D8C29D"></i><i style="background:#3B2F2A"></i></div></div>
+      <div class="prod rv d2"><div class="ph"><img src="https://images.unsplash.com/photo-1495100497150-fe209c585f50?auto=format&fit=crop&w=700&q=70" alt="White ceramic mug"><span class="flag sale">Sale</span><button class="wish" data-toggle aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></button><a href="#" class="quick" data-demo="Demo button. Adds to cart on your live store.">Quick add</a></div><h3>Stoneware Mug</h3><div class="p">$22 <s>$28</s></div><div class="swatches"><i style="background:#F2F0EA"></i><i style="background:#8FA89C"></i><i style="background:#2F3A3A"></i></div></div>
+      <div class="prod rv d3"><div class="ph"><img src="https://images.unsplash.com/photo-1611107683227-e9060eccd846?auto=format&fit=crop&w=700&q=70" alt="Gold chain necklace"><button class="wish" data-toggle aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></button><a href="#" class="quick" data-demo="Demo button. Adds to cart on your live store.">Quick add</a></div><h3>Tide Chain Necklace</h3><div class="p">$46</div><div class="swatches"><i style="background:#D4AF37"></i><i style="background:#C0C0C0"></i></div></div>
+      <div class="prod rv"><div class="ph"><img src="https://images.unsplash.com/photo-1572726729207-a78d6feb18d7?auto=format&fit=crop&w=700&q=70" alt="Amber glass candles"><span class="flag">Handmade</span><button class="wish" data-toggle aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></button><a href="#" class="quick" data-demo="Demo button. Adds to cart on your live store.">Quick add</a></div><h3>Sea Salt Candle</h3><div class="p">$32</div></div>
+      <div class="prod rv d1"><div class="ph"><img src="https://images.unsplash.com/photo-1567473810954-507d59716c25?auto=format&fit=crop&w=700&q=70" alt="Gold aviator sunglasses"><button class="wish" data-toggle aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></button><a href="#" class="quick" data-demo="Demo button. Adds to cart on your live store.">Quick add</a></div><h3>Harbor Aviators</h3><div class="p">$58</div><div class="swatches"><i style="background:#C9A55A"></i><i style="background:#222"></i></div></div>
+      <div class="prod rv d2"><div class="ph"><img src="https://images.unsplash.com/photo-1636714528228-f469eefb3eef?auto=format&fit=crop&w=700&q=70" alt="Candle and reed diffuser"><span class="flag">New</span><button class="wish" data-toggle aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></button><a href="#" class="quick" data-demo="Demo button. Adds to cart on your live store.">Quick add</a></div><h3>Reed Diffuser Set</h3><div class="p">$38</div></div>
+      <div class="prod rv d3"><div class="ph"><img src="https://images.unsplash.com/photo-1769107805412-90d9191d53e9?auto=format&fit=crop&w=700&q=70" alt="Boutique interior"><span class="flag">In store</span><button class="wish" data-toggle aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></button><a href="#" class="quick" data-demo="Demo button. Books an in-store styling session.">Book a visit</a></div><h3>Personal Styling Session</h3><div class="p">Free</div></div>
+    </div>
   </div>
-  <div class="info-item">
-    <div class="info-icon">&#128257;</div>
-    <div class="info-label">Easy Returns</div>
-    <div class="info-sub">30-day window</div>
-  </div>
-  <div class="info-item">
-    <div class="info-icon">&#127793;</div>
-    <div class="info-label">Sustainable</div>
-    <div class="info-sub">Ethically sourced</div>
-  </div>
-</div>
+</section>
 
-<footer class="footer">
-  <div class="footer-brand" data-business>Tidal & Co</div>
-  <div class="footer-links">
-    <a href="#products">Shop</a>
-    <a href="#about">About</a>
-    <a>FAQ</a>
-    <a>Returns</a>
+<section class="story" id="story">
+  <img src="https://images.unsplash.com/photo-1777628530456-bb93d3a03faf?auto=format&fit=crop&w=1800&q=70" alt="Inside the boutique">
+  <div class="card rv">
+    <small>Our Story</small>
+    <h2 class="d">Made by hand, sourced close to home.</h2>
+    <p>We opened our doors on Centre Street in 2017 with one rule: only carry things we would give to a friend. Today we work with more than 40 independent makers across the Southeast.</p>
+    <a href="#" class="btn btn-dark" data-demo="Demo button. Opens your About page.">Meet the makers</a>
   </div>
-  <div class="footer-copy">Built by Joshua. &copy; 2026</div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <div class="perks">
+      <div class="perk rv"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg><b>Free shipping</b><span>On orders over $75</span></div>
+      <div class="perk rv d1"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><b>Easy returns</b><span>30 days, no fuss</span></div>
+      <div class="perk rv d2"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.5-7 11-7 11z"/></svg><b>Local makers</b><span>40+ artisans</span></div>
+      <div class="perk rv d3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="8" width="18" height="13"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1s6 1 6 1 6 2 6-1-4-3-6 1"/></svg><b>Gift wrapping</b><span>Always free</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" style="padding-top:0">
+  <div class="wrap" style="max-width:1360px">
+    <div class="sec-title"><small class="rv">@saltandstone</small><h2 class="d rv">Seen on Instagram</h2></div>
+    <div class="insta">
+      <a href="#" class="rv" data-demo="Demo link. Opens this Instagram post."><img src="https://images.unsplash.com/photo-1763056531605-4e75d78e5016?auto=format&fit=crop&w=400&q=70" alt=""></a>
+      <a href="#" class="rv d1" data-demo="Demo link. Opens this Instagram post."><img src="https://images.unsplash.com/photo-1603400521630-9f2de124b33b?auto=format&fit=crop&w=400&q=70" alt=""></a>
+      <a href="#" class="rv d2" data-demo="Demo link. Opens this Instagram post."><img src="https://images.unsplash.com/photo-1559070081-648fb00b2ed1?auto=format&fit=crop&w=400&q=70" alt=""></a>
+      <a href="#" class="rv d3" data-demo="Demo link. Opens this Instagram post."><img src="https://images.unsplash.com/photo-1612293905607-b003de9e54fb?auto=format&fit=crop&w=400&q=70" alt=""></a>
+      <a href="#" class="rv d4" data-demo="Demo link. Opens this Instagram post."><img src="https://images.unsplash.com/photo-1626784215013-13322cb0e471?auto=format&fit=crop&w=400&q=70" alt=""></a>
+      <a href="#" class="rv d4" data-demo="Demo link. Opens this Instagram post."><img src="https://images.unsplash.com/photo-1769107805412-90d9191d53e9?auto=format&fit=crop&w=400&q=70" alt=""></a>
+    </div>
+  </div>
+</section>
+
+<section class="pad news">
+  <div class="wrap">
+    <h2 class="d rv">Take 10% off your first order</h2>
+    <p class="rv">Join the list for new arrivals, restocks and the occasional secret sale.</p>
+    <form class="rv"><input type="email" placeholder="Your email address"><button type="submit" class="btn btn-dark">Subscribe</button></form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><div class="d" data-business>Salt &amp; Stone</div><p>112 Centre Street, Fernandina Beach<br><span data-phone>(904) 555-0133</span></p></div>
+      <div class="col"><h5>Shop</h5><a href="#new">New in</a><a href="#shop">Apparel</a><a href="#shop">Home</a><a href="#shop">Gift cards</a></div>
+      <div class="col"><h5>Help</h5><a href="#">Shipping</a><a href="#">Returns</a><a href="#">Contact</a></div>
+      <div class="col"><h5>Visit</h5><p>Mon to Sat, 10 to 6</p><p>Sunday, 12 to 5</p></div>
+    </div>
+    <div class="foot-bot"><span>&copy; 2026 <span data-business>Salt &amp; Stone</span>. Website by Joshua Humphreys</span><div class="pay"><span>VISA</span><span>MC</span><span>AMEX</span><span>PAY</span></div></div>
+  </div>
 </footer>
 
-<div class="demo-ribbon"><b>Demo</b> - Built by joshuahumphreys.net</div>
-
-<script>
-const params=new URLSearchParams(window.location.search);
-const PALETTES={'Coastal':{bg:'#F0F7FA',primary:'#1B4965',accent:'#5FA8D3',text:'#1B4965',muted:'#6A8FA5'},'Sage':{bg:'#F2F5F0',primary:'#2F3E2E',accent:'#6B8F71',text:'#2F3E2E',muted:'#6A7A6A'},'Warm':{bg:'#FAF6F0',primary:'#3D2B1F',accent:'#C08552',text:'#3D2B1F',muted:'#8A7A6A'},'Slate':{bg:'#F0F0F6',primary:'#1E1E2E',accent:'#4A4A6A',text:'#1E1E2E',muted:'#6A6A8A'},'Rose':{bg:'#FDF5F8',primary:'#4A2040',accent:'#C07090',text:'#4A2040',muted:'#8A6A7A'},'Midnight':{bg:'#E0E8F0',primary:'#0D1B2A',accent:'#1B3A5C',text:'#0D1B2A',muted:'#5A6A7A'}};
-const STYLES={'Modern':{display:"'Space Grotesk',sans-serif",body:"'DM Sans','Inter',sans-serif",radius:'8px',weight:'600'},'Classic':{display:"'Playfair Display',Georgia,serif",body:"'Inter',sans-serif",radius:'3px',weight:'600'},'Bold':{display:"'Outfit',sans-serif",body:"'Outfit',sans-serif",radius:'12px',weight:'800'},'Minimal':{display:"'DM Sans',sans-serif",body:"'DM Sans',sans-serif",radius:'2px',weight:'400'}};
-function apply(p,s){const r=document.documentElement;if(p&&PALETTES[p]){const c=PALETTES[p];r.style.setProperty('--bg',c.bg);r.style.setProperty('--primary',c.primary);r.style.setProperty('--accent',c.accent);r.style.setProperty('--text',c.text);r.style.setProperty('--muted',c.muted)}if(s&&STYLES[s]){const t=STYLES[s];r.style.setProperty('--display',t.display);r.style.setProperty('--body',t.body);r.style.setProperty('--radius',t.radius);r.style.setProperty('--weight',t.weight)}}
-apply(params.get('palette'),params.get('style'));
-window.addEventListener('message',(e)=>{if(e.data&&e.data.type==='theme-update'){apply(e.data.palette,e.data.style);if(e.data.businessName)applyBiz(e.data)}});
-function applyBiz(d){
-  const name=d.businessName||params.get('businessName');
-  const phone=d.phone||params.get('phone');
-  const tagline=d.tagline||params.get('tagline');
-  if(name)document.querySelectorAll('[data-business]').forEach(el=>el.textContent=name);
-  if(phone)document.querySelectorAll('[data-phone]').forEach(el=>el.textContent=phone);
-  if(tagline)document.querySelectorAll('[data-tagline]').forEach(el=>el.textContent=tagline);
-}
-applyBiz({});
-const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
-document.querySelectorAll('.cat-tab').forEach(t=>{t.addEventListener('click',function(){document.querySelectorAll('.cat-tab').forEach(x=>x.classList.remove('active'));this.classList.add('active')})});
-</script>
 </body>
 </html>
