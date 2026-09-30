@@ -1475,8 +1475,8 @@
     .cfg-mockup-chrome > span:nth-child(2) { background: #f4be4f; }
     .cfg-mockup-chrome > span:nth-child(3) { background: #62c554; }
     .cfg-mockup-url { flex: 1; margin-left: 8px; background: rgba(255,255,255,0.7); border-radius: 4px; padding: 4px 10px; font-family: 'Inter', sans-serif; font-size: 11px; color: var(--muted); text-align: center; transition: color 0.4s; }
-    .cfg-mockup-body { height: 320px; overflow: hidden; position: relative; }
-    .cfg-mockup-body iframe { width: 100%; height: 100%; border: none; pointer-events: none; }
+    .cfg-mockup-body { height: 340px; overflow: hidden; position: relative; background: #fff; }
+    .cfg-mockup-body iframe { position: absolute; top: 0; left: 0; width: 1280px; height: 1000px; border: none; pointer-events: none; transform-origin: 0 0; transition: opacity 0.4s ease; }
     .cfg-mockup-overlay { position: absolute; inset: 0; z-index: 2; }
     .cfg-mockup-badge { position: absolute; bottom: 12px; right: 12px; background: rgba(20,20,20,0.7); color: rgba(255,255,255,0.8); font-size: 0.65rem; font-weight: 600; padding: 4px 10px; border-radius: 4px; backdrop-filter: blur(4px); z-index: 3; display: flex; align-items: center; gap: 5px; }
     .cfg-mockup-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: #62c554; animation: cfg-pulse 2s infinite; }
@@ -1624,6 +1624,7 @@
           <span class="cfg-chip" data-ind="Retail / Boutique">Retail</span>
           <span class="cfg-chip" data-ind="Trades / Home Services">Trades</span>
           <span class="cfg-chip" data-ind="Creative / Portfolio">Creative</span>
+          <span class="cfg-chip" data-ind="Other">Startup</span>
         </div>
         <a href="build.html#configurator" class="cfg-showcase-cta">
           Open the configurator
@@ -1637,50 +1638,71 @@
             <div class="cfg-mockup-url" id="cfg-mockup-url">bistronine.com</div>
           </div>
           <div class="cfg-mockup-body">
-            <iframe id="cfg-mockup-iframe" src="demos/preview/restaurant.html?style=Classic&palette=Warm" title="Configurator preview" loading="lazy"></iframe>
+            <iframe id="cfg-mockup-iframe" title="Configurator preview" tabindex="-1" aria-hidden="true"></iframe>
             <div class="cfg-mockup-overlay"></div>
           </div>
         </div>
-        <div class="cfg-mockup-badge"><span class="cfg-mockup-badge-dot"></span> Auto-cycling</div>
+        <div class="cfg-mockup-badge"><span class="cfg-mockup-badge-dot"></span> <span id="cfg-mockup-caption">Live demo</span></div>
       </a>
     </div>
   </div>
+  <script src="demos/preview/themes.js"></script>
   <script>
   (function(){
-    const SHOWCASE_CYCLE = [
-      { ind: 'Restaurant / Cafe', file: 'demos/preview/restaurant.html', style: 'Classic', palette: 'Warm', url: 'bistronine.com' },
-      { ind: 'Salon / Spa', file: 'demos/preview/salon.html', style: 'Minimal', palette: 'Rose', url: 'bloomstudio.com' },
-      { ind: 'Real Estate', file: 'demos/preview/realestate.html', style: 'Modern', palette: 'Coastal', url: 'coastrealty.com' },
-      { ind: 'Fitness / Gym', file: 'demos/preview/fitness.html', style: 'Bold', palette: 'Midnight', url: 'crosswavefit.com' },
-      { ind: 'Professional Services', file: 'demos/preview/professional.html', style: 'Classic', palette: 'Slate', url: 'callowayandco.com' },
-      { ind: 'Retail / Boutique', file: 'demos/preview/retail.html', style: 'Minimal', palette: 'Sage', url: 'tidalandco.com' },
-      { ind: 'Trades / Home Services', file: 'demos/preview/trades.html', style: 'Modern', palette: 'Warm', url: 'coastlinepros.com' },
-      { ind: 'Creative / Portfolio', file: 'demos/preview/creative.html', style: 'Modern', palette: 'Slate', url: 'studioiris.com' }
-    ];
-    let idx = 0, timer = null;
+    /* Auto-playing configurator showcase. Each slide loads a real demo site,
+       then switches its palette and font live, just like the configurator. */
+    const JH = window.JH_THEMES;
+    const order = ['restaurant', 'salon', 'realestate', 'fitness', 'professional', 'retail', 'trades', 'creative', 'other'];
+    const swapFont = { restaurant: 'Elegant', salon: 'Editorial', realestate: 'Classic', fitness: 'Sturdy', professional: 'Modern', retail: 'Artsy', trades: 'Bold', creative: 'Tech', other: 'Artsy' };
     const iframe = document.getElementById('cfg-mockup-iframe');
+    const body = iframe.parentNode;
     const urlEl = document.getElementById('cfg-mockup-url');
+    const caption = document.getElementById('cfg-mockup-caption');
     const chips = document.querySelectorAll('#cfg-chips .cfg-chip');
+    let idx = 0, timer = null, swapTimer = null, started = false;
 
+    function fit() {
+      const s = body.clientWidth / 1280;
+      iframe.style.transform = 'scale(' + s + ')';
+      iframe.style.height = (body.clientHeight / s) + 'px';
+    }
+    function label(slug, pal, font) {
+      return JH.industries[slug].label.split(' / ')[0] + ' · ' + font + ' · ' + pal;
+    }
     function showSlide(i) {
       idx = i;
-      const s = SHOWCASE_CYCLE[idx];
+      const slug = order[idx], ind = JH.industries[slug];
       chips.forEach((c, ci) => c.classList.toggle('active', ci === idx));
-      urlEl.textContent = s.url;
-      const src = s.file + '?style=' + encodeURIComponent(s.style) + '&palette=' + encodeURIComponent(s.palette);
+      urlEl.textContent = ind.url;
+      caption.textContent = label(slug, ind.palette, ind.font);
+      clearTimeout(swapTimer);
       iframe.style.opacity = '0';
-      setTimeout(() => { iframe.src = src; iframe.onload = () => { iframe.style.opacity = '1'; }; }, 200);
+      setTimeout(() => {
+        iframe.onload = () => {
+          iframe.style.opacity = '1';
+          swapTimer = setTimeout(() => {
+            const pals = Object.keys(ind.palettes);
+            const pal = pals[1], font = swapFont[slug];
+            try { iframe.contentWindow.postMessage({ type: 'jh-preview', palette: pal, font: font }, '*'); } catch (e) {}
+            caption.textContent = label(slug, pal, font);
+          }, 2600);
+        };
+        iframe.src = ind.file + '?showcase=1';
+      }, 250);
     }
+    function next() { showSlide((idx + 1) % order.length); }
+    function startCycle() { if (timer) clearInterval(timer); timer = setInterval(next, 5600); }
 
-    function next() { showSlide((idx + 1) % SHOWCASE_CYCLE.length); }
-    function startCycle() { if (timer) clearInterval(timer); timer = setInterval(next, 4000); }
+    chips.forEach((chip, ci) => chip.addEventListener('click', e => { e.preventDefault(); showSlide(ci); startCycle(); }));
+    window.addEventListener('resize', fit);
+    fit();
 
-    chips.forEach((chip, ci) => {
-      chip.addEventListener('click', (e) => { e.preventDefault(); showSlide(ci); startCycle(); });
-    });
-
-    iframe.style.transition = 'opacity 0.3s ease';
-    startCycle();
+    /* Start only when the showcase scrolls into view, so it never slows the first page load */
+    function start() { if (started) return; started = true; fit(); showSlide(0); startCycle(); }
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => { if (entries.some(en => en.isIntersecting)) { start(); io.disconnect(); } }, { rootMargin: '200px 0px' });
+      io.observe(body);
+    } else { start(); }
   })();
   </script>
 

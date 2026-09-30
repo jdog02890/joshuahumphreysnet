@@ -13,7 +13,10 @@
   <meta property="og:image" content="https://joshuahumphreys.net/joshua-photo.jpeg" />
   <link rel="canonical" href="https://joshuahumphreys.net/build" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23141414'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Space Grotesk,Arial,sans-serif' font-weight='700' font-size='36' fill='%23F7F3EE'%3EJ%3Ctspan fill='%23D4500A'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <!-- Font samples for the configurator style cards (loaded without blocking the page) -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Cormorant+Garamond:wght@600&family=Plus+Jakarta+Sans:wght@800&family=Anton&family=Libre+Baskerville:wght@700&family=Josefin+Sans:wght@300&family=Archivo:wght@900&family=Syne:wght@800&family=Sora:wght@600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <script src="demos/preview/themes.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -229,7 +232,9 @@
     .template-price {
       font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--ink);
     }
-    .template-price span { font-size: 0.85rem; font-weight: 400; color: var(--muted); }
+    .template-price { line-height: 1.1; }
+    .template-price span { display: block; font-size: 0.75rem; font-weight: 400; color: var(--muted); margin-top: 3px; }
+    .template-footer { gap: 12px; }
     .template-btn {
       display: inline-flex; align-items: center; gap: 8px; background: var(--ink);
       color: var(--cream); text-decoration: none; padding: 10px 20px; border-radius: 6px;
@@ -298,7 +303,7 @@
     .option-card.selected .check-dot::after { content: ''; width: 6px; height: 6px; background: white; border-radius: 50%; }
 
     /* Palette cards */
-    .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; margin-bottom: 32px; }
+    .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 20px; }
     .palette-card {
       background: var(--cream); border: 1px solid var(--border); border-radius: 12px;
       overflow: hidden; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
@@ -430,94 +435,96 @@
     .footer-links a { font-size: 0.8rem; color: rgba(247,243,238,0.4); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--orange); }
 
-    /* MINI-SITE PREVIEWS (template cards) */
-    .mini-site {
-      width: 100%; height: 100%; display: flex; flex-direction: column;
-      font-family: 'Inter', sans-serif; font-size: 8px; overflow: hidden;
+    /* TEMPLATE CARD LIVE THUMBNAILS */
+    .template-preview { cursor: pointer; background: #fff; }
+    .tpl-thumb { position: absolute; inset: 0; overflow: hidden; background: var(--cream3); }
+    .tpl-thumb iframe { position: absolute; top: 0; left: 0; width: 1280px; height: 800px; border: 0; transform-origin: 0 0; pointer-events: none; }
+    .tpl-hover {
+      position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: rgba(20,20,20,0.5); color: #fff; font-weight: 600; font-size: 0.9rem; opacity: 0; transition: opacity 0.3s;
     }
-    .mini-nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 8px 12px; border-bottom: 1px solid rgba(0,0,0,0.06);
+    .template-preview:hover .tpl-hover { opacity: 1; }
+    .template-badge { z-index: 3; }
+    .template-actions { display: flex; gap: 8px; }
+    .template-btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+    .template-btn.ghost:hover { background: var(--ink); color: var(--cream); }
+
+    /* STEP SUBTITLE */
+    .step-sub { font-size: 0.92rem; color: var(--muted); line-height: 1.55; margin: -12px 0 22px; max-width: 560px; }
+
+    /* FONT STYLE CARDS (step 2) */
+    .font-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 18px; }
+    .font-card {
+      position: relative; text-align: left; background: var(--cream); border: 1px solid var(--border); border-radius: 12px;
+      padding: 18px 18px 16px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; font: inherit; color: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.25s cubic-bezier(0.22,1,0.36,1);
     }
-    .mini-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: -0.02em; }
-    .mini-nav-links { display: flex; gap: 8px; font-size: 6px; color: #999; font-weight: 500; }
-    .mini-hero { padding: 14px 12px 10px; flex: 1; display: flex; flex-direction: column; }
-    .mini-eyebrow { font-size: 5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px; }
-    .mini-headline { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13px; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 5px; }
-    .mini-sub { font-size: 6.5px; line-height: 1.5; margin-bottom: 8px; }
-    .mini-btn { display: inline-block; padding: 4px 10px; border-radius: 3px; font-size: 6px; font-weight: 600; color: #fff; width: fit-content; }
-    .mini-art { margin: 0 12px 10px; border-radius: 4px; height: 48px; position: relative; overflow: hidden; }
-    .mini-art::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.25) 0%, transparent 50%); }
-    .mini-blocks { padding: 0 12px 10px; display: flex; gap: 4px; }
-    .mini-block { flex: 1; border-radius: 3px; padding: 6px; font-size: 5.5px; font-weight: 600; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; }
-    .mini-block-icon { font-size: 10px; }
-    .mini-footer { padding: 6px 12px; border-top: 1px solid rgba(0,0,0,0.06); font-size: 5px; display: flex; justify-content: space-between; }
+    .font-card:hover { border-color: var(--orange); transform: translateY(-3px); }
+    .font-card.selected { border-color: var(--orange); box-shadow: 0 6px 24px rgba(212,80,10,0.12); }
+    .fc-top { display: flex; align-items: flex-start; justify-content: space-between; }
+    .fc-aa { font-size: 2.1rem; line-height: 1; color: var(--ink); }
+    .fc-check { width: 20px; height: 20px; border: 2px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; }
+    .font-card.selected .fc-check { border-color: var(--orange); background: var(--orange); }
+    .font-card.selected .fc-check::after { content: ''; width: 6px; height: 6px; background: #fff; border-radius: 50%; }
+    .fc-name { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-top: 6px; }
+    .fc-line { font-size: 1.12rem; line-height: 1.2; color: var(--ink); min-height: 2.5em; }
+    .fc-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.45; }
+    .fc-pair { font-size: 0.7rem; color: var(--muted); opacity: 0.8; }
+    .fc-badge { position: absolute; top: -9px; left: 14px; background: var(--ink); color: var(--cream); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 100px; }
 
-    /* Per-industry mini-site themes */
-    .mini-site.restaurant { background: #FDF8F3; color: #3B2314; }
-    .mini-site.restaurant .mini-eyebrow { color: #C4651A; }
-    .mini-site.restaurant .mini-btn { background: #C4651A; }
-    .mini-site.restaurant .mini-art { background: linear-gradient(135deg, #3B2314, #C4651A); }
-    .mini-site.restaurant .mini-block { background: rgba(196,101,26,0.08); color: #3B2314; }
-    .mini-site.restaurant .mini-footer { color: #A09080; }
+    /* PALETTE MINI MOCKUPS (step 3) */
+    .pal-card { text-align: left; font: inherit; padding: 0; }
+    .pal-mini { height: 96px; position: relative; padding: 20px 12px 12px; display: grid; grid-template-columns: 1.25fr 1fr; gap: 10px; }
+    .pm-nav { position: absolute; left: 0; right: 0; top: 0; height: 10px; }
+    .pm-text { display: flex; flex-direction: column; gap: 5px; }
+    .pm-text i { display: block; height: 8px; border-radius: 4px; width: 95%; }
+    .pm-text b { display: block; width: 46px; height: 13px; border-radius: 7px; margin-top: 5px; }
+    .pm-img { border-radius: 7px; position: relative; overflow: hidden; }
+    .pm-img i { position: absolute; left: 10px; right: 10px; bottom: 10px; height: 8px; border-radius: 4px; opacity: 0.8; }
+    .pal-card .palette-swatches { height: 12px; }
+    .palette-name small { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-left: 4px; }
 
-    .mini-site.salon { background: #FBF5F8; color: #3D2233; }
-    .mini-site.salon .mini-eyebrow { color: #B5547A; }
-    .mini-site.salon .mini-btn { background: #B5547A; }
-    .mini-site.salon .mini-art { background: linear-gradient(135deg, #3D2233, #D4829E); }
-    .mini-site.salon .mini-block { background: rgba(181,84,122,0.08); color: #3D2233; }
-    .mini-site.salon .mini-footer { color: #A08890; }
-
-    .mini-site.realestate { background: #F4F7FA; color: #1A2B4A; }
-    .mini-site.realestate .mini-eyebrow { color: #2E6AB4; }
-    .mini-site.realestate .mini-btn { background: #2E6AB4; }
-    .mini-site.realestate .mini-art { background: linear-gradient(135deg, #1A2B4A, #4A90D9); }
-    .mini-site.realestate .mini-block { background: rgba(46,106,180,0.08); color: #1A2B4A; }
-    .mini-site.realestate .mini-footer { color: #8090A0; }
-
-    .mini-site.fitness { background: #1A1A1A; color: #F0F0F0; }
-    .mini-site.fitness .mini-eyebrow { color: #E8553A; }
-    .mini-site.fitness .mini-btn { background: #E8553A; }
-    .mini-site.fitness .mini-art { background: linear-gradient(135deg, #0D0D0D, #E8553A); }
-    .mini-site.fitness .mini-block { background: rgba(232,85,58,0.1); color: #F0F0F0; }
-    .mini-site.fitness .mini-nav-links { color: #777; }
-    .mini-site.fitness .mini-footer { color: #555; border-color: rgba(255,255,255,0.08); }
-    .mini-site.fitness .mini-nav { border-color: rgba(255,255,255,0.08); }
-
-    .mini-site.lawyer { background: #F6F5F0; color: #1C2331; }
-    .mini-site.lawyer .mini-eyebrow { color: #8B7A3E; }
-    .mini-site.lawyer .mini-btn { background: #1C2331; }
-    .mini-site.lawyer .mini-art { background: linear-gradient(135deg, #1C2331, #8B7A3E); }
-    .mini-site.lawyer .mini-block { background: rgba(28,35,49,0.06); color: #1C2331; }
-    .mini-site.lawyer .mini-footer { color: #8A8878; }
-
-    .mini-site.boutique { background: #F8F6F2; color: #2C3028; }
-    .mini-site.boutique .mini-eyebrow { color: #6B7F5E; }
-    .mini-site.boutique .mini-btn { background: #6B7F5E; }
-    .mini-site.boutique .mini-art { background: linear-gradient(135deg, #2C3028, #6B7F5E); }
-    .mini-site.boutique .mini-block { background: rgba(107,127,94,0.08); color: #2C3028; }
-    .mini-site.boutique .mini-footer { color: #8A8A80; }
-
-    .mini-site.trades { background: #F5F4F0; color: #1F2937; }
-    .mini-site.trades .mini-eyebrow { color: #D97706; }
-    .mini-site.trades .mini-btn { background: #D97706; }
-    .mini-site.trades .mini-art { background: linear-gradient(135deg, #1F2937, #D97706); }
-    .mini-site.trades .mini-block { background: rgba(217,119,6,0.08); color: #1F2937; }
-    .mini-site.trades .mini-footer { color: #8A8A80; }
-
-    .mini-site.creative { background: #FAFAF8; color: #1A1A1A; }
-    .mini-site.creative .mini-eyebrow { color: #7C5CFC; }
-    .mini-site.creative .mini-btn { background: #7C5CFC; }
-    .mini-site.creative .mini-art { background: linear-gradient(135deg, #1A1A1A, #7C5CFC); }
-    .mini-site.creative .mini-block { background: rgba(124,92,252,0.08); color: #1A1A1A; }
-    .mini-site.creative .mini-footer { color: #999; }
-
-    .mini-site.other { background: #F4F6FA; color: #1A2B4A; }
-    .mini-site.other .mini-eyebrow { color: #3B6BF5; }
-    .mini-site.other .mini-btn { background: #3B6BF5; }
-    .mini-site.other .mini-art { background: linear-gradient(135deg, #1A2B4A, #3B6BF5); }
-    .mini-site.other .mini-block { background: rgba(59,107,245,0.08); color: #1A2B4A; }
-    .mini-site.other .mini-footer { color: #8090A0; }
+    /* CUSTOM FONT / COLOR PANELS */
+    .custom-panel { margin-bottom: 28px; }
+    .custom-toggle {
+      display: flex; align-items: center; gap: 10px; width: 100%; background: none; border: 1px dashed rgba(0,0,0,0.2);
+      border-radius: 10px; padding: 14px 16px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 0.88rem;
+      font-weight: 500; color: var(--ink2); text-align: left; transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .custom-toggle:hover, .custom-toggle.open { border-color: var(--orange); color: var(--orange); background: rgba(212,80,10,0.03); }
+    .custom-toggle .ct-arrow { margin-left: auto; transition: transform 0.3s; }
+    .custom-toggle.open .ct-arrow { transform: rotate(180deg); }
+    .ct-tag { display: none; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 100px; background: var(--orange); color: #fff; }
+    .custom-toggle.active .ct-tag { display: inline-block; }
+    .custom-body { margin-top: 10px; padding: 18px; background: var(--cream); border: 1px solid var(--border); border-radius: 12px; animation: stepIn 0.35s cubic-bezier(0.22,1,0.36,1); }
+    .custom-body[hidden] { display: none; }
+    .cb-help { font-size: 0.83rem; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
+    .cb-row { display: flex; gap: 8px; }
+    .cb-row .cfg-input { flex: 1; min-width: 0; }
+    .btn-mini { border: 0; background: var(--ink); color: var(--cream); border-radius: 8px; padding: 0 16px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.82rem; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .btn-mini:hover { background: var(--orange); }
+    .cb-or { display: flex; align-items: center; gap: 10px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 14px 0; }
+    .cb-or::before, .cb-or::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .upload-btn { display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--border); background: #fff; border-radius: 8px; padding: 12px; font-size: 0.85rem; font-weight: 500; cursor: pointer; color: var(--ink); transition: border-color 0.2s; }
+    .upload-btn:hover { border-color: var(--orange); }
+    .upload-btn input { display: none; }
+    .cb-status { font-size: 0.8rem; margin-top: 10px; line-height: 1.45; }
+    .cb-status:empty { display: none; }
+    .cb-status.ok { color: #1f8a4c; }
+    .cb-status.warn { color: #a85a07; }
+    .link-reset { background: none; border: 0; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; margin-top: 12px; padding: 0; }
+    .link-reset:hover { color: var(--ink); }
+    .color-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
+    .color-field > span:first-child { display: block; font-size: 0.75rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+    .color-pair { display: flex; align-items: center; gap: 6px; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 5px; transition: border-color 0.2s; }
+    .color-pair:focus-within { border-color: var(--orange); }
+    .color-pair.invalid { border-color: #c0392b; }
+    .color-pair input[type=color] { width: 34px; height: 30px; border: 0; padding: 0; background: none; cursor: pointer; flex-shrink: 0; }
+    .color-pair input[type=color]::-webkit-color-swatch-wrapper { padding: 0; }
+    .color-pair input[type=color]::-webkit-color-swatch { border: 1px solid rgba(0,0,0,0.12); border-radius: 6px; }
+    .color-pair input[type=color]::-moz-color-swatch { border: 1px solid rgba(0,0,0,0.12); border-radius: 6px; }
+    .color-pair input[type=text] { border: 0; outline: none; width: 100%; min-width: 0; font-size: 0.8rem; font-family: ui-monospace, Menlo, Consolas, monospace; background: transparent; color: var(--ink); }
+    @media (max-width: 560px) { .color-row { grid-template-columns: 1fr; } }
 
     /* SCROLL REVEAL */
     .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1); }
@@ -538,6 +545,8 @@
       .build-hero-inner { padding: 48px 24px 40px; }
       .check-grid { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .footer-links { flex-wrap: wrap; gap: 10px 20px; }
+      .footer-copy { white-space: normal; }
       footer { padding: 36px 24px; }
     }
     @media (max-width: 480px) {
@@ -559,13 +568,13 @@
        =================================================================== */
     .configurator-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 400px;
+      grid-template-columns: minmax(0, 1fr) 460px;
       gap: 48px;
       max-width: 1240px;
       margin: 0 auto;
       align-items: start;
     }
-    .configurator-layout .configurator-wrap { max-width: 100%; }
+    .configurator-layout .configurator-wrap { max-width: 100%; width: 100%; margin: 0; min-width: 0; }
 
     .cfg-preview {
       position: sticky; top: 96px;
@@ -623,18 +632,32 @@
       letter-spacing: 0.02em;
     }
 
-    /* Live preview iframe */
+    /* Live preview: the demo renders at real desktop or phone width, scaled to fit */
+    .preview-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+    .preview-top .preview-label { margin-bottom: 0; }
+    .device-toggle { display: inline-flex; background: var(--cream2); border: 1px solid var(--border); border-radius: 100px; padding: 3px; }
+    .device-toggle button { border: 0; background: none; padding: 6px 12px; border-radius: 100px; font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 600; color: var(--muted); cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: background 0.25s, color 0.25s; }
+    .device-toggle button.active { background: var(--ink); color: var(--cream); }
+    .preview-open { border: 0; background: rgba(255,255,255,0.8); height: 22px; padding: 0 8px; border-radius: 4px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; color: var(--ink); margin-left: 6px; white-space: nowrap; transition: background 0.2s, color 0.2s; }
+    .preview-open:hover { background: var(--ink); color: var(--cream); }
+    .preview-viewport { position: relative; height: 560px; overflow: hidden; background: #fff; transition: background 0.3s; }
+    .preview-viewport.mobile { background: linear-gradient(180deg, var(--cream2), var(--cream3)); }
     .preview-iframe {
-      width: 100%;
-      min-height: 460px;
-      border: none;
-      display: block;
-      background: #F7F3EE;
-      transition: opacity 0.35s cubic-bezier(0.22,1,0.36,1);
+      position: absolute; top: 0; left: 0; border: none; display: block; background: #fff;
+      transform-origin: 0 0; transition: opacity 0.35s cubic-bezier(0.22,1,0.36,1);
     }
-    .preview-iframe.loading {
-      opacity: 0.3;
+    .preview-viewport.mobile .preview-iframe { border-radius: 30px; box-shadow: 0 0 0 9px #161616, 0 24px 50px rgba(0,0,0,0.25); }
+    .preview-iframe.loading { opacity: 0.2; }
+    .preview-loader { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; opacity: 0; transition: opacity 0.3s; }
+    .preview-viewport.is-loading .preview-loader { opacity: 1; }
+    .preview-loader span { width: 34px; height: 34px; border-radius: 50%; border: 3px solid rgba(0,0,0,0.1); border-top-color: var(--orange); animation: prev-spin 0.8s linear infinite; }
+    @keyframes prev-spin { to { transform: rotate(360deg); } }
+    .preview-full-link {
+      display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 12px; padding: 13px 16px;
+      border: 0; border-radius: 8px; background: var(--ink); color: var(--cream); font-family: 'Inter', sans-serif;
+      font-weight: 600; font-size: 0.86rem; cursor: pointer; transition: background 0.25s, transform 0.25s;
     }
+    .preview-full-link:hover { background: var(--orange); transform: translateY(-1px); }
 
     .preview-meta {
       margin-top: 14px;
@@ -668,7 +691,7 @@
         margin-bottom: 8px;
       }
       .preview-frame { box-shadow: 0 8px 22px rgba(20,20,20,0.08); }
-      .preview-iframe { min-height: 360px; }
+      .preview-viewport { height: 480px; }
     }
   </style>
 </head>
@@ -830,48 +853,35 @@
         <!-- STEP 2: STYLE -->
         <div class="step" data-step="2">
           <div class="step-label">Step 2 of 6</div>
-          <h3 class="step-title">Pick a style vibe.</h3>
-          <div class="option-grid" data-field="style" data-mode="single">
-            <button type="button" class="option-card" data-value="Modern">
-              <div class="style-font-sample" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.5rem;letter-spacing:-0.03em;line-height:1;">Aa</div>
-              <div class="card-title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;">Modern</div>
-              <div class="card-desc">Space Grotesk + DM Sans. Clean, spacious, tech-forward.</div>
-              <div class="style-font-label">Display: Space Grotesk</div>
-              <div class="check-dot"></div>
+          <h3 class="step-title">Pick a font style.</h3>
+          <p class="step-sub">Each style changes the headline and body fonts on your site. Tap a few and watch the preview change.</p>
+          <div class="font-grid" id="font-grid"></div>
+          <div class="custom-panel">
+            <button type="button" class="custom-toggle" id="btn-custom-style" aria-expanded="false" aria-controls="custom-style-fields">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h4L19 9l-4-4L4 16v4z"/><path d="M13 7l4 4"/></svg>
+              Use your own font <span class="ct-tag">Active</span>
+              <svg class="ct-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
             </button>
-            <button type="button" class="option-card" data-value="Classic">
-              <div class="style-font-sample" style="font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:1.5rem;font-style:italic;line-height:1;">Aa</div>
-              <div class="card-title" style="font-family:'Playfair Display',Georgia,serif;font-weight:600;">Classic</div>
-              <div class="card-desc">Playfair Display + Inter. Timeless, editorial, refined.</div>
-              <div class="style-font-label">Display: Playfair Display</div>
-              <div class="check-dot"></div>
-            </button>
-            <button type="button" class="option-card" data-value="Bold">
-              <div class="style-font-sample" style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;text-transform:uppercase;letter-spacing:0.06em;line-height:1;">Aa</div>
-              <div class="card-title" style="font-family:'Outfit',sans-serif;font-weight:800;">Bold</div>
-              <div class="card-desc">Outfit (heavy). Big type, color, attitude.</div>
-              <div class="style-font-label">Display: Outfit 800</div>
-              <div class="check-dot"></div>
-            </button>
-            <button type="button" class="option-card" data-value="Minimal">
-              <div class="style-font-sample" style="font-family:'DM Sans',sans-serif;font-weight:400;font-size:1.5rem;letter-spacing:0.02em;line-height:1;">Aa</div>
-              <div class="card-title" style="font-family:'DM Sans',sans-serif;font-weight:400;">Minimal</div>
-              <div class="card-desc">DM Sans (light). Less is more. Quiet design.</div>
-              <div class="style-font-label">Display: DM Sans 400</div>
-              <div class="check-dot"></div>
-            </button>
-          </div>
-          <div class="custom-style-wrap" id="custom-style-wrap" style="margin-top:16px;">
-            <button type="button" class="btn-custom-toggle" id="btn-custom-style" style="display:flex;align-items:center;gap:6px;background:none;border:1px dashed rgba(0,0,0,.15);border-radius:6px;padding:12px 16px;width:100%;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.85rem;color:var(--muted);transition:border-color .2s,color .2s;">
-              &#9999;&#65039; Have a specific font in mind? Enter it here
-            </button>
-            <div class="custom-style-fields" id="custom-style-fields" style="display:none;margin-top:12px;padding:16px;background:rgba(0,0,0,.02);border-radius:8px;border:1px solid rgba(0,0,0,.06);">
-              <div style="font-size:0.8rem;color:var(--muted);margin-bottom:12px;">Type a font name or describe the feel you want. I'll match it when building your site.</div>
-              <div class="cfg-form-group" style="margin-bottom:0">
-                <label style="font-size:0.78rem;font-weight:600;color:var(--ink);margin-bottom:4px;display:block">Preferred Font or Style</label>
-                <input type="text" id="custom-font" class="cfg-input" placeholder='e.g. Montserrat, something elegant, Helvetica-like' style="font-size:0.82rem;padding:10px 12px" />
+            <div class="custom-body" id="custom-style-fields" hidden>
+              <p class="cb-help">Type the name of any Google Font to try it on your headlines, or upload a font file you already own. The preview updates live.</p>
+              <div class="cb-row">
+                <input type="text" id="custom-font" class="cfg-input" list="font-suggest" placeholder="e.g. Montserrat, Lora, Bebas Neue" autocomplete="off" />
+                <button type="button" class="btn-mini" id="btn-apply-font">Try it</button>
               </div>
-              <div style="font-size:0.72rem;color:var(--muted);margin-top:8px;">Pick a preset above for the live preview, or leave it and I'll apply your custom font when building.</div>
+              <datalist id="font-suggest">
+                <option value="Montserrat"></option><option value="Poppins"></option><option value="Lora"></option><option value="Playfair Display"></option>
+                <option value="Bebas Neue"></option><option value="Oswald"></option><option value="Raleway"></option><option value="Merriweather"></option>
+                <option value="Nunito"></option><option value="DM Serif Display"></option><option value="Abril Fatface"></option><option value="Pacifico"></option>
+                <option value="Great Vibes"></option><option value="Roboto Slab"></option><option value="Quicksand"></option><option value="Righteous"></option>
+              </datalist>
+              <div class="cb-or">or</div>
+              <label class="upload-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v4h16v-4"/></svg>
+                Upload a font file (.ttf, .otf, .woff)
+                <input type="file" id="font-upload" accept=".ttf,.otf,.woff,.woff2" />
+              </label>
+              <div class="cb-status" id="font-status"></div>
+              <button type="button" class="link-reset" id="btn-clear-font">Remove custom font</button>
             </div>
           </div>
           <div class="btn-row">
@@ -884,79 +894,23 @@
         <div class="step" data-step="3">
           <div class="step-label">Step 3 of 6</div>
           <h3 class="step-title">Choose a color palette.</h3>
-          <div class="palette-grid" data-field="palette" data-mode="single">
-            <button type="button" class="palette-card" data-value="Coastal">
-              <div class="palette-swatches">
-                <span style="background:#1B4965"></span>
-                <span style="background:#5FA8D3"></span>
-                <span style="background:#A8D8EA"></span>
-                <span style="background:#F0F7FA"></span>
-              </div>
-              <div class="palette-info"><span class="palette-name">Coastal</span><span class="palette-check"></span></div>
+          <p class="step-sub">Palettes made for <b id="palette-industry">your industry</b>. Have brand colors already? Set them under custom colors.</p>
+          <div class="palette-grid" id="palette-grid"></div>
+          <div class="custom-panel">
+            <button type="button" class="custom-toggle" id="btn-custom-palette" aria-expanded="false" aria-controls="custom-palette-fields">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2a10 10 0 0 0 0 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.4A5.6 5.6 0 0 0 22 9.8C22 5.5 17.5 2 12 2z"/></svg>
+              Use your own brand colors <span class="ct-tag">Active</span>
+              <svg class="ct-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
             </button>
-            <button type="button" class="palette-card" data-value="Sage">
-              <div class="palette-swatches">
-                <span style="background:#2F3E2E"></span>
-                <span style="background:#6B8F71"></span>
-                <span style="background:#B7CDB8"></span>
-                <span style="background:#F2F5F0"></span>
+            <div class="custom-body" id="custom-palette-fields" hidden>
+              <p class="cb-help">Pick colors with the swatch, or type a hex code or a color name like navy or gold. The preview updates as you go.</p>
+              <div class="color-row">
+                <label class="color-field"><span>Main color</span><span class="color-pair" data-key="brand"><input type="color" id="cc-brand" aria-label="Main color" /><input type="text" id="cc-brand-text" placeholder="#1F3A32" maxlength="24" /></span></label>
+                <label class="color-field"><span>Accent color</span><span class="color-pair" data-key="accent"><input type="color" id="cc-accent" aria-label="Accent color" /><input type="text" id="cc-accent-text" placeholder="#B8914A" maxlength="24" /></span></label>
+                <label class="color-field"><span>Background</span><span class="color-pair" data-key="bg"><input type="color" id="cc-bg" aria-label="Background color" /><input type="text" id="cc-bg-text" placeholder="#FFFFFF" maxlength="24" /></span></label>
               </div>
-              <div class="palette-info"><span class="palette-name">Sage</span><span class="palette-check"></span></div>
-            </button>
-            <button type="button" class="palette-card" data-value="Warm">
-              <div class="palette-swatches">
-                <span style="background:#3D2B1F"></span>
-                <span style="background:#C08552"></span>
-                <span style="background:#E4C9A8"></span>
-                <span style="background:#FAF6F0"></span>
-              </div>
-              <div class="palette-info"><span class="palette-name">Warm</span><span class="palette-check"></span></div>
-            </button>
-            <button type="button" class="palette-card" data-value="Slate">
-              <div class="palette-swatches">
-                <span style="background:#1E1E2E"></span>
-                <span style="background:#4A4A6A"></span>
-                <span style="background:#9A9ABF"></span>
-                <span style="background:#F0F0F6"></span>
-              </div>
-              <div class="palette-info"><span class="palette-name">Slate</span><span class="palette-check"></span></div>
-            </button>
-            <button type="button" class="palette-card" data-value="Rose">
-              <div class="palette-swatches">
-                <span style="background:#4A2040"></span>
-                <span style="background:#C07090"></span>
-                <span style="background:#E8B4C8"></span>
-                <span style="background:#FDF5F8"></span>
-              </div>
-              <div class="palette-info"><span class="palette-name">Rose</span><span class="palette-check"></span></div>
-            </button>
-            <button type="button" class="palette-card" data-value="Midnight">
-              <div class="palette-swatches">
-                <span style="background:#0D1B2A"></span>
-                <span style="background:#1B3A5C"></span>
-                <span style="background:#415A77"></span>
-                <span style="background:#E0E8F0"></span>
-              </div>
-              <div class="palette-info"><span class="palette-name">Midnight</span><span class="palette-check"></span></div>
-            </button>
-          </div>
-          <div class="custom-palette-wrap" id="custom-palette-wrap" style="margin-top:16px;">
-            <button type="button" class="btn-custom-toggle" id="btn-custom-palette" style="display:flex;align-items:center;gap:6px;background:none;border:1px dashed rgba(0,0,0,.15);border-radius:6px;padding:12px 16px;width:100%;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.85rem;color:var(--muted);transition:border-color .2s,color .2s;">
-              &#127912; Have a specific color in mind? Enter it here
-            </button>
-            <div class="custom-palette-fields" id="custom-palette-fields" style="display:none;margin-top:12px;padding:16px;background:rgba(0,0,0,.02);border-radius:8px;border:1px solid rgba(0,0,0,.06);">
-              <div style="font-size:0.8rem;color:var(--muted);margin-bottom:12px;">Type a color name, hex code, or describe what you want. I'll match it when building your site.</div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-                <div class="cfg-form-group" style="margin-bottom:0">
-                  <label style="font-size:0.78rem;font-weight:600;color:var(--ink);margin-bottom:4px;display:block">Primary Color</label>
-                  <input type="text" id="custom-primary" class="cfg-input" placeholder='e.g. Navy blue, #2E6BD6' style="font-size:0.82rem;padding:10px 12px" />
-                </div>
-                <div class="cfg-form-group" style="margin-bottom:0">
-                  <label style="font-size:0.78rem;font-weight:600;color:var(--ink);margin-bottom:4px;display:block">Accent Color</label>
-                  <input type="text" id="custom-accent" class="cfg-input" placeholder='e.g. Gold, #D4A030' style="font-size:0.82rem;padding:10px 12px" />
-                </div>
-              </div>
-              <div style="font-size:0.72rem;color:var(--muted);margin-top:8px;">These will be noted with your selections. Pick a preset above for the live preview, or leave it and I'll apply your custom colors when building.</div>
+              <input type="text" id="custom-color-notes" class="cfg-input" placeholder="Anything else about colors? (optional) e.g. match the navy in my logo" />
+              <button type="button" class="link-reset" id="btn-clear-colors">Go back to palette colors</button>
             </div>
           </div>
           <div class="btn-row">
@@ -1106,20 +1060,31 @@
 
       <!-- LIVE PREVIEW (Session 2.5) -->
       <aside class="cfg-preview" id="cfg-preview" aria-label="Live website preview">
-        <div class="preview-label"><span class="preview-dot"></span> Live Preview</div>
+        <div class="preview-top">
+          <div class="preview-label"><span class="preview-dot"></span> Live Preview</div>
+          <div class="device-toggle" role="group" aria-label="Preview size">
+            <button type="button" data-device="desktop" class="active"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Desktop</button>
+            <button type="button" data-device="mobile"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>Mobile</button>
+          </div>
+        </div>
         <div class="preview-frame">
           <div class="preview-chrome">
             <span></span><span></span><span></span>
             <div class="preview-url" id="preview-url">your-business.com</div>
+            <button type="button" class="preview-open" onclick="openFullPreview()" title="Open the full-size preview in a new tab">Full size &#8599;</button>
           </div>
-          <iframe class="preview-iframe" id="preview-iframe" src="demos/preview/other.html?style=Modern" title="Live website preview" loading="lazy"></iframe>
+          <div class="preview-viewport is-loading" id="preview-viewport">
+            <iframe class="preview-iframe loading" id="preview-iframe" title="Live website preview"></iframe>
+            <div class="preview-loader" aria-hidden="true"><span></span></div>
+          </div>
         </div>
         <div class="preview-meta">
           <span><b id="preview-pages-count">3</b> pages</span>
-          <span id="preview-style-label">Modern</span>
-          <span id="preview-palette-label">Default colors</span>
+          <span>Font: <b id="preview-style-label">Suggested</b></span>
+          <span>Colors: <b id="preview-palette-label">Signature</b></span>
         </div>
-        <div class="preview-empty-hint" id="preview-hint">Tip: as you pick choices on the left, this preview updates instantly.</div>
+        <button type="button" class="preview-full-link" onclick="openFullPreview()">Open the full website preview &#8599;</button>
+        <div class="preview-empty-hint" id="preview-hint">Scroll and click around inside the preview. It is a working demo site.</div>
       </aside>
 
     </div>
@@ -1157,20 +1122,10 @@
       </div>
       <div class="templates-grid">
         <article class="template-card fade-up" data-cat="hospitality">
-          <div class="template-preview">
+          <div class="template-preview" onclick="openTemplatePreview('restaurant')" title="Open live preview">
             <span class="template-badge">Coming soon</span>
-            <div class="mini-site restaurant">
-              <div class="mini-nav"><span class="mini-logo">Bistro Nine.</span><div class="mini-nav-links"><span>Menu</span><span>About</span><span>Reserve</span></div></div>
-              <div class="mini-hero">
-                <div class="mini-eyebrow">Farm to Table</div>
-                <div class="mini-headline">Local flavors,<br>slow Sundays.</div>
-                <div class="mini-sub">Fresh seafood and seasonal plates in a coastal setting.</div>
-                <span class="mini-btn">Reserve a Table</span>
-              </div>
-              <div class="mini-art"></div>
-              <div class="mini-blocks"><div class="mini-block"><span class="mini-block-icon">🍽️</span>Menu</div><div class="mini-block"><span class="mini-block-icon">📅</span>Reserve</div><div class="mini-block"><span class="mini-block-icon">📍</span>Find Us</div></div>
-              <div class="mini-footer"><span>Bistro Nine</span><span>Built by Joshua.</span></div>
-            </div>
+            <div class="tpl-thumb" data-slug="restaurant"></div>
+            <div class="tpl-hover">Open live preview &#8599;</div>
           </div>
           <div class="template-info">
             <div class="template-category">Hospitality</div>
@@ -1182,27 +1137,17 @@
               <span class="template-tag">Gallery</span>
             </div>
             <div class="template-footer">
-              <div class="template-price">From $500<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig('Restaurant / Cafe')">Configure</button>
+              <div class="template-price">From $500<span>one-time</span></div>
+              <div class="template-actions"><button class="template-btn ghost" onclick="openTemplatePreview('restaurant')">Preview</button><button class="template-btn" onclick="scrollToConfig('Restaurant / Cafe')">Configure</button></div>
             </div>
           </div>
         </article>
 
         <article class="template-card fade-up" data-cat="service">
-          <div class="template-preview">
+          <div class="template-preview" onclick="openTemplatePreview('salon')" title="Open live preview">
             <span class="template-badge">Coming soon</span>
-            <div class="mini-site salon">
-              <div class="mini-nav"><span class="mini-logo">Bloom Studio.</span><div class="mini-nav-links"><span>Services</span><span>Team</span><span>Book</span></div></div>
-              <div class="mini-hero">
-                <div class="mini-eyebrow">Hair &amp; Skincare</div>
-                <div class="mini-headline">A quieter kind<br>of salon.</div>
-                <div class="mini-sub">Specialty color, balayage, and skincare in a calm studio.</div>
-                <span class="mini-btn">Book Online</span>
-              </div>
-              <div class="mini-art"></div>
-              <div class="mini-blocks"><div class="mini-block"><span class="mini-block-icon">💇</span>Services</div><div class="mini-block"><span class="mini-block-icon">📅</span>Book</div><div class="mini-block"><span class="mini-block-icon">⭐</span>Reviews</div></div>
-              <div class="mini-footer"><span>Bloom Studio</span><span>Built by Joshua.</span></div>
-            </div>
+            <div class="tpl-thumb" data-slug="salon"></div>
+            <div class="tpl-hover">Open live preview &#8599;</div>
           </div>
           <div class="template-info">
             <div class="template-category">Beauty</div>
@@ -1214,27 +1159,17 @@
               <span class="template-tag">Reviews</span>
             </div>
             <div class="template-footer">
-              <div class="template-price">From $550<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig('Salon / Spa')">Configure</button>
+              <div class="template-price">From $550<span>one-time</span></div>
+              <div class="template-actions"><button class="template-btn ghost" onclick="openTemplatePreview('salon')">Preview</button><button class="template-btn" onclick="scrollToConfig('Salon / Spa')">Configure</button></div>
             </div>
           </div>
         </article>
 
         <article class="template-card fade-up" data-cat="service">
-          <div class="template-preview">
+          <div class="template-preview" onclick="openTemplatePreview('realestate')" title="Open live preview">
             <span class="template-badge">Coming soon</span>
-            <div class="mini-site realestate">
-              <div class="mini-nav"><span class="mini-logo">Coast Realty.</span><div class="mini-nav-links"><span>Listings</span><span>Areas</span><span>Contact</span></div></div>
-              <div class="mini-hero">
-                <div class="mini-eyebrow">Amelia Island Realtor</div>
-                <div class="mini-headline">Your NE Florida<br>home expert.</div>
-                <div class="mini-sub">Helping families buy, sell, and relocate since 2015.</div>
-                <span class="mini-btn">Schedule a Call</span>
-              </div>
-              <div class="mini-art"></div>
-              <div class="mini-blocks"><div class="mini-block"><span class="mini-block-icon">🏠</span>Listings</div><div class="mini-block"><span class="mini-block-icon">📋</span>Lead Form</div><div class="mini-block"><span class="mini-block-icon">📍</span>Map</div></div>
-              <div class="mini-footer"><span>Coast Realty</span><span>Built by Joshua.</span></div>
-            </div>
+            <div class="tpl-thumb" data-slug="realestate"></div>
+            <div class="tpl-hover">Open live preview &#8599;</div>
           </div>
           <div class="template-info">
             <div class="template-category">Real Estate</div>
@@ -1246,27 +1181,17 @@
               <span class="template-tag">Map</span>
             </div>
             <div class="template-footer">
-              <div class="template-price">From $700<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig('Real Estate')">Configure</button>
+              <div class="template-price">From $700<span>one-time</span></div>
+              <div class="template-actions"><button class="template-btn ghost" onclick="openTemplatePreview('realestate')">Preview</button><button class="template-btn" onclick="scrollToConfig('Real Estate')">Configure</button></div>
             </div>
           </div>
         </article>
 
         <article class="template-card fade-up" data-cat="service">
-          <div class="template-preview">
+          <div class="template-preview" onclick="openTemplatePreview('fitness')" title="Open live preview">
             <span class="template-badge">Coming soon</span>
-            <div class="mini-site fitness">
-              <div class="mini-nav"><span class="mini-logo">Crosswave Fit.</span><div class="mini-nav-links"><span>Classes</span><span>Join</span><span>About</span></div></div>
-              <div class="mini-hero">
-                <div class="mini-eyebrow">Strength + Community</div>
-                <div class="mini-headline">Train hard. Be part<br>of something.</div>
-                <div class="mini-sub">Group classes, personal training, and a gym that knows your name.</div>
-                <span class="mini-btn">Start Free Trial</span>
-              </div>
-              <div class="mini-art"></div>
-              <div class="mini-blocks"><div class="mini-block"><span class="mini-block-icon">📅</span>Schedule</div><div class="mini-block"><span class="mini-block-icon">💳</span>Join</div><div class="mini-block"><span class="mini-block-icon">💪</span>Programs</div></div>
-              <div class="mini-footer"><span>Crosswave Fit</span><span>Built by Joshua.</span></div>
-            </div>
+            <div class="tpl-thumb" data-slug="fitness"></div>
+            <div class="tpl-hover">Open live preview &#8599;</div>
           </div>
           <div class="template-info">
             <div class="template-category">Fitness</div>
@@ -1278,27 +1203,17 @@
               <span class="template-tag">Memberships</span>
             </div>
             <div class="template-footer">
-              <div class="template-price">From $550<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig('Fitness / Gym')">Configure</button>
+              <div class="template-price">From $550<span>one-time</span></div>
+              <div class="template-actions"><button class="template-btn ghost" onclick="openTemplatePreview('fitness')">Preview</button><button class="template-btn" onclick="scrollToConfig('Fitness / Gym')">Configure</button></div>
             </div>
           </div>
         </article>
 
         <article class="template-card fade-up" data-cat="service">
-          <div class="template-preview">
+          <div class="template-preview" onclick="openTemplatePreview('professional')" title="Open live preview">
             <span class="template-badge">Coming soon</span>
-            <div class="mini-site lawyer">
-              <div class="mini-nav"><span class="mini-logo">Calloway & Co.</span><div class="mini-nav-links"><span>Practice</span><span>Team</span><span>Contact</span></div></div>
-              <div class="mini-hero">
-                <div class="mini-eyebrow">Small Business Counsel</div>
-                <div class="mini-headline">Clear legal guidance<br>for growing businesses.</div>
-                <div class="mini-sub">Contracts, LLC formation, and twenty years of experience.</div>
-                <span class="mini-btn">Free Consultation</span>
-              </div>
-              <div class="mini-art"></div>
-              <div class="mini-blocks"><div class="mini-block"><span class="mini-block-icon">⚖️</span>Practice</div><div class="mini-block"><span class="mini-block-icon">📝</span>Blog</div><div class="mini-block"><span class="mini-block-icon">📋</span>Forms</div></div>
-              <div class="mini-footer"><span>Calloway & Co.</span><span>Built by Joshua.</span></div>
-            </div>
+            <div class="tpl-thumb" data-slug="professional"></div>
+            <div class="tpl-hover">Open live preview &#8599;</div>
           </div>
           <div class="template-info">
             <div class="template-category">Professional</div>
@@ -1310,27 +1225,17 @@
               <span class="template-tag">Forms</span>
             </div>
             <div class="template-footer">
-              <div class="template-price">From $800<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig('Professional Services')">Configure</button>
+              <div class="template-price">From $800<span>one-time</span></div>
+              <div class="template-actions"><button class="template-btn ghost" onclick="openTemplatePreview('professional')">Preview</button><button class="template-btn" onclick="scrollToConfig('Professional Services')">Configure</button></div>
             </div>
           </div>
         </article>
 
         <article class="template-card fade-up" data-cat="retail">
-          <div class="template-preview">
+          <div class="template-preview" onclick="openTemplatePreview('retail')" title="Open live preview">
             <span class="template-badge">Coming soon</span>
-            <div class="mini-site boutique">
-              <div class="mini-nav"><span class="mini-logo">Tidal & Co.</span><div class="mini-nav-links"><span>Shop</span><span>Lookbook</span><span>About</span></div></div>
-              <div class="mini-hero">
-                <div class="mini-eyebrow">Coastal Goods Co.</div>
-                <div class="mini-headline">Coastal goods,<br>built to last.</div>
-                <div class="mini-sub">Beach essentials and home pieces from independent makers.</div>
-                <span class="mini-btn">Shop Now</span>
-              </div>
-              <div class="mini-art"></div>
-              <div class="mini-blocks"><div class="mini-block"><span class="mini-block-icon">🛍️</span>Shop</div><div class="mini-block"><span class="mini-block-icon">📷</span>Gallery</div><div class="mini-block"><span class="mini-block-icon">🛒</span>Cart</div></div>
-              <div class="mini-footer"><span>Tidal & Co.</span><span>Built by Joshua.</span></div>
-            </div>
+            <div class="tpl-thumb" data-slug="retail"></div>
+            <div class="tpl-hover">Open live preview &#8599;</div>
           </div>
           <div class="template-info">
             <div class="template-category">Retail</div>
@@ -1342,27 +1247,17 @@
               <span class="template-tag">Cart</span>
             </div>
             <div class="template-footer">
-              <div class="template-price">From $950<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig('Retail / Boutique')">Configure</button>
+              <div class="template-price">From $950<span>one-time</span></div>
+              <div class="template-actions"><button class="template-btn ghost" onclick="openTemplatePreview('retail')">Preview</button><button class="template-btn" onclick="scrollToConfig('Retail / Boutique')">Configure</button></div>
             </div>
           </div>
         </article>
 
         <article class="template-card fade-up" data-cat="service">
-          <div class="template-preview">
+          <div class="template-preview" onclick="openTemplatePreview('trades')" title="Open live preview">
             <span class="template-badge">Coming soon</span>
-            <div class="mini-site trades">
-              <div class="mini-nav"><span class="mini-logo" style="text-transform:uppercase;letter-spacing:0.08em;font-size:9px;">Coastline Pros</span><div class="mini-nav-links"><span>Services</span><span>Areas</span><span>Quote</span></div></div>
-              <div class="mini-hero">
-                <div class="mini-eyebrow">Licensed + Insured</div>
-                <div class="mini-headline">On time. On budget.<br>Done right.</div>
-                <div class="mini-sub">Pressure washing, painting, and exterior services across Nassau County.</div>
-                <span class="mini-btn">Get a Free Quote</span>
-              </div>
-              <div class="mini-art"></div>
-              <div class="mini-blocks"><div class="mini-block"><span class="mini-block-icon">⚡</span>Electrical</div><div class="mini-block"><span class="mini-block-icon">🔧</span>Plumbing</div><div class="mini-block"><span class="mini-block-icon">🏠</span>Remodel</div></div>
-              <div class="mini-footer"><span>Coastline Pros</span><span>Built by Joshua.</span></div>
-            </div>
+            <div class="tpl-thumb" data-slug="trades"></div>
+            <div class="tpl-hover">Open live preview &#8599;</div>
           </div>
           <div class="template-info">
             <div class="template-category">Trades</div>
@@ -1374,27 +1269,17 @@
               <span class="template-tag">Gallery</span>
             </div>
             <div class="template-footer">
-              <div class="template-price">From $600<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig('Trades / Home Services')">Configure</button>
+              <div class="template-price">From $600<span>one-time</span></div>
+              <div class="template-actions"><button class="template-btn ghost" onclick="openTemplatePreview('trades')">Preview</button><button class="template-btn" onclick="scrollToConfig('Trades / Home Services')">Configure</button></div>
             </div>
           </div>
         </article>
 
         <article class="template-card fade-up" data-cat="service">
-          <div class="template-preview">
+          <div class="template-preview" onclick="openTemplatePreview('creative')" title="Open live preview">
             <span class="template-badge">Coming soon</span>
-            <div class="mini-site creative">
-              <div class="mini-nav"><span class="mini-logo" style="letter-spacing:0.06em;font-weight:400;">Studio Iris</span><div class="mini-nav-links"><span>Work</span><span>Services</span><span>Hire</span></div></div>
-              <div class="mini-hero">
-                <div class="mini-eyebrow">Design + Development</div>
-                <div class="mini-headline">Brands that<br>feel alive.</div>
-                <div class="mini-sub">Brand identity, web design, and creative direction for startups.</div>
-                <span class="mini-btn">View Work</span>
-              </div>
-              <div class="mini-art"></div>
-              <div class="mini-blocks"><div class="mini-block"><span class="mini-block-icon">🎨</span>Portfolio</div><div class="mini-block"><span class="mini-block-icon">✏️</span>Services</div><div class="mini-block"><span class="mini-block-icon">📧</span>Contact</div></div>
-              <div class="mini-footer"><span>Studio Iris</span><span>Built by Joshua.</span></div>
-            </div>
+            <div class="tpl-thumb" data-slug="creative"></div>
+            <div class="tpl-hover">Open live preview &#8599;</div>
           </div>
           <div class="template-info">
             <div class="template-category">Creative</div>
@@ -1406,27 +1291,17 @@
               <span class="template-tag">Contact</span>
             </div>
             <div class="template-footer">
-              <div class="template-price">From $650<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig('Creative / Portfolio')">Configure</button>
+              <div class="template-price">From $650<span>one-time</span></div>
+              <div class="template-actions"><button class="template-btn ghost" onclick="openTemplatePreview('creative')">Preview</button><button class="template-btn" onclick="scrollToConfig('Creative / Portfolio')">Configure</button></div>
             </div>
           </div>
         </article>
 
         <article class="template-card fade-up" data-cat="service">
-          <div class="template-preview">
+          <div class="template-preview" onclick="openTemplatePreview('other')" title="Open live preview">
             <span class="template-badge">Coming soon</span>
-            <div class="mini-site other">
-              <div class="mini-nav"><span class="mini-logo">LaunchKit</span><div class="mini-nav-links"><span>Features</span><span>Pricing</span><span>FAQ</span></div></div>
-              <div class="mini-hero">
-                <div class="mini-eyebrow">SaaS / Startup</div>
-                <div class="mini-headline">Ship your idea<br>in days.</div>
-                <div class="mini-sub">Everything you need to go from concept to launch.</div>
-                <span class="mini-btn">Start Free Trial</span>
-              </div>
-              <div class="mini-art"></div>
-              <div class="mini-blocks"><div class="mini-block"><span class="mini-block-icon">⚡</span>Features</div><div class="mini-block"><span class="mini-block-icon">💰</span>Pricing</div><div class="mini-block"><span class="mini-block-icon">❓</span>FAQ</div></div>
-              <div class="mini-footer"><span>LaunchKit</span><span>Built by Joshua.</span></div>
-            </div>
+            <div class="tpl-thumb" data-slug="other"></div>
+            <div class="tpl-hover">Open live preview &#8599;</div>
           </div>
           <div class="template-info">
             <div class="template-category">General</div>
@@ -1438,8 +1313,8 @@
               <span class="template-tag">Newsletter</span>
             </div>
             <div class="template-footer">
-              <div class="template-price">From $500<span> / one-time</span></div>
-              <button class="template-btn" onclick="scrollToConfig('Other')">Configure</button>
+              <div class="template-price">From $500<span>one-time</span></div>
+              <div class="template-actions"><button class="template-btn ghost" onclick="openTemplatePreview('other')">Preview</button><button class="template-btn" onclick="scrollToConfig('Other')">Configure</button></div>
             </div>
           </div>
         </article>
@@ -1610,22 +1485,6 @@
       });
     });
 
-    // CUSTOM TOGGLE BUTTONS
-    document.getElementById('btn-custom-palette').addEventListener('click', function() {
-      const fields = document.getElementById('custom-palette-fields');
-      const open = fields.style.display !== 'none';
-      fields.style.display = open ? 'none' : 'block';
-      this.style.borderColor = open ? 'rgba(0,0,0,.15)' : 'var(--orange)';
-      this.style.color = open ? 'var(--muted)' : 'var(--orange)';
-    });
-    document.getElementById('btn-custom-style').addEventListener('click', function() {
-      const fields = document.getElementById('custom-style-fields');
-      const open = fields.style.display !== 'none';
-      fields.style.display = open ? 'none' : 'block';
-      this.style.borderColor = open ? 'rgba(0,0,0,.15)' : 'var(--orange)';
-      this.style.color = open ? 'var(--muted)' : 'var(--orange)';
-    });
-
     // PAGE SLIDER
     const slider = document.getElementById('page-slider');
     const pageNum = document.getElementById('page-count');
@@ -1698,13 +1557,8 @@
       });
 
       // Summary grid
-      const cFont = document.getElementById('custom-font').value.trim();
-      const cPrimary = document.getElementById('custom-primary').value.trim();
-      const cAccent = document.getElementById('custom-accent').value.trim();
-      let styleVal = state.style || '-';
-      if (cFont) styleVal += ` (custom: ${cFont})`;
-      let palVal = state.palette || '-';
-      if (cPrimary || cAccent) palVal += ` (custom: ${[cPrimary,cAccent].filter(Boolean).join(', ')})`;
+      const styleVal = fontSummary();
+      const palVal = paletteSummary();
       document.getElementById('summary-grid').innerHTML = `
         <div class="summary-item"><div class="summary-label">Industry</div><div class="summary-value">${state.industry || '-'}</div></div>
         <div class="summary-item"><div class="summary-label">Style</div><div class="summary-value">${styleVal}</div></div>
@@ -1723,9 +1577,7 @@
       const business = document.getElementById('cfg-business').value.trim();
       const tagline = document.getElementById('cfg-tagline').value.trim();
       const notes = document.getElementById('cfg-notes').value.trim();
-      const customPrimary = document.getElementById('custom-primary').value.trim();
-      const customAccent = document.getElementById('custom-accent').value.trim();
-      const customFont = document.getElementById('custom-font').value.trim();
+      const colorNotes = document.getElementById('custom-color-notes').value.trim();
 
       if (!name || !email) {
         alert('Please add your name and email so I can reply.');
@@ -1735,11 +1587,12 @@
       const { lo, hi } = calcPrice();
       const payload = {
         name, email, phone, business, tagline, notes,
-        customColors: (customPrimary || customAccent) ? `Primary: ${customPrimary || 'none'}, Accent: ${customAccent || 'none'}` : '',
-        customFont: customFont || '',
+        customColors: customColorList().join(', ') + (colorNotes ? (customColorList().length ? ' | ' : '') + 'Notes: ' + colorNotes : ''),
+        customFont: state.uploadedFont ? 'Uploaded file: ' + state.uploadedFont.name + ' (ask the client to email it)' : (state.customFont || ''),
         industry: state.industry || 'Not selected',
-        style: state.style || 'Not selected',
-        palette: state.palette || 'Not selected',
+        style: fontSummary(),
+        palette: paletteSummary(),
+        previewLink: new URL(buildPreviewUrl(true), location.href).href,
         features: state.features.join(', '),
         pages: state.pages,
         estimate: `$${lo.toLocaleString()}–$${hi.toLocaleString()}`,
@@ -1775,207 +1628,239 @@
     });
 
     /* ===================================================================
-       LIVE PREVIEW LOGIC (Session 2.5)
-       Updates the preview pane in real time as the user picks options.
-       Reads from the existing `state` object - no state duplication.
+       LIVE PREVIEW
+       The demo sites live in demos/preview/. Their palettes and fonts come
+       from demos/preview/themes.js, so the configurator and the demos
+       always stay in sync. Choices are sent to the preview with postMessage
+       and passed as URL params for the full-size preview tab.
        =================================================================== */
+    const JH = window.JH_THEMES;
+    state.customColors = { brand: '', accent: '', bg: '' };
+    state.customFont = '';
+    state.uploadedFont = null;
+    state.styleTouched = false;
 
-    const INDUSTRY_TEMPLATES = {
-      'Restaurant / Cafe': {
-        brand: 'Bistro Nine', url: 'bistronine.com', eyebrow: 'Coastal Bistro',
-        headline: 'Local seafood, slow Sundays, walk-ins welcome.',
-        sub: 'A 30-seat kitchen on Centre Street pulling the freshest catch of the day.',
-        cta: 'Reserve a Table', navExtra: ['Menu', 'About'],
-        gradient: ['#3B2314','#C4651A'], artAngle: '135deg',
-        logoCSS: 'font-family:Playfair Display,Georgia,serif;font-style:italic;letter-spacing:0;font-weight:600;', brandSuffix: '',
-        ctaRadius: '4px', secondaryCTA: true, defaultStyle: 'Classic',
-        defaultColors: { bg:'#FDF8F3', primary:'#3B2314', accent:'#C4651A', text:'#3B2314', muted:'#A09080' }
-      },
-      'Salon / Spa': {
-        brand: 'bloom studio', url: 'bloomstudio.com', eyebrow: 'Hair & Skincare',
-        headline: 'A quieter kind of salon.',
-        sub: 'Specialty color, balayage, and skincare in a calm, modern studio.',
-        cta: 'Book Online', navExtra: ['Services', 'Team'],
-        gradient: ['#3D2233','#D4829E'], artAngle: '160deg',
-        logoCSS: 'text-transform:lowercase;letter-spacing:0.1em;font-weight:400;font-family:DM Sans,sans-serif;font-size:13px;', brandSuffix: '',
-        ctaRadius: '20px', secondaryCTA: false, defaultStyle: 'Minimal',
-        defaultColors: { bg:'#FBF5F8', primary:'#3D2233', accent:'#B5547A', text:'#3D2233', muted:'#A08890' }
-      },
-      'Real Estate': {
-        brand: 'COAST REALTY', url: 'coastrealty.com', eyebrow: 'Amelia Island Realtor',
-        headline: 'Your Northeast Florida home expert.',
-        sub: 'Helping families buy, sell, and relocate to Amelia Island and Jacksonville.',
-        cta: 'Schedule a Call', navExtra: ['Listings', 'Areas'],
-        gradient: ['#1A2B4A','#4A90D9'], artAngle: '180deg',
-        logoCSS: 'text-transform:uppercase;letter-spacing:0.14em;font-size:11px;font-family:Space Grotesk,sans-serif;', brandSuffix: '',
-        ctaRadius: '3px', secondaryCTA: true, defaultStyle: 'Modern',
-        defaultColors: { bg:'#F4F7FA', primary:'#1A2B4A', accent:'#2E6AB4', text:'#1A2B4A', muted:'#8090A0' }
-      },
-      'Fitness / Gym': {
-        brand: 'CROSSWAVE', url: 'crosswavefit.com', eyebrow: 'Strength + Community',
-        headline: 'Train hard. Be part of something.',
-        sub: 'Group classes, personal training, and a gym that actually knows your name.',
-        cta: 'Start Free Trial', navExtra: ['Classes', 'Memberships'],
-        gradient: ['#0D0D0D','#E8553A'], artAngle: '90deg',
-        logoCSS: 'text-transform:uppercase;letter-spacing:0.18em;font-size:12px;font-weight:800;font-family:Outfit,sans-serif;', brandSuffix: '',
-        ctaRadius: '0px', secondaryCTA: false, defaultStyle: 'Bold',
-        defaultColors: { bg:'#1A1A1A', primary:'#F0F0F0', accent:'#E8553A', text:'#F0F0F0', muted:'#777' }
-      },
-      'Professional Services': {
-        brand: 'Calloway', url: 'callowayandco.com', eyebrow: 'Small Business Counsel',
-        headline: 'Clear legal guidance for growing businesses.',
-        sub: 'Contracts, LLC formation, and quiet advice. Twenty years of experience.',
-        cta: 'Free Consultation', navExtra: ['Practice', 'Team'],
-        gradient: ['#1C2331','#8B7A3E'], artAngle: '145deg',
-        logoCSS: 'font-family:Playfair Display,Georgia,serif;font-weight:400;letter-spacing:0.02em;', brandSuffix: ' & Co.',
-        ctaRadius: '3px', secondaryCTA: true, defaultStyle: 'Classic',
-        defaultColors: { bg:'#F6F5F0', primary:'#1C2331', accent:'#8B7A3E', text:'#1C2331', muted:'#8A8878' }
-      },
-      'Retail / Boutique': {
-        brand: 'tidal', url: 'tidalandco.com', eyebrow: 'Coastal Goods Co.',
-        headline: 'Coastal goods, made local, built to last.',
-        sub: 'Beach essentials, gifts, and home pieces curated from independent makers.',
-        cta: 'Shop Now', navExtra: ['Shop', 'Lookbook'],
-        gradient: ['#2C3028','#6B7F5E'], artAngle: '120deg',
-        logoCSS: 'text-transform:lowercase;letter-spacing:0.06em;font-family:DM Sans,sans-serif;', brandSuffix: ' & co.',
-        ctaRadius: '20px', secondaryCTA: true, defaultStyle: 'Minimal',
-        defaultColors: { bg:'#F8F6F2', primary:'#2C3028', accent:'#6B7F5E', text:'#2C3028', muted:'#8A8A80' }
-      },
-      'Trades / Home Services': {
-        brand: 'COASTLINE PROS', url: 'coastlinepros.com', eyebrow: 'Licensed + Insured + Local',
-        headline: 'On time. On budget. Done right the first time.',
-        sub: 'Pressure washing, painting, and exterior services across Nassau County.',
-        cta: 'Get a Free Quote', navExtra: ['Services', 'Areas'],
-        gradient: ['#1B3A2D','#E09F3E'], artAngle: '135deg',
-        logoCSS: 'text-transform:uppercase;letter-spacing:0.12em;font-size:11px;font-weight:700;font-family:Outfit,sans-serif;', brandSuffix: '',
-        ctaRadius: '6px', secondaryCTA: false, defaultStyle: 'Bold',
-        defaultColors: { bg:'#F5F2EC', primary:'#1B3A2D', accent:'#E09F3E', text:'#1B3A2D', muted:'#8A8070' }
-      },
-      'Creative / Portfolio': {
-        brand: 'Studio Iris', url: 'studioiris.com', eyebrow: 'Visual Storytelling',
-        headline: 'Brand photography that feels like you.',
-        sub: 'Editorial portraits and commercial work for small brands on the East Coast.',
-        cta: 'Start a Project', navExtra: ['Portfolio', 'About'],
-        gradient: ['#2A1B3D','#7B4F9D'], artAngle: '170deg',
-        logoCSS: 'font-weight:400;letter-spacing:0.08em;font-size:13px;font-family:DM Sans,sans-serif;', brandSuffix: '',
-        ctaRadius: '2px', secondaryCTA: true, defaultStyle: 'Minimal',
-        defaultColors: { bg:'#F7F4FA', primary:'#2A1B3D', accent:'#7B4F9D', text:'#2A1B3D', muted:'#8A7F95' }
-      },
-      'Other': {
-        brand: 'Your Brand', url: 'your-business.com', eyebrow: 'Your Industry',
-        headline: 'Your headline will go here.',
-        sub: 'A short subheadline that says what makes you different.',
-        cta: 'Get Started', navExtra: ['Services', 'About'],
-        gradient: ['#2C2C2C','#666'], artAngle: '135deg',
-        logoCSS: '', brandSuffix: '',
-        ctaRadius: '8px', secondaryCTA: true, defaultStyle: 'Modern',
-        defaultColors: { bg:'#F5F5F5', primary:'#2C2C2C', accent:'#555', text:'#2C2C2C', muted:'#888' }
-      }
-    };
+    const previewState = { loadedSlug: '', device: window.innerWidth < 700 ? 'mobile' : 'desktop', ufontSent: false, lastSlug: '' };
+    const previewFrame = document.getElementById('preview-iframe');
+    const previewViewport = document.getElementById('preview-viewport');
 
-    const PALETTE_COLORS = {
-      'Coastal':  { bg: '#F0F7FA', primary: '#1B4965', accent: '#5FA8D3', text: '#1B4965', muted: '#6A8FA5' },
-      'Sage':     { bg: '#F2F5F0', primary: '#2F3E2E', accent: '#6B8F71', text: '#2F3E2E', muted: '#6A7A6A' },
-      'Warm':     { bg: '#FAF6F0', primary: '#3D2B1F', accent: '#C08552', text: '#3D2B1F', muted: '#8A7A6A' },
-      'Slate':    { bg: '#F0F0F6', primary: '#1E1E2E', accent: '#4A4A6A', text: '#1E1E2E', muted: '#6A6A8A' },
-      'Rose':     { bg: '#FDF5F8', primary: '#4A2040', accent: '#C07090', text: '#4A2040', muted: '#8A6A7A' },
-      'Midnight': { bg: '#E0E8F0', primary: '#0D1B2A', accent: '#1B3A5C', text: '#0D1B2A', muted: '#5A6A7A' }
-    };
-
-    /* ---- Live Preview (iframe-based) ---- */
-    const INDUSTRY_PREVIEW_MAP = {
-      'Restaurant / Cafe':    'demos/preview/restaurant.html',
-      'Salon / Spa':          'demos/preview/salon.html',
-      'Real Estate':          'demos/preview/realestate.html',
-      'Fitness / Gym':        'demos/preview/fitness.html',
-      'Professional Services':'demos/preview/professional.html',
-      'Retail / Boutique':    'demos/preview/retail.html',
-      'Trades / Home Services':'demos/preview/trades.html',
-      'Creative / Portfolio': 'demos/preview/creative.html',
-      'Other':                'demos/preview/other.html'
-    };
-
-    let currentPreviewSrc = '';
-
-    function getPreviewSrc(industry, style, palette) {
-      const ind = industry || 'Other';
-      const file = INDUSTRY_PREVIEW_MAP[ind] || INDUSTRY_PREVIEW_MAP['Other'];
-      const params = [];
-      if (style) params.push('style=' + encodeURIComponent(style));
-      if (palette) params.push('palette=' + encodeURIComponent(palette));
-      return file + (params.length ? '?' + params.join('&') : '');
+    function currentSlug() { return JH.slugFor(state.industry || 'Other'); }
+    function currentInd() { return JH.industries[currentSlug()]; }
+    function esc(v) { return String(v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+    function hasCustomColors() { const c = state.customColors; return !!(c.brand || c.accent || c.bg); }
+    function customColorList() {
+      const c = state.customColors, names = { brand: 'Main', accent: 'Accent', bg: 'Background' };
+      return ['brand', 'accent', 'bg'].filter(k => c[k]).map(k => names[k] + ' ' + c[k]);
+    }
+    function fontSummary() {
+      if (state.uploadedFont) return 'Uploaded font (' + state.uploadedFont.name + ')';
+      if (state.customFont) return state.customFont + ' (custom font)';
+      const f = JH.fonts[state.style];
+      return f ? f.label + ' (' + f.pair + ')' : '-';
+    }
+    function paletteSummary() {
+      const list = customColorList();
+      if (list.length) return 'Custom colors: ' + list.join(', ');
+      return state.palette || '-';
+    }
+    function enableNext(step) {
+      const b = document.querySelector('.step[data-step="' + step + '"] [data-next]');
+      if (b) b.disabled = false;
     }
 
-    function updatePreview() {
-      const iframe = document.getElementById('preview-iframe');
-      if (!iframe) return;
+    /* ---- Step 2: font style cards ---- */
+    function renderFontCards() {
+      const ind = currentInd();
+      document.getElementById('font-grid').innerHTML = Object.keys(JH.fonts).map(key => {
+        const f = JH.fonts[key];
+        const st = 'font-family:' + f.display + ';font-weight:' + f.weight + ';text-transform:' + f.transform + ';letter-spacing:' + f.spacing;
+        const selected = state.style === key && !state.customFont && !state.uploadedFont;
+        return '<button type="button" class="font-card' + (selected ? ' selected' : '') + '" data-value="' + key + '">' +
+          (ind.font === key ? '<span class="fc-badge">Suggested</span>' : '') +
+          '<span class="fc-top"><span class="fc-aa" style="' + st + '">Aa</span><span class="fc-check"></span></span>' +
+          '<span class="fc-name">' + f.label + '</span>' +
+          '<span class="fc-line" style="' + st + '">' + esc(ind.sample) + '</span>' +
+          '<span class="fc-desc">' + f.desc + '</span>' +
+          '<span class="fc-pair">' + f.pair + '</span></button>';
+      }).join('');
+    }
+    document.getElementById('font-grid').addEventListener('click', e => {
+      const card = e.target.closest('.font-card');
+      if (!card) return;
+      state.style = card.dataset.value;
+      state.styleTouched = true;
+      clearCustomFont(false);
+      document.querySelectorAll('#font-grid .font-card').forEach(c => c.classList.toggle('selected', c === card));
+      enableNext(2);
+      updatePreview();
+    });
 
-      const ind = state.industry || 'Other';
-      const tpl = INDUSTRY_TEMPLATES[ind] || INDUSTRY_TEMPLATES['Other'];
-      const sty = state.style || tpl.defaultStyle || 'Modern';
-      const pal = state.palette || '';
+    /* ---- Step 3: palette cards for the chosen industry ---- */
+    function renderPaletteCards() {
+      const ind = currentInd();
+      document.getElementById('palette-industry').textContent = ind.label.split(' / ')[0].toLowerCase() + ' sites';
+      document.getElementById('palette-grid').innerHTML = Object.keys(ind.palettes).map((name, i) => {
+        const p = ind.palettes[name];
+        const selected = state.palette === name && !hasCustomColors();
+        return '<button type="button" class="palette-card pal-card' + (selected ? ' selected' : '') + '" data-value="' + esc(name) + '">' +
+          '<span class="pal-mini" style="display:grid;background:' + p.bg + '">' +
+            '<span class="pm-nav" style="background:' + p.brand + '"></span>' +
+            '<span class="pm-text"><i style="background:' + p.ink + '"></i><i style="background:' + p.ink + ';width:70%"></i><i style="background:' + p.muted + ';width:85%;height:5px"></i><b style="background:' + p.accent + '"></b></span>' +
+            '<span class="pm-img" style="background:' + p.surface + '"><i style="background:' + p.brand + '"></i></span>' +
+          '</span>' +
+          '<span class="palette-swatches">' + ['brand', 'accent', 'ink', 'surface', 'bg'].map(k => '<span style="background:' + p[k] + '"></span>').join('') + '</span>' +
+          '<span class="palette-info"><span class="palette-name">' + esc(name) + (i === 0 ? ' <small>Signature</small>' : '') + '</span><span class="palette-check"></span></span>' +
+          '</button>';
+      }).join('');
+    }
+    document.getElementById('palette-grid').addEventListener('click', e => {
+      const card = e.target.closest('.palette-card');
+      if (!card) return;
+      state.palette = card.dataset.value;
+      clearCustomColors(false);
+      document.querySelectorAll('#palette-grid .palette-card').forEach(c => c.classList.toggle('selected', c === card));
+      enableNext(3);
+      updatePreview();
+    });
 
-      // Update URL bar text
-      const urlEl = document.getElementById('preview-url');
-      urlEl.textContent = tpl.url;
-
-      // Update meta labels
-      document.getElementById('preview-style-label').textContent = state.style ? sty : sty + ' (default)';
-      document.getElementById('preview-palette-label').textContent = pal || 'Default colors';
-      document.getElementById('preview-pages-count').textContent = state.pages;
-
-      // Decide if we need to reload the iframe (industry changed) or just send a message (style/palette changed)
-      const newSrc = getPreviewSrc(ind, sty, pal);
-      const baseSrc = INDUSTRY_PREVIEW_MAP[ind] || INDUSTRY_PREVIEW_MAP['Other'];
-
-      const bizData = getBizData();
-
-      if (currentPreviewSrc !== baseSrc) {
-        // Industry changed: load the new preview page
-        currentPreviewSrc = baseSrc;
-        iframe.classList.add('loading');
-        iframe.src = newSrc;
-        iframe.onload = function() {
-          iframe.classList.remove('loading');
-          try {
-            iframe.contentWindow.postMessage(Object.assign({
-              type: 'theme-update',
-              style: sty,
-              palette: pal || null
-            }, bizData), '*');
-          } catch(e) {}
-        };
-      } else {
-        try {
-          iframe.contentWindow.postMessage(Object.assign({
-            type: 'theme-update',
-            style: sty,
-            palette: pal || null
-          }, bizData), '*');
-        } catch(e) {}
-      }
-
-      // Hide the hint once user has interacted
-      const hint = document.getElementById('preview-hint');
-      if (hint && (state.industry || state.style || state.palette)) {
-        hint.style.display = 'none';
-      }
+    /* When the industry changes, load its suggested font and signature palette */
+    function syncIndustryDefaults() {
+      const slug = currentSlug();
+      if (slug === previewState.lastSlug) return;
+      previewState.lastSlug = slug;
+      const ind = JH.industries[slug];
+      if (!state.styleTouched || !JH.fonts[state.style]) state.style = ind.font;
+      if (!state.palette || !ind.palettes[state.palette]) state.palette = ind.palette;
+      renderFontCards();
+      renderPaletteCards();
+      fillColorPickers();
+      if (state.industry) { enableNext(2); enableNext(3); }
     }
 
-    function hookPreviewUpdate() {
-      const refresh = () => requestAnimationFrame(updatePreview);
-      document.querySelectorAll('[data-mode="single"] .option-card, [data-mode="single"] .palette-card').forEach(el => {
-        el.addEventListener('click', refresh);
+    /* ---- Custom panels (open / close) ---- */
+    function wireToggle(btnId, bodyId) {
+      const btn = document.getElementById(btnId), body = document.getElementById(bodyId);
+      btn.addEventListener('click', () => {
+        const open = body.hidden;
+        body.hidden = !open;
+        btn.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', String(open));
       });
-      document.querySelectorAll('[data-mode="multi"] .check-card').forEach(el => {
-        el.addEventListener('click', refresh);
-      });
-      const slider = document.getElementById('page-slider');
-      if (slider) slider.addEventListener('input', refresh);
     }
-    hookPreviewUpdate();
+    wireToggle('btn-custom-style', 'custom-style-fields');
+    wireToggle('btn-custom-palette', 'custom-palette-fields');
 
-    // Business info helpers
+    /* ---- Custom colors ---- */
+    function toHex(v) {
+      v = String(v || '').trim();
+      if (!v) return '';
+      if (/^#?[0-9a-f]{6}$/i.test(v)) return ('#' + v.replace('#', '')).toUpperCase();
+      if (/^#?[0-9a-f]{3}$/i.test(v)) return ('#' + v.replace('#', '').replace(/(.)/g, '$1$1')).toUpperCase();
+      const probe = document.createElement('span');
+      probe.style.color = v.replace(/\s+/g, '');
+      if (!probe.style.color) return '';
+      document.body.appendChild(probe);
+      const m = getComputedStyle(probe).color.match(/\d+(\.\d+)?/g);
+      probe.remove();
+      if (!m) return '';
+      return ('#' + m.slice(0, 3).map(n => ('0' + Math.round(+n).toString(16)).slice(-2)).join('')).toUpperCase();
+    }
+    function fillColorPickers() {
+      const p = currentInd().palettes[state.palette] || currentInd().palettes[currentInd().palette];
+      ['brand', 'accent', 'bg'].forEach(k => {
+        const val = state.customColors[k] || p[k];
+        document.getElementById('cc-' + k).value = val.toLowerCase();
+        const t = document.getElementById('cc-' + k + '-text');
+        if (document.activeElement !== t) t.value = state.customColors[k] || '';
+        t.placeholder = p[k];
+      });
+    }
+    function markCustomColors() {
+      document.getElementById('btn-custom-palette').classList.toggle('active', hasCustomColors());
+      document.querySelectorAll('#palette-grid .palette-card').forEach(c => c.classList.toggle('selected', !hasCustomColors() && c.dataset.value === state.palette));
+    }
+    ['brand', 'accent', 'bg'].forEach(k => {
+      const picker = document.getElementById('cc-' + k), text = document.getElementById('cc-' + k + '-text');
+      picker.addEventListener('input', () => {
+        state.customColors[k] = picker.value.toUpperCase();
+        text.value = state.customColors[k];
+        text.parentNode.classList.remove('invalid');
+        markCustomColors(); enableNext(3); schedulePreview();
+      });
+      text.addEventListener('input', () => {
+        const hex = toHex(text.value);
+        text.parentNode.classList.toggle('invalid', !!text.value.trim() && !hex);
+        if (hex) { state.customColors[k] = hex; picker.value = hex.toLowerCase(); }
+        else if (!text.value.trim()) { state.customColors[k] = ''; }
+        else return;
+        markCustomColors(); enableNext(3); schedulePreview();
+      });
+    });
+    function clearCustomColors(refresh) {
+      state.customColors = { brand: '', accent: '', bg: '' };
+      document.querySelectorAll('.color-pair').forEach(p => p.classList.remove('invalid'));
+      fillColorPickers();
+      markCustomColors();
+      if (refresh) updatePreview();
+    }
+    document.getElementById('btn-clear-colors').addEventListener('click', () => clearCustomColors(true));
+
+    /* ---- Custom font (Google Font name or uploaded file) ---- */
+    const fontInput = document.getElementById('custom-font');
+    const fontStatus = document.getElementById('font-status');
+    let fontTimer = null;
+    function setFontStatus(msg, kind) { fontStatus.textContent = msg; fontStatus.className = 'cb-status' + (kind ? ' ' + kind : ''); }
+    function markCustomFont() {
+      const on = !!(state.customFont || state.uploadedFont);
+      document.getElementById('btn-custom-style').classList.toggle('active', on);
+      document.querySelectorAll('#font-grid .font-card').forEach(c => c.classList.toggle('selected', !on && c.dataset.value === state.style));
+      if (on) enableNext(2);
+    }
+    function applyCustomFont() {
+      clearTimeout(fontTimer);
+      const v = fontInput.value.trim();
+      if (v === state.customFont && !state.uploadedFont) return;
+      state.customFont = v;
+      state.uploadedFont = null;
+      document.getElementById('font-upload').value = '';
+      setFontStatus(v ? 'Loading "' + v + '"...' : '', '');
+      markCustomFont();
+      updatePreview();
+    }
+    fontInput.addEventListener('input', () => { clearTimeout(fontTimer); fontTimer = setTimeout(applyCustomFont, 750); });
+    fontInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); applyCustomFont(); } });
+    fontInput.addEventListener('change', applyCustomFont);
+    document.getElementById('btn-apply-font').addEventListener('click', applyCustomFont);
+    document.getElementById('font-upload').addEventListener('change', e => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      if (file.size > 3 * 1024 * 1024) { setFontStatus('That file is over 3 MB. Try a .woff2 version, or just type the font name above.', 'warn'); return; }
+      const reader = new FileReader();
+      reader.onload = () => {
+        state.uploadedFont = { id: Date.now(), name: file.name, data: reader.result };
+        state.customFont = '';
+        fontInput.value = '';
+        previewState.ufontSent = false;
+        setFontStatus('Loading ' + file.name + '...', '');
+        markCustomFont();
+        updatePreview();
+      };
+      reader.onerror = () => setFontStatus('That file could not be read. Try a .ttf, .otf or .woff file.', 'warn');
+      reader.readAsDataURL(file);
+    });
+    function clearCustomFont(refresh) {
+      clearTimeout(fontTimer);
+      state.customFont = '';
+      state.uploadedFont = null;
+      fontInput.value = '';
+      document.getElementById('font-upload').value = '';
+      setFontStatus('', '');
+      markCustomFont();
+      if (refresh) updatePreview();
+    }
+    document.getElementById('btn-clear-font').addEventListener('click', () => clearCustomFont(true));
+
+    /* ---- Business info ---- */
     function getBizData() {
       const b = document.getElementById('cfg-business');
       const p = document.getElementById('cfg-phone');
@@ -1986,35 +1871,181 @@
         tagline: t ? t.value.trim() : ''
       };
     }
-
-    // Update preview when business fields change
     ['cfg-business', 'cfg-phone', 'cfg-tagline'].forEach(id => {
       const el = document.getElementById(id);
-      if (el) el.addEventListener('input', () => requestAnimationFrame(updatePreview));
+      if (el) el.addEventListener('input', schedulePreview);
     });
 
-    // Open full preview in new tab
-    function openFullPreview() {
-      const ind = state.industry || 'Other';
-      const tpl = INDUSTRY_TEMPLATES[ind] || INDUSTRY_TEMPLATES['Other'];
-      const sty = state.style || tpl.defaultStyle || 'Modern';
-      const pal = state.palette || '';
-      const biz = getBizData();
-
-      const file = INDUSTRY_PREVIEW_MAP[ind] || INDUSTRY_PREVIEW_MAP['Other'];
+    /* ---- Talking to the preview ---- */
+    function buildPreviewUrl(includeBiz) {
+      const ind = currentInd();
       const p = new URLSearchParams();
-      if (sty) p.set('style', sty);
-      if (pal) p.set('palette', pal);
-      if (biz.businessName) p.set('businessName', biz.businessName);
-      if (biz.phone) p.set('phone', biz.phone);
-      if (biz.tagline) p.set('tagline', biz.tagline);
+      p.set('palette', state.palette || ind.palette);
+      p.set('font', state.style || ind.font);
+      ['brand', 'accent', 'bg'].forEach(k => { if (state.customColors[k]) p.set(k, state.customColors[k].replace('#', '')); });
+      if (state.customFont) p.set('cfont', state.customFont);
+      if (includeBiz) {
+        const b = getBizData();
+        if (b.businessName) p.set('businessName', b.businessName);
+        if (b.phone) p.set('phone', b.phone);
+        if (b.tagline) p.set('tagline', b.tagline);
+      }
+      return ind.file + '?' + p.toString();
+    }
+    function postPreviewState() {
+      if (!previewFrame || !previewFrame.contentWindow) return;
+      const ind = currentInd(), c = state.customColors;
+      let uf = null;
+      if (state.uploadedFont) {
+        uf = { id: state.uploadedFont.id, name: state.uploadedFont.name };
+        if (!previewState.ufontSent) { uf.data = state.uploadedFont.data; previewState.ufontSent = true; }
+      }
+      try {
+        previewFrame.contentWindow.postMessage({
+          type: 'jh-preview', palette: state.palette || ind.palette, font: state.style || ind.font,
+          brand: c.brand, accent: c.accent, bg: c.bg,
+          cfont: state.uploadedFont ? '' : state.customFont, ufont: uf, biz: getBizData()
+        }, '*');
+      } catch (e) {}
+    }
+    function setPreviewLoading(on) {
+      previewFrame.classList.toggle('loading', on);
+      previewViewport.classList.toggle('is-loading', on);
+    }
+    let previewRaf = 0;
+    function schedulePreview() { cancelAnimationFrame(previewRaf); previewRaf = requestAnimationFrame(updatePreview); }
 
-      const url = file + (p.toString() ? '?' + p.toString() : '');
+    function updatePreview() {
+      if (!previewFrame) return;
+      syncIndustryDefaults();
+      const slug = currentSlug(), ind = JH.industries[slug];
+      const f = JH.fonts[state.style] || JH.fonts[ind.font];
+      document.getElementById('preview-url').textContent = ind.url;
+      document.getElementById('preview-style-label').textContent = state.uploadedFont ? 'Your uploaded font' : (state.customFont || f.label);
+      document.getElementById('preview-palette-label').textContent = hasCustomColors() ? 'Custom' : (state.palette || ind.palette);
+      document.getElementById('preview-pages-count').textContent = state.pages;
+      if (previewState.loadedSlug !== slug) {
+        previewState.loadedSlug = slug;
+        previewState.ufontSent = false;
+        setPreviewLoading(true);
+        previewFrame.src = buildPreviewUrl(true);
+      } else {
+        postPreviewState();
+      }
+    }
+
+    window.addEventListener('message', e => {
+      const d = e.data || {};
+      if (!previewFrame || e.source !== previewFrame.contentWindow) return;
+      if (d.type === 'jh-preview-ready') {
+        previewState.ufontSent = false;
+        setPreviewLoading(false);
+        postPreviewState();
+      } else if (d.type === 'jh-font-status') {
+        if (d.kind === 'google') {
+          if (!state.customFont) return;
+          setFontStatus(d.ok ? 'Now showing "' + d.name + '" from Google Fonts.' : 'Could not find "' + (d.typed || d.name) + '" on Google Fonts. Check the spelling, or leave it here and Joshua will source it for you.', d.ok ? 'ok' : 'warn');
+        } else if (state.uploadedFont) {
+          setFontStatus(d.ok ? 'Now showing your uploaded font (' + d.name + ').' : 'That font file could not be read. Try a .ttf, .otf or .woff file.', d.ok ? 'ok' : 'warn');
+        }
+      }
+    });
+    previewFrame.addEventListener('load', () => setPreviewLoading(false));
+
+    /* ---- Fit the preview: real desktop or phone width, scaled down ---- */
+    function fitPreview() {
+      const W = previewViewport.clientWidth, H = previewViewport.clientHeight;
+      if (!W || !H) return;
+      const mobile = previewState.device === 'mobile';
+      previewViewport.classList.toggle('mobile', mobile);
+      if (mobile) {
+        const base = 390, pad = 20, s = Math.min(1, (W - pad * 2) / base);
+        previewFrame.style.width = base + 'px';
+        previewFrame.style.height = ((H - pad) / s + 60) + 'px';
+        previewFrame.style.left = ((W - base * s) / 2) + 'px';
+        previewFrame.style.top = pad + 'px';
+        previewFrame.style.transform = 'scale(' + s + ')';
+      } else {
+        const base = 1280, s = W / base;
+        previewFrame.style.width = base + 'px';
+        previewFrame.style.height = (H / s) + 'px';
+        previewFrame.style.left = '0px';
+        previewFrame.style.top = '0px';
+        previewFrame.style.transform = 'scale(' + s + ')';
+      }
+    }
+    document.querySelectorAll('.device-toggle button').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.device === previewState.device);
+      btn.addEventListener('click', () => {
+        previewState.device = btn.dataset.device;
+        document.querySelectorAll('.device-toggle button').forEach(b => b.classList.toggle('active', b === btn));
+        fitPreview();
+      });
+    });
+    if ('ResizeObserver' in window) new ResizeObserver(fitPreview).observe(previewViewport);
+    window.addEventListener('resize', fitPreview);
+
+    /* ---- Open the full-size demo in a new tab ---- */
+    function openFullPreview() {
+      let url = buildPreviewUrl(true);
+      if (state.uploadedFont) {
+        try {
+          localStorage.setItem('jh_ufont', JSON.stringify({ name: state.uploadedFont.name, data: state.uploadedFont.data }));
+          url += '&ufont=1';
+        } catch (e) {}
+      }
       window.open(url, '_blank');
     }
 
-    // Set initial preview state
-    currentPreviewSrc = INDUSTRY_PREVIEW_MAP['Other'];
+    /* ---- Refresh the preview on industry, feature and page changes ---- */
+    function hookPreviewUpdate() {
+      document.querySelectorAll('[data-mode="single"] .option-card').forEach(el => el.addEventListener('click', schedulePreview));
+      document.querySelectorAll('[data-mode="multi"] .check-card').forEach(el => el.addEventListener('click', schedulePreview));
+      const pageSlider = document.getElementById('page-slider');
+      if (pageSlider) pageSlider.addEventListener('input', schedulePreview);
+    }
+    hookPreviewUpdate();
+
+    /* ---- Template cards: live, scaled-down thumbnails of each demo ---- */
+    function fitThumb(box) {
+      const f = box.querySelector('iframe');
+      if (!f || !box.clientWidth) return;
+      const s = box.clientWidth / 1280;
+      f.style.transform = 'scale(' + s + ')';
+      f.style.height = (box.clientHeight / s) + 'px';
+    }
+    function loadThumb(box) {
+      const ind = JH.industries[box.dataset.slug];
+      if (!ind || box.querySelector('iframe')) return;
+      const f = document.createElement('iframe');
+      f.src = ind.file + '?thumb=1';
+      f.title = ind.label + ' template preview';
+      f.tabIndex = -1;
+      f.setAttribute('aria-hidden', 'true');
+      box.appendChild(f);
+      fitThumb(box);
+    }
+    function openTemplatePreview(slug) {
+      const ind = JH.industries[slug];
+      if (ind) window.open(ind.file, '_blank');
+    }
+    (function setupTemplateThumbs() {
+      const boxes = document.querySelectorAll('.tpl-thumb');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(en => { if (en.isIntersecting) { loadThumb(en.target); io.unobserve(en.target); } });
+        }, { rootMargin: '400px 0px' });
+        boxes.forEach(b => io.observe(b));
+      } else {
+        boxes.forEach(loadThumb);
+      }
+      window.addEventListener('resize', () => boxes.forEach(fitThumb));
+    })();
+
+    /* ---- Initial state ---- */
+    renderFontCards();
+    renderPaletteCards();
+    fitPreview();
     updatePreview();
   </script>
 </body>
