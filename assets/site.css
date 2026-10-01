@@ -532,3 +532,38 @@ ul, ol { list-style: none; }
   .check-grid { grid-template-columns: 1fr; }
   .remote-card { grid-template-columns: 1fr; }
 }
+
+/* ---------- Ambient light (gives glass something to refract) ---------- */
+.ambient { position: relative; isolation: isolate; }
+.ambient::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(38% 30% at 12% 22%, rgba(212, 80, 10, 0.075), transparent 70%),
+    radial-gradient(46% 40% at 86% 34%, rgba(255, 255, 255, 0.8), transparent 72%),
+    radial-gradient(40% 32% at 24% 84%, rgba(255, 255, 255, 0.6), transparent 70%),
+    radial-gradient(32% 26% at 80% 88%, rgba(212, 80, 10, 0.05), transparent 70%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+}
+.on-dark.ambient::before {
+  background:
+    radial-gradient(40% 34% at 85% 20%, rgba(242, 100, 28, 0.16), transparent 70%),
+    radial-gradient(45% 40% at 10% 85%, rgba(110, 130, 170, 0.16), transparent 72%),
+    radial-gradient(30% 28% at 55% 55%, rgba(242, 100, 28, 0.05), transparent 70%);
+}
+
+/* ---------- Glass card (light) ---------- */
+.glass-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.64), rgba(255, 255, 255, 0.34));
+  -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.95), inset 0 -1px 1px rgba(255, 255, 255, 0.35),
+    0 1px 2px rgba(15, 15, 14, 0.04), 0 14px 36px -18px rgba(15, 15, 14, 0.24);
+}
+/* ---------- Glass card (dark) ---------- */
+.glass-card-dark {
+  background: linear-gradient(180deg, rgba(40, 40, 37, 0.55), rgba(24, 24, 22, 0.42));
+  -webkit-backdrop-filter: blur(24px) saturate(160%); backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.18), inset 0 -1px 1px rgba(255, 255, 255, 0.04), 0 30px 80px -30px rgba(0, 0, 0, 0.6);
+}
