@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,8 +13,12 @@
   <meta property="og:url" content="https://joshuahumphreys.net/small-business-website-cost.html" />
 
   <link rel="canonical" href="https://joshuahumphreys.net/small-business-website-cost.html" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23141414'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Space Grotesk,Arial,sans-serif' font-weight='700' font-size='36' fill='%23F7F3EE'%3EJ%3Ctspan fill='%23D4500A'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
+  <meta name="theme-color" content="#F3F2EE" />
 
   <script type="application/ld+json">
   {
@@ -30,83 +34,72 @@
     "description": "A transparent breakdown of small business website pricing in 2026. What each tier includes and what you should actually expect to pay."
   }
   </script>
-
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --cream: #F7F3EE; --cream2: #EDE8E1; --cream3: #E3DDD5;
-      --ink: #141414; --ink2: #2C2C2C; --muted: #7A7570;
-      --orange: #D4500A; --orange2: #F06020;
-      --border: #D9D3CB; --dark: #1A1714;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.7; }
-
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 40px; height: 64px; background: var(--cream);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.3rem; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 10px; }
-    .nav-logo .logo-mark { width: 32px; height: 32px; background: var(--ink); color: var(--cream); border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.05rem; font-weight: 700; flex-shrink: 0; }
-    .nav-logo .logo-mark i, .nav-logo .wordmark i { color: var(--orange); font-style: normal; }
-    .nav-logo .logo-mark i { margin-left: 1px; }
-    .nav-logo span { color: var(--orange); }
-    @media (max-width: 480px) { .nav-logo { font-size: 1.15rem; gap: 8px; } .nav-logo .logo-mark { width: 28px; height: 28px; font-size: 0.95rem; } }
-    .nav-back { font-size: 0.82rem; font-weight: 500; color: var(--muted); text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em; }
-    .nav-back:hover { color: var(--orange); }
-
-    article { max-width: 760px; margin: 0 auto; padding: 130px 32px 40px; }
-    .eyebrow { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
-    h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 18px; color: var(--ink); }
-    .byline { font-size: 0.9rem; color: var(--muted); margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
-    h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.7rem; font-weight: 700; letter-spacing: -0.02em; margin: 44px 0 16px; color: var(--ink); }
-    h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; margin: 24px 0 8px; color: var(--ink); }
-    p { font-size: 1.04rem; color: var(--ink2); margin-bottom: 18px; }
-    ul { margin: 16px 0 20px 24px; }
-    ul li { margin-bottom: 8px; color: var(--ink2); }
-    strong { color: var(--ink); font-weight: 600; }
-    a { color: var(--orange); }
-
-    .tier { background: var(--cream2); border: 1px solid var(--border); border-radius: 12px; padding: 26px 28px; margin: 18px 0; }
-    .tier h3 { margin-top: 0; color: var(--orange); font-size: 1.05rem; letter-spacing: 0.04em; text-transform: uppercase; }
-    .tier .price { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--ink); margin: 6px 0 12px; letter-spacing: -0.02em; }
-    .tier ul { margin: 10px 0 0 20px; }
-
-    .callout { background: var(--ink); color: var(--cream); border-radius: 14px; padding: 36px 32px; margin: 40px 0; }
-    .callout h3 { color: var(--cream); margin-top: 0; }
-    .callout p { color: rgba(247,243,238,0.75); margin-bottom: 20px; }
-    .callout a.btn { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: var(--cream); padding: 13px 24px; border-radius: 6px; font-weight: 600; text-decoration: none; }
-    .callout a.btn:hover { background: var(--orange2); }
-
-    footer { background: var(--dark); padding: 36px 40px; margin-top: 60px; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .footer-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--cream); }
-    .footer-logo span { color: var(--orange); }
-    .footer-copy { font-size: 0.8rem; color: rgba(247,243,238,0.3); }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      article { padding: 110px 22px 30px; }
-    }
+    .guides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .guide { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; padding: 28px; border-radius: var(--radius-lg); border: 1px solid var(--line); background: var(--card); transition: border-color 0.35s, transform 0.5s var(--ease); }
+    .guide:hover { border-color: var(--ink); transform: translateY(-4px); }
+    .guide small { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); }
+    .guide h3 { font-size: 22px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.2; margin-top: 12px; }
+    .guide p { color: var(--muted); font-size: 15px; margin-top: 10px; }
+    .guide .go { display: inline-flex; align-items: center; gap: 8px; font-size: 14.5px; font-weight: 500; }
+    .guide .go svg { width: 15px; height: 15px; transition: transform 0.4s var(--ease); }
+    .guide:hover .go svg { transform: translateX(4px); }
+    @media (max-width: 640px) { .guides { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-  <nav>
-    <a class="nav-logo" href="index.html" aria-label="Joshua Humphreys home">
-      <span class="logo-mark">J<i>.</i></span>
-      <span class="wordmark">Joshua<i>.</i></span>
-    </a>
-    <a class="nav-back" href="index.html">&#8592; Home</a>
-  </nav>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <article>
-    <span class="eyebrow">Guide &middot; 2026</span>
-    <h1>How Much Does a Small Business Website Cost?</h1>
-    <p class="byline">A straight answer from a working web designer. No sales pitch.</p>
+  <header class="site-header">
+    <nav class="nav glass" aria-label="Main">
+      <a class="brand" href="index.html" aria-label="Joshua Humphreys, home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect class="bm-bg" width="40" height="40" rx="11"/><g class="bm-fg" fill="none" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><path d="M13 11v13a5 5 0 0 1-5 5"/><path d="M19 11v18M27 11v18M19 20h8"/></g><circle class="bm-dot" cx="32" cy="28.6" r="1.95"/></svg>
+        <span>Joshua Humphreys</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="build.html">Configurator</a></li>
+      </ul>
+      <a class="btn btn-primary btn-sm nav-cta" href="index.html#contact">Start a project</a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    </nav>
+  </header>
 
-    <p>
+  <div class="menu" id="menu">
+    <ul class="menu-links">
+      <li><a href="index.html#work"><small>01</small>Work</a></li>
+      <li><a href="index.html#services"><small>02</small>Services</a></li>
+      <li><a href="index.html#pricing"><small>03</small>Pricing</a></li>
+      <li><a href="about.html"><small>04</small>About</a></li>
+      <li><a href="build.html"><small>05</small>Configurator</a></li>
+      <li><a href="index.html#contact"><small>06</small>Contact</a></li>
+    </ul>
+    <div class="menu-foot">
+      <a class="btn btn-primary" href="tel:+19043104371">Call (904) 310-4371</a>
+      <a class="btn btn-ghost" href="mailto:2002magpie@gmail.com">2002magpie@gmail.com</a>
+      <p>Fernandina Beach, FL &middot; Remote across the U.S.</p>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <header class="article-head">
+      <div class="container">
+        <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Guides</span></nav>
+        <p class="kicker reveal"><span>Guide</span><b>2026</b></p>
+        <h1 class="h1 reveal">How Much Does a Small Business Website Cost?</h1>
+        <p class="byline reveal" data-delay="1">A straight answer from a working web designer. No sales pitch.</p>
+        <div class="article-meta reveal" data-delay="2"><span class="author"><img src="assets/work/joshua-portrait.jpg" alt="" width="30" height="30" />Joshua Humphreys</span><span>3 min read</span><span>Updated 2026</span><span>Fernandina Beach, FL</span></div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="article-body">
+        <article class="prose">
+<p>
       If you're a small business owner getting quotes for a new website, you've probably heard everything from <strong>"I'll build it for $100"</strong> to <strong>"our agency charges $15,000 minimum."</strong> Both can be true, and both can be a rip-off. The real question isn't "what does a website cost." It's "what should <em>your</em> website cost, for what <em>you</em> actually need?"
     </p>
     <p>
@@ -190,23 +183,69 @@
     <div class="callout">
       <h3>Want a real quote for your specific business?</h3>
       <p>Tell me a little about what you do and what you want out of a website. I'll send a flat-rate quote. No sales call required, usually same day.</p>
-      <a class="btn" href="index.html#contact">Get my free quote
+      <a class="btn btn-light" href="index.html#contact">Get my free quote
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
-  </article>
-
-  <footer>
-    <div class="footer-inner">
-      <span class="footer-logo">Joshua<span>.</span></span>
-      <span class="footer-copy">&copy; 2026 Joshua Humphreys &middot; Fernandina Beach, FL &middot; Remote Nationwide</span>
-      <div style="display:flex;gap:20px;flex-wrap:wrap;">
-        <a href="index.html" style="font-size:0.82rem;color:rgba(247,243,238,0.55);text-decoration:none;">Home</a>
-        <a href="service-areas.html" style="font-size:0.82rem;color:rgba(247,243,238,0.55);text-decoration:none;">Service Areas</a>
-        <a href="fernandina-beach-web-design.html" style="font-size:0.82rem;color:rgba(247,243,238,0.55);text-decoration:none;">Web Design</a>
-        <a href="index.html#contact" style="font-size:0.82rem;color:rgba(247,243,238,0.55);text-decoration:none;">Contact</a>
+        </article>
+        <aside class="article-aside">
+          <nav class="toc" data-toc aria-label="On this page"><h4>On this page</h4></nav>
+          <div class="aside-card dark">
+            <h4>Want a real quote?</h4>
+            <p>Tell me about your business and I will send a flat-rate quote, usually the same day.</p>
+            <a class="btn btn-light btn-sm" href="index.html#contact">Get a free quote</a>
+          </div>
+          <div class="aside-card">
+            <h4>Try the configurator</h4>
+            <p>Pick an industry, fonts and colors, and see a live demo site in two minutes.</p>
+            <a class="btn btn-ghost btn-sm" href="build.html">Open the configurator</a>
+          </div>
+        </aside>
       </div>
     </div>
+
+    <section class="section-tight" style="padding-top:0">
+      <div class="container">
+        <h2 class="h3 reveal" style="margin-bottom:28px">Keep reading</h2>
+        <div class="keep-reading guides">
+          <a class="guide reveal" href="how-to-choose-a-web-designer.html"><div><small>Hiring</small><h3>How to choose a web designer for your small business</h3><p>What to look for, what to avoid and the questions worth asking first.</p></div><span class="go">Read the guide <svg class="arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+          <a class="guide reveal" href="wordpress-vs-custom-website.html"><div><small>Platforms</small><h3>WordPress vs. a custom-built website</h3><p>An honest comparison from someone who builds both, so you can pick what fits.</p></div><span class="go">Read the guide <svg class="arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="foot-top">
+        <p class="foot-title">Have a project <span class="serif">in mind?</span></p>
+        <div class="foot-contact">
+          <a class="foot-mail link" href="mailto:2002magpie@gmail.com">2002magpie@gmail.com</a>
+          <a class="btn btn-light" href="index.html#contact">Start a project <svg class="arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-grid">
+        <div class="foot-col"><h4>Explore</h4><ul><li><a href="index.html#work">Work</a></li><li><a href="index.html#services">Services</a></li><li><a href="index.html#pricing">Pricing</a></li><li><a href="about.html">About</a></li><li><a href="build.html">Configurator</a></li></ul></div>
+        <div class="foot-col"><h4>Guides</h4><ul><li><a href="reboot-case-study.html">Reboot case study</a></li><li><a href="small-business-website-cost.html">Website pricing guide</a></li><li><a href="how-to-choose-a-web-designer.html">Choosing a web designer</a></li><li><a href="wordpress-vs-custom-website.html">WordPress vs. custom</a></li></ul></div>
+        <div class="foot-col"><h4>Areas</h4><ul><li><a href="fernandina-beach-web-design.html">Fernandina Beach</a></li><li><a href="service-areas.html">Amelia Island</a></li><li><a href="service-areas.html">Yulee &amp; Jacksonville</a></li><li><a href="service-areas.html">Nassau County</a></li><li><a href="service-areas.html">Remote, anywhere in the U.S.</a></li></ul></div>
+        <div class="foot-col"><h4>Contact</h4><ul><li><a href="tel:+19043104371">(904) 310-4371</a></li><li><a href="sms:+19043104371">Send a text</a></li><li><a href="mailto:2002magpie@gmail.com">Email me</a></li><li><a href="review.html">Leave a Google review</a></li></ul></div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; <span data-year>2026</span> Joshua Humphreys &middot; Web design &amp; IT services</span>
+        <span>Fernandina Beach, FL &middot; <span data-clock>ET</span></span>
+        <a href="#top">Back to top &uarr;</a>
+      </div>
+    </div>
+    <div class="foot-wordmark" aria-hidden="true">Humphreys</div>
   </footer>
+
+  <nav class="dock glass" aria-label="Quick contact">
+    <a href="tel:+19043104371" aria-label="Call Joshua"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+    <a href="sms:+19043104371" aria-label="Text Joshua"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-5A8 8 0 1 1 21 12z"/></svg>Text</a>
+    <a class="dock-primary" href="index.html#contact">Get a quote</a>
+  </nav>
+
+  <script src="assets/site.js"></script>
 </body>
 </html>
