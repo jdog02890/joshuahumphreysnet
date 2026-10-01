@@ -572,6 +572,80 @@
     .option-card .card-icon svg { width: 20px; height: 20px; }
     .option-card.selected .card-icon { background: var(--ink); color: var(--cream); border-color: var(--ink); }
     .template-price { white-space: nowrap; font-size: 1.25rem; }
+
+    /* ---- Liquid glass configurator (shares tokens with assets/site.css) ---- */
+    #configurator { background: transparent; }
+    #templates { background: transparent; }
+    #configurator .option-card, #configurator .font-card, #configurator .palette-card, #configurator .check-card,
+    #configurator .custom-body, #configurator .price-card, #configurator .summary-item, #configurator .custom-toggle,
+    #configurator .preview-meta {
+      background: linear-gradient(180deg, rgba(255,255,255,0.64), rgba(255,255,255,0.34));
+      -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.78);
+      box-shadow: inset 0 1px 0.5px rgba(255,255,255,0.95), inset 0 -1px 1px rgba(255,255,255,0.35), 0 1px 2px rgba(15,15,14,0.04), 0 14px 36px -18px rgba(15,15,14,0.24);
+      transition: border-color 0.3s, box-shadow 0.35s, transform 0.45s cubic-bezier(0.22,1,0.36,1), background 0.3s;
+    }
+    #configurator .option-card, #configurator .font-card, #configurator .palette-card, #configurator .check-card { border-radius: 18px; }
+    #configurator .check-card { text-align: left; align-items: center; }
+    #configurator .option-card:hover, #configurator .font-card:hover, #configurator .palette-card:hover, #configurator .check-card:hover {
+      border-color: rgba(212,80,10,0.45); transform: translateY(-3px);
+      box-shadow: inset 0 1px 0.5px rgba(255,255,255,0.95), 0 1px 2px rgba(15,15,14,0.04), 0 22px 44px -20px rgba(15,15,14,0.3);
+    }
+    #configurator .option-card.selected, #configurator .font-card.selected, #configurator .palette-card.selected, #configurator .check-card.selected {
+      background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.56));
+      border-color: var(--orange);
+      box-shadow: inset 0 1px 0.5px rgba(255,255,255,0.95), 0 0 0 1px var(--orange), 0 18px 40px -18px rgba(212,80,10,0.4);
+    }
+    #configurator .custom-toggle { border-style: solid; border-radius: 14px; }
+    #configurator .custom-toggle:hover, #configurator .custom-toggle.open { border-color: rgba(212,80,10,0.55); background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5)); }
+    #configurator .custom-body, #configurator .price-card { border-radius: 18px; }
+    #configurator .summary-item { border-radius: 14px; }
+    #configurator .cfg-input {
+      background-color: rgba(255,255,255,0.55); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      border: 1px solid rgba(15,15,14,0.12); border-radius: 12px;
+    }
+    #configurator .cfg-input:focus { background-color: rgba(255,255,255,0.9); border-color: var(--ink); box-shadow: 0 0 0 4px rgba(15,15,14,0.06); }
+    #configurator .color-pair { background: rgba(255,255,255,0.6); border-color: rgba(15,15,14,0.12); }
+    #configurator .upload-btn { background: rgba(255,255,255,0.6); border-color: rgba(15,15,14,0.12); border-radius: 12px; }
+    #configurator .progress-step { background: rgba(15,15,14,0.08); }
+    /* Buttons: solid primary, glass secondary */
+    #configurator .btn-next { border-radius: 999px; padding: 15px 28px; }
+    #configurator .btn-next:disabled { background: rgba(15,15,14,0.08); color: var(--muted); }
+    #configurator .btn-back {
+      border-radius: 999px; padding: 14px 22px; color: var(--ink);
+      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.4));
+      -webkit-backdrop-filter: blur(16px) saturate(180%); backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.8); box-shadow: inset 0 1px 0.5px rgba(255,255,255,0.95), 0 8px 20px -12px rgba(15,15,14,0.25);
+    }
+    #configurator .btn-back:hover { border-color: rgba(212,80,10,0.5); }
+    #configurator .btn-submit, #configurator .btn-preview-full { border-radius: 999px; }
+    /* Preview window as a glass panel */
+    #configurator .preview-frame {
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.3));
+      -webkit-backdrop-filter: blur(22px) saturate(180%); backdrop-filter: blur(22px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.8); border-radius: 20px; padding: 0 8px 8px;
+      box-shadow: inset 0 1px 0.5px rgba(255,255,255,0.95), 0 30px 70px -30px rgba(15,15,14,0.35);
+    }
+    #configurator .preview-chrome { background: transparent; border-bottom: 0; padding: 12px 8px; }
+    #configurator .preview-url { background: rgba(255,255,255,0.7); box-shadow: inset 0 0 0 1px rgba(15,15,14,0.06); border-radius: 8px; }
+    #configurator .preview-viewport { border-radius: 12px; }
+    #configurator .preview-meta { border-radius: 14px; }
+    #configurator .device-toggle {
+      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.4));
+      -webkit-backdrop-filter: blur(16px) saturate(180%); backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.8); box-shadow: inset 0 1px 0.5px rgba(255,255,255,0.95), 0 8px 20px -12px rgba(15,15,14,0.2);
+    }
+    /* Template filters as a glass segmented control */
+    .filter-tabs { padding: 4px; border-radius: 999px; gap: 2px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.4));
+      -webkit-backdrop-filter: blur(16px) saturate(180%); backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.8); box-shadow: inset 0 1px 0.5px rgba(255,255,255,0.95), 0 10px 24px -14px rgba(15,15,14,0.22); }
+    .filter-tab { background: transparent; border-color: transparent; }
+    .filter-tab:hover { border-color: transparent; background: rgba(15,15,14,0.05); }
+    .template-badge {
+      background: rgba(212,80,10,0.85); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      box-shadow: inset 0 1px 0.5px rgba(255,255,255,0.4), 0 6px 16px -6px rgba(212,80,10,0.5);
+    }
   </style>
 </head>
 <body>
@@ -627,12 +701,12 @@
     </section>
 
   <!-- CONFIGURATOR -->
-  <section id="configurator">
+  <section id="configurator" class="ambient">
     <div class="section-inner">
       <div style="text-align:center; margin-bottom: 36px;">
         <span class="section-label">Build your site</span>
         <h2 class="section-title" style="margin: 0 auto 12px;">Configure your custom website.</h2>
-        <p class="section-sub" style="margin: 0 auto;">Five short steps. Live price range. Sent straight to my inbox.</p>
+        <p class="section-sub" style="margin: 0 auto;">Six short steps. Live price range. Sent straight to my inbox.</p>
       </div>
 
       <div class="configurator-layout">
