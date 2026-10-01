@@ -73,7 +73,15 @@
   document.querySelectorAll('[data-compare]').forEach(function (box) {
     var range = box.querySelector('input[type="range"]');
     if (!range) return;
-    function set(v) { box.style.setProperty('--pos', v + '%'); }
+    var tagBefore = box.querySelector('.c-tag-before');
+    var tagAfter = box.querySelector('.c-tag-after');
+    /* Highlight the side being viewed and fade the other label out */
+    function set(v) {
+      box.style.setProperty('--pos', v + '%');
+      v = +v;
+      if (tagBefore) { tagBefore.classList.toggle('is-active', v > 58); tagBefore.classList.toggle('is-faded', v < 42); }
+      if (tagAfter) { tagAfter.classList.toggle('is-active', v < 42); tagAfter.classList.toggle('is-faded', v > 58); }
+    }
     range.addEventListener('input', function () { set(range.value); box.dataset.touched = '1'; });
     set(range.value);
     if (reduce || !('IntersectionObserver' in window)) return;

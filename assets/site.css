@@ -292,7 +292,19 @@ ul, ol { list-style: none; }
   display: grid; place-items: center; color: var(--ink);
 }
 .compare .c-knob svg { width: 22px; height: 22px; }
-.compare .c-tag { position: absolute; top: 16px; padding: 7px 12px; border-radius: 999px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; pointer-events: none; }
+.compare .c-tag {
+  position: absolute; top: 16px; display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border-radius: 999px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; pointer-events: none;
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease), background-color 0.35s, color 0.35s, box-shadow 0.35s;
+}
+.compare .c-tag::before { content: ''; width: 0; height: 6px; border-radius: 50%; background: currentColor; transition: width 0.35s var(--ease); }
+.compare .c-tag.is-active {
+  --glass-tint: rgba(212, 80, 10, 0.9); --glass-rim: rgba(255, 255, 255, 0.55);
+  color: #fff; transform: scale(1.08);
+  box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.45), 0 10px 26px -8px rgba(212, 80, 10, 0.65);
+}
+.compare .c-tag.is-active::before { width: 6px; }
+.compare .c-tag.is-faded { opacity: 0; transform: translateY(-6px) scale(0.94); }
 .compare .c-tag-before { left: 16px; }
 .compare .c-tag-after { right: 16px; }
 .compare input[type='range'] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; -webkit-appearance: none; appearance: none; }
