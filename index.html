@@ -281,17 +281,10 @@
     .hero-cta .note b { color: var(--ink); font-weight: 500; }
 
     /* ---------- Home: selected work ---------- */
-    .work { padding-top: 0; }
     .case-media { position: relative; margin-bottom: clamp(56px, 7vw, 96px); }
     .case-media .browser { position: relative; }
     .compare .c-tag { color: var(--ink); }
     .compare .c-tag-after { color: var(--paper); }
-    .case-phone {
-      position: absolute; right: clamp(-10px, -1.5vw, 0px); bottom: -7%; width: clamp(120px, 17%, 210px); aspect-ratio: 520 / 1125;
-      border-radius: clamp(20px, 2.6vw, 34px); overflow: hidden; border: clamp(5px, 0.7vw, 9px) solid #121211;
-      box-shadow: 0 30px 60px -20px rgba(15, 15, 14, 0.55); background: #121211;
-    }
-    .case-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
     .case-caption { position: absolute; left: 0; bottom: -40px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 10px; }
     .case-caption svg { width: 16px; height: 16px; }
     .case-info { display: grid; grid-template-columns: 3fr 4fr 3fr; gap: clamp(24px, 4vw, 56px); padding-top: 36px; border-top: 1px solid var(--line); }
@@ -453,7 +446,6 @@
       .hero-meta .hide-sm { display: none; }
       .hero-cta .row { width: 100%; }
       .hero-cta .row .btn { flex: 1 1 auto; }
-      .case-phone { width: 30%; right: -4px; bottom: -12%; }
       .case-caption { bottom: -34px; }
       .case-info { grid-template-columns: 1fr; }
       .case-links { grid-auto-flow: row; }
@@ -543,65 +535,12 @@
       </div>
     </section>
 
-    <!-- ============ 01 WORK ============ -->
-    <section class="section work" id="work" aria-labelledby="work-title">
-      <span id="portfolio" aria-hidden="true"></span>
-      <div class="container">
-        <div class="case-media reveal">
-          <div class="browser">
-            <div class="browser-bar">
-              <div class="browser-dots"><i></i><i></i><i></i></div>
-              <div class="browser-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>rebootjacksonville.com</div>
-              <div class="browser-spacer"></div>
-            </div>
-            <div class="compare" data-compare>
-              <img src="assets/work/reboot-after.jpg" alt="The new Reboot Computers of Jax homepage, redesigned by Joshua Humphreys" width="1440" height="900" loading="lazy" />
-              <img class="c-before" src="assets/work/reboot-before.jpg" alt="The old Reboot Computers of Jax homepage before the redesign" width="1440" height="900" loading="lazy" />
-              <span class="c-tag c-tag-before glass">Before</span>
-              <span class="c-tag c-tag-after glass glass-dark">After</span>
-              <span class="c-handle"><span class="c-knob glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></span>
-              <input type="range" min="0" max="100" value="50" aria-label="Drag to compare the old and new Reboot Computers website" />
-            </div>
-          </div>
-          <div class="case-phone" aria-hidden="true"><img src="assets/work/reboot-after-mobile.jpg" alt="" width="520" height="1125" loading="lazy" /></div>
-          <p class="case-caption"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg>Drag to compare before and after</p>
-        </div>
-
-        <header class="section-head">
-          <div class="sh-title">
-            <p class="kicker reveal"><span>01</span><b>Selected work</b></p>
-            <h2 class="h2 reveal" id="work-title">Reboot Computers of Jax, <span class="serif">rebuilt from scratch.</span></h2>
-          </div>
-          <p class="sh-aside reveal" data-delay="1">A Jacksonville computer repair and custom PC shop trusted by thousands of customers and more than 500 local businesses. Their old site was a dated template with broken shop pages. I rebuilt the whole thing.</p>
-        </header>
-
-        <div class="case-info reveal">
-          <dl class="case-dl">
-            <dt>Client</dt><dd>Reboot Computers of Jax</dd>
-            <dt>Location</dt><dd>Jacksonville, FL</dd>
-            <dt>Platform</dt><dd>WordPress</dd>
-            <dt>Scope</dt><dd>Design, build, SEO</dd>
-          </dl>
-          <ul class="case-points">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>New dark visual identity built around the shop's existing green and blue brand colors</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Fixed shop pages that were showing raw code instead of products</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Rebuilt Custom Builds, Repairs, E-Recycling and Business Solutions pages with clear pricing</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Sticky header with the phone number always one tap away on mobile</span></li>
-          </ul>
-          <div class="case-links">
-            <a class="link" href="reboot-case-study.html">Read the case study <svg viewBox="0 0 16 16" fill="none"><path d="M5 11l6-6M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-            <a class="link" href="https://rebootjacksonville.com" target="_blank" rel="noopener">Visit the live site <svg viewBox="0 0 16 16" fill="none"><path d="M5 11l6-6M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 02 CONFIGURATOR ============ -->
+    <!-- ============ 01 CONFIGURATOR ============ -->
     <section class="section on-dark" id="configurator" aria-labelledby="cfg-title">
       <div class="container cfg-grid">
         <div class="cfg-copy">
-          <p class="kicker reveal"><span>02</span><b>Try it yourself</b></p>
-          <h2 class="h2 reveal" id="cfg-title">Design your site in <span class="serif">two minutes.</span></h2>
+          <p class="kicker reveal"><span>01</span><b>Try it yourself</b></p>
+          <h2 class="h2 reveal" id="cfg-title">Design your site in two minutes.</h2>
           <p class="lead reveal" data-delay="1">Pick your industry, a font style and colors, then open a full working demo built from your choices. It is the quickest way to show me what you like before we ever talk.</p>
           <div class="cfg-chips reveal" data-delay="2" id="cfg-chips" role="group" aria-label="Preview an industry">
             <button type="button" class="cfg-chip is-active">Restaurant</button>
@@ -636,12 +575,65 @@
       </div>
     </section>
 
+    <!-- ============ 02 WORK ============ -->
+    <section class="section work" id="work" aria-labelledby="work-title">
+      <span id="portfolio" aria-hidden="true"></span>
+      <div class="container">
+        <header class="section-head">
+          <div class="sh-title">
+            <p class="kicker reveal"><span>02</span><b>Selected work</b></p>
+            <h2 class="h2 reveal" id="work-title">Reboot Computers of Jax, rebuilt from scratch.</h2>
+          </div>
+          <p class="sh-aside reveal" data-delay="1">A Jacksonville computer repair and custom PC shop trusted by thousands of customers and more than 500 local businesses. Their old site was a dated template with broken shop pages. I rebuilt the whole thing.</p>
+        </header>
+
+        <div class="case-media reveal">
+          <div class="browser">
+            <div class="browser-bar">
+              <div class="browser-dots"><i></i><i></i><i></i></div>
+              <div class="browser-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>rebootjacksonville.com</div>
+              <div class="browser-spacer"></div>
+            </div>
+            <div class="compare" data-compare>
+              <img src="assets/work/reboot-after.jpg" alt="The new Reboot Computers of Jax homepage, redesigned by Joshua Humphreys" width="1440" height="900" loading="lazy" />
+              <img class="c-before" src="assets/work/reboot-before.jpg" alt="The old Reboot Computers of Jax homepage before the redesign" width="1440" height="900" loading="lazy" />
+              <span class="c-tag c-tag-before glass">Before</span>
+              <span class="c-tag c-tag-after glass glass-dark">After</span>
+              <span class="c-handle"><span class="c-knob glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></span>
+              <input type="range" min="0" max="100" value="50" aria-label="Drag to compare the old and new Reboot Computers website" />
+            </div>
+          </div>
+          <p class="case-caption"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg>Drag to compare before and after</p>
+        </div>
+
+
+        <div class="case-info reveal">
+          <dl class="case-dl">
+            <dt>Client</dt><dd>Reboot Computers of Jax</dd>
+            <dt>Location</dt><dd>Jacksonville, FL</dd>
+            <dt>Platform</dt><dd>WordPress</dd>
+            <dt>Scope</dt><dd>Design, build, SEO</dd>
+          </dl>
+          <ul class="case-points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>New dark visual identity built around the shop's existing green and blue brand colors</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Fixed shop pages that were showing raw code instead of products</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Rebuilt Custom Builds, Repairs, E-Recycling and Business Solutions pages with clear pricing</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Sticky header with the phone number always one tap away on mobile</span></li>
+          </ul>
+          <div class="case-links">
+            <a class="link" href="reboot-case-study.html">Read the case study <svg viewBox="0 0 16 16" fill="none"><path d="M5 11l6-6M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="link" href="https://rebootjacksonville.com" target="_blank" rel="noopener">Visit the live site <svg viewBox="0 0 16 16" fill="none"><path d="M5 11l6-6M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ 03 SERVICES ============ -->
     <section class="section" id="services" aria-labelledby="services-title">
       <div class="container svc-layout">
         <div class="svc-intro">
           <p class="kicker reveal"><span>03</span><b>Services</b></p>
-          <h2 class="h2 reveal" id="services-title">Design, build, get found, <span class="serif">stay running.</span></h2>
+          <h2 class="h2 reveal" id="services-title">Design, build, get found, stay running.</h2>
           <p class="lead reveal" data-delay="1">One person for your website, your search presence and your tech. No agency layers, no handoffs.</p>
           <div class="platforms reveal" data-delay="2">
             <p>I build with</p>
@@ -701,7 +693,7 @@
         <header class="section-head">
           <div class="sh-title">
             <p class="kicker reveal"><span>04</span><b>Pricing</b></p>
-            <h2 class="h2 reveal" id="pricing-title">Flat rates. <span class="serif">No surprises.</span></h2>
+            <h2 class="h2 reveal" id="pricing-title">Flat rates. No surprises.</h2>
           </div>
           <p class="sh-aside reveal" data-delay="1">You get one clear price before any work starts. No hourly billing, no contracts, and you own everything when we are done.</p>
         </header>
@@ -783,7 +775,7 @@
         <header class="section-head">
           <div class="sh-title">
             <p class="kicker reveal"><span>05</span><b>Process</b></p>
-            <h2 class="h2 reveal" id="process-title">How a project <span class="serif">comes together.</span></h2>
+            <h2 class="h2 reveal" id="process-title">How a project comes together.</h2>
           </div>
           <p class="sh-aside reveal" data-delay="1" style="color:var(--night-muted)">Most websites are live within 1 to 2 weeks. You always know what is happening and what comes next.</p>
         </header>
@@ -805,7 +797,7 @@
         </figure>
         <div class="about-copy">
           <p class="kicker reveal"><span>06</span><b>About</b></p>
-          <h2 class="h2 reveal" id="about-title">Hi, I'm Joshua. <span class="serif">You will work with me.</span></h2>
+          <h2 class="h2 reveal" id="about-title">Hi, I'm Joshua. You will work with me.</h2>
           <p class="lead reveal" data-delay="1">I started building websites after noticing how many great local businesses had sites that did not do them justice. I work on my own on purpose, so the person you talk to on the first call is the person designing, building and supporting your site.</p>
           <ul class="creds reveal" data-delay="2">
             <li><small>Certified</small>CompTIA A+ IT professional</li>
@@ -826,7 +818,7 @@
       <div class="container faq-layout">
         <div class="sticky">
           <p class="kicker reveal"><span>07</span><b>FAQ</b></p>
-          <h2 class="h2 reveal" id="faq-title">Questions, <span class="serif">answered.</span></h2>
+          <h2 class="h2 reveal" id="faq-title">Questions, answered.</h2>
           <p class="lead reveal" data-delay="1">Something else on your mind? Text me at (904) 310-4371 and I will get back to you quickly.</p>
         </div>
         <div class="faq reveal" data-exclusive>
@@ -885,7 +877,7 @@
       <div class="container contact-grid">
         <div class="contact-copy">
           <p class="kicker reveal"><span>08</span><b>Contact</b></p>
-          <h2 class="h2 reveal" id="contact-title">Let's talk about <span class="serif">your project.</span></h2>
+          <h2 class="h2 reveal" id="contact-title">Let's talk about your project.</h2>
           <p class="lead reveal" data-delay="1">Tell me a little about your business. I usually reply the same day with next steps or a flat quote.</p>
           <div class="direct reveal" data-delay="2">
             <a href="tel:+19043104371"><span><small>Call or text</small><b>(904) 310-4371</b></span><svg viewBox="0 0 16 16" fill="none"><path d="M5 11l6-6M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>

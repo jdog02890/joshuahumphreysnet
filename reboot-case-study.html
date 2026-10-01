@@ -24,8 +24,6 @@
     .case-meta dd { font-size: 15.5px; font-weight: 500; }
     .case-meta a { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
     .case-hero-media { position: relative; margin-top: clamp(40px, 5vw, 64px); }
-    .case-phone { position: absolute; right: -10px; bottom: -8%; width: clamp(110px, 16%, 200px); aspect-ratio: 520 / 1125; border-radius: clamp(18px, 2.4vw, 32px); overflow: hidden; border: clamp(5px, 0.7vw, 9px) solid #121211; box-shadow: 0 30px 60px -20px rgba(15, 15, 14, 0.55); background: #121211; }
-    .case-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
     .compare .c-tag { color: var(--ink); }
     .compare .c-tag-after { color: var(--paper); }
     .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
@@ -52,7 +50,6 @@
     @media (max-width: 640px) {
       .case-meta { grid-template-columns: 1fr 1fr; }
       .shots, .changes { grid-template-columns: 1fr; }
-      .case-phone { width: 28%; right: -4px; }
     }
   </style>
 </head>
@@ -121,7 +118,6 @@
               <input type="range" min="0" max="100" value="50" aria-label="Drag to compare the old and new Reboot Computers website" />
             </div>
           </div>
-          <div class="case-phone" aria-hidden="true"><img src="assets/work/reboot-after-mobile.jpg" alt="" width="520" height="1125" /></div>
         </div>
       </div>
     </section>
@@ -182,7 +178,7 @@
         <header class="section-head">
           <div class="sh-title">
             <p class="kicker reveal"><span>04</span><b>After</b></p>
-            <h2 class="h2 reveal">The live site, <span class="serif">right here.</span></h2>
+            <h2 class="h2 reveal">The live site, right here.</h2>
           </div>
           <p class="sh-aside reveal" data-delay="1" style="color:var(--night-muted)">Scroll around and click through the pages to see the difference for yourself.</p>
         </header>
@@ -199,7 +195,7 @@
         <header class="section-head">
           <div class="sh-title">
             <p class="kicker reveal"><span>05</span><b>Results</b></p>
-            <h2 class="h2 reveal">What changed <span class="serif">for Reboot.</span></h2>
+            <h2 class="h2 reveal">What changed for Reboot.</h2>
           </div>
         </header>
         <div class="outcomes reveal">
@@ -214,7 +210,7 @@
     <section class="cta-band on-dark">
       <div class="container">
         <p class="kicker reveal"><span>Next step</span><b>Let's talk</b></p>
-        <h2 class="h1 reveal">Want results like this for <span class="serif">your business?</span></h2>
+        <h2 class="h1 reveal">Want results like this for your business?</h2>
         <p class="lead reveal" data-delay="1">Same quality, flat-rate pricing. Tell me about your business and I will send a free quote, usually the same day.</p>
         <div class="actions reveal" data-delay="2">
           <a class="btn btn-light" href="index.html#contact">Start a project <svg class="arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
